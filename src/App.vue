@@ -24,4 +24,7 @@
     color: #2c3e50;
     margin-top: 60px;
   }
+  .router-link-exact-active {
+    color: orangered;
+  }
 </style>

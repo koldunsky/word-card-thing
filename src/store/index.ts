@@ -1,18 +1,14 @@
 import Vue from 'vue'
-import Vuex, { StoreOptions } from 'vuex'
+import Vuex from 'vuex'
 
 Vue.use(Vuex)
-
-interface IStore {
-  words: IWord[]
-}
 
 interface IWord {
   word: string;
   translation: string;
 }
 
-const store: StoreOptions<IStore> = new Vuex.Store({
+export default new Vuex.Store({
   state: {
     words: [{
       word: '111',
@@ -30,5 +26,3 @@ const store: StoreOptions<IStore> = new Vuex.Store({
   modules: {
   }
 })
-
-export default store
