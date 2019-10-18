@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Add</router-link> |
+    <div id="nav" class="nav">
+      <router-link to="/">Add</router-link>
       <router-link to="/drill">Drill (yeah, bitch!)</router-link>
     </div>
     <router-view/>
@@ -16,15 +16,42 @@
 </script>
 
 <style lang="scss">
+  body {
+    font-family: 'Fira Sans Condensed', sans-serif;
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+  }
   #app {
-    font-family: 'Avenir', Helvetica, Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
-    margin-top: 60px;
   }
+
+  input {
+    font-size: 16px;
+    padding: 10px;
+  }
+
+  button {
+    padding: 10px 20px;
+  }
+
+  .nav {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    margin-bottom: 40px;
+
+    a {
+      flex: 1 1 50%;
+      padding: 20px;
+    }
+  }
+
   .router-link-exact-active {
-    color: orangered;
+    background: blanchedalmond;
   }
+
 </style>

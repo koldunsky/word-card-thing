@@ -6,18 +6,24 @@
     <label>Translation<br/>
       <input v-model="translation"/>
     </label>
+    <br/>
     <button @click="addWord">Add</button>
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+  import Input from './Input/index.vue'
   import {
     Mutation
   } from 'vuex-class'
 
-  @Component
-  export default class HelloWorld extends Vue {
+  @Component({
+    components: {
+      Input
+    }
+  })
+  export default class AddView extends Vue {
     word: string = '';
     translation: string = '';
 
@@ -25,6 +31,12 @@
     addWord () {
       const { word, translation } = this
       this.addWordToStore({ word, translation })
+      this.resetForm()
+    }
+
+    resetForm () {
+      this.word = ''
+      this.translation = ''
     }
   }
 </script>
@@ -34,5 +46,9 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+  }
+
+  label {
+    margin-bottom: 20px;
   }
 </style>
