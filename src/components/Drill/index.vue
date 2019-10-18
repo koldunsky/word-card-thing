@@ -45,7 +45,7 @@
     value: string = ''
     answer: string = ''
 
-    onInputChange (e) {
+    onInputChange (e: any) {
       const {
         value
       } = e.target
