@@ -53,7 +53,7 @@
         translation
       } = this.$store.state.currentWord
 
-      if (value === translation) {
+      if (value.toLowerCase() === translation.toLowerCase()) {
         this.skipWord()
       }
     }
