@@ -1,10 +1,18 @@
 <template>
   <div class="container">
+    <button class="switcher" @click="toggleTranslationFlow">
+      <span v-if="isDrillTranslationInsteadWord">
+        <b>T</b> &rarr; <span>W</span>
+      </span>
+      <span v-else>
+        <b>W</b> &rarr; <span>T</span>
+      </span>
+    </button>
     <div class="word">
-      {{this.$store.state.currentWord.word}}
+      {{word}}
     </div>
     <div
-      v-if="answer"
+      v-if="isShowAnswer"
       class="answer"
     >
       {{answer}}
@@ -29,7 +37,7 @@
     </button>
     <button
       class="button"
-      v-if="!answer"
+      v-if="!isShowAnswer"
       @click="showAnswer"
     >
       Show answer
@@ -40,26 +48,29 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import {
-    Mutation
+    Mutation,
+    State
   } from 'vuex-class'
 
   @Component
   export default class Drill extends Vue {
-    @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     value: string = ''
-    answer: string = ''
+    isShowAnswer: boolean = false
     isReadOnly: boolean = false
     isRightAnswer: boolean = false
+
+    @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
+    @State('currentWord') currentWord: any
+
+    @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
+    @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
 
     onInputChange (e: any) {
       const {
         value
       } = e.target
-      const {
-        translation
-      } = this.$store.state.currentWord
 
-      if (value.toLowerCase() === translation.toLowerCase()) {
+      if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
         setTimeout(this.skipWord, 300)
@@ -67,7 +78,7 @@
     }
 
     showAnswer () {
-      this.answer = this.$store.state.currentWord.translation
+      this.isShowAnswer = true
     }
 
     skipWord () {
@@ -77,9 +88,25 @@
 
     resetView () {
       this.value = ''
-      this.answer = ''
+      this.isShowAnswer = false
       this.isReadOnly = false
       this.isRightAnswer = false
+    }
+
+    get word () {
+      const {
+        word,
+        translation
+      } = this.currentWord
+      return this.isDrillTranslationInsteadWord ? translation : word
+    }
+
+    get answer () {
+      const {
+        word,
+        translation
+      } = this.currentWord
+      return this.isDrillTranslationInsteadWord ? word : translation
     }
   }
 </script>

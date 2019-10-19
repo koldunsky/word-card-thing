@@ -6,3 +6,10 @@
   right: 0;
   margin: auto;
 }
+
+@mixin button-reset {
+  background: none;
+  border: none;
+  font-family: inherit;
+  cursor: pointer;
+}

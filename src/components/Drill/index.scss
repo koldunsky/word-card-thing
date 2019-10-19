@@ -1,3 +1,5 @@
+@import '../../assets/style/utils';
+
 @keyframes right-answer {
   0% {
     background: transparent;
@@ -5,6 +7,10 @@
   100% {
     background: lighten(darkseagreen, 20%);
   }
+}
+
+.container {
+  position: relative;
 }
 
 .word {
@@ -22,4 +28,15 @@ input {
 
 .right-answer {
   animation: right-answer .2s ease-in 1 forwards;
+}
+
+.switcher {
+  @include button-reset;
+  position: absolute;
+  top: 0;
+  right: 0;
+
+  b {
+    color: $accent;
+  }
 }

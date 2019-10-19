@@ -9,7 +9,7 @@ interface IWordSetter {
   translation: string;
 }
 
-interface IWord {
+export interface IWord {
   id: string;
   word: string;
   translation: string;
@@ -20,6 +20,7 @@ const STORAGE_STATE = 'lsd_state'
 const store = new Vuex.Store({
   state: {
     words: [] as Array<IWord>,
+    isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
       word: '',
@@ -55,6 +56,9 @@ const store = new Vuex.Store({
       }
 
       state.currentWord = state.words[randomId]
+    },
+    toggleTranslationFlow (state) {
+      state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
     }
   },
   actions: {
