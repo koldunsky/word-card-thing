@@ -10,10 +10,14 @@
       {{answer}}
     </div>
     <input
+      :readonly="isReadOnly"
       v-else
       @input="onInputChange"
       v-model="value"
       type="text"
+      :class="{
+        'right-answer': isRightAnswer
+      }"
     />
     <br>
     <br>
@@ -44,6 +48,8 @@
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     value: string = ''
     answer: string = ''
+    isReadOnly: boolean = false
+    isRightAnswer: boolean = false
 
     onInputChange (e: any) {
       const {
@@ -54,7 +60,9 @@
       } = this.$store.state.currentWord
 
       if (value.toLowerCase() === translation.toLowerCase()) {
-        this.skipWord()
+        this.isReadOnly = true
+        this.isRightAnswer = true
+        setTimeout(this.skipWord, 300)
       }
     }
 
@@ -64,8 +72,14 @@
 
     skipWord () {
       this.setRandomWordAsCurrent()
+      this.resetView()
+    }
+
+    resetView () {
       this.value = ''
       this.answer = ''
+      this.isReadOnly = false
+      this.isRightAnswer = false
     }
   }
 </script>

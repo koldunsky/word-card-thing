@@ -45,6 +45,9 @@ const store = new Vuex.Store({
       } as IWord)
     },
     setRandomWordAsCurrent (state) {
+      if (!state.words.length) {
+        return false
+      }
       const getIndex = () => Math.round(Math.random() * (state.words.length - 1))
       let randomId = getIndex()
       while (state.words[randomId].id === state.currentWord.id) {

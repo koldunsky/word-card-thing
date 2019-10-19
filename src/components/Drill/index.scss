@@ -1,3 +1,12 @@
+@keyframes right-answer {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: lighten(darkseagreen, 20%);
+  }
+}
+
 .word {
   font-size: 3em;
   margin-bottom: 30px;
@@ -5,4 +14,12 @@
 
 .button {
   margin: 10px;
+}
+
+input {
+
+}
+
+.right-answer {
+  animation: right-answer .2s ease-in 1 forwards;
 }
