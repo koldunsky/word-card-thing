@@ -20,7 +20,6 @@
       </router-link>
     </div>
     <router-view/>
-    {{SWStatuses}}
   </div>
 </template>
 
@@ -28,15 +27,7 @@
   import { Component, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class App extends Vue {
-    SWStatuses: any[] = []
-
-    mounted () {
-      setInterval(() => {
-        this.SWStatuses = window.workerState
-      }, 500)
-    }
-  }
+  export default class App extends Vue {}
 </script>
 
 <style lang="scss">
