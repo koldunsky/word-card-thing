@@ -20,6 +20,7 @@
       </router-link>
     </div>
     <router-view/>
+    {{SWStatuses}}
   </div>
 </template>
 
@@ -27,22 +28,37 @@
   import { Component, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class App extends Vue {}
+  export default class App extends Vue {
+    SWStatuses: any[] = []
+
+    mounted () {
+      setInterval(() => {
+        this.SWStatuses = window.workerState
+      }, 500)
+    }
+  }
 </script>
 
 <style lang="scss">
+  html,
   body {
+    position: fixed;
+    overflow: hidden;
     font-family: 'Fira Sans Condensed', sans-serif;
     padding: 0;
     margin: 0;
-    box-sizing: border-box;
-    overflow-scrolling: touch;
   }
+
   #app {
+    width: 100vw;
+    height: 100vh;
+    overflow-y: scroll;
+    -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     text-align: center;
     color: #2c3e50;
+    padding-bottom: 10px;
   }
 
   input {
