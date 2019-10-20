@@ -26,13 +26,19 @@
       </router-link>
     </div>
     <router-view/>
+    <UpdateChecker />
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
+  import UpdateChecker from './components/updateChecker/index.vue'
 
-  @Component
+  @Component({
+    components: {
+      UpdateChecker
+    }
+  })
   export default class App extends Vue {}
 </script>
 

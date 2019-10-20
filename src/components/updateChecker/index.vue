@@ -1,11 +1,11 @@
 <template>
   <button v-if="updateExists" @click="refreshApp">
-    New version available! Click to update
+    ↺ New version available! Click to update
   </button>
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
 
   @Component
   export default class UpdateChecker extends Vue {
