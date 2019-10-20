@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import remove from 'lodash/remove'
 import getGuid from '@/utils/getGuid'
 
 Vue.use(Vuex)
@@ -44,6 +45,25 @@ const store = new Vuex.Store({
         id: getGuid(),
         ...payload
       } as IWord)
+    },
+    deleteWord (state, id: string) {
+      let words = [...state.words]
+      const isRightWord = (word: IWord) => {
+        return word.id === id
+      }
+      // @ts-ignore
+      const foundedWords: IWord = state.words.find(isRightWord)
+      console.info(foundedWords)
+
+      if (!foundedWords) {
+        return false
+      }
+      const reallyDelete = confirm(`Delete ${foundedWords.word}(${foundedWords.translation})?`)
+
+      if (reallyDelete) {
+        remove(words, isRightWord)
+        state.words = words
+      }
     },
     setRandomWordAsCurrent (state) {
       if (!state.words.length) {

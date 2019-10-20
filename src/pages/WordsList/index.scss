@@ -1,0 +1,9 @@
+@import '../../assets/style/utils';
+
+.words-list {
+  @include page-inner;
+}
+
+.list-item {
+  padding: 5px 0;
+}

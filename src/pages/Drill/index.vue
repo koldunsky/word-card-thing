@@ -8,7 +8,13 @@
         <b>W</b> &rarr; <span>T</span>
       </span>
     </button>
-    <div class="word">
+    <div
+      class="word"
+      :class="{
+        'word_medium': word.length > 12,
+        'word_small': word.length > 16
+      }"
+    >
       {{word}}
     </div>
     <div

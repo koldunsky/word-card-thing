@@ -18,6 +18,12 @@
       >
         Drill (yeah, bitch!)
       </router-link>
+      <router-link
+        class="router-link"
+        to="/words-list"
+      >
+        List
+      </router-link>
     </div>
     <router-view/>
   </div>

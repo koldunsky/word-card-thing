@@ -1,0 +1,19 @@
+@import '../../assets/style/utils';
+
+.container {
+  @include page-inner;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.notification {
+  font-style: italic;
+  margin-bottom: 40px;
+}
+
+label {
+  margin-bottom: 20px;
+}

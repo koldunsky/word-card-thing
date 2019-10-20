@@ -47,21 +47,4 @@
     }
   }
 </script>
-<style scoped lang="scss">
-  .container {
-    padding-top: 50px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .notification {
-    font-style: italic;
-    margin-bottom: 40px;
-  }
-
-  label {
-    margin-bottom: 20px;
-  }
-</style>
+<style src="./index.scss" scoped lang="scss"></style>
