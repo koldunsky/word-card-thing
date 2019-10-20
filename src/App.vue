@@ -74,7 +74,6 @@
     display: flex;
     justify-content: center;
     align-items: stretch;
-    margin-bottom: 40px;
     overflow: hidden;
     transition: .3s ease all;
     max-height: 0;

@@ -13,30 +13,36 @@ window.workerState = []
 if (process.env.NODE_ENV === 'production') {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready (...args) {
-      window.workerState.push(['ready', args, this])
+      window.workerState.push(['ready', args])
       console.log(
         'App is being served from cache by a service worker.\n' +
         'For more details, visit https://goo.gl/AFskqB'
       )
     },
-    registered (...args) {
-      window.workerState.push(['regisred', args, this])
+    registered (registration) {
+      setInterval(() => {
+        registration.update()
+      }, 1000 * 60 * 60) // e.g. hourly checks
+      window.workerState.push(['regisred', registration])
       console.log('Service worker has been registered.')
     },
     cached (...args) {
-      window.workerState.push(['cached', args, this])
+      window.workerState.push(['cached', args])
       console.log('Content has been cached for offline use.')
     },
     updatefound (...args) {
-      window.workerState.push(['updatefound', args, this])
+      window.workerState.push(['updatefound', args])
       console.log('New content is downloading.')
     },
-    updated (...args) {
-      window.workerState.push(['updated', args, this])
+    updated (registration) {
+      document.dispatchEvent(
+        new CustomEvent('swUpdated', { detail: registration })
+      )
+      window.workerState.push(['updated (please refresh)', registration])
       console.log('New content is available; please refresh.')
     },
     offline (...args) {
-      window.workerState.push(['offline', args, this])
+      window.workerState.push(['offline', args])
       console.log('No internet connection found. App is running in offline mode.')
     },
     error (error) {

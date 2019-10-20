@@ -17,7 +17,7 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import Input from './Input/index.vue'
+  import Input from '@/components/Input/index.vue'
   import {
     Mutation,
     State
@@ -49,6 +49,7 @@
 </script>
 <style scoped lang="scss">
   .container {
+    padding-top: 50px;
     display: flex;
     flex-direction: column;
     align-items: center;

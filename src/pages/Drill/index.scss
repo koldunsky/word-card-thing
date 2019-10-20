@@ -11,6 +11,7 @@
 
 .container {
   position: relative;
+  padding-top: 50px;
 }
 
 .word {
@@ -33,7 +34,7 @@ input {
 .switcher {
   @include button-reset;
   position: absolute;
-  top: 0;
+  top: 15px;
   right: 0;
 
   b {
