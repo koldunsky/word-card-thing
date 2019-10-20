@@ -15,7 +15,7 @@
 
     created () {
       document.addEventListener(
-        'swUpdated', this.showRefreshUI, { once: true }
+        'swUpdated', this.showRefreshUI as EventListener, { once: true }
       )
       navigator.serviceWorker.addEventListener(
         'controllerchange', () => {
@@ -28,7 +28,7 @@
       )
     }
 
-    showRefreshUI (e: {detail: any}) {
+    showRefreshUI (e: CustomEvent) {
       this.registration = e.detail
       this.updateExists = true
     }
