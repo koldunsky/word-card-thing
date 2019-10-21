@@ -1,0 +1,53 @@
+@import '../../assets/style/utils';
+
+@keyframes right-answer {
+  0% {
+    background: transparent;
+  }
+  100% {
+    background: lighten(darkseagreen, 20%);
+  }
+}
+
+.container {
+  @include page-inner;
+
+  position: relative;
+}
+
+.word {
+  font-size: 3em;
+  line-height: 60px;
+  margin-bottom: 30px;
+
+  &_medium {
+    font-size: 2.5em;
+  }
+
+  &_small {
+    font-size: 2.1em;
+  }
+}
+
+.button {
+  margin: 10px;
+}
+
+input {
+
+}
+
+.right-answer {
+  animation: right-answer .2s ease-in 1 forwards;
+}
+
+.switcher {
+  @include button-reset;
+  position: absolute;
+  top: 15px;
+  right: 0;
+
+  b {
+    color: $accent;
+  }
+}

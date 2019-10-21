@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import HelloWorld from './components/Add.vue'
+import Add from './pages/Add/Add.vue'
 
 Vue.use(Router)
 
@@ -11,7 +11,7 @@ export default new Router({
     {
       path: '/',
       name: 'add',
-      component: HelloWorld
+      component: Add
     },
     {
       path: '/drill',
@@ -19,7 +19,12 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import(/* webpackChunkName: "about" */ './components/Drill/index.vue')
+      component: () => import('./pages/Drill/index.vue')
+    },
+    {
+      path: '/words-list',
+      name: 'words-list',
+      component: () => import('./pages/WordsList/index.vue')
     }
   ]
 })

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import remove from 'lodash/remove'
 import getGuid from '@/utils/getGuid'
 
 Vue.use(Vuex)
@@ -9,7 +10,7 @@ interface IWordSetter {
   translation: string;
 }
 
-interface IWord {
+export interface IWord {
   id: string;
   word: string;
   translation: string;
@@ -20,6 +21,7 @@ const STORAGE_STATE = 'lsd_state'
 const store = new Vuex.Store({
   state: {
     words: [] as Array<IWord>,
+    isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
       word: '',
@@ -44,7 +46,29 @@ const store = new Vuex.Store({
         ...payload
       } as IWord)
     },
+    deleteWord (state, id: string) {
+      let words = [...state.words]
+      const isRightWord = (word: IWord) => {
+        return word.id === id
+      }
+      // @ts-ignore
+      const foundedWords: IWord = state.words.find(isRightWord)
+      console.info(foundedWords)
+
+      if (!foundedWords) {
+        return false
+      }
+      const reallyDelete = confirm(`Delete ${foundedWords.word}(${foundedWords.translation})?`)
+
+      if (reallyDelete) {
+        remove(words, isRightWord)
+        state.words = words
+      }
+    },
     setRandomWordAsCurrent (state) {
+      if (!state.words.length) {
+        return false
+      }
       const getIndex = () => Math.round(Math.random() * (state.words.length - 1))
       let randomId = getIndex()
       while (state.words[randomId].id === state.currentWord.id) {
@@ -52,6 +76,9 @@ const store = new Vuex.Store({
       }
 
       state.currentWord = state.words[randomId]
+    },
+    toggleTranslationFlow (state) {
+      state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
     }
   },
   actions: {
