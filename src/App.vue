@@ -16,7 +16,7 @@
         class="router-link"
         to="/drill"
       >
-        Drill (yeah, bitch!)
+        Drill
       </router-link>
       <router-link
         class="router-link"
@@ -84,7 +84,7 @@
     &:hover,
     &:focus,
     &:active {
-      outline-color: coral;
+      outline: 1px solid coral;
     }
   }
 
