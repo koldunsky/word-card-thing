@@ -33,6 +33,13 @@
   input {
     font-size: 16px;
     padding: 10px;
+    border: 1px solid #cdc;
+
+    &:hover,
+    &:focus,
+    &:active {
+      outline-color: coral;
+    }
   }
 
   button {
