@@ -35,6 +35,7 @@
 
     refreshApp () {
       this.updateExists = false
+      console.info('refreshApp', this.registration)
       if (!this.registration || !this.registration.waiting) {
         return
       }
