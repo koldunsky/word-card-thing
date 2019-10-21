@@ -84,7 +84,8 @@
     &:hover,
     &:focus,
     &:active {
-      outline: 1px solid coral;
+      outline: none;
+      border-color: coral;
     }
   }
 

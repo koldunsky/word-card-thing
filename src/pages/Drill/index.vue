@@ -71,6 +71,10 @@
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
 
+    created () {
+      this.setRandomWordAsCurrent()
+    }
+
     onInputChange (e: any) {
       const {
         value

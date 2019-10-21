@@ -11,6 +11,7 @@ declare global {
 window.workerState = []
 
 if (process.env.NODE_ENV === 'production') {
+// if (true) {
   register(`${process.env.BASE_URL}service-worker.js`, {
     ready (...args) {
       window.workerState.push(['ready', args])

@@ -1,16 +1,20 @@
 <template>
-  <form class="container" @submit.prevent="addWord">
+  <form
+    ref="form"
+    class="container"
+    @submit.prevent="addWord"
+  >
     <div v-if="words.length < 3" class="notification">
       <span v-if="words.length === 0">Add 3 words</span>
       <span v-if="words.length > 0">Add {{ 3 - words.length}} more</span>
     </div>
-    <label>Word<br/>
-      <input v-model="word"/>
+    <label>Word<br />
+      <input v-model="word" />
     </label>
-    <label>Translation<br/>
-      <input v-model="translation"/>
+    <label>Translation<br />
+      <input v-model="translation" />
     </label>
-    <br/>
+    <br />
     <button type="submit">Add</button>
   </form>
 </template>
@@ -31,6 +35,9 @@
   export default class AddView extends Vue {
     word: string = '';
     translation: string = '';
+    $refs!: {
+      form: HTMLFormElement
+    }
     @State('words') words: any
 
     @Mutation('addWord') addWordToStore: any
@@ -44,6 +51,9 @@
     resetForm () {
       this.word = ''
       this.translation = ''
+      const form: Element = this.$refs.form
+      const firstInput: HTMLInputElement = form.querySelector('input')
+      firstInput.focus()
     }
   }
 </script>
