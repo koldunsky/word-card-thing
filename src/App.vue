@@ -68,6 +68,9 @@
     font-size: 16px;
     padding: 10px;
     border: 1px solid #cdc;
+    box-shadow: none !important;
+    font-family: inherit;
+    border-radius: 0 !important;
 
     &:hover,
     &:focus,
