@@ -40,6 +40,9 @@
         return
       }
       this.registration.waiting.postMessage('SKIP_WAITING')
+      this.registration.waiting.postMessage('skipWaiting')
+      navigator.serviceWorker.controller.postMessage('SKIP_WAITING')
+      navigator.serviceWorker.controller.postMessage('skipWaiting')
     }
   }
 </script>
