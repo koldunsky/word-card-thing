@@ -39,10 +39,7 @@
       if (!this.registration || !this.registration.waiting) {
         return
       }
-      this.registration.waiting.postMessage('SKIP_WAITING')
-      this.registration.waiting.postMessage('skipWaiting')
-      navigator.serviceWorker.controller.postMessage('SKIP_WAITING')
-      navigator.serviceWorker.controller.postMessage('skipWaiting')
+      this.registration.waiting.postMessage({ type: 'SKIP_WAITING' })
     }
   }
 </script>

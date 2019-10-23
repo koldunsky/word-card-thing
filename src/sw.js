@@ -1,6 +1,8 @@
 // This is the code piece that GenerateSW mode can't provide for us.
 // This code listens for the user's confirmation to update the app.
 
+console.info(self)
+
 workbox.core.setCacheNameDetails({ prefix: 'word-card-thing' })
 
 self.addEventListener('message', (event) => {
@@ -9,7 +11,7 @@ self.addEventListener('message', (event) => {
     self.skipWaiting()
     console.info('self.skipWaiting() 1')
   }
-  if (!e.data) {
+  if (!event.data) {
     return
   }
 
@@ -24,9 +26,6 @@ self.addEventListener('message', (event) => {
   }
 })
 
-self.addEventListener('message', (e) => {
-})
-console.info(self)
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
