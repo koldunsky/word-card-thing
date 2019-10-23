@@ -4,6 +4,7 @@ self.addEventListener('message', (e) => {
   if (!e.data) {
     return
   }
+  console.info("self.addEventListener('message'", e)
 
   switch (e.data) {
     case 'skipWaiting':
