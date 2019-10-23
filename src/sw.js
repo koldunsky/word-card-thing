@@ -15,9 +15,9 @@ self.addEventListener('message', (e) => {
   }
 })
 console.info('sw.js:self', self)
-workbox.clientsClaim()
+// workbox.clientsClaim()
 
 // The precaching code provided by Workbox.
 self.__precacheManifest = [].concat(self.__precacheManifest || [])
-workbox.precaching.suppressWarnings()
-workbox.precaching.precacheAndRoute(self.__precacheManifest, {})
+// workbox.precaching.suppressWarnings()
+// workbox.precaching.precacheAndRoute(self.__precacheManifest, {})

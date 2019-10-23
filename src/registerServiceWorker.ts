@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
       setInterval(() => {
         registration.update()
       }, 1000 * 60 * 60) // e.g. hourly checks
-      window.workerState.push(['regisred', registration])
+      window.workerState.push(['registered', registration])
       console.log(registration)
       console.log('Service worker has been registered.')
     },
