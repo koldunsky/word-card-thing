@@ -39,7 +39,7 @@
       if (!this.registration || !this.registration.waiting) {
         return
       }
-      this.registration.waiting.postMessage('skipWaiting')
+      this.registration.waiting.postMessage('SKIP_WAITING')
     }
   }
 </script>
