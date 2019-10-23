@@ -41,7 +41,7 @@ if (process.env.NODE_ENV === 'production') {
     },
     updated (registration) {
       document.dispatchEvent(
-        new CustomEvent('swUpdated', { detail: registration })
+        new CustomEvent('SKIP_WAITING', { detail: registration })
       )
       window.workerState.push(['updated (please refresh)', registration])
       console.log(registration)
