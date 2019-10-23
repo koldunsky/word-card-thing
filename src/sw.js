@@ -14,7 +14,7 @@ self.addEventListener('message', (e) => {
       break
   }
 })
-
+console.info('sw.js:self', self)
 workbox.clientsClaim()
 
 // The precaching code provided by Workbox.
