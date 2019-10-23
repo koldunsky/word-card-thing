@@ -73,13 +73,15 @@
     padding-bottom: 10px;
   }
 
-  input {
+  input,
+  textarea {
     font-size: 16px;
     padding: 10px;
     border: 1px solid #cdc;
     box-shadow: none !important;
     font-family: inherit;
     border-radius: 0 !important;
+    -webkit-appearance: none;
 
     &:hover,
     &:focus,

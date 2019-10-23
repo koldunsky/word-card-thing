@@ -6,6 +6,11 @@ module.exports = {
     msTileColor: '#2F4F4F',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
-    assetsVersion: Date.now()
+    assetsVersion: Date.now(),
+    workboxPluginMode: 'InjectManifest',
+    workboxOptions: {
+      swSrc: './src/sw.js',
+      swDest: 'service-worker.js'
+    }
   }
 }
