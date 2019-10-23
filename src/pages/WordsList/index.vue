@@ -1,20 +1,28 @@
 <template>
   <div class="words-list">
-    <ul>
-      <li
-        class="list-item"
-        v-for="(w, i) in words"
-        :key="w.id"
-      >
-       {{i}}) {{w.word}} | {{w.translation}}
-        <button
-          v-if="words.length > 3"
-          @click="() => deleteWord(w.id)"
+    <div class="words-list__inner">
+      <ul>
+        <li
+          class="list-item"
+          v-for="w in words"
+          :key="w.id"
         >
-          x
-        </button>
-      </li>
-    </ul>
+          <span class="word">
+            {{w.word}}
+          </span>
+          <span class="translation">
+            {{w.translation}}
+          </span>
+          <button
+            class="delete-button"
+            v-if="words.length > 3"
+            @click="() => deleteWord(w.id)"
+          >
+            x
+          </button>
+        </li>
+      </ul>
+    </div>
   </div>
 </template>
 

@@ -4,6 +4,36 @@
   @include page-inner;
 }
 
+.words-list__inner {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
 .list-item {
   padding: 5px 0;
+  padding-right: 30px;
+  text-align: left;
+  position: relative;
+  border-bottom: 1px solid lightgrey;
+  display: flex;
+
+  & + & {
+    margin-top: 10px;
+  }
+}
+
+.word {
+  width: 50%;
+}
+
+.translation {
+  width: 50%;
+}
+
+.delete-button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  padding: 0 10px;
 }

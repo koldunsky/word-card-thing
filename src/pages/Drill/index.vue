@@ -120,4 +120,4 @@
     }
   }
 </script>
-<style src="./index.scss" lang="scss"></style>
+<style src="./index.scss" lang="scss" scoped></style>
