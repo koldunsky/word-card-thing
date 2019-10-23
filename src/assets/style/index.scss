@@ -1,4 +1,16 @@
 @import "./reset";
+@import "./utils";
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+body {
+  font-size: 1.6rem;
+}
 
 html, body {
   color: white;
@@ -7,16 +19,70 @@ html, body {
   //font-family: 'Arimo', sans-serif;
   //font-family: 'Source Code Pro', monospace;
   font-family: 'Fira Sans Condensed', sans-serif;
-  font-size: 62.5%;
-}
-body {
-  font-size: 1.6rem;
-}
-
-* {
-  box-sizing: border-box;
+  position: fixed;
+  overflow: hidden;
+  padding: 0;
+  margin: 0;
 }
 
 #app {
-  height: 100%;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: scroll;
+  -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-align: center;
+  color: #2c3e50;
+  padding-bottom: 10px;
+}
+
+input,
+textarea {
+  font-size: 16px;
+  padding: 10px;
+  border: 1px solid $border;
+  box-shadow: none !important;
+  font-family: inherit;
+  border-radius: 0 !important;
+  -webkit-appearance: none;
+
+  &:hover,
+  &:focus,
+  &:active {
+    outline: none;
+    border-color: $accent;
+  }
+}
+
+button {
+  padding: 10px 20px;
+}
+
+.nav {
+  display: flex;
+  justify-content: center;
+  align-items: stretch;
+  overflow: hidden;
+  transition: .3s ease all;
+  max-height: 0;
+  background: darkslategray;
+
+  &_visible {
+    max-height: 100px;
+  }
+}
+
+.router-link {
+  color: white;
+  text-decoration: none;
+  flex: 1 1 50%;
+  padding: 20px 0;
+  white-space: nowrap;
+  font-size: 1.2em;
+}
+
+.router-link-exact-active {
+  border-bottom: 3px solid $accent;
+  color: lighten($accent, 15%);
 }

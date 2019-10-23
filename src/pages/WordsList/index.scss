@@ -14,7 +14,7 @@
   padding-right: 30px;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid lightgrey;
+  border-bottom: 1px solid $border;
   display: flex;
 
   & + & {
