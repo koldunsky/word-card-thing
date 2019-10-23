@@ -8,7 +8,7 @@
       <span v-if="words.length === 0">Add 3 words</span>
       <span v-if="words.length > 0">Add {{ 3 - words.length}} more</span>
     </div>
-    <label>Word<br />1
+    <label>Word<br />222
       <input v-model="word" />
     </label>
     <label>Translation<br />
