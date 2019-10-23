@@ -5,12 +5,12 @@ module.exports = {
     themeColor: '#2F4F4F',
     msTileColor: '#2F4F4F',
     appleMobileWebAppCapable: 'yes',
-    appleMobileWebAppStatusBarStyle: 'black',
+    appleMobileWebAppStatusBarStyle: 'black'
     // assetsVersion: Date.now(),
-    workboxPluginMode: 'InjectManifest',
-    workboxOptions: {
-      swSrc: './src/sw.js',
-      swDest: 'service-worker.js'
-    }
+    // workboxPluginMode: 'InjectManifest',
+    // workboxOptions: {
+    //   swSrc: './src/sw.js',
+    //   swDest: 'service-worker.js'
+    // }
   }
 }
