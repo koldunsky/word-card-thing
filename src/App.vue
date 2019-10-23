@@ -27,7 +27,6 @@
     </div>
     <router-view/>
     <UpdateChecker />
-    {{SWStatuses}}
   </div>
 </template>
 
@@ -40,14 +39,6 @@
       UpdateChecker
     }
   })
-  export default class App extends Vue {
-    SWStatuses: any[] = []
-
-    mounted () {
-      setInterval(() => {
-        this.SWStatuses = window.workerState
-      }, 500)
-    }
-  }
+  export default class App extends Vue {}
 </script>
 <style lang="scss" src="./assets/style/index.scss" ></style>

@@ -23,7 +23,7 @@
             return
           }
           this.refreshing = true
-          window.location.reload()
+          window.location.replace('/')
         }
       )
     }
