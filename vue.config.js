@@ -1,8 +1,8 @@
 module.exports = {
   lintOnSave: false,
   pwa: {
-    name: `Lena's Dictionary`,
-    short_name: `L's D`,
+    name: 'Kolenki',
+    short_name: `Kolenki`,
     description: '',
     themeColor: '#2F4F4F',
     msTileColor: '#2F4F4F',
