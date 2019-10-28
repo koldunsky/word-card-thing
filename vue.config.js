@@ -9,6 +9,7 @@ module.exports = {
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     orientation: 'portrait',
+    assetsVersion: Date.now(),
     manifestOptions: {
       background_color: '#ffffff',
       display: 'standalone',
