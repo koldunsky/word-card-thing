@@ -5,7 +5,7 @@ module.exports = {
     short_name: `KOLENKI`,
     description: '',
     themeColor: '#2a7e70',
-    msTileColor: '#2a7e70',
+    msTileColor: '#39ac99',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
     orientation: 'portrait',
