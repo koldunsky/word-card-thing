@@ -20,7 +20,7 @@
       </router-link>
       <router-link
         class="router-link"
-        to="/words-list"
+        to="/list"
       >
         List
       </router-link>
