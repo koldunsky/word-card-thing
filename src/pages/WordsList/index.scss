@@ -1,10 +1,10 @@
 @import '../../assets/style/utils';
 
-.list {
+.words-list {
   @include page-inner;
 }
 
-.list__inner {
+.words-list__inner {
   max-width: 400px;
   margin: 0 auto;
 }
