@@ -21,7 +21,6 @@
       />
     </label>
     <br />
-    {{fieldWithError}}
     <button type="submit">Add</button>
   </form>
 </template>
