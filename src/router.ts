@@ -22,9 +22,9 @@ export default new Router({
       component: () => import('./pages/Drill/index.vue')
     },
     {
-      path: '/list',
-      name: 'list',
-      component: () => import('./pages/List/index.vue')
+      path: '/words-list',
+      name: 'words-list',
+      component: () => import('./pages/WordsList/index.vue')
     }
   ]
 })
