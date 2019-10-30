@@ -58,7 +58,6 @@
     @Mutation('addWord') addWordToStore: any
 
     mounted () {
-      console.info('mounted')
       if (this.words.length < 3) {
         this.focusFirstInput()
       }
@@ -73,14 +72,18 @@
           el.classList.remove('field_error')
         }, 500)
         el.classList.add('field_error')
-        el.focus()
         this.resetField(fieldWithError)
-        this.fieldWithError = ''
+        el.focus()
+        this.resetError()
       }
     }
 
     resetField (name: string) {
       this[name] = ''
+    }
+
+    resetError () {
+      this.fieldWithError = ''
     }
 
     addWord () {
