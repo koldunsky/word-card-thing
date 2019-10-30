@@ -1,6 +1,6 @@
 <template>
-  <div class="list">
-    <div class="list__inner">
+  <div class="words-list">
+    <div class="words-list__inner">
       <ul>
         <li
           class="list-item"
