@@ -91,11 +91,12 @@
         word,
         translation
       } = this
-
-      const fields: IFields = reduce({
+      let fields: IFields = {
         word,
         translation
-      }, (acc, value, fieldName) => {
+      }
+
+      fields = reduce(fields, (acc, value, fieldName) => {
         value = value.trim()
 
         if (value === '' && !this.fieldWithError) {
