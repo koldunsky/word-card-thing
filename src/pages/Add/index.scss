@@ -1,16 +1,11 @@
 @import '../../assets/style/utils';
 
 @keyframes field-has-error {
-  0% {
-    opacity: 1;
+  25% {
+    transform: translateX(2.5%);
   }
-
-  50% {
-    opacity: .5;
-  }
-
-  100% {
-    opacity: 1;
+  75% {
+    transform: translateX(-2.5%);
   }
 }
 
@@ -41,5 +36,5 @@ label {
 }
 
 .field_error {
-  animation: field-has-error .5s ease 2;
+  animation: field-has-error .25s ease 2;
 }

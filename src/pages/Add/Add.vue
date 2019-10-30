@@ -5,20 +5,16 @@
     @submit.prevent="addWord"
   >
     <div v-if="words.length < 3" class="notification">
-      <span v-if="words.length === 0">Add <span>3</span> words</span>
-      <span v-if="words.length > 0">Add <span>{{ 3 - words.length}}</span> more</span>
+      <span v-if="words.length === 0">Add <span class="notification__accent">3</span> words</span>
+      <span v-if="words.length > 0">Add <span class="notification__accent">{{ 3 - words.length}}</span> more</span>
     </div>
-    <label :class="{
-      field_error: fieldWithError === 'word'
-    }">Word<br />
+    <label>Word<br />
       <input
         id="field_word"
         v-model="word"
       />
     </label>
-    <label :class="{
-      field_error: fieldWithError === 'translation'
-    }">Translation<br />
+    <label>Translation<br />
       <input
         id="field_translation"
         v-model="translation"
@@ -61,6 +57,32 @@
 
     @Mutation('addWord') addWordToStore: any
 
+    mounted () {
+      console.info('mounted')
+      if (this.words.length < 3) {
+        this.focusFirstInput()
+      }
+    }
+
+    updated () {
+      const { fieldWithError } = this
+      if (fieldWithError) {
+        const el = document.getElementById(`field_${fieldWithError}`)
+
+        setTimeout(() => {
+          el.classList.remove('field_error')
+        }, 500)
+        el.classList.add('field_error')
+        el.focus()
+        this.resetField(fieldWithError)
+        this.fieldWithError = ''
+      }
+    }
+
+    resetField (name: string) {
+      this[name] = ''
+    }
+
     addWord () {
       const {
         word,
@@ -92,12 +114,16 @@
       this.resetForm()
     }
 
-    resetForm () {
-      this.word = ''
-      this.translation = ''
+    focusFirstInput () {
       const form: Element = this.$refs.form
       const firstInput: HTMLInputElement = form.querySelector('input')
       firstInput.focus()
+    }
+
+    resetForm () {
+      this.word = ''
+      this.translation = ''
+      this.focusFirstInput()
     }
   }
 </script>
