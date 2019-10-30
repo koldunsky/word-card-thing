@@ -1,14 +1,5 @@
 @import '../../assets/style/utils';
 
-@keyframes field-has-error {
-  25% {
-    transform: translateX(2.5%);
-  }
-  75% {
-    transform: translateX(-2.5%);
-  }
-}
-
 .container {
   @include page-inner;
 
@@ -25,16 +16,4 @@
 
 label {
   margin-bottom: 20px;
-}
-
-.field {
-  display: block;
-}
-
-.field__name {
-  display: block;
-}
-
-.field_error {
-  animation: field-has-error .25s ease 2;
 }
