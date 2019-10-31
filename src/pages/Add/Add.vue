@@ -47,7 +47,6 @@
   export default class AddView extends Vue {
     word: string = '';
     translation: string = '';
-    fieldWithError: string = '';
 
     $refs!: {
       form: HTMLFormElement
@@ -57,25 +56,20 @@
     @Mutation('addWord') addWordToStore: any
 
     mounted () {
-      console.info('mounted')
       if (this.words.length < 3) {
         this.focusFirstInput()
       }
     }
 
-    updated () {
-      const { fieldWithError } = this
-      if (fieldWithError) {
-        const el = document.getElementById(`field_${fieldWithError}`)
+    showError (fieldName: string) {
+      const el = document.getElementById(`field_${fieldName}`)
 
-        setTimeout(() => {
-          el.classList.remove('field_error')
-        }, 500)
-        el.classList.add('field_error')
-        el.focus()
-        this.resetField(fieldWithError)
-        this.fieldWithError = ''
-      }
+      setTimeout(() => {
+        el.classList.remove('field_error')
+      }, 500)
+      el.classList.add('field_error')
+      el.focus()
+      this.resetField(fieldName)
     }
 
     resetField (name: string) {
@@ -87,6 +81,7 @@
         word,
         translation
       } = this
+      let fieldWithError: string = ''
 
       const fields: IFields = reduce({
         word,
@@ -94,15 +89,16 @@
       }, (acc, value, fieldName) => {
         value = value.trim()
 
-        if (value === '' && !this.fieldWithError) {
-          this.fieldWithError = fieldName
+        if (value === '' && !fieldWithError) {
+          fieldWithError = fieldName
         }
 
         acc[fieldName] = value
         return acc
       }, {} as IFields)
 
-      if (this.fieldWithError) {
+      if (fieldWithError) {
+        this.showError(fieldWithError)
         return false
       }
 
