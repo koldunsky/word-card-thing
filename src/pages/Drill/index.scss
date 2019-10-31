@@ -17,15 +17,20 @@
 
 .word {
   font-size: 3em;
-  line-height: 60px;
+  line-height: 1.2;
   margin-bottom: 30px;
+  min-height: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 
   &_medium {
     font-size: 2.5em;
   }
 
   &_small {
-    font-size: 2.1em;
+    font-size: 2em;
   }
 }
 
