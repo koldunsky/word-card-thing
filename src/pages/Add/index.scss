@@ -25,14 +25,20 @@
 
 label {
   margin-bottom: 20px;
+  display: block;
+}
+
+.fieldset {
+  margin-bottom: 8px;
 }
 
 .field {
   display: block;
 }
 
-.field__name {
+.field__label {
   display: block;
+  padding-bottom: 3px;
 }
 
 .field_error {

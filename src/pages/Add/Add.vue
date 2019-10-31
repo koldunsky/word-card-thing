@@ -8,19 +8,26 @@
       <span v-if="words.length === 0">Add <span class="notification__accent">3</span> words</span>
       <span v-if="words.length > 0">Add <span class="notification__accent">{{ 3 - words.length}}</span> more</span>
     </div>
-    <label>Word<br />
-      <input
-        id="field_word"
-        v-model="word"
-      />
-    </label>
-    <label>Translation<br />
-      <input
-        id="field_translation"
-        v-model="translation"
-      />
-    </label>
-    <br />
+    <div class="fieldset">
+      <label>
+        <span class="field__label">
+          Word
+        </span>
+        <input
+          id="field_word"
+          v-model="word"
+        />
+      </label>
+      <label>
+        <span class="field__label">
+          Translation
+        </span>
+        <input
+          id="field_translation"
+          v-model="translation"
+        />
+      </label>
+    </div>
     <button type="submit">Add</button>
   </form>
 </template>
