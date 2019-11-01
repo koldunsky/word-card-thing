@@ -1,10 +1,11 @@
 <template>
   <div id="app">
-    <div id="nav"
-         class="nav"
-         :class="{
-          'nav_visible': $store.state.words.length >= 3
-         }"
+    <div
+      id="nav"
+      class="nav"
+      :class="{
+        'nav_visible': $store.state.words.length >= 3
+      }"
     >
       <router-link
         class="router-link"

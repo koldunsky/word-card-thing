@@ -35,19 +35,19 @@
     />
     <br>
     <br>
-    <button
+    <Button
       class="button"
       @click="skipWord"
     >
       Skip
-    </button>
-    <button
+    </Button>
+    <Button
       class="button"
       v-if="!isShowAnswer"
       @click="showAnswer"
     >
       Show answer
-    </button>
+    </Button>
   </div>
 </template>
 
@@ -57,8 +57,13 @@
     Mutation,
     State
   } from 'vuex-class'
+  import Button from '../../components/Button'
 
-  @Component
+  @Component({
+    components: {
+      Button
+    }
+  })
   export default class Drill extends Vue {
     value: string = ''
     isShowAnswer: boolean = false

@@ -40,6 +40,7 @@
     Mutation,
     State
   } from 'vuex-class'
+  import Button from '../../components/Button'
 
   interface IFields {
     word: string;
@@ -48,7 +49,8 @@
 
   @Component({
     components: {
-      Input
+      Input,
+      Button
     }
   })
   export default class AddView extends Vue {
