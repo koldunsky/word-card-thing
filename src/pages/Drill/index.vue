@@ -56,7 +56,7 @@
         v-if="!isShowAnswer"
         @click="() => deleteWord(currentWord.id)"
       >
-        Delete
+       Delete
       </Button>
     </div>
   </div>
