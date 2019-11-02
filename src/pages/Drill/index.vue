@@ -37,7 +37,7 @@
     <br>
     <div class="button-set">
       <Button
-        class="button button_link"
+        class="button"
         @click="skipWord"
       >
         Skip
