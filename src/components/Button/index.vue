@@ -1,7 +1,7 @@
 <template>
   <button
     class="button"
-    @click="click"
+    @click="(e) => $emit('click', e)"
   >
     <slot />
   </button>
@@ -11,8 +11,6 @@
   import { Component, Prop, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class SomeComponent extends Vue {
-    @Prop() click: string;
-  }
+  export default class SomeComponent extends Vue {}
 </script>
 <style src="./index.scss" lang="scss"></style>

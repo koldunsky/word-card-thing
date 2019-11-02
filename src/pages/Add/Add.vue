@@ -36,11 +36,11 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Input from '@/components/Input/index.vue'
+  import Button from '@/components/Button/index.vue'
   import {
     Mutation,
     State
   } from 'vuex-class'
-  import Button from '../../components/Button'
 
   interface IFields {
     word: string;
