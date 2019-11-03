@@ -83,7 +83,7 @@
       this.setActivePage(this.pages[index])
     }
 
-    onScrollerScroll = _debounce(this.fixScrollerScroll, 50)
+    onScrollerScroll = _debounce(this.fixScrollerScroll, 250)
   }
 </script>
 <style lang="scss" src="./assets/style/index.scss" ></style>

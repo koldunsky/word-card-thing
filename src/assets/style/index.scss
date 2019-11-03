@@ -97,9 +97,11 @@ button {
 .scroller {
   width: 100%;
   overflow: auto;
+  scroll-behavior: auto;
 }
 
 .scroller__inner {
   width: 300vw;
   display: flex;
+  scroll-behavior: auto;
 }
