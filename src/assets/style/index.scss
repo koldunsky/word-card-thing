@@ -18,7 +18,7 @@ html, body {
   //font-family: 'Rubik', sans-serif;
   //font-family: 'Arimo', sans-serif;
   //font-family: 'Source Code Pro', monospace;
-  font-family: 'Fira Sans Condensed', sans-serif;
+  font-family: $font-family;
   position: fixed;
   overflow: hidden;
   padding: 0;
@@ -74,16 +74,32 @@ button {
   }
 }
 
-.router-link {
+.nav-item {
+  @include button-reset;
+
+  font-family: $font-family;
+  height: 60px;
   color: white;
   text-decoration: none;
   flex: 1 1 50%;
   padding: 20px 0;
   white-space: nowrap;
   font-size: 1.2em;
+  border-bottom: 0px solid $accent;
+  transition: .3s ease border;
 }
 
-.router-link-exact-active {
+.nav-item_active {
   border-bottom: 3px solid $accent;
   color: lighten($accent, 15%);
+}
+
+.scroller {
+  width: 100%;
+  overflow: auto;
+}
+
+.scroller__inner {
+  width: 300vw;
+  display: flex;
 }

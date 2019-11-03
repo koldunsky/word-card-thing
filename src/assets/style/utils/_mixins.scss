@@ -10,10 +10,12 @@
 @mixin button-reset {
   background: none;
   border: none;
-  font-family: inherit;
   cursor: pointer;
+  margin: 0;
+  padding: 0;
 }
 
 @mixin page-inner {
+  width: 100vW;
   padding: 50px 25px 50px;
 }
