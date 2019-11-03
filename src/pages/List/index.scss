@@ -47,14 +47,34 @@ $button-size: 20px;
   color: $green-background;
   border: none;
   line-height: 1;
-  font-size: $button-size / 1.5;
-  padding-bottom: 1px;
   outline: none;
   cursor: pointer;
+  font-size: 0;
 
   &:hover,
-  &:focus,
+  &:focus {
+    color: $green-background;
+  }
+
   &:active {
     color: coral;
   }
+}
+
+.delete-button::before,
+.delete-button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: calc(50% - 4px);
+  width: 8px;
+  height: 1px;
+  background: currentColor;
+}
+
+.delete-button::after {
+  transform: rotateZ(45deg);
+}
+.delete-button::before {
+  transform: rotateZ(-45deg);
 }
