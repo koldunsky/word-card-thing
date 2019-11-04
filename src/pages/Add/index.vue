@@ -28,7 +28,9 @@
         />
       </label>
     </div>
-    <button type="submit">Add</button>
+    <Button>
+      Add
+    </Button>
   </form>
 </template>
 
