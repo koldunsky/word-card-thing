@@ -53,7 +53,7 @@
     <div class="button-set">
       <Button
         class="button button_link button_accent"
-        v-if="!isShowAnswer"
+        v-if="!isShowAnswer && words.length > 3"
         @click="() => deleteWord(currentWord.id)"
       >
        Delete
@@ -83,13 +83,16 @@
 
     @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
     @State('currentWord') currentWord: any
+    @State('words') words: any
 
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
     @Mutation('deleteWord') deleteWord: any
 
     created () {
-      this.setRandomWordAsCurrent()
+      if (!this.currentWord) {
+        this.setRandomWordAsCurrent()
+      }
     }
 
     onInputChange (e: any) {

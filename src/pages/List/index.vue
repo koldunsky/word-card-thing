@@ -22,6 +22,13 @@
           </button>
         </li>
       </ul>
+      <div
+        v-if="words.length < 4"
+        class="notice"
+      >
+        Go on! Add more words to the list. <br>
+        Words may be deleted if there is <u>more than 3</u> words in the list.
+      </div>
     </div>
   </div>
 </template>
