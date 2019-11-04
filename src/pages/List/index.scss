@@ -28,7 +28,7 @@ $button-size: 20px;
 .word {
   width: 50%;
   word-break: break-all;
-  padding-right: .5em;
+  padding-right: 1em;
 }
 
 .translation {
@@ -51,11 +51,11 @@ $button-size: 20px;
   cursor: pointer;
   font-size: 0;
 
-  &:hover,
   &:focus {
     color: $green-background;
   }
 
+  &:hover,
   &:active {
     color: coral;
   }
