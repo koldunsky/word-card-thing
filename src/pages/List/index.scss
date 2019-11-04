@@ -37,3 +37,15 @@
   bottom: 0;
   padding: 0 10px;
 }
+
+.notice {
+  font-size: .9em;
+  color: rgba(black, .5);
+  width: 80%;
+  margin: 3.5rem auto 0;
+
+  u {
+    font-style: italic;
+    white-space: nowrap;
+  }
+}
