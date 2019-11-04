@@ -11,8 +11,8 @@
     <div
       class="word"
       :class="{
-        'word_medium': word.length > 12,
-        'word_small': word.length > 16
+        'word_medium': word.length > 10,
+        'word_small': word.length > 13
       }"
     >
       {{word}}
