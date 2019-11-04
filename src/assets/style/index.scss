@@ -84,3 +84,11 @@ textarea {
   border-bottom: 3px solid $accent;
   color: lighten($accent, 15%);
 }
+
+a {
+  color: $accent;
+  text-decoration: none;
+  &:hover {
+    color: lighten($accent, 10%)
+  }
+}

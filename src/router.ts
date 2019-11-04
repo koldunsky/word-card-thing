@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import Add from './pages/Add/Add.vue'
+import Add from './pages/Add/index.vue'
+import Drill from './pages/Drill/index.vue'
+import List from './pages/List/index.vue'
 
 Vue.use(Router)
 
@@ -19,12 +21,12 @@ export default new Router({
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('./pages/Drill/index.vue')
+      component: Drill
     },
     {
       path: '/list',
       name: 'list',
-      component: () => import('./pages/List/index.vue')
+      component: List
     }
   ]
 })
