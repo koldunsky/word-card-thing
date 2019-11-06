@@ -28,7 +28,9 @@
         />
       </label>
     </div>
-    <button type="submit">Add</button>
+    <Button>
+      Add
+    </Button>
   </form>
 </template>
 
@@ -36,6 +38,7 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Input from '@/components/Input/index.vue'
+  import Button from '@/components/Button/index.vue'
   import {
     Mutation,
     State
@@ -48,7 +51,8 @@
 
   @Component({
     components: {
-      Input
+      Input,
+      Button
     }
   })
   export default class AddView extends Vue {

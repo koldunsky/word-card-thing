@@ -35,19 +35,30 @@
     />
     <br>
     <br>
-    <button
-      class="button"
-      @click="skipWord"
-    >
-      Skip
-    </button>
-    <button
-      class="button"
-      v-if="!isShowAnswer"
-      @click="showAnswer"
-    >
-      Show answer
-    </button>
+    <div class="button-set">
+      <Button
+        class="button"
+        @click="skipWord"
+      >
+        Skip
+      </Button>
+      <Button
+        class="button"
+        v-if="!isShowAnswer"
+        @click="showAnswer"
+      >
+        Show answer
+      </Button>
+    </div>
+    <div class="button-set">
+      <Button
+        class="button button_link button_accent"
+        v-if="!isShowAnswer && words.length > 3"
+        @click="() => deleteWord(currentWord.id)"
+      >
+       Delete
+      </Button>
+    </div>
   </div>
 </template>
 
@@ -57,8 +68,13 @@
     Mutation,
     State
   } from 'vuex-class'
+  import Button from '../../components/Button/index.vue'
 
-  @Component
+  @Component({
+    components: {
+      Button
+    }
+  })
   export default class Drill extends Vue {
     value: string = ''
     isShowAnswer: boolean = false
@@ -67,12 +83,16 @@
 
     @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
     @State('currentWord') currentWord: any
+    @State('words') words: any
 
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
+    @Mutation('deleteWord') deleteWord: any
 
     created () {
-      this.setRandomWordAsCurrent()
+      if (!this.currentWord.id) {
+        this.setRandomWordAsCurrent()
+      }
     }
 
     onInputChange (e: any) {
