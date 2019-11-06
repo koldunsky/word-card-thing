@@ -1,5 +1,8 @@
 <template>
-  <div class="updateChecker">
+  <div
+    v-if="updateExists"
+    class="updateChecker"
+  >
     New version available!
     <button
       class="button"
