@@ -52,13 +52,13 @@ const store = new Vuex.Store({
         return word.id === id
       }
       // @ts-ignore
-      const foundedWords: IWord = state.words.find(isRightWord)
+      const foundWords: IWord = state.words.find(isRightWord)
 
-      if (!foundedWords) {
+      if (!foundWords) {
         return false
       }
 
-      const reallyDelete = confirm(`Delete ${foundedWords.word} (${foundedWords.translation})?`)
+      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
 
       if (reallyDelete) {
         remove(words, isRightWord)
