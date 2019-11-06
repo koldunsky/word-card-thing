@@ -58,7 +58,7 @@ const store = new Vuex.Store({
         return false
       }
 
-      const reallyDelete = confirm(`Do you want to delete [${foundedWords.word} -> ${foundedWords.translation}]?`)
+      const reallyDelete = confirm(`Delete ${foundedWords.word} (${foundedWords.translation})?`)
 
       if (reallyDelete) {
         remove(words, isRightWord)
