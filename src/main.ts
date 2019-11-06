@@ -12,8 +12,5 @@ new Vue({
   render: h => h(App),
   beforeCreate () {
     this.$store.commit('initializeStore')
-    if (this.$store.state.currentWord.id === '') {
-      this.$store.commit('setRandomWordAsCurrent')
-    }
   }
 }).$mount('#app')

@@ -90,7 +90,7 @@
     @Mutation('deleteWord') deleteWord: any
 
     created () {
-      if (!this.currentWord) {
+      if (!this.currentWord.id) {
         this.setRandomWordAsCurrent()
       }
     }

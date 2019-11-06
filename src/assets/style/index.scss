@@ -72,17 +72,28 @@ textarea {
 }
 
 .router-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: white;
   text-decoration: none;
   flex: 1 1 50%;
-  padding: 20px 0;
   white-space: nowrap;
   font-size: 1.2em;
+  height: 60px;
+  border-bottom: 3px solid transparent;
+  &:hover {
+    color: white;
+  }
 }
 
 .router-link-exact-active {
-  border-bottom: 3px solid $accent;
+  border-color: $accent;
   color: lighten($accent, 15%);
+  cursor: default;
+  &:hover {
+    color: lighten($accent, 15%);
+  }
 }
 
 a {
