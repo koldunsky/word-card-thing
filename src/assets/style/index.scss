@@ -36,6 +36,7 @@ html, body {
   text-align: center;
   color: #2c3e50;
   padding-bottom: 10px;
+  position: relative;
 }
 
 input,
@@ -100,6 +101,6 @@ a {
   color: $accent;
   text-decoration: none;
   &:hover {
-    color: lighten($accent, 10%)
+    color: $accent-hover;
   }
 }

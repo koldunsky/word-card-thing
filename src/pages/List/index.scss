@@ -81,19 +81,7 @@ $button-size: 20px;
 
 .notice {
   font-size: .9em;
-  color: rgba(black, .5);
-  width: 80%;
-  margin: 3.5rem auto 0;
-
-  b {
-    text-decoration: underline;
-    white-space: nowrap;
-  }
-}
-
-.notice {
-  font-size: .9em;
-  color: rgba(black, .5);
+  color: $notice-text-color;
   width: 80%;
   margin: 3.5rem auto 0;
 

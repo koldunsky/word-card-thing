@@ -12,8 +12,19 @@
   border: none;
   font-family: inherit;
   cursor: pointer;
+  font-size: inherit;
+  margin: 0;
+  padding: 0;
 }
 
 @mixin page-inner {
   padding: 50px 25px 50px;
+}
+
+@mixin link {
+  color: $accent;
+
+  &:hover {
+    color: $accent-hover;
+  }
 }

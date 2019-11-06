@@ -10,4 +10,4 @@
     @Prop() private msg!: string;
   }
 </script>
-<style src="./index.scss" lang="scss"></style>
+<style src="./index.scss" lang="scss" scoped></style>

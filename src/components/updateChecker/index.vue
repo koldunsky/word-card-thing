@@ -1,7 +1,13 @@
 <template>
-  <button v-if="updateExists" @click="refreshApp">
-    ↺ New version available! Click to update
-  </button>
+  <div class="updateChecker">
+    New version available!
+    <button
+      class="button"
+      @click="refreshApp">
+      Click here
+    </button>
+    to update
+  </div>
 </template>
 
 <script lang="ts">
@@ -15,7 +21,9 @@
 
     created () {
       document.addEventListener(
-        'swUpdated', this.showRefreshUI as EventListener, { once: true }
+        'swUpdated',
+        this.showRefreshUI as EventListener,
+        { once: true }
       )
       navigator.serviceWorker.addEventListener(
         'controllerchange', () => {
@@ -35,7 +43,6 @@
 
     refreshApp () {
       this.updateExists = false
-      console.info('refreshApp', this.registration)
       if (!this.registration || !this.registration.waiting) {
         return
       }
@@ -43,4 +50,4 @@
     }
   }
 </script>
-<style src="./index.scss" lang="scss"></style>
+<style src="./index.scss" lang="scss" scoped></style>

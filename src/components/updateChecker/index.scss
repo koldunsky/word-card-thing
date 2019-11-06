@@ -1,3 +1,22 @@
-.COMPONENT_NAME {
-  outline: 1px solid lime;
+@import '../../assets/style/utils';
+
+@keyframes appears {
+  0% {
+
+  }
+}
+
+.updateChecker {
+  animation: appears 1 ease-out;
+  padding: 20px 0 0;
+  font-size: .9em;
+  color: $notice-text-color;
+  border-radius: $border-radius;
+  z-index: z(ontop);
+  background: rgba(white, .8);
+}
+
+.button {
+  @include button-reset;
+  @include link;
 }
