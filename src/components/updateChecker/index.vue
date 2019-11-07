@@ -39,10 +39,6 @@
           window.location.replace('/')
         }
       )
-
-      setTimeout(() => {
-        this.updateExists = true
-      }, 1000)
     }
 
     showRefreshUI (e: CustomEvent) {
