@@ -36,6 +36,8 @@ $button-size: 20px;
 }
 
 .delete-button {
+  @include cross-icon;
+
   position: absolute;
   right: 0;
   top: 5px;
@@ -46,37 +48,10 @@ $button-size: 20px;
   background: none;
   color: $green-background;
   border: none;
-  line-height: 1;
   outline: none;
   cursor: pointer;
   font-size: 0;
-
-  &:focus {
-    color: $green-background;
-  }
-
-  &:hover,
-  &:active {
-    color: coral;
-  }
-}
-
-.delete-button::before,
-.delete-button::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: calc(50% - 4px);
-  width: 8px;
-  height: 1px;
-  background: currentColor;
-}
-
-.delete-button::after {
-  transform: rotateZ(45deg);
-}
-.delete-button::before {
-  transform: rotateZ(-45deg);
+  line-height: 1;
 }
 
 .notice {

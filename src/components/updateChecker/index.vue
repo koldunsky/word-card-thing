@@ -1,6 +1,6 @@
 <template>
   <div
-    v-if="updateExists"
+    v-if="updateExists && !updateSkipped"
     class="updateChecker"
   >
     New version available!
@@ -10,6 +10,7 @@
       Click here
     </button>
     to update
+    <button @click="skipUpdate" class="skip-button" />
   </div>
 </template>
 
@@ -21,6 +22,7 @@
     refreshing: boolean = false
     registration: any = null
     updateExists: boolean = false
+    updateSkipped: boolean = false
 
     created () {
       document.addEventListener(
@@ -37,6 +39,10 @@
           window.location.replace('/')
         }
       )
+
+      setTimeout(() => {
+        this.updateExists = true
+      }, 1000)
     }
 
     showRefreshUI (e: CustomEvent) {
@@ -50,6 +56,10 @@
         return
       }
       this.registration.waiting.postMessage({ type: 'SKIP_WAITING' })
+    }
+
+    skipUpdate () {
+      this.updateSkipped = true
     }
   }
 </script>

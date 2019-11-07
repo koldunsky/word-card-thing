@@ -28,3 +28,39 @@
     color: $accent-hover;
   }
 }
+
+@mixin cross-icon($cross-width: 8px, $size: 20px) {
+  @include button-reset;
+  color: $green-background;
+  width: $size;
+  height: $size;
+  position: relative;
+
+  &:focus {
+    color: $green-background;
+  }
+
+  &:hover,
+  &:active {
+    color: coral;
+  }
+
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(50% - #{$cross-width / 2});
+    width: $cross-width;
+    height: 1px;
+    background: currentColor;
+  }
+
+  &::after {
+    transform: rotateZ(45deg);
+  }
+  &::before {
+    transform: rotateZ(-45deg);
+  }
+}
