@@ -92,6 +92,7 @@ textarea {
   border-color: $accent;
   color: lighten($accent, 15%);
   cursor: default;
+
   &:hover {
     color: lighten($accent, 15%);
   }
