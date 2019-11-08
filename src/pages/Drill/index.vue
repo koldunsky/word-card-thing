@@ -54,7 +54,7 @@
       <Button
         class="button button_link button_accent"
         v-if="!isShowAnswer && words.length > 3"
-        @click="() => deleteWord(currentWord.id)"
+        @click="onDeleteButtonClick"
       >
        Delete
       </Button>
@@ -66,6 +66,7 @@
   import { Component, Vue } from 'vue-property-decorator'
   import {
     Mutation,
+    Action,
     State
   } from 'vuex-class'
   import Button from '../../components/Button/index.vue'
@@ -87,10 +88,16 @@
 
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
-    @Mutation('deleteWord') deleteWord: any
+    @Action('deleteWord') deleteWord: any
 
     created () {
       if (!this.currentWord.id) {
+        this.setRandomWordAsCurrent()
+      }
+    }
+
+    onDeleteButtonClick () {
+      if (this.deleteWord(this.currentWord.id)) {
         this.setRandomWordAsCurrent()
       }
     }
