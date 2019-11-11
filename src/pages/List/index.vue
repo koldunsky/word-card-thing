@@ -41,7 +41,7 @@
   } from 'vuex-class'
 
   @Component
-  export default class SomeComponent extends Vue {
+  export default class List extends Vue {
     @State('words') words: any
     @Action('deleteWord') deleteWord: any
   }

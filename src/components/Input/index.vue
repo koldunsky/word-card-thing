@@ -6,8 +6,6 @@
   import { Component, Prop, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class SomeComponent extends Vue {
-    @Prop() private msg!: string;
-  }
+  export default class Input extends Vue { }
 </script>
 <style src="./index.scss" lang="scss"></style>
