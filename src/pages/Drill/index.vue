@@ -97,9 +97,7 @@
     }
 
     onDeleteButtonClick () {
-      if (this.deleteWord(this.currentWord.id)) {
-        this.setRandomWordAsCurrent()
-      }
+      this.deleteWord(this.currentWord.id)
     }
 
     onInputChange (e: any) {

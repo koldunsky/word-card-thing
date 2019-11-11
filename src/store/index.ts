@@ -32,16 +32,13 @@ const store = new Vuex.Store({
     deleteWord ({ commit, state }, id) {
       // @ts-ignore
       const foundWords: IWord = state.words.find((word: IWord) => word.id === id)
-
-      if (!foundWords) {
-        return false
-      }
-
       const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
 
       if (reallyDelete) {
         commit('deleteWordWithoutConfirmation', id)
-        return true
+        if (id === state.currentWord.id) {
+          commit('setRandomWordAsCurrent')
+        }
       }
     }
   },
