@@ -28,6 +28,20 @@ const store = new Vuex.Store({
       translation: ''
     } as IWord
   },
+  actions: {
+    deleteWord ({ commit, state }, id) {
+      // @ts-ignore
+      const foundWords: IWord = state.words.find((word: IWord) => word.id === id)
+      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
+
+      if (reallyDelete) {
+        commit('deleteWordWithoutConfirmation', id)
+        if (id === state.currentWord.id) {
+          commit('setRandomWordAsCurrent')
+        }
+      }
+    }
+  },
   mutations: {
     initializeStore (state) {
       // Check if the ID exists
@@ -46,24 +60,11 @@ const store = new Vuex.Store({
         ...payload
       } as IWord)
     },
-    deleteWord (state, id: string) {
+    deleteWordWithoutConfirmation (state, id: string) {
       let words = [...state.words]
-      const isRightWord = (word: IWord) => {
-        return word.id === id
-      }
-      // @ts-ignore
-      const foundWords: IWord = state.words.find(isRightWord)
 
-      if (!foundWords) {
-        return false
-      }
-
-      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
-
-      if (reallyDelete) {
-        remove(words, isRightWord)
-        state.words = words
-      }
+      remove(words, (word: IWord) => word.id === id)
+      state.words = words
     },
     setRandomWordAsCurrent (state) {
       if (!state.words.length) {
@@ -80,8 +81,6 @@ const store = new Vuex.Store({
     toggleTranslationFlow (state) {
       state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
     }
-  },
-  actions: {
   },
   modules: {
   }
