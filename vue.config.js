@@ -13,7 +13,14 @@ module.exports = {
     manifestOptions: {
       background_color: '#ffffff',
       display: 'standalone',
-      start_url: 'https://word-card-thing.netlify.com'
+      start_url: 'https://word-card-thing.netlify.com',
+      icons: [
+        {
+          'src': './img/icons/apple-touch-icon.png',
+          'sizes': '180x180',
+          'type': 'image/png'
+        }
+      ]
     },
     iconPaths: {
       favicon32: 'img/icons/favicon-32x32.png',
