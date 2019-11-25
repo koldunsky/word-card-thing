@@ -26,17 +26,17 @@ if (process.env.NODE_ENV === 'production') {
         registration.update()
       }, 1000 * 60 * 60) // e.g. hourly checks
       window.workerState.push(['registered', registration])
-      console.log(registration)
+      // console.log(registration)
       console.log('Service worker has been registered.')
     },
     cached (...args) {
       window.workerState.push(['cached', args])
-      console.log(args)
+      // console.log(args)
       console.log('Content has been cached for offline use.')
     },
     updatefound (...args) {
       window.workerState.push(['updatefound', args])
-      console.log(args)
+      // console.log(args)
       console.log('New content is downloading.')
     },
     updated (registration) {
@@ -44,12 +44,12 @@ if (process.env.NODE_ENV === 'production') {
         new CustomEvent('swUpdated', { detail: registration })
       )
       window.workerState.push(['updated (please refresh)', registration])
-      console.log(registration)
+      // console.log(registration)
       console.log('New content is available; please refresh.')
     },
     offline (...args) {
       window.workerState.push(['offline', args])
-      console.log(args)
+      // console.log(args)
       console.log('No internet connection found. App is running in offline mode.')
     },
     error (error) {
