@@ -34,16 +34,16 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
   import {
-    Mutation,
+    Action,
     State
   } from 'vuex-class'
 
   @Component
-  export default class SomeComponent extends Vue {
+  export default class List extends Vue {
     @State('words') words: any
-    @Mutation('deleteWord') deleteWord: any
+    @Action('deleteWord') deleteWord: any
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
