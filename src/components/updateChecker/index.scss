@@ -27,17 +27,3 @@
   @include button-reset;
   @include link;
 }
-
-.skip-button {
-  @include cross-icon(8px, 25px);
-  vertical-align: middle;
-  margin-top: -1px;
-  height: 1em;
-  background: $green-light;
-  border-radius: $border-radius;
-  &:hover,
-  &:active {
-    background-color: $green-not-so-light;
-    color: $green-background;
-  }
-}
