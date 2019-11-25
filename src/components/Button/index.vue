@@ -8,9 +8,9 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Vue } from 'vue-property-decorator'
 
   @Component
-  export default class SomeComponent extends Vue {}
+  export default class Button extends Vue {}
 </script>
 <style src="./index.scss" lang="scss"></style>
