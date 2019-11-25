@@ -1,0 +1,8 @@
+$layers: (
+        'body',
+        'ontop'
+);
+
+@function z($layer) {
+  @return index($layers, $layer);
+}

@@ -1,9 +1,18 @@
 $accent: coral;
+$accent-hover: lighten($accent, 10%);
 $green-background: hsl(170, 25%, 25%);
 $green-correct: darkseagreen;
 $border: hsl(170, 20%, 80%);
 $border-active: hsl(170, 20%, 50%);
+$notice-text-color: rgba(black, .5);
+
+// Buttons colors
+$green-hover: lighten($green-background, 15%);
+$green-light: lighten($green-background, 70%);
+$green-not-so-light: lighten($green-background, 65%);
 
 $win-tile-background: hsl(170, 50%, 45%);
 
 $font-family: 'Fira Sans Condensed', sans-serif;
+
+$border-radius: 2px;
