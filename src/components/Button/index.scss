@@ -1,13 +1,10 @@
 @import '../../assets/style/utils';
 
-$green-hover: lighten($green-background, 15%);
-$green-light: lighten($green-background, 70%);
-$green-not-so-light: lighten($green-background, 65%);
 $accent-light: lighten($accent, 10%);
 
 .button {
   height: 40px;
-  border-radius: 2px;
+  border-radius: $border-radius;
   padding: 0 20px;
   background: none;
   cursor: pointer;

@@ -26,8 +26,8 @@
         List
       </router-link>
     </div>
-    <router-view/>
     <UpdateChecker />
+    <router-view/>
   </div>
 </template>
 
@@ -42,4 +42,4 @@
   })
   export default class App extends Vue {}
 </script>
-<style lang="scss" src="./assets/style/index.scss" ></style>
+<style src="./assets/style/index.scss" lang="scss"></style>
