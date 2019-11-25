@@ -16,7 +16,7 @@ module.exports = {
       start_url: 'https://word-card-thing.netlify.com',
       icons: [
         {
-          'src': './img/icons/apple-touch-icon.png',
+          'src': `./img/icons/apple-touch-icon.png?v=${Date.now()}`,
           'sizes': '180x180',
           'type': 'image/png'
         }
