@@ -18,7 +18,11 @@
 }
 
 @mixin page-inner {
+  flex: 1 0 33.3333%;
   padding: 50px 25px 50px;
+  margin-bottom: $nav-height;
+  height: calc(100% - #{$nav-height});
+  overflow: auto;
 }
 
 @mixin link {

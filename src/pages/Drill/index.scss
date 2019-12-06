@@ -9,7 +9,7 @@
   }
 }
 
-.container {
+.drill {
   @include page-inner;
 
   position: relative;
@@ -41,8 +41,8 @@
 .switcher {
   @include button-reset;
   position: absolute;
-  top: 15px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
 
   b {
     color: $accent;

@@ -20,7 +20,11 @@ const STORAGE_STATE = 'lsd_state'
 
 const store = new Vuex.Store({
   state: {
-    words: [] as Array<IWord>,
+    words: new Array(25).fill('').map((item, i) => ({
+      id: `ttt_${i}`,
+      word: `www_${i}`,
+      translation: 'ttt_' + String(Date.now() * Math.random())
+    })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',

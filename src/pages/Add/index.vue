@@ -1,7 +1,7 @@
 <template>
   <form
     ref="form"
-    class="container"
+    class="add"
     @submit.prevent="addWord"
   >
     <div v-if="words.length < 3" class="notification">

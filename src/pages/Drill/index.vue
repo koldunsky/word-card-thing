@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="drill">
     <button class="switcher" @click="toggleTranslationFlow">
       <span v-if="isDrillTranslationInsteadWord">
         <b>T</b> &rarr; <span>W</span>

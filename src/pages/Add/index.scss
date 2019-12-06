@@ -9,13 +9,12 @@
   }
 }
 
-.container {
+.add {
   @include page-inner;
 
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 }
 
 .notification {
