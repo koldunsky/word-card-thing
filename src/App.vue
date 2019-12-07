@@ -22,23 +22,25 @@
         'nav_visible': $store.state.words.length >= 3
       }"
     >
-      <div
-        v-for="(name, index) in ['add', 'drill', 'list']"
-        :key="name"
-        class="nav__item"
-        :class="{
+      <div class="nav__container">
+        <button
+          v-for="(name, index) in ['add', 'drill', 'list']"
+          :key="name"
+          class="nav__item"
+          :class="{
           'nav__item_active': currentIndex === index
         }"
-        @click="() => currentIndex = index"
-      >
-        <BrainIcon
-          v-if="name === 'drill'"
-          :class="`nav__item-icon nav__item-icon_${name}`"
-        />
-        <span
-          v-else
-          :class="`nav__item-icon nav__item-icon_${name}`"
-        />
+          @click="() => currentIndex = index"
+        >
+          <BrainIcon
+            v-if="name === 'drill'"
+            :class="`nav__item-icon nav__item-icon_${name}`"
+          />
+          <span
+            v-else
+            :class="`nav__item-icon nav__item-icon_${name}`"
+          />
+        </button>
       </div>
     </div>
   </div>
