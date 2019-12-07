@@ -26,10 +26,10 @@
 }
 
 @mixin link {
-  color: $accent;
+  color: $palette-accent-500;
 
   &:hover {
-    color: $accent-hover;
+    color: $palette-accent-400;
   }
 }
 

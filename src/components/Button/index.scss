@@ -1,7 +1,5 @@
 @import '../../assets/style/utils';
 
-$accent-light: lighten($accent, 10%);
-
 .button {
   height: 40px;
   border-radius: $border-radius;
@@ -27,8 +25,8 @@ $accent-light: lighten($accent, 10%);
   color: white;
 
   &:hover {
-    border-color: $palette-accent-500;
-    background: $palette-accent-500;
+    border-color: $palette-accent-600;
+    background: $palette-accent-600;
   }
 }
 
@@ -41,9 +39,9 @@ $accent-light: lighten($accent, 10%);
     color: $green-hover;
   }
   &.button_accent {
-    color: $accent-light;
+    color: $palette-accent-400;
     &:hover {
-      color: $accent;
+      color: $palette-accent-500;
     }
   }
 }
