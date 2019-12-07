@@ -48,3 +48,29 @@
     color: $palette-accent-500;
   }
 }
+
+.button {
+  width: 130px;
+}
+
+.button_delete {
+  order: -1;
+}
+
+.input {
+  margin-bottom: 40px;
+}
+
+.answer {
+  height: $input-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-size: 1.5em;
+  color: $green-600;
+}
+
+.button-set {
+  display: flex;
+}

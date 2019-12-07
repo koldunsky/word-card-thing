@@ -29,13 +29,17 @@
       @input="onInputChange"
       v-model="value"
       type="text"
+      class="input"
       :class="{
         'right-answer': isRightAnswer
       }"
     />
-    <br>
-    <br>
-    <div class="button-set">
+    <div
+      class="button-set"
+      :class="{
+        'button-set_showing-answer': isShowAnswer
+      }"
+    >
       <Button
         class="button"
         @click="skipWord"
@@ -49,14 +53,13 @@
       >
         Show answer
       </Button>
-    </div>
-    <div class="button-set">
+
       <Button
-        class="button button_link button_accent"
-        v-if="!isShowAnswer && words.length > 3"
+        class="button button_accent button_delete"
+        v-if="isShowAnswer && words.length > 3"
         @click="onDeleteButtonClick"
       >
-       Delete
+        Delete
       </Button>
     </div>
   </div>

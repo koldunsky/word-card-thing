@@ -10,7 +10,7 @@
   font-size: 1.5rem;
   margin: 5px;
   color: $green-800;
-  border: 2px solid $green-100;
+  border: 1px solid $green-100;
   background: $green-100;
 
   &:hover {
@@ -20,13 +20,14 @@
 }
 
 .button_accent {
-  border-color: $palette-accent-450;
-  background: $palette-accent-450;
-  color: white;
+  border-color: $palette-accent-300;
+  background: transparent;
+  color: $palette-accent-600;
 
   &:hover {
-    border-color: $palette-accent-600;
-    background: $palette-accent-600;
+    border-color: $palette-accent-900;
+    background: transparent;
+    color: $palette-accent-900;
   }
 }
 

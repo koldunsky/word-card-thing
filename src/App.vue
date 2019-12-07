@@ -22,7 +22,7 @@
         'nav_visible': $store.state.words.length >= 3
       }"
     >
-      <button
+      <div
         v-for="(name, index) in ['add', 'drill', 'list']"
         :key="name"
         class="nav__item"
@@ -31,8 +31,15 @@
         }"
         @click="() => currentIndex = index"
       >
-        <span :class="`nav__item-icon nav__item-icon_${name}`" />
-      </button>
+        <BrainIcon
+          v-if="name === 'drill'"
+          :class="`nav__item-icon nav__item-icon_${name}`"
+        />
+        <span
+          v-else
+          :class="`nav__item-icon nav__item-icon_${name}`"
+        />
+      </div>
     </div>
   </div>
 </template>
@@ -44,15 +51,15 @@
   import List from './pages/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
   import UpdateChecker from './components/updateChecker/index.vue'
-  // import BrainIcon from './assets/icons/brain.svg'
+  import BrainIcon from './assets/icons/brain.svg'
 
   @Component({
     components: {
       UpdateChecker,
       Add,
       Drill,
-      List
-      // BrainIcon
+      List,
+      BrainIcon
     }
   })
   export default class App extends Vue {
