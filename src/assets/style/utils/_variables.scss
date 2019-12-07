@@ -18,9 +18,8 @@ $font-family: 'Fira Sans Condensed', sans-serif;
 $border-radius: 2px;
 $nav-height: 60px;
 
+// GREEN
 
-/*
-GREEN
 $palette-green:
 rgb(230, 234, 233)
 rgb(193, 203, 201)
@@ -53,10 +52,7 @@ $palette-green-A200: nth($palette-green, 12);
 $palette-green-A400: nth($palette-green, 13);
 $palette-green-A700: nth($palette-green, 14);
 
-*/
-
-/*
-CORAL
+// CORAL
 
 $palette-accent:
 rgb(255, 240, 234)
@@ -89,5 +85,3 @@ $palette-accent-A100: nth($palette-accent, 11);
 $palette-accent-A200: nth($palette-accent, 12);
 $palette-accent-A400: nth($palette-accent, 13);
 $palette-accent-A700: nth($palette-accent, 14);
-
-*/

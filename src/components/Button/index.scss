@@ -20,13 +20,15 @@ $accent-light: lighten($accent, 10%);
     border-color: $green-not-so-light;
   }
 }
+
 .button_accent {
-  border-color: $accent-light;
-  background: $accent-light;
+  border-color: $palette-accent-300;
+  background: $palette-accent-300;
   color: white;
+
   &:hover {
-    border-color: $accent;
-    background: $accent;
+    border-color: $palette-accent-500;
+    background: $palette-accent-500;
   }
 }
 
