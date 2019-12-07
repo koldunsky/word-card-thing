@@ -6,22 +6,22 @@
   padding: 0 20px;
   background: none;
   cursor: pointer;
-  border: 2px solid $green-light;
-  background: $green-light;
-  color: $green-background;
   font-family: $font-family;
   font-size: 1.5rem;
   margin: 5px;
+  color: $green-800;
+  border: 2px solid $green-100;
+  background: $green-100;
 
   &:hover {
-    background: $green-not-so-light;
-    border-color: $green-not-so-light;
+    background: $green-150;
+    border-color: $green-150;
   }
 }
 
 .button_accent {
-  border-color: $palette-accent-300;
-  background: $palette-accent-300;
+  border-color: $palette-accent-450;
+  background: $palette-accent-450;
   color: white;
 
   &:hover {
@@ -36,7 +36,7 @@
   &:hover {
     background-color: transparent;
     border-color: transparent;
-    color: $green-hover;
+    color: $green-650;
   }
   &.button_accent {
     color: $palette-accent-400;

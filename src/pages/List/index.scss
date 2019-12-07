@@ -4,6 +4,8 @@ $button-size: 20px;
 
 .list {
   @include page-inner;
+
+  display: block;
   line-height: 1.2;
 }
 
@@ -17,7 +19,7 @@ $button-size: 20px;
   padding-right: 30px;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid $border;
+  border-bottom: 1px solid $color-border;
   display: flex;
 
   & + & {
@@ -46,7 +48,6 @@ $button-size: 20px;
   min-height: $button-size;
   width: $button-size;
   background: none;
-  color: $green-background;
   border: none;
   outline: none;
   cursor: pointer;
