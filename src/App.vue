@@ -7,7 +7,7 @@
       <div
         class="scene__inner"
         :style="{
-          transform: `translateX(${currentIndex * -33.33333}%)`
+          transform: `translateX(${currentPageIndex * -33.33333}%)`
         }"
       >
         <Add/>
@@ -15,45 +15,21 @@
         <List/>
       </div>
     </div>
-    <div
-      id="nav"
-      class="nav"
-      :class="{
-        'nav_visible': $store.state.words.length >= 3
-      }"
-    >
-      <div class="nav__container">
-        <button
-          v-for="(name, index) in ['add', 'drill', 'list']"
-          :key="name"
-          class="nav__item"
-          :class="{
-          'nav__item_active': currentIndex === index
-        }"
-          @click="() => currentIndex = index"
-        >
-          <BrainIcon
-            v-if="name === 'drill'"
-            :class="`nav__item-icon nav__item-icon_${name}`"
-          />
-          <span
-            v-else
-            :class="`nav__item-icon nav__item-icon_${name}`"
-          />
-        </button>
-      </div>
-    </div>
+    <Nav :pages="pages"/>
   </div>
 </template>
 
 <script lang="ts">
-  import { State } from 'vuex-class'
+  import { State, namespace } from 'vuex-class'
   import Add from './pages/Add/index.vue'
   import Drill from './pages/Drill/index.vue'
   import List from './pages/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
   import UpdateChecker from './components/updateChecker/index.vue'
-  import BrainIcon from './assets/icons/brain.svg'
+  import Nav from './components/Nav/index.vue'
+  import { TPageName } from './types'
+
+  const NavModule = namespace('NavModule')
 
   @Component({
     components: {
@@ -61,22 +37,31 @@
       Add,
       Drill,
       List,
-      BrainIcon
+      Nav
     }
   })
   export default class App extends Vue {
     @State('words') words: any
 
-    currentIndex: number = 0;
+    @NavModule.State
+    pages: Array<TPageName>
+
+    @NavModule.State
+    currentPage: TPageName
+
+    @NavModule.Getter
+    currentPageIndex: number
+
+    @NavModule.Mutation
+    navigateTo: any
 
     beforeMount () {
       if (this.words.length > 2) {
-        this.currentIndex = 1
+        this.navigateTo('drill')
       }
     }
 
     mounted () {
-      console.info(this.words)
       document.body.addEventListener('scroll', (e) => {
         alert('scroll')
       })

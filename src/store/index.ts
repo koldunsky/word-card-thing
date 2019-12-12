@@ -3,6 +3,8 @@ import Vuex from 'vuex'
 import remove from 'lodash/remove'
 import getGuid from '@/utils/getGuid'
 
+import NavModule from '../entities/nav'
+
 Vue.use(Vuex)
 
 interface IWordSetter {
@@ -16,15 +18,19 @@ export interface IWord {
   translation: string;
 }
 
-const STORAGE_STATE = 'lsd_state'
+const STORAGE_STATE = 'kolenki_state'
 
 const store = new Vuex.Store({
+  modules: {
+    NavModule
+  },
   state: {
-    words: new Array(25).fill('').map((item, i) => ({
-      id: `ttt_${i}`,
-      word: `www_${i}`,
-      translation: 'ttt_' + String(Date.now() * Math.random())
-    })) as Array<IWord>,
+    words: [],
+    //   new Array(25).fill('').map((item, i) => ({
+    //   id: `ttt_${i}`,
+    //   word: `www_${i}`,
+    //   translation: 'ttt_' + String(Date.now() * Math.random())
+    // })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
@@ -85,12 +91,17 @@ const store = new Vuex.Store({
     toggleTranslationFlow (state) {
       state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
     }
-  },
-  modules: {
   }
 })
+
 store.subscribe((mutation, state) => {
   localStorage.setItem(STORAGE_STATE, JSON.stringify(state))
+
+  // Когда добавим третье слово и покажем меню, уберем фокус,
+  // чтобы было видно,чо произошло
+  // if (mutation.type === 'addWord' && state.words.length === 3) {
+  //   (document.activeElement as HTMLElement).blur()
+  // }
 })
 
 export default store
