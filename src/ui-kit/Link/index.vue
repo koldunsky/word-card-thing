@@ -17,7 +17,7 @@
   export default class Link extends Vue {
     @Prop() to!: string;
 
-    @NavModule.Mutation
+    @NavModule.Action
     navigateTo: (id: string) => void
 
     onClick (e) {

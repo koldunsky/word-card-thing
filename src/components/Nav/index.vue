@@ -16,10 +16,15 @@
         }"
         @click="navigateTo(name)"
       >
-        <component
-          :is="name === 'drill' ? 'BrainIcon' : 'span'"
-          :class="`nav__item-icon nav__item-icon_${name}`"
-        ></component>
+        <span class="nav__item-icon-container">
+          <component
+            :is="name === 'drill' ? 'BrainIcon' : 'span'"
+            :class="`nav__item-icon nav__item-icon_${name}`"
+          ></component>
+          <PointingDot
+            v-if="pointingDots[name]"
+          />
+        </span>
       </button>
     </div>
   </div>
@@ -28,14 +33,17 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { State, namespace } from 'vuex-class'
-  import { TPageName } from '../../types'
+  import { TPageName } from '@/types'
+  import { TPointingDots } from '@/entities/nav'
+  import PointingDot from '../../ui-kit/PointingDot/index.vue'
   import BrainIcon from '../../assets/icons/brain.svg'
 
   const NavModule = namespace('NavModule')
 
   @Component({
     components: {
-      BrainIcon
+      BrainIcon,
+      PointingDot
     }
   })
   export default class Nav extends Vue {
@@ -47,8 +55,11 @@
     @NavModule.State
     pages: Array<TPageName>;
 
-    @NavModule.Mutation
-    private navigateTo!: (page: TPageName) => void
+    @NavModule.State
+    pointingDots: TPointingDots;
+
+    @NavModule.Action
+    navigateTo: (page: TPageName) => void
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

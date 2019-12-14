@@ -27,7 +27,7 @@ html, body {
   color: $green-900;
 }
 
-#app {
+.app {
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
@@ -36,7 +36,12 @@ html, body {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   position: relative;
-  border-top: 2px solid $palette-accent-500;
+  border-top: 2px solid transparent;
+  transition: .3s ease border;
+
+  &_has-3-words {
+    border-color: $palette-accent-500;
+  }
 }
 
  .scene {

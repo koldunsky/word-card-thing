@@ -39,7 +39,7 @@
     Action,
     State
   } from 'vuex-class'
-  import LocalLink from '../../components/Link/index.vue'
+  import LocalLink from '../../ui-kit/Link/index.vue'
 
   @Component({
     components: {

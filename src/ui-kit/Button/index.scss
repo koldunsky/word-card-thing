@@ -12,6 +12,7 @@
   color: $green-800;
   border: 1px solid $green-100;
   background: $green-100;
+  user-select: none;
 
   &:hover {
     background: $green-150;

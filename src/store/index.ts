@@ -96,12 +96,6 @@ const store = new Vuex.Store({
 
 store.subscribe((mutation, state) => {
   localStorage.setItem(STORAGE_STATE, JSON.stringify(state))
-
-  // Когда добавим третье слово и покажем меню, уберем фокус,
-  // чтобы было видно,чо произошло
-  // if (mutation.type === 'addWord' && state.words.length === 3) {
-  //   (document.activeElement as HTMLElement).blur()
-  // }
 })
 
 export default store

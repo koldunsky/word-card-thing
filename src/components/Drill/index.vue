@@ -72,7 +72,7 @@
     Action,
     State
   } from 'vuex-class'
-  import Button from '../../components/Button/index.vue'
+  import Button from '@/ui-kit/Button/index.vue'
 
   @Component({
     components: {
@@ -92,12 +92,6 @@
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
     @Action('deleteWord') deleteWord: any
-
-    created () {
-      if (!this.currentWord.id) {
-        this.setRandomWordAsCurrent()
-      }
-    }
 
     onDeleteButtonClick () {
       this.deleteWord(this.currentWord.id)

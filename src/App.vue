@@ -1,5 +1,11 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    class="app"
+    :class="{
+      'app_has-3-words': words.length >= 3
+    }"
+  >
     <UpdateChecker/>
     <div
       class="scene"
@@ -21,11 +27,11 @@
 
 <script lang="ts">
   import { State, namespace } from 'vuex-class'
-  import Add from './pages/Add/index.vue'
-  import Drill from './pages/Drill/index.vue'
-  import List from './pages/List/index.vue'
+  import Add from './components/Add/index.vue'
+  import Drill from './components/Drill/index.vue'
+  import List from './components/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
-  import UpdateChecker from './components/updateChecker/index.vue'
+  import UpdateChecker from './components/UpdateChecker/index.vue'
   import Nav from './components/Nav/index.vue'
   import { TPageName } from './types'
 
@@ -52,7 +58,7 @@
     @NavModule.Getter
     currentPageIndex: number
 
-    @NavModule.Mutation
+    @NavModule.Action
     navigateTo: any
 
     beforeMount () {
