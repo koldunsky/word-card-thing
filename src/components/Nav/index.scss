@@ -6,13 +6,15 @@
   left: 0;
   width: 100%;
   overflow: hidden;
-  transition: .3s ease all;
   max-height: 0;
+  visibility: hidden;
   background: $green-100;
   border-top: 1px solid $green-150;
+  transition: .3s ease all;
 
   &_visible {
     max-height: 100px;
+    visibility: visible;
   }
 }
 
@@ -41,13 +43,9 @@
   color: $green-800;
   fill: currentColor;
 
-  &_active,
-  &:hover {
-    color: $palette-accent-500;
-  }
-
   &_active {
     cursor: default;
+    color: $palette-accent-500;
   }
 }
 

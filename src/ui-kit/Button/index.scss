@@ -14,7 +14,7 @@
   background: $green-100;
   user-select: none;
 
-  &:hover {
+  &:active {
     background: $green-150;
     border-color: $green-150;
   }
@@ -25,7 +25,7 @@
   background: transparent;
   color: $palette-accent-600;
 
-  &:hover {
+  &:active {
     border-color: $palette-accent-900;
     background: transparent;
     color: $palette-accent-900;
@@ -35,14 +35,14 @@
 .button_link {
   background-color: transparent;
   border-color: transparent;
-  &:hover {
+  &:active {
     background-color: transparent;
     border-color: transparent;
     color: $green-650;
   }
   &.button_accent {
     color: $palette-accent-400;
-    &:hover {
+    &:active {
       color: $palette-accent-500;
     }
   }

@@ -34,7 +34,7 @@
 @mixin link {
   color: $palette-accent-500;
 
-  &:hover {
+  &:active {
     color: $palette-accent-400;
   }
 }
@@ -46,11 +46,6 @@
   height: $size;
   position: relative;
 
-  &:focus {
-    color: $color-background;
-  }
-
-  &:hover,
   &:active {
     color: coral;
   }
