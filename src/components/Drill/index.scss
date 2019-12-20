@@ -9,7 +9,7 @@
   }
 }
 
-.container {
+.drill {
   @include page-inner;
 
   position: relative;
@@ -41,10 +41,36 @@
 .switcher {
   @include button-reset;
   position: absolute;
-  top: 15px;
-  right: 10px;
+  top: 20px;
+  right: 20px;
 
   b {
-    color: $accent;
+    color: $palette-accent-500;
   }
+}
+
+.button {
+  width: 130px;
+}
+
+.button_delete {
+  order: -1;
+}
+
+.input {
+  margin-bottom: 40px;
+}
+
+.answer {
+  height: $input-height;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  font-size: 1.5em;
+  color: $green-600;
+}
+
+.button-set {
+  display: flex;
 }

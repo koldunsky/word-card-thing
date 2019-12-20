@@ -3,6 +3,7 @@
 
 * {
   box-sizing: border-box;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 
 html {
@@ -24,9 +25,10 @@ html, body {
   overflow: hidden;
   padding: 0;
   margin: 0;
+  color: $green-900;
 }
 
-#app {
+.app {
   width: 100vw;
   height: 100vh;
   overflow-y: scroll;
@@ -34,74 +36,46 @@ html, body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
-  color: #2c3e50;
-  padding-bottom: 10px;
   position: relative;
+  border-top: 2px solid transparent;
+  transition: .3s ease border;
+
+  &_has-3-words {
+    border-color: $palette-accent-500;
+  }
+}
+
+ .scene {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.scene__inner {
+  width: 300%;
+  height: 100%;
+  display: flex;
+}
+
+a {
+  @include link;
+
+  text-decoration: none;
 }
 
 input,
 textarea {
   font-size: 16px;
   padding: 10px;
-  border: 1px solid $border;
+  border: 1px solid $color-border;
   box-shadow: none !important;
   font-family: inherit;
   border-radius: 0 !important;
   -webkit-appearance: none;
 
-  &:hover,
   &:focus,
   &:active {
     outline: none;
-    border-color: $border-active;
-  }
-}
-
-.nav {
-  display: flex;
-  justify-content: center;
-  align-items: stretch;
-  overflow: hidden;
-  transition: .3s ease all;
-  max-height: 0;
-  background: $green-background;
-  //background: hsl(157, 38%, 42%);
-
-  &_visible {
-    max-height: 100px;
-  }
-}
-
-.router-link {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: white;
-  text-decoration: none;
-  flex: 1 1 50%;
-  white-space: nowrap;
-  font-size: 1.2em;
-  height: 60px;
-  border-bottom: 3px solid transparent;
-  &:hover {
-    color: white;
-  }
-}
-
-.router-link-exact-active {
-  border-color: $accent;
-  color: lighten($accent, 15%);
-  cursor: default;
-
-  &:hover {
-    color: lighten($accent, 15%);
-  }
-}
-
-a {
-  color: $accent;
-  text-decoration: none;
-  &:hover {
-    color: $accent-hover;
+    border-color: $green-550;
   }
 }

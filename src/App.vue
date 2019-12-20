@@ -1,45 +1,77 @@
 <template>
-  <div id="app">
+  <div
+    id="app"
+    class="app"
+    :class="{
+      'app_has-3-words': words.length >= 3
+    }"
+  >
+    <UpdateChecker/>
     <div
-      id="nav"
-      class="nav"
-      :class="{
-        'nav_visible': $store.state.words.length >= 3
-      }"
+      class="scene"
     >
-      <router-link
-        class="router-link"
-        to="/"
+      <div
+        class="scene__inner"
+        :style="{
+          transform: `translateX(${currentPageIndex * -33.33333}%)`
+        }"
       >
-        Add
-      </router-link>
-      <router-link
-        class="router-link"
-        to="/drill"
-      >
-        Drill
-      </router-link>
-      <router-link
-        class="router-link"
-        to="/list"
-      >
-        List
-      </router-link>
+        <Add/>
+        <Drill/>
+        <List/>
+      </div>
     </div>
-    <UpdateChecker />
-    <router-view/>
+    <Nav :pages="pages"/>
   </div>
 </template>
 
 <script lang="ts">
+  import { State, namespace } from 'vuex-class'
+  import Add from './components/Add/index.vue'
+  import Drill from './components/Drill/index.vue'
+  import List from './components/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
-  import UpdateChecker from './components/updateChecker/index.vue'
+  import UpdateChecker from './components/UpdateChecker/index.vue'
+  import Nav from './components/Nav/index.vue'
+  import { TPageName } from './types'
+
+  const NavModule = namespace('NavModule')
 
   @Component({
     components: {
-      UpdateChecker
+      UpdateChecker,
+      Add,
+      Drill,
+      List,
+      Nav
     }
   })
-  export default class App extends Vue {}
+  export default class App extends Vue {
+    @State('words') words: any
+
+    @NavModule.State
+    pages: Array<TPageName>
+
+    @NavModule.State
+    currentPage: TPageName
+
+    @NavModule.Getter
+    currentPageIndex: number
+
+    @NavModule.Action
+    navigateTo: any
+
+    beforeMount () {
+      if (this.words.length > 2) {
+        this.navigateTo('drill')
+      }
+    }
+
+    mounted () {
+      document.body.addEventListener('scroll', (e) => {
+        alert('scroll')
+      })
+    }
+  }
 </script>
 <style src="./assets/style/index.scss" lang="scss"></style>

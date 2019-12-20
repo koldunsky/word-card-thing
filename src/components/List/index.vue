@@ -26,7 +26,7 @@
         v-if="words.length < 4"
         class="notice"
       >
-        Go on! <router-link to="/">Add</router-link> more words to the list. <br>
+        Go on! <LocalLink v-on:navigation="onNav" to="add">Add</LocalLink> more words to the list. <br>
         Words may be deleted if there is <b>more than 3 words</b> in the list.
       </div>
     </div>
@@ -39,11 +39,21 @@
     Action,
     State
   } from 'vuex-class'
+  import LocalLink from '../../ui-kit/Link/index.vue'
 
-  @Component
+  @Component({
+    components: {
+      LocalLink
+    }
+  })
+
   export default class List extends Vue {
     @State('words') words: any
     @Action('deleteWord') deleteWord: any
+
+    onNav () {
+      console.warn(11)
+    }
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

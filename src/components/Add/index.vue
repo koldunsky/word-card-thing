@@ -1,7 +1,7 @@
 <template>
   <form
     ref="form"
-    class="container"
+    class="add"
     @submit.prevent="addWord"
   >
     <div v-if="words.length < 3" class="notification">
@@ -37,11 +37,12 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
-  import Input from '@/components/Input/index.vue'
-  import Button from '@/components/Button/index.vue'
+  import Button from '@/ui-kit/Button/index.vue'
+  import { TPageName } from '@/types'
   import {
     Mutation,
-    State
+    State,
+    namespace
   } from 'vuex-class'
 
   interface IFields {
@@ -49,9 +50,10 @@
     translation: string;
   }
 
+  const NavModule = namespace('NavModule')
+
   @Component({
     components: {
-      Input,
       Button
     }
   })
@@ -65,6 +67,9 @@
     @State('words') words: any
 
     @Mutation('addWord') addWordToStore: any
+
+    @NavModule.Mutation
+    addPointingDot: (id: TPageName) => void
 
     mounted () {
       if (this.words.length < 3) {
@@ -118,6 +123,15 @@
         translation: fields.translation
       })
       this.resetForm()
+
+      if (this.words.length !== 3) {
+        this.focusFirstInput()
+      } else {
+        // Когда добавим третье слово и покажем меню, уберем фокус,
+        // чтобы было видно,чо произошло
+        (document.activeElement as HTMLElement).blur()
+        this.addPointingDot('drill')
+      }
     }
 
     focusFirstInput () {
@@ -129,7 +143,6 @@
     resetForm () {
       this.word = ''
       this.translation = ''
-      this.focusFirstInput()
     }
   }
 </script>

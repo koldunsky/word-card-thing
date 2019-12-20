@@ -1,5 +1,5 @@
 <template>
-  <div class="container">
+  <div class="drill">
     <button class="switcher" @click="toggleTranslationFlow">
       <span v-if="isDrillTranslationInsteadWord">
         <b>T</b> &rarr; <span>W</span>
@@ -29,13 +29,17 @@
       @input="onInputChange"
       v-model="value"
       type="text"
+      class="input"
       :class="{
         'right-answer': isRightAnswer
       }"
     />
-    <br>
-    <br>
-    <div class="button-set">
+    <div
+      class="button-set"
+      :class="{
+        'button-set_showing-answer': isShowAnswer
+      }"
+    >
       <Button
         class="button"
         @click="skipWord"
@@ -49,14 +53,13 @@
       >
         Show answer
       </Button>
-    </div>
-    <div class="button-set">
+
       <Button
-        class="button button_link button_accent"
-        v-if="!isShowAnswer && words.length > 3"
+        class="button button_accent button_delete"
+        v-if="isShowAnswer && words.length > 3"
         @click="onDeleteButtonClick"
       >
-       Delete
+        Delete
       </Button>
     </div>
   </div>
@@ -69,7 +72,7 @@
     Action,
     State
   } from 'vuex-class'
-  import Button from '../../components/Button/index.vue'
+  import Button from '@/ui-kit/Button/index.vue'
 
   @Component({
     components: {
@@ -89,12 +92,6 @@
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
     @Action('deleteWord') deleteWord: any
-
-    created () {
-      if (!this.currentWord.id) {
-        this.setRandomWordAsCurrent()
-      }
-    }
 
     onDeleteButtonClick () {
       this.deleteWord(this.currentWord.id)

@@ -1,0 +1,43 @@
+@import '../../assets/style/utils';
+
+$pointing-dot-size: 8px;
+$pointing-dot-duration: 7s;
+
+@keyframes pointFlash {
+  35% {
+    box-shadow: 0 0 0 rgba($palette-accent-500, 1)
+  }
+
+  45% {
+    box-shadow: 0 0 0 4px rgba($palette-accent-500, 0)
+  }
+}
+
+.pointing-dot {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: $pointing-dot-size;
+  height: $pointing-dot-size;
+  background: $palette-accent-500;
+  border-radius: $pointing-dot-size;
+  animation: pointFlash $pointing-dot-duration infinite ease-in;
+
+  &::before,
+  &::after {
+    content:'';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: $pointing-dot-size;
+    height: $pointing-dot-size;
+    border-radius: $pointing-dot-size;
+    animation: pointFlash $pointing-dot-duration infinite ease-in;
+    animation-delay: 0.3s;
+  }
+
+  &::after {
+    animation-delay: 0.6s;
+  }
+}

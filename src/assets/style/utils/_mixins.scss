@@ -1,3 +1,5 @@
+@import './variables';
+
 @mixin stretch($pos: absolute) {
   position: $pos;
   top: 0;
@@ -18,29 +20,32 @@
 }
 
 @mixin page-inner {
-  padding: 50px 25px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  flex: 1 0 33.3333%;
+  padding: 50px 25px 100px;
+  margin-bottom: $nav-height;
+  height: calc(100% - #{$nav-height});
+  overflow: auto;
 }
 
 @mixin link {
-  color: $accent;
+  color: $palette-accent-500;
 
-  &:hover {
-    color: $accent-hover;
+  &:active {
+    color: $palette-accent-400;
   }
 }
 
 @mixin cross-icon($cross-width: 8px, $size: 20px) {
   @include button-reset;
-  color: $green-background;
+  color: $color-background;
   width: $size;
   height: $size;
   position: relative;
 
-  &:focus {
-    color: $green-background;
-  }
-
-  &:hover,
   &:active {
     color: coral;
   }
