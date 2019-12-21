@@ -54,10 +54,12 @@ const store = new Vuex.Store({
   },
   mutations: {
     initializeStore (state) {
-      const oldShittyStateThatIRenamed = localStorage.getItem('lsd_state')
+      const OLD_SHITTY_STATE_NAME = 'lsd_state'
+      const oldShittyStateThatIRenamed = localStorage.getItem(OLD_SHITTY_STATE_NAME)
 
       if (oldShittyStateThatIRenamed) {
         localStorage.setItem(STORAGE_STATE, oldShittyStateThatIRenamed)
+        localStorage.removeItem(OLD_SHITTY_STATE_NAME)
       }
 
       if (localStorage.getItem(STORAGE_STATE)) {
