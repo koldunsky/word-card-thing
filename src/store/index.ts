@@ -25,7 +25,7 @@ const store = new Vuex.Store({
     NavModule
   },
   state: {
-    words: [],
+    words: [] as Array<IWord>,
     //   new Array(25).fill('').map((item, i) => ({
     //   id: `ttt_${i}`,
     //   word: `www_${i}`,
@@ -54,9 +54,13 @@ const store = new Vuex.Store({
   },
   mutations: {
     initializeStore (state) {
-      // Check if the ID exists
+      const oldShittyStateThatIRenamed = localStorage.getItem('lsd_state')
+
+      if (oldShittyStateThatIRenamed) {
+        localStorage.setItem(STORAGE_STATE, oldShittyStateThatIRenamed)
+      }
+
       if (localStorage.getItem(STORAGE_STATE)) {
-        // Replace the state object with the stored item
         const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
         this.replaceState({
           ...(typeof state === 'object' ? state : {}),
