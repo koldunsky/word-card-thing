@@ -58,8 +58,9 @@ $inner-container: 400px;
   color: $palette-accent-800;
 }
 
-.list-heading__reset-button {
-  top: .3rem !important;
+.list-heading__reset-button.list-heading__reset-button {
+  top: .3rem;
+  color: $green-500;
 }
 
 .word {
@@ -111,30 +112,34 @@ $inner-container: 400px;
   margin-left: .5rem;
 }
 
+$bar-short: .5rem;
+$bar-medium: $bar-short + .2rem;
+$bar-long: $bar-medium + .2rem;
+
 .order-icon__bar {
   display: block;
   height: 1px;
-  width: .8rem;
+  width: $bar-medium;
   background: currentColor;
   transition: .2s ease-in-out width;
   & + & {
-    margin-top: 3px;
+    margin-top: 2px;
   }
 }
 
 .order-icon__bar_first {
-  width: 1rem;
+  width: $bar-long;
 
   .order-icon_asc & {
-    width: .6rem;
+    width: $bar-short;
   }
 }
 
 .order-icon__bar_last {
-  width: .6rem;
+  width: $bar-short;
 
   .order-icon_asc & {
-    width: 1rem;
+    width: $bar-long;
   }
 }
 
@@ -143,10 +148,4 @@ $inner-container: 400px;
   .order-icon__bar {
     width: 0;
   }
-}
-
-.sort-reset {
-  text-align: left;
-  max-width: $inner-container;
-  margin: 0 auto;
 }
