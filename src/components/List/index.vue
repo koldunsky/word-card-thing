@@ -62,7 +62,8 @@
         class="notice"
       >
         Go on! <LocalLink to="add">Add</LocalLink> more words to the list. <br>
-        Words may be deleted if there is <b>more than 3 words</b> in the list.
+        Words may be deleted if there is
+        <br><b>more than 3 words</b> in&nbsp;the&nbsp;list.
       </div>
     </div>
   </div>
