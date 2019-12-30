@@ -17,6 +17,7 @@
   font-size: inherit;
   margin: 0;
   padding: 0;
+  outline: none;
 }
 
 @mixin page-inner {
@@ -39,15 +40,16 @@
   }
 }
 
-@mixin cross-icon($cross-width: 8px, $size: 20px) {
+@mixin cross-icon($cross-width: 8px, $size: 2rem) {
   @include button-reset;
   color: $color-background;
   width: $size;
   height: $size;
   position: relative;
+  display: inline-block;
 
   &:active {
-    color: coral;
+    color: $palette-accent-500;
   }
 
 
