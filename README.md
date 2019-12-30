@@ -17,7 +17,7 @@ yarn run serve
 ```
 
 ## Roadmap
-- [ ] Sortable list
+- [x] Sortable list
 - [ ] Improved algorithm of showing words
 - [ ] Installation tips
 - [ ] Onboarding cards
