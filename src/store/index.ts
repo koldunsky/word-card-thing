@@ -40,16 +40,20 @@ const store = new Vuex.Store({
   },
   actions: {
     deleteWord ({ commit, state }, id) {
-      // @ts-ignore
-      const foundWords: IWord = state.words.find((word: IWord) => word.id === id)
-      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
+      return new Promise((resolve) => {
+        // @ts-ignore
+        const foundWords: IWord = state.words.find((word: IWord) => word.id === id)
+        const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
 
-      if (reallyDelete) {
-        commit('deleteWordWithoutConfirmation', id)
-        if (id === state.currentWord.id) {
-          commit('setRandomWordAsCurrent')
+        if (reallyDelete) {
+          commit('deleteWordWithoutConfirmation', id)
+          if (id === state.currentWord.id) {
+            commit('setRandomWordAsCurrent')
+          }
+          return resolve()
         }
-      }
+        throw Error(`Word removing cancelled (${foundWords.word}|${foundWords.translation})`)
+      })
     }
   },
   mutations: {

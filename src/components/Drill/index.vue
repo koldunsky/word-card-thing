@@ -94,7 +94,9 @@
     @Action('deleteWord') deleteWord: any
 
     onDeleteButtonClick () {
-      this.deleteWord(this.currentWord.id)
+      this.deleteWord(this.currentWord.id).then(() => {
+        this.resetView()
+      })
     }
 
     onInputChange (e: any) {
