@@ -20,16 +20,19 @@
   outline: none;
 }
 
+@mixin page {
+  flex: 1 0 33.3333%;
+  overflow: auto;
+  height: calc(100% - #{$nav-height});
+}
+
 @mixin page-inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1 0 33.3333%;
-  padding: 50px 25px 100px;
-  margin-bottom: $nav-height;
-  height: calc(100% - #{$nav-height});
-  overflow: auto;
+  padding: 50px 25px 60px;
+  min-height: 100%;
 }
 
 @mixin link {

@@ -4,33 +4,35 @@
     class="add"
     @submit.prevent="addWord"
   >
-    <div v-if="words.length < 3" class="notification">
-      <span v-if="words.length === 0">Add <span class="notification__accent">3</span> words</span>
-      <span v-if="words.length > 0">Add <span class="notification__accent">{{ 3 - words.length}}</span> more</span>
+    <div class="add__inner">
+      <div v-if="words.length < 3" class="notification">
+        <span v-if="words.length === 0">Add <span class="notification__accent">3</span> words</span>
+        <span v-if="words.length > 0">Add <span class="notification__accent">{{ 3 - words.length}}</span> more</span>
+      </div>
+      <div class="fieldset">
+        <label>
+          <span class="field__label">
+            Word
+          </span>
+          <input
+            id="field_word"
+            v-model="word"
+          />
+        </label>
+        <label>
+          <span class="field__label">
+            Translation
+          </span>
+          <input
+            id="field_translation"
+            v-model="translation"
+          />
+        </label>
+      </div>
+      <Button>
+        Add
+      </Button>
     </div>
-    <div class="fieldset">
-      <label>
-        <span class="field__label">
-          Word
-        </span>
-        <input
-          id="field_word"
-          v-model="word"
-        />
-      </label>
-      <label>
-        <span class="field__label">
-          Translation
-        </span>
-        <input
-          id="field_translation"
-          v-model="translation"
-        />
-      </label>
-    </div>
-    <Button>
-      Add
-    </Button>
   </form>
 </template>
 

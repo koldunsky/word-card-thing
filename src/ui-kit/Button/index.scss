@@ -1,7 +1,9 @@
 @import '../../assets/style/utils';
 
 .button {
+  min-height: 40px;
   height: 40px;
+  max-height: 40px;
   border-radius: $border-radius;
   padding: 0 20px;
   background: none;

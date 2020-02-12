@@ -10,12 +10,17 @@
 }
 
 .drill {
-  @include page-inner;
+  @include page;
 
   position: relative;
 }
 
+.drill__inner {
+  @include page-inner;
+}
+
 .word {
+  margin-top: -20px; // Костыль чтобы уравновесить кнопку переключателя
   font-size: 3em;
   line-height: 1.2;
   margin-bottom: 30px;
@@ -40,9 +45,10 @@
 
 .switcher {
   @include button-reset;
-  position: absolute;
+  position: sticky;
   top: 20px;
   right: 20px;
+  margin: 0 0 0 auto;
 
   b {
     color: $palette-accent-500;

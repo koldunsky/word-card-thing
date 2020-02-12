@@ -4,15 +4,21 @@ $button-size: 20px;
 $inner-container: 400px;
 
 .list {
-  @include page-inner;
+  @include page;
 
   display: block;
   line-height: 1.2;
 }
 
 .list__inner {
+  @include page-inner;
+
   max-width: $inner-container;
   margin: 0 auto;
+}
+
+.list__items-wrapper {
+  width: 100%;
 }
 
 .list-item {
