@@ -9,6 +9,8 @@
   }
 }
 
+$wordMarginBottom: 15px;
+
 .drill {
   @include page;
 
@@ -22,7 +24,7 @@
 .word {
   font-size: 3em;
   line-height: 1.2;
-  margin-bottom: 15px;
+  margin-bottom: $wordMarginBottom;
   min-height: 60px;
   display: flex;
   flex-direction: column;
@@ -70,6 +72,9 @@
 
 .button {
   width: 130px;
+  & + & {
+    margin-left: $wordMarginBottom - 2px;
+  }
 }
 
 .button_delete {
@@ -85,7 +90,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: 15px;
+  margin-bottom: $wordMarginBottom;
   font-size: 1.7em;
   color: $green-600;
 }
