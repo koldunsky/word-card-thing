@@ -25,6 +25,10 @@
 label {
   margin-bottom: 20px;
   display: block;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 }
 
 .fieldset {

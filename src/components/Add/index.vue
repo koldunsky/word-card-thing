@@ -17,6 +17,7 @@
           <input
             id="field_word"
             v-model="word"
+            autocomplete="off"
           />
         </label>
         <label>
@@ -26,6 +27,7 @@
           <input
             id="field_translation"
             v-model="translation"
+            autocomplete="off"
           />
         </label>
       </div>

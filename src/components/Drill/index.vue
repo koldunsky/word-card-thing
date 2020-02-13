@@ -1,12 +1,13 @@
 <template>
   <div class="drill">
-    <button class="switcher" @click="toggleTranslationFlow">
-        <span v-if="isDrillTranslationInsteadWord">
-          <b>T</b> &rarr; <span>W</span>
-        </span>
-      <span v-else>
-          <b>W</b> &rarr; <span>T</span>
-        </span>
+    <button
+      class="switcher"
+      :class="{
+            'switcher_reversed': isDrillTranslationInsteadWord
+          }"
+      @click="toggleTranslationFlow"
+    >
+      <span>W</span> <i class="arrowIcon"></i> <span>T</span>
     </button>
     <div class="drill__inner">
       <div
@@ -31,6 +32,7 @@
         v-model="value"
         type="text"
         class="input"
+        autocomplete="off"
         :class="{
           'right-answer': isRightAnswer
         }"
@@ -109,7 +111,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
-        setTimeout(this.skipWord, 300)
+        this.skipWord()
       }
     }
 
