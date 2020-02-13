@@ -1,14 +1,14 @@
 <template>
   <div class="drill">
-    <div class="drill__inner">
-      <button class="switcher" @click="toggleTranslationFlow">
+    <button class="switcher" @click="toggleTranslationFlow">
         <span v-if="isDrillTranslationInsteadWord">
           <b>T</b> &rarr; <span>W</span>
         </span>
-        <span v-else>
+      <span v-else>
           <b>W</b> &rarr; <span>T</span>
         </span>
-      </button>
+    </button>
+    <div class="drill__inner">
       <div
         class="word"
         :class="{
