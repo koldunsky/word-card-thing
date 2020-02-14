@@ -4,12 +4,14 @@ $pointing-dot-size: 8px;
 $pointing-dot-duration: 5s;
 
 @keyframes pointFlash {
-  35% {
-    box-shadow: 0 0 0 rgba($palette-accent-500, 1)
+  65% {
+    transform: scale(1);
+    opacity: 1;
   }
 
-  50% {
-    box-shadow: 0 0 0 4px rgba($palette-accent-500, 0)
+  100% {
+    transform: scale(2.6);
+    opacity: 0;
   }
 }
 
@@ -22,7 +24,6 @@ $pointing-dot-duration: 5s;
   height: $pointing-dot-size;
   background: $palette-accent-500;
   border-radius: $pointing-dot-size;
-  animation: pointFlash $pointing-dot-duration infinite ease-in;
 
   &::before,
   &::after {
@@ -33,11 +34,11 @@ $pointing-dot-duration: 5s;
     width: $pointing-dot-size;
     height: $pointing-dot-size;
     border-radius: $pointing-dot-size;
+    background: $palette-accent-500;
     animation: pointFlash $pointing-dot-duration infinite ease-in;
-    animation-delay: 0.3s;
   }
 
   &::after {
-    animation-delay: 0.6s;
+    animation-delay: .7s;
   }
 }
