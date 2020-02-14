@@ -4,15 +4,24 @@ $button-size: 20px;
 $inner-container: 400px;
 
 .list {
-  @include page-inner;
+  @include page;
 
   display: block;
   line-height: 1.2;
 }
 
 .list__inner {
+  @include page-inner;
+
   max-width: $inner-container;
+  justify-content: flex-start;
   margin: 0 auto;
+  padding-top: 45px;
+  padding-bottom: 60px;
+}
+
+.list__items-wrapper {
+  width: 100%;
 }
 
 .list-item {
@@ -52,6 +61,15 @@ $inner-container: 400px;
   display: flex;
   user-select: none;
   cursor: pointer;
+  position: relative;
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: -10px;
+    bottom: -10px;
+    width: 90%;
+  }
 }
 
 .list-heading__item_active {

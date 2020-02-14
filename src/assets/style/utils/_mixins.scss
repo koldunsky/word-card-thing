@@ -20,16 +20,19 @@
   outline: none;
 }
 
+@mixin page {
+  flex: 1 0 33.3333%;
+  overflow: auto;
+  height: calc(100% - #{$nav-height});
+}
+
 @mixin page-inner {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  flex: 1 0 33.3333%;
-  padding: 50px 25px 100px;
-  margin-bottom: $nav-height;
-  height: calc(100% - #{$nav-height});
-  overflow: auto;
+  padding: 15px 25px $nav-height + 10px;
+  min-height: 100%;
 }
 
 @mixin link {
@@ -69,5 +72,11 @@
   }
   &::before {
     transform: rotateZ(-45deg);
+  }
+}
+
+@mixin mediaSmallHeight {
+  @media (min-height: 320px) {
+    @content;
   }
 }

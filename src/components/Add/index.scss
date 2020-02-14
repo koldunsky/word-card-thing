@@ -10,11 +10,11 @@
 }
 
 .add {
-  @include page-inner;
+  @include page;
+}
 
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+.add__inner {
+  @include page-inner;
 }
 
 .notification {
@@ -25,10 +25,18 @@
 label {
   margin-bottom: 20px;
   display: block;
+
+  &:last-child {
+    margin-bottom: 10px;
+  }
 }
 
 .fieldset {
   margin-bottom: 8px;
+
+  @include mediaSmallHeight {
+    margin-bottom: 20px;
+  }
 }
 
 .field {

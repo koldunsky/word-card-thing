@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="list__inner">
-      <ul>
+      <ul class="list__items-wrapper">
         <li
           class="list-item list-heading"
           :class="{

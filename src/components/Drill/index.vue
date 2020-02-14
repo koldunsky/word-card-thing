@@ -1,66 +1,70 @@
 <template>
   <div class="drill">
-    <button class="switcher" @click="toggleTranslationFlow">
-      <span v-if="isDrillTranslationInsteadWord">
-        <b>T</b> &rarr; <span>W</span>
-      </span>
-      <span v-else>
-        <b>W</b> &rarr; <span>T</span>
-      </span>
+    <button
+      class="switcher"
+      :class="{
+            'switcher_reversed': isDrillTranslationInsteadWord
+          }"
+      @click="toggleTranslationFlow"
+    >
+      <span>W</span> <i class="arrowIcon"></i> <span>T</span>
     </button>
-    <div
-      class="word"
-      :class="{
-        'word_medium': word.length > 10,
-        'word_small': word.length > 13
-      }"
-    >
-      {{word}}
-    </div>
-    <div
-      v-if="isShowAnswer"
-      class="answer"
-    >
-      {{answer}}
-    </div>
-    <input
-      :readonly="isReadOnly"
-      v-else
-      @input="onInputChange"
-      v-model="value"
-      type="text"
-      class="input"
-      :class="{
-        'right-answer': isRightAnswer
-      }"
-    />
-    <div
-      class="button-set"
-      :class="{
-        'button-set_showing-answer': isShowAnswer
-      }"
-    >
-      <Button
-        class="button"
-        @click="skipWord"
+    <div class="drill__inner">
+      <div
+        class="word"
+        :class="{
+          'word_medium': word.length > 10,
+          'word_small': word.length > 13
+        }"
       >
-        Skip
-      </Button>
-      <Button
-        class="button"
-        v-if="!isShowAnswer"
-        @click="showAnswer"
+        {{word}}
+      </div>
+      <div
+        v-if="isShowAnswer"
+        class="answer"
       >
-        Show answer
-      </Button>
+        {{answer}}
+      </div>
+      <input
+        :readonly="isReadOnly"
+        v-else
+        @input="onInputChange"
+        v-model="value"
+        type="text"
+        class="input"
+        autocomplete="off"
+        :class="{
+          'right-answer': isRightAnswer
+        }"
+      />
+      <div
+        class="button-set"
+        :class="{
+          'button-set_showing-answer': isShowAnswer
+        }"
+      >
+        <Button
+          class="button"
+          @click="skipWord"
+        >
+          Skip
+        </Button>
+        <Button
+          class="button"
+          v-if="!isShowAnswer"
+          @click="showAnswer"
+        >
+          Show answer
+        </Button>
 
-      <Button
-        class="button button_accent button_delete"
-        v-if="isShowAnswer && words.length > 3"
-        @click="onDeleteButtonClick"
-      >
-        Delete
-      </Button>
+        <Button
+          class="button button_accent button_delete"
+          v-if="isShowAnswer && words.length > 3"
+          @click="onDeleteButtonClick"
+        >
+          Delete
+        </Button>
+      </div>
     </div>
   </div>
 </template>
@@ -107,7 +111,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
-        setTimeout(this.skipWord, 300)
+        this.skipWord()
       }
     }
 
