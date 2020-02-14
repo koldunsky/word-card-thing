@@ -33,6 +33,10 @@ label {
 
 .fieldset {
   margin-bottom: 8px;
+
+  @include mediaSmallHeight {
+    margin-bottom: 20px;
+  }
 }
 
 .field {

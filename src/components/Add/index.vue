@@ -64,6 +64,7 @@
   export default class AddView extends Vue {
     word: string = '';
     translation: string = '';
+    windowWidth: number = 0
 
     $refs!: {
       form: HTMLFormElement

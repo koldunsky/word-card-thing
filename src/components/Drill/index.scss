@@ -9,7 +9,8 @@
   }
 }
 
-$wordMarginBottom: 15px;
+$wordMarginBottomSmall: 15px;
+$wordMarginBottom: 25px;
 
 .drill {
   @include page;
@@ -24,8 +25,8 @@ $wordMarginBottom: 15px;
 .word {
   font-size: 3em;
   line-height: 1.2;
-  margin-bottom: $wordMarginBottom;
-  min-height: 60px;
+  margin-bottom: $wordMarginBottomSmall;
+  min-height: 55px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -37,6 +38,10 @@ $wordMarginBottom: 15px;
 
   &_small {
     font-size: 2em;
+  }
+
+  @include mediaSmallHeight {
+    margin-bottom: $wordMarginBottom;
   }
 }
 
@@ -71,10 +76,8 @@ $wordMarginBottom: 15px;
 }
 
 .button {
-  width: 130px;
-  & + & {
-    margin-left: $wordMarginBottom - 2px;
-  }
+  width: 140px;
+  margin: 0 7px;
 }
 
 .button_delete {
@@ -82,7 +85,11 @@ $wordMarginBottom: 15px;
 }
 
 .input {
-  margin-bottom: 15px;
+  margin-bottom: $wordMarginBottomSmall;
+
+  @include mediaSmallHeight {
+    margin-bottom: $wordMarginBottom;
+  }
 }
 
 .answer {
@@ -90,9 +97,13 @@ $wordMarginBottom: 15px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: $wordMarginBottom;
+  margin-bottom: $wordMarginBottomSmall;
   font-size: 1.7em;
   color: $green-600;
+
+  @include mediaSmallHeight {
+    margin-bottom: $wordMarginBottom;
+  }
 }
 
 .button-set {
