@@ -111,7 +111,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
-        this.skipWord()
+        this.skipWord(true)
       }
     }
 
@@ -119,16 +119,22 @@
       this.isShowAnswer = true
     }
 
-    skipWord () {
+    skipWord (delayed?: boolean) {
       this.setRandomWordAsCurrent()
-      this.resetView()
+      this.resetView(delayed)
     }
 
-    resetView () {
+    resetView (delayed?: boolean) {
       this.value = ''
       this.isShowAnswer = false
       this.isReadOnly = false
-      this.isRightAnswer = false
+      if (delayed) {
+        setTimeout(() => {
+          this.isRightAnswer = false
+        }, 300)
+      } else {
+        this.isRightAnswer = false
+      }
     }
 
     get word () {
