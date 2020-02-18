@@ -32,15 +32,18 @@ const store = new Vuex.Store({
       id: `ttt_${i}`,
       word: `www_${i}`,
       translation: 'ttt_' + String(Date.now() * Math.random()),
-      guessed: 0,
-      failed: 0,
+      guessed: 1,
+      failed: 1,
       added: Date.now()
     })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
       word: '',
-      translation: ''
+      translation: '',
+      guessed: 0,
+      failed: 0,
+      added: Date.now()
     } as IWord
   },
   actions: {
@@ -73,10 +76,26 @@ const store = new Vuex.Store({
 
       if (localStorage.getItem(STORAGE_STATE)) {
         const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
-        this.replaceState({
+        const combinedState = {
           ...(typeof state === 'object' ? state : {}),
           ...(typeof localState === 'object' ? localState : {})
+        }
+
+        // Костыль на случай если есть старые слова.
+        combinedState.words = combinedState.words.map((wordObject) => {
+          if (wordObject.added === undefined) {
+            wordObject.added = null
+          }
+          if (wordObject.failed === undefined) {
+            wordObject.failed = 0
+          }
+          if (wordObject.guessed === undefined) {
+            wordObject.guessed = 0
+          }
+          return wordObject
         })
+
+        this.replaceState(combinedState)
       }
     },
     addWord (state, payload: IWordSetter) {
