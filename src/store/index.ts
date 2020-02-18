@@ -16,6 +16,9 @@ export interface IWord {
   id: string;
   word: string;
   translation: string;
+  guessed: number;
+  failed: number;
+  added: number;
 }
 
 const STORAGE_STATE = 'kolenki_state'
@@ -25,12 +28,14 @@ const store = new Vuex.Store({
     NavModule
   },
   state: {
-    words: [] as Array<IWord>,
-    //   new Array(25).fill('').map((item, i) => ({
-    //   id: `ttt_${i}`,
-    //   word: `www_${i}`,
-    //   translation: 'ttt_' + String(Date.now() * Math.random())
-    // })) as Array<IWord>,
+    words: new Array(25).fill('').map((item, i) => ({
+      id: `ttt_${i}`,
+      word: `www_${i}`,
+      translation: 'ttt_' + String(Date.now() * Math.random()),
+      guessed: 0,
+      failed: 0,
+      added: Date.now()
+    })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
@@ -77,7 +82,10 @@ const store = new Vuex.Store({
     addWord (state, payload: IWordSetter) {
       state.words.push({
         id: getGuid(),
-        ...payload
+        ...payload,
+        guessed: 0,
+        failed: 0,
+        added: Date.now()
       } as IWord)
     },
     deleteWordWithoutConfirmation (state, id: string) {

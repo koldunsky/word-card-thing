@@ -45,7 +45,7 @@
       >
         <Button
           class="button"
-          @click="skipWord"
+          @click="onSkipWordClick"
         >
           Skip
         </Button>
@@ -117,6 +117,10 @@
 
     showAnswer () {
       this.isShowAnswer = true
+    }
+
+    onSkipWordClick () {
+      this.skipWord()
     }
 
     skipWord () {

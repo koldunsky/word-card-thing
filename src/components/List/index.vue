@@ -42,6 +42,9 @@
           v-for="w in sortedWords"
           :key="w.id"
         >
+          <span>
+            ({{w.guessed}}/{{w.failed}})
+          </span>
           <span class="word">
             {{w.word}}
           </span>
