@@ -129,8 +129,8 @@
       this.isReadOnly = false
       if (delayed) {
         setTimeout(() => {
-          this.isRightAnswer = false
           this.value = ''
+          this.isRightAnswer = false
         }, 300)
       } else {
         this.value = ''
