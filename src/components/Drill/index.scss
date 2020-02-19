@@ -1,14 +1,5 @@
 @import '../../assets/style/utils';
 
-@keyframes right-answer {
-  0% {
-    background: transparent;
-  }
-  100% {
-    background: lighten(darkseagreen, 20%);
-  }
-}
-
 $wordMarginBottomSmall: 15px;
 $wordMarginBottom: 25px;
 
@@ -43,10 +34,6 @@ $wordMarginBottom: 25px;
   @include mediaSmallHeight {
     margin-bottom: $wordMarginBottom;
   }
-}
-
-.right-answer {
-  animation: right-answer .2s ease-in 1 forwards;
 }
 
 .switcher {
@@ -85,9 +72,18 @@ $wordMarginBottom: 25px;
 
 .input {
   margin-bottom: $wordMarginBottomSmall;
+  box-shadow: 0 0 0 lighten(darkseagreen, 20%) !important;
+  transition: .2s ease;
+  transition-property: background-color, box-shadow;
 
   @include mediaSmallHeight {
     margin-bottom: $wordMarginBottom;
+  }
+
+
+  &.right-answer {
+    background-color: lighten(darkseagreen, 20%);
+    box-shadow: 0 0 25px lighten(darkseagreen, 20%) !important;
   }
 }
 
