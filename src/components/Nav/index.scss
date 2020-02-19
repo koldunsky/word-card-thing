@@ -13,7 +13,7 @@
   transition: .3s ease all;
 
   &_visible {
-    max-height: 100px;
+    max-height: $nav-height;
     visibility: visible;
   }
 }

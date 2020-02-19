@@ -24,9 +24,9 @@
               }"
               @click="toggleOrder"
             >
-              <span class="order-icon__bar order-icon__bar_first"></span>
-              <span class="order-icon__bar"></span>
-              <span class="order-icon__bar order-icon__bar_last"></span>
+              <span class="order-icon__bar order-icon__bar_first" />
+              <span class="order-icon__bar" />
+              <span class="order-icon__bar order-icon__bar_last" />
             </span>
           </span>
           <button
