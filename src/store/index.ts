@@ -25,11 +25,12 @@ const store = new Vuex.Store({
     NavModule
   },
   state: {
-    words: new Array(15).fill('').map((item, i) => ({
-      id: `ttt_${i}`,
-      word: `22`,
-      translation: '22'
-    })) as Array<IWord>,
+    words: [] as Array<IWord>,
+    //   new Array(25).fill('').map((item, i) => ({
+    //   id: `ttt_${i}`,
+    //   word: `www_${i}`,
+    //   translation: 'ttt_' + String(Date.now() * Math.random())
+    // })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
