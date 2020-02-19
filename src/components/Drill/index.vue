@@ -125,14 +125,15 @@
     }
 
     resetView (delayed?: boolean) {
-      this.value = ''
       this.isShowAnswer = false
       this.isReadOnly = false
       if (delayed) {
         setTimeout(() => {
           this.isRightAnswer = false
+          this.value = ''
         }, 300)
       } else {
+        this.value = ''
         this.isRightAnswer = false
       }
     }
