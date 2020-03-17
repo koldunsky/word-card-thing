@@ -133,4 +133,4 @@
     }
   }
 </script>
-<style src="./index.scss" lang="scss" scoped></style>
+<style src="./index.scss" lang="scss" scoped />
