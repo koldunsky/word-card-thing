@@ -120,7 +120,6 @@
     }
 
     skipWord (delayed?: boolean) {
-      this.setRandomWordAsCurrent()
       this.resetView(delayed)
     }
 
@@ -131,10 +130,12 @@
         setTimeout(() => {
           this.value = ''
           this.isRightAnswer = false
-        }, 300)
+          this.setRandomWordAsCurrent()
+        }, 350)
       } else {
         this.value = ''
         this.isRightAnswer = false
+        this.setRandomWordAsCurrent()
       }
     }
 
