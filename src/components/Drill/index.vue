@@ -45,7 +45,7 @@
       >
         <Button
           class="button"
-          @click="skipWord"
+          @click="() => skipWord()"
         >
           Skip
         </Button>
