@@ -1,5 +1,5 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
-import { TPageName } from '../../types'
+import { TPageName } from '@/types'
 
 export type TPointingDots = {
   [key in TPageName]: boolean

@@ -28,22 +28,22 @@ const store = new Vuex.Store({
     NavModule
   },
   state: {
-    words: new Array(25).fill('').map((item, i) => ({
-      id: `ttt_${i}`,
-      word: `www_${i}`,
-      translation: 'ttt_' + String(Date.now() * Math.random()),
-      guessed: 1,
-      failed: 1,
-      added: Date.now()
-    })) as Array<IWord>,
+    words: [] as Array<IWord>,
+    //   new Array(25).fill('').map((item, i) => ({
+    //   id: `ttt_${i}`,
+    //   word: `www_${i}`,
+    //   translation: 'ttt_' + String(Date.now() * Math.random())
+    // })) as Array<IWord>,
     isDrillTranslationInsteadWord: false,
+    currentMarkedAsGuessed: false,
+    currentMarkedAsFailed: false,
     currentWord: {
       id: '',
       word: '',
       translation: '',
       guessed: 0,
       failed: 0,
-      added: Date.now()
+      added: null
     } as IWord
   },
   actions: {
@@ -82,7 +82,7 @@ const store = new Vuex.Store({
         }
 
         // Костыль на случай если есть старые слова.
-        combinedState.words = combinedState.words.map((wordObject) => {
+        combinedState.words = combinedState.words.map((wordObject: IWord) => {
           if (wordObject.added === undefined) {
             wordObject.added = null
           }
@@ -122,11 +122,24 @@ const store = new Vuex.Store({
       while (state.words[randomId].id === state.currentWord.id) {
         randomId = getIndex()
       }
-
+      state.currentMarkedAsGuessed = false
+      state.currentMarkedAsFailed = false
       state.currentWord = state.words[randomId]
     },
     toggleTranslationFlow (state) {
       state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
+    },
+    markCurrentAsGuessed (state) {
+      if (!state.currentMarkedAsGuessed) {
+        state.currentMarkedAsGuessed = true
+        state.currentWord.guessed++
+      }
+    },
+    markCurrentAsFailed (state) {
+      if (!state.currentMarkedAsFailed) {
+        state.currentMarkedAsFailed = true
+        state.currentWord.failed++
+      }
     }
   }
 })

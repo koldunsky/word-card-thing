@@ -45,7 +45,7 @@
       >
         <Button
           class="button"
-          @click="() => skipWord()"
+          @click="onSkipWordClick"
         >
           Skip
         </Button>
@@ -94,6 +94,8 @@
     @State('words') words: any
 
     @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
+    @Mutation('markCurrentAsGuessed') markCurrentAsGuessed: any
+    @Mutation('markCurrentAsFailed') markCurrentAsFailed: any
     @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
     @Action('deleteWord') deleteWord: any
 
@@ -108,7 +110,8 @@
         value
       } = e.target
 
-      if (value.toLowerCase() === this.answer.toLowerCase()) {
+      if (value.toLowerCase() === this.answer.toLowerCase()) { // It's a match
+        this.markCurrentAsGuessed()
         this.isReadOnly = true
         this.isRightAnswer = true
         this.skipWord(true)
@@ -116,7 +119,13 @@
     }
 
     showAnswer () {
+      this.markCurrentAsFailed()
       this.isShowAnswer = true
+    }
+
+    onSkipWordClick () {
+      this.markCurrentAsFailed()
+      this.skipWord()
     }
 
     skipWord (delayed?: boolean) {
