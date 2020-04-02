@@ -45,7 +45,7 @@
       >
         <Button
           class="button"
-          @click="onSkipWordClick"
+          @click="() => skipWord()"
         >
           Skip
         </Button>
@@ -119,12 +119,7 @@
       this.isShowAnswer = true
     }
 
-    onSkipWordClick () {
-      this.skipWord()
-    }
-
     skipWord (delayed?: boolean) {
-      this.setRandomWordAsCurrent()
       this.resetView(delayed)
     }
 
@@ -135,10 +130,12 @@
         setTimeout(() => {
           this.value = ''
           this.isRightAnswer = false
-        }, 300)
+          this.setRandomWordAsCurrent()
+        }, 350)
       } else {
         this.value = ''
         this.isRightAnswer = false
+        this.setRandomWordAsCurrent()
       }
     }
 

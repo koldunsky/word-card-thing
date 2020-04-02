@@ -23,7 +23,11 @@
 @mixin page {
   flex: 1 0 33.3333%;
   overflow: auto;
-  height: calc(100% - #{$nav-height});
+  height: 100%;
+
+  .app_has-3-words & {
+    height: calc(100% - #{$nav-height});
+  }
 }
 
 @mixin page-inner {
