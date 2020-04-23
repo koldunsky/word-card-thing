@@ -1,6 +1,5 @@
 <template>
   <form
-    ref="form"
     class="add"
     @submit.prevent="addWord"
   >
@@ -15,6 +14,7 @@
             Word
           </span>
           <input
+            ref="inputWord"
             id="field_word"
             v-model="word"
             autocomplete="off"
@@ -64,10 +64,9 @@
   export default class AddView extends Vue {
     word: string = '';
     translation: string = '';
-    windowWidth: number = 0
 
     $refs!: {
-      form: HTMLFormElement
+      inputWord: HTMLInputElement
     }
     @State('words') words: any
 
@@ -140,9 +139,7 @@
     }
 
     focusFirstInput () {
-      const form: Element = this.$refs.form
-      const firstInput: HTMLInputElement = form.querySelector('input')
-      firstInput.focus()
+      this.$refs.inputWord.focus()
     }
 
     resetForm () {
