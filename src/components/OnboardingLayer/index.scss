@@ -1,0 +1,32 @@
+@import '../../assets/style/utils';
+
+.onboarding {
+  @include stretch();
+  z-index: z(onboarding);
+  background: rgba(red, .5);
+  overflow: hidden;
+}
+
+.mask {
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  position: absolute;
+  border-radius: 100%;
+  border: 1px solid $palette-accent-100;
+  transition: 1s ease all;
+
+  &.active {
+    left: 600px;
+    top: 20px;
+    width: 60px;
+    height: 60px;
+    box-shadow: 0 0 0 1500px blue;
+    box-sizing: content-box;
+  }
+}
+
+.button {
+  position: relative;
+  z-index: 1000;
+ }

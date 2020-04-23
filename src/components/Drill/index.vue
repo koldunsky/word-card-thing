@@ -7,7 +7,7 @@
           }"
       @click="toggleTranslationFlow"
     >
-      <span>W</span> <i class="arrowIcon"></i> <span>T</span>
+      <span>W</span> <i class="arrowIcon" /> <span>T</span>
     </button>
     <div class="drill__inner">
       <div

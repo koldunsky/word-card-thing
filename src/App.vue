@@ -7,6 +7,7 @@
     }"
   >
     <UpdateChecker/>
+    <OnboardingLayer/>
     <div
       class="scene"
     >
@@ -32,6 +33,7 @@
   import List from './components/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
   import UpdateChecker from './components/UpdateChecker/index.vue'
+  import OnboardingLayer from './components/OnboardingLayer/index.vue'
   import Nav from './components/Nav/index.vue'
   import { TPageName } from './types'
 
@@ -39,6 +41,7 @@
 
   @Component({
     components: {
+      OnboardingLayer,
       UpdateChecker,
       Add,
       Drill,
@@ -68,9 +71,6 @@
     }
 
     mounted () {
-      document.body.addEventListener('scroll', (e) => {
-        alert('scroll')
-      })
     }
   }
 </script>
