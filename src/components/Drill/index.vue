@@ -118,7 +118,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
-        this.skipWord(true)
+        this.resetView(true)
       }
     }
 
@@ -131,16 +131,16 @@
     }
 
     onSkipWordButtonClick () {
-      this.skipWord()
+      if (this.isShowAnswer) {
+        this.$refs.input.focus()
+      } else {
+        this.handleFocusBehaviour()
+      }
+      this.resetView()
     }
 
     onShowAnswerButtonClick () {
-      this.handleFocusBehaviour()
       this.isShowAnswer = true
-    }
-
-    skipWord (delayed?: boolean) {
-      this.resetView(delayed)
     }
 
     handleFocusBehaviour () {
@@ -160,8 +160,6 @@
         this.setRandomWordAsCurrent()
         this.isShowAnswer = false
       }
-
-      this.handleFocusBehaviour()
 
       if (delayed) {
         setTimeout(reset, 350)
