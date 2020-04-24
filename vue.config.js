@@ -2,7 +2,7 @@ module.exports = {
   lintOnSave: false,
   pwa: {
     name: 'KOLENKI',
-    short_name: `KOLENKI`,
+    short_name: 'KOLENKI',
     description: '',
     themeColor: '#2a7e70',
     msTileColor: '#39ac99',
