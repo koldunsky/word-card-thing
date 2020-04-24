@@ -3,24 +3,19 @@
 <svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
 	 viewBox="20 20 140 140" style="enable-background:new 0 0 180 180;" xml:space="preserve">
 <style type="text/css">
-	.st1{
-		fill:none;
-		stroke:#000;
-		stroke-width:6;
-		stroke-linecap:round;
-		stroke-linejoin:round;
-		stroke-miterlimit:10;
-		opacity: .5;
-		transform: translateX(-1px);	
-	}
+	.st1,
 	.st2{
 		fill:none;
 		stroke:#000;
-		stroke-width:6;
+		stroke-width:8;
 		stroke-linecap:round;
 		stroke-linejoin:round;
 		stroke-miterlimit:10;
-		transform: translateX(1px);	
+		transform: translateX(-3px);
+	}
+	.st2{
+		transform: translateX(3px);
+		opacity: .5;
 	}
 	.st3{fill:none;stroke:blue;stroke-width:6
 ;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10; transform: translateX(7.5px); opacity: .2}
