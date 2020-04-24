@@ -7,6 +7,7 @@
     }"
   >
     <UpdateChecker/>
+    {{workerState}}
     <div
       class="scene"
     >
@@ -67,10 +68,8 @@
       }
     }
 
-    mounted () {
-      document.body.addEventListener('scroll', (e) => {
-        alert('scroll')
-      })
+    get workerState () {
+      return window.workerState
     }
   }
 </script>

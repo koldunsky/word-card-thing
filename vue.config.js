@@ -13,12 +13,12 @@ module.exports = {
     manifestOptions: {
       background_color: '#ffffff',
       display: 'standalone',
-      start_url: 'https://word-card-thing.netlify.com',
+      start_url: 'https://word-card-thing.netlify.app',
       icons: [
         {
-          'src': `./img/icons/apple-touch-icon.png?v=${Date.now()}`,
-          'sizes': '180x180',
-          'type': 'image/png'
+          src: `./img/icons/apple-touch-icon.png?v=${Date.now()}`,
+          sizes: '180x180',
+          type: 'image/png'
         }
       ]
     },
@@ -29,7 +29,7 @@ module.exports = {
       msTileImage: 'img/icons/msapplication-icon-144x144.png'
     }
   },
-  chainWebpack: (config) => {
+  chainWebpack: config => {
     const svgRule = config.module.rule('svg')
 
     svgRule.uses.clear()
