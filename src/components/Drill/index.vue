@@ -26,15 +26,16 @@
         {{answer}}
       </div>
       <input
-        :readonly="isReadOnly"
-        v-else
+        ref="input"
         @input="onInputChange"
+        @keydown="onInputKeydown"
         v-model="value"
         type="text"
         class="input"
         autocomplete="off"
         :class="{
-          'right-answer': isRightAnswer
+          'right-answer': isRightAnswer,
+          'hidden': isShowAnswer
         }"
       />
       <div
@@ -45,14 +46,14 @@
       >
         <Button
           class="button"
-          @click="() => skipWord()"
+          @click="onSkipWordButtonClick"
         >
           Skip
         </Button>
         <Button
           class="button"
           v-if="!isShowAnswer"
-          @click="showAnswer"
+          @click="onShowAnswerButtonClick"
         >
           Show answer
         </Button>
@@ -88,6 +89,12 @@
     isShowAnswer: boolean = false
     isReadOnly: boolean = false
     isRightAnswer: boolean = false
+    lastBlurTimeStamp: number = null;
+    lastBlurTarget: EventTarget = null;
+
+    $refs: {
+      input: HTMLInputElement
+    }
 
     @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
     @State('currentWord') currentWord: any
@@ -103,39 +110,61 @@
       })
     }
 
-    onInputChange (e: any) {
+    onInputChange (e: Event) {
       const {
         value
-      } = e.target
+      } = e.target as HTMLInputElement
 
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
-        this.skipWord(true)
+        this.resetView(true)
       }
     }
 
-    showAnswer () {
+    onInputKeydown (e) {
+      if (this.isReadOnly || this.isShowAnswer) { // Do nothing if already guessed or if showing answer
+        e.preventDefault()
+        e.stopPropagation()
+        return false
+      }
+    }
+
+    onSkipWordButtonClick () {
+      if (this.isShowAnswer) {
+        this.$refs.input.focus()
+      } else {
+        this.handleFocusBehaviour()
+      }
+      this.resetView()
+    }
+
+    onShowAnswerButtonClick () {
       this.isShowAnswer = true
     }
 
-    skipWord (delayed?: boolean) {
-      this.resetView(delayed)
+    handleFocusBehaviour () {
+      const itWasInput = this.lastBlurTarget === this.$refs.input
+      const andItWasReallyFast = performance.now() - this.lastBlurTimeStamp < 150
+
+      if (itWasInput && andItWasReallyFast) {
+        this.$refs.input.focus()
+      }
     }
 
     resetView (delayed?: boolean) {
-      this.isShowAnswer = false
-      this.isReadOnly = false
-      if (delayed) {
-        setTimeout(() => {
-          this.value = ''
-          this.isRightAnswer = false
-          this.setRandomWordAsCurrent()
-        }, 350)
-      } else {
+      const reset = () => {
         this.value = ''
         this.isRightAnswer = false
+        this.isReadOnly = false
         this.setRandomWordAsCurrent()
+        this.isShowAnswer = false
+      }
+
+      if (delayed) {
+        setTimeout(reset, 350)
+      } else {
+        reset()
       }
     }
 
@@ -153,6 +182,19 @@
         translation
       } = this.currentWord
       return this.isDrillTranslationInsteadWord ? word : translation
+    }
+
+    onFocusOut (e) {
+      this.lastBlurTimeStamp = e.timeStamp
+      this.lastBlurTarget = e.target
+    }
+
+    mounted () {
+      window.addEventListener('focusout', this.onFocusOut)
+    }
+
+    unmounted () {
+      window.removeEventListener('focusout', this.onFocusOut)
     }
   }
 </script>
