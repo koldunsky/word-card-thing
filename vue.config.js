@@ -19,6 +19,11 @@ module.exports = {
           src: `./img/icons/apple-touch-icon.png?v=${Date.now()}`,
           sizes: '180x180',
           type: 'image/png'
+        },
+        {
+          src: `./img/icons/icon-512x512.png?v=${Date.now()}`,
+          sizes: '512x512',
+          type: 'image/png'
         }
       ]
     },
