@@ -75,12 +75,6 @@
     @NavModule.Mutation
     addPointingDot: (id: TPageName) => void
 
-    mounted () {
-      if (this.words.length < 3) {
-        this.focusFirstInput()
-      }
-    }
-
     showError (fieldName: string) {
       const el = document.getElementById(`field_${fieldName}`)
 
