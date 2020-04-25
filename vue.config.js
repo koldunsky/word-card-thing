@@ -13,7 +13,7 @@ module.exports = {
     manifestOptions: {
       background_color: '#ffffff',
       display: 'standalone',
-      start_url: 'https://word-card-thing.netlify.app',
+      start_url: 'kolenki.app',
       icons: [
         {
           src: `./img/icons/apple-touch-icon.png?v=${Date.now()}`,

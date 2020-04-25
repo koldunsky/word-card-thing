@@ -1,4 +1,4 @@
-# [KOLENKI](http://word-card-thing.netlify.com)
+# [KOLENKI](http://kolenki.app)
 _Dead-simple flashcard-like app to drill words._
 
 
