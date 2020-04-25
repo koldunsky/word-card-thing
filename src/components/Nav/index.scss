@@ -105,7 +105,18 @@
 }
 
 .nav__item-icon_drill {
-  width: 35px;
-  height: 35px;
-  transform: scaleX(-1);
+  &::before {
+    @include stretch;
+
+    content: '';
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    border: 2px solid;
+    border-color: currentcolor;
+    border-radius: 2px;
+    transform: rotateZ(45deg);
+  }
 }

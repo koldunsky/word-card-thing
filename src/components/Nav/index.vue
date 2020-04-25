@@ -17,10 +17,7 @@
         @click="navigateTo(name)"
       >
         <span class="nav__item-icon-container">
-          <component
-            :is="name === 'drill' ? 'BrainIcon' : 'span'"
-            :class="`nav__item-icon nav__item-icon_${name}`"
-          ></component>
+          <span :class="`nav__item-icon nav__item-icon_${name}`"/>
           <PointingDot
             v-if="pointingDots[name]"
           />
