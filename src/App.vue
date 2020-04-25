@@ -7,7 +7,6 @@
     }"
   >
     <UpdateChecker/>
-    {{workerState()}}
     <div
       class="scene"
     >
@@ -66,10 +65,6 @@
       if (this.words.length > 2) {
         this.navigateTo('drill')
       }
-    }
-
-    workerState () {
-      return window.workerState
     }
   }
 </script>
