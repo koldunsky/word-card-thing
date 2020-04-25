@@ -7,7 +7,7 @@
     }"
   >
     <UpdateChecker/>
-    {{workerState}}
+    {{workerState()}}
     <div
       class="scene"
     >
@@ -68,7 +68,7 @@
       }
     }
 
-    get workerState () {
+    workerState () {
       return window.workerState
     }
   }
