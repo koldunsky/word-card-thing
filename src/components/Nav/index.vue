@@ -33,13 +33,11 @@
   import { TPageName } from '@/types'
   import { TPointingDots } from '@/entities/nav'
   import PointingDot from '../../ui-kit/PointingDot/index.vue'
-  import BrainIcon from '../../assets/icons/brain.svg'
 
   const NavModule = namespace('NavModule')
 
   @Component({
     components: {
-      BrainIcon,
       PointingDot
     }
   })
