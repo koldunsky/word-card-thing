@@ -1,0 +1,102 @@
+@import '../../assets/style/utils';
+
+$bottom-offset: 7.5px;
+$bottom-arrow-size: 15px;
+$icon-add-size: 24px;
+
+.installPrompt {
+  position: fixed;
+  z-index: z(ontop);
+  bottom: $bottom-offset + $bottom-arrow-size;
+  left: 50%;
+  max-width: calc(100% - 20px);
+  transform: translateX(-50%);
+  background: white;
+  padding: 8px 10px;
+  border-radius: 2px;
+  text-align: left;
+  box-shadow: 0 1px 5px $green-150;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.3rem;
+  width: 30rem;
+
+  .app_has-3-words & {
+    bottom: $nav-height + $bottom-offset;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    top: calc(100% - 1px);
+    left: 50%;
+    margin-left: -16px;
+    border: 16px solid transparent;
+    border-top-color: white;
+  }
+
+  &::before {
+    top: 100%;
+    border-top-color: $green-150;
+  }
+}
+
+.icon-add {
+  position: relative;
+  background: none;
+  border-radius: 6px;
+  margin-top: 1px;
+  background: $green-400;
+  width: $icon-add-size;
+  height: $icon-add-size;
+  flex: 0 0 $icon-add-size;
+  margin-right: 10px;
+  overflow: hidden;
+
+  &::before,
+  &::after {
+    content: '';
+    @include stretch();
+    width: 14px;
+    height: 2px;
+    background: #fff;
+    z-index: 1;
+  }
+  &::after {
+    transform: rotateZ(90deg);
+  }
+}
+
+.text {
+  justify-self: start;
+  flex-grow: 1;
+}
+
+.dismiss {
+  @include cross-icon(10px);
+  vertical-align: middle;
+  width: 17px;
+  height: 17px;
+  margin-left: 10px;
+ justify-self: flex-end;
+  flex: 0 0 auto;
+}
+
+.icon-share {
+  margin-top: 3px;
+  fill: #4393fe;
+  width: 23px;
+  height: 23px;
+  position: relative;
+  display: inline-block;
+  vertical-align: middle;
+  top: -2px;
+}
+
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+.fade-enter, .fade-leave-to /* .fade-leave-active below version 2.1.8 */ {
+  opacity: 0;
+}

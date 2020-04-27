@@ -7,6 +7,7 @@
     }"
   >
     <UpdateChecker/>
+    <InstallPrompt/>
     <div
       class="scene"
     >
@@ -32,6 +33,7 @@
   import List from './components/List/index.vue'
   import { Component, Vue } from 'vue-property-decorator'
   import UpdateChecker from './components/UpdateChecker/index.vue'
+  import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
   import { TPageName } from './types'
 
@@ -40,6 +42,7 @@
   @Component({
     components: {
       UpdateChecker,
+      InstallPrompt,
       Add,
       Drill,
       List,
