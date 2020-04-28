@@ -20,6 +20,17 @@
     background: $green-150;
     border-color: $green-150;
   }
+
+  @include inDarkMode {
+    color: inherit;
+    background: $green-600;
+    border-color: $green-600;
+
+    &:active {
+      background: $green-550;
+      border-color: $green-550;
+    }
+  }
 }
 
 .button_accent {
@@ -31,6 +42,16 @@
     border-color: $palette-accent-900;
     background: transparent;
     color: $palette-accent-900;
+  }
+
+  @include inDarkMode {
+    border-color: $palette-accent-default-dark;
+    color: $palette-accent-default-dark;
+
+    &:active {
+      border-color: $palette-accent-default-dark-active;
+      color: $palette-accent-default-dark-active;
+    }
   }
 }
 

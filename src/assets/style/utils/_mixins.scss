@@ -40,23 +40,34 @@
 }
 
 @mixin link {
-  color: $palette-accent-500;
+  color: $palette-accent-default;
 
   &:active {
-    color: $palette-accent-400;
+    color: $palette-accent-default-active;
+  }
+
+  @include inDarkMode {
+    color: $palette-accent-default-dark;
+
+    &:active {
+      color: $palette-accent-default-dark-active;
+    }
   }
 }
 
 @mixin cross-icon($cross-width: 8px, $size: 2rem) {
   @include button-reset;
-  color: $color-background;
+  color: $green-800;
   width: $size;
   height: $size;
   position: relative;
   display: inline-block;
+  @include inDarkMode {
+    color: inherit;
+  }
 
   &:active {
-    color: $palette-accent-500;
+    color: $palette-accent-default;
   }
 
 
@@ -81,6 +92,12 @@
 
 @mixin mediaSmallHeight {
   @media (min-height: 320px) {
+    @content;
+  }
+}
+
+@mixin inDarkMode {
+  @media (prefers-color-scheme: dark) {
     @content;
   }
 }

@@ -45,9 +45,14 @@ $wordMarginBottom: 25px;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
+  color: inherit;
 
   span:first-child {
-    color: $palette-accent-500;
+    color: $palette-accent-default;
+
+    @include inDarkMode {
+      color: $palette-accent-default-dark;
+    }
   }
 }
 
@@ -57,7 +62,11 @@ $wordMarginBottom: 25px;
     color: inherit;
   }
   span:last-child {
-    color: $palette-accent-500;
+    color: $palette-accent-default;
+
+    @include inDarkMode {
+      color: $palette-accent-default-dark;
+    }
   }
 }
 
@@ -103,6 +112,10 @@ $wordMarginBottom: 25px;
   margin-bottom: $wordMarginBottomSmall;
   font-size: 1.7em;
   color: $green-600;
+
+  @include inDarkMode {
+    color: $green-300;
+  }
 
   @include mediaSmallHeight {
     margin-bottom: $wordMarginBottom;

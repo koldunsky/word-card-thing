@@ -16,10 +16,13 @@ $green-950: hsl(170, 25%, 10%);
 $green-1000: hsl(170, 25%, 5%);
 
 $color-border: $green-250;
-$color-background: $green-800;
+$color-border-active: $green-550;
+$color-border-dark: $green-600;
+$color-border-dark-active: $green-450;
 
 $green-correct: darkseagreen;
 $notice-text-color: rgba(black, .5);
+$notice-text-color-dark: rgba(white, .7);
 
 $win-tile-background: hsl(170, 50%, 45%);
 
@@ -64,3 +67,9 @@ $palette-accent-A100: nth($palette-accent, 11);
 $palette-accent-A200: nth($palette-accent, 12);
 $palette-accent-A400: nth($palette-accent, 13);
 $palette-accent-A700: nth($palette-accent, 14);
+
+$palette-accent-default: $palette-accent-500;
+$palette-accent-default-active: $palette-accent-400;
+
+$palette-accent-default-dark: $palette-accent-300;
+$palette-accent-default-dark-active: $palette-accent-600;

@@ -34,6 +34,10 @@ $inner-container: 400px;
   & + & {
     margin-top: 10px;
   }
+
+  @include inDarkMode {
+    border-color: $color-border-dark;
+  }
 }
 
 .list-heading {
@@ -109,7 +113,7 @@ $inner-container: 400px;
 }
 
 .notice {
-  font-size: .8em;
+  font-size: 1.3rem;
   color: $notice-text-color;
   width: 80%;
   margin: 3.5rem auto 0;
@@ -117,6 +121,11 @@ $inner-container: 400px;
   b {
     text-decoration: underline;
     white-space: nowrap;
+  }
+
+
+  @include inDarkMode {
+    color: $notice-text-color-dark;
   }
 }
 

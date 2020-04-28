@@ -24,6 +24,10 @@ html, body {
   margin: 0;
   color: $green-900;
   min-width: 320px;
+  @include inDarkMode {
+    color: $green-100;
+    background: #355651;
+  }
 }
 
 .app {
@@ -40,7 +44,11 @@ html, body {
   transition: .3s ease border;
 
   &_has-3-words {
-    border-color: $palette-accent-500;
+    border-color: $palette-accent-default;
+
+    @include inDarkMode {
+      border-color: $palette-accent-400;
+    }
   }
 }
 
@@ -71,11 +79,23 @@ textarea {
   font-family: inherit;
   border-radius: 0 !important;
   -webkit-appearance: none;
+  background: transparent;
+  color: inherit;
 
   &:focus,
   &:active {
     outline: none;
-    border-color: $green-550;
+    border-color: $color-border-active;
+  }
+
+  @include inDarkMode {
+    border-color: $color-border-dark;
+
+    &:focus,
+    &:active {
+      outline: none;
+      border-color: $color-border-dark-active;
+    }
   }
 }
 input {
