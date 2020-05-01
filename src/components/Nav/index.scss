@@ -18,8 +18,8 @@
   }
 
   @include inDarkMode {
-    background: $green-900;
-    border-top: 1px solid $green-600;
+    background: $green-850;
+    border-color: transparent;
   }
 }
 
@@ -54,11 +54,10 @@
   }
 
   @include inDarkMode {
-    color: inherit;
+    color: $green-400;
 
     &_active {
-      cursor: default;
-      color: $palette-accent-default-dark;
+      color: $palette-accent-400;
     }
   }
 }

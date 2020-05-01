@@ -68,8 +68,11 @@
 
   &:active {
     color: $palette-accent-default;
-  }
 
+    @include inDarkMode {
+      color: $palette-accent-default-dark;
+    }
+  }
 
   &::before,
   &::after {
