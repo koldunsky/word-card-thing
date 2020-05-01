@@ -44,7 +44,7 @@
       if (this.isIos() && !this.isInStandaloneMode()) {
         setTimeout(() => {
           this.showInstallMessage = true
-        }, 20000)
+        }, 20)
       }
     }
   }

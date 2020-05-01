@@ -3,6 +3,7 @@
 $bottom-offset: 7.5px;
 $bottom-arrow-size: 15px;
 $icon-add-size: 24px;
+$bg-dark: #444;
 
 .installPrompt {
   position: fixed;
@@ -42,6 +43,21 @@ $icon-add-size: 24px;
   }
 }
 
+.installPrompt {
+  @include inDarkMode {
+    background: $bg-dark;
+    box-shadow: none;
+
+    &::after {
+      border-top-color: $bg-dark;
+    }
+
+    &::before {
+      border-top-color: transparent;
+    }
+  }
+}
+
 .icon-add {
   position: relative;
   background: none;
@@ -65,6 +81,16 @@ $icon-add-size: 24px;
   }
   &::after {
     transform: rotateZ(90deg);
+  }
+}
+
+.icon-add {
+  @include inDarkMode {
+    background: $green-650;
+    &::before,
+    &::after {
+      background: $bg-dark;
+    }
   }
 }
 
