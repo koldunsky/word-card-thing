@@ -16,6 +16,11 @@
     max-height: $nav-height;
     visibility: visible;
   }
+
+  @include inDarkMode {
+    background: $green-850;
+    border-color: transparent;
+  }
 }
 
 .nav__container {
@@ -45,7 +50,15 @@
 
   &_active {
     cursor: default;
-    color: $palette-accent-500;
+    color: $palette-accent-default;
+  }
+
+  @include inDarkMode {
+    color: $green-400;
+
+    &_active {
+      color: $palette-accent-400;
+    }
   }
 }
 
