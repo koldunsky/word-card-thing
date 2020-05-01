@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="updateExists"
     class="updateChecker"
   >
     New version available!

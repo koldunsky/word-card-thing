@@ -17,10 +17,13 @@
   color: $notice-text-color;
   border-radius: $border-radius;
   z-index: z(ontop);
-  background: rgba(white, .8);
   height: 0;
   overflow: hidden;
   box-sizing: content-box;
+
+  @include inDarkMode {
+    color: $notice-text-color-dark;
+  }
 }
 
 .button {
