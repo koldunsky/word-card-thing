@@ -10,7 +10,6 @@
       <span>W</span> <i class="arrowIcon"></i> <span>T</span>
     </button>
     <div class="drill__inner">
-      {{workerState}}
       <div
         class="word"
         :class="{
@@ -183,10 +182,6 @@
         translation
       } = this.currentWord
       return this.isDrillTranslationInsteadWord ? word : translation
-    }
-
-    get workerState () {
-      return window.workerState
     }
 
     onFocusOut (e) {
