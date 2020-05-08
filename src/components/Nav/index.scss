@@ -18,8 +18,8 @@
   }
 
   @include inDarkMode {
-    background: $green-850;
-    border-color: transparent;
+    background: $green-800;
+    border-color: $green-750;
   }
 }
 

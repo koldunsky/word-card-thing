@@ -23,12 +23,12 @@
 
   @include inDarkMode {
     color: inherit;
-    background: $green-600;
-    border-color: $green-600;
+    background: $green-650;
+    border-color: $green-650;
 
     &:active {
-      background: $green-550;
-      border-color: $green-550;
+      background: $green-600;
+      border-color: $green-600;
     }
   }
 }
