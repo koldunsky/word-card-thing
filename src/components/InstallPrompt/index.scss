@@ -3,7 +3,7 @@
 $bottom-offset: 7.5px;
 $bottom-arrow-size: 15px;
 $icon-add-size: 24px;
-$bg-dark: rgb(60, 62 ,60);
+$bg-dark: rgb(60, 62, 60);
 
 .installPrompt {
   position: fixed;
@@ -79,6 +79,7 @@ $bg-dark: rgb(60, 62 ,60);
     z-index: 1;
     border-radius: 2px;
   }
+
   &::after {
     transform: rotateZ(90deg);
   }
@@ -105,7 +106,7 @@ $bg-dark: rgb(60, 62 ,60);
   width: 17px;
   height: 17px;
   margin-left: 10px;
- justify-self: flex-end;
+  justify-self: flex-end;
   flex: 0 0 auto;
 }
 
