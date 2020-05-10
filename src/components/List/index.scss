@@ -131,6 +131,7 @@ $inner-container: 400px;
   color: $notice-text-color;
   width: 80%;
   margin: 3.5rem auto 0;
+  white-space: pre;
 
   b {
     text-decoration: underline;

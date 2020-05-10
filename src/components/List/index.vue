@@ -9,18 +9,18 @@
           }"
         >
           <span
-            v-for="(value, key) in sortCategories"
-            :key="key"
-            @click="() => onSortingChange(key)"
-            :class="[key, 'list-heading__item', sortBy === key ? 'list-heading__item_active' : '']"
+            v-for="value in sortCategories"
+            :key="value"
+            @click="() => onSortingChange(value)"
+            :class="[value.toLowerCase(), 'list-heading__item', sortBy === value.toLowerCase() ? 'list-heading__item_active' : '']"
           >
-            {{value}}
+            <span v-t="value" />
             <span
               class="order-icon"
               :class="{
                 'order-icon_asc': isASC,
                 'order-icon_desc': !isASC,
-                'order-icon_hidden': sortBy !== key
+                'order-icon_hidden': sortBy !== value
               }"
               @click="toggleOrder"
             >
@@ -57,14 +57,19 @@
           </button>
         </li>
       </ul>
-      <div
-        v-if="words.length < 4"
+      <i18n
+        path="list.addMore"
+        tag="div"
         class="notice"
+        v-if="words.length < 4"
       >
-        Go on! <LocalLink to="add">Add</LocalLink> more words to the list. <br>
-        Words may be deleted if there is
-        <br><b>more than 3 words</b> in&nbsp;the&nbsp;list.
-      </div>
+        <template v-slot:addLink>
+          <LocalLink to="add" v-t="'list.addLink'" />
+        </template>
+        <template v-slot:moreThanThree>
+          <b v-t="'list.moreThanThree'"/>
+        </template>
+      </i18n>
     </div>
   </div>
 </template>
@@ -79,7 +84,7 @@
   } from 'vuex-class'
   import LocalLink from '../../ui-kit/Link/index.vue'
 
-  type TSortCategory = 'word' | 'translation'
+  type TSortCategory = 'Word' | 'Translation'
 
   @Component({
     components: {
@@ -92,10 +97,7 @@
     @Action('deleteWord') deleteWord: any
 
     sortBy: TSortCategory = null
-    sortCategories: {[key in TSortCategory]: string} = {
-      word: 'Words',
-      translation: 'Translations'
-    }
+    sortCategories: Array<TSortCategory> = ['Word', 'Translation']
     isASC: boolean = true;
 
     toggleOrder () {

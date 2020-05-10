@@ -1,12 +1,11 @@
 <template>
   <transition name="fade">
-    <div class="installPrompt" v-if="showInstallMessage">
+    <div class="installPrompt" v-if="1">
       <i class="icon-add"/>
       <div class="text">
-        Install this app on your device: <br>
-        tap
+        <span v-html="$t('installPrompt.beforeIcon')" />
         <ShareIcon class="icon-share"/>
-        and then Add to Home Screen.
+        <span v-html="$t('installPrompt.afterIcon')" />
       </div>
       <button class="dismiss" @click="onDismissButtonClick"/>
     </div>

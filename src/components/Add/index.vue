@@ -5,14 +5,14 @@
   >
     <div class="add__inner">
       <div v-if="words.length < 3" class="notification">
-        <span v-if="words.length === 0">Add <span class="notification__accent">3</span> words</span>
-        <span v-if="words.length > 0">Add <span class="notification__accent">{{ 3 - words.length}}</span> more</span>
+        <span v-if="words.length === 0" v-t="'add.three'" />
+        <span v-if="words.length > 0">
+          {{$tc('add.others', 3 - words.length)}}
+        </span>
       </div>
       <div class="fieldset">
         <label>
-          <span class="field__label">
-            Word
-          </span>
+          <span class="field__label" v-t="'Word'" />
           <input
             ref="inputWord"
             id="field_word"
@@ -21,9 +21,7 @@
           />
         </label>
         <label>
-          <span class="field__label">
-            Translation
-          </span>
+          <span class="field__label" v-t="'Translation'" />
           <input
             id="field_translation"
             v-model="translation"
@@ -31,9 +29,7 @@
           />
         </label>
       </div>
-      <Button>
-        Add
-      </Button>
+      <Button v-t="'Add'" />
     </div>
   </form>
 </template>
