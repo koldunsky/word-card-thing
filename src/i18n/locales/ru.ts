@@ -5,15 +5,12 @@ export const ru = {
   Skip: 'Пропустить',
   ShowAnswer: 'Показать ответ',
   Delete: 'Удалить',
-  installPrompt: {
-    beforeIcon: 'Установите это приложение:\nнажмите',
-    afterIcon: 'и выберите «На&nbsp;экран&nbsp«Домой»'
-  },
+  installPrompt: 'Установите это приложение:\nнажмите {shareIcon}\nи выберите «На экран «Домой»',
   list: {
-    addMore: 'Отличное начало! {addLink} больше слов.\n' +
+    addMore: 'Отличное начало! {addLinkText} больше слов.\n' +
       'Слова могут быть удалены из списка,\n' +
       'если в нём {moreThanThree}.',
-    addLink: 'Добавьте',
+    addLinkText: 'Добавьте',
     moreThanThree: 'больше трех слов'
   },
   add: {

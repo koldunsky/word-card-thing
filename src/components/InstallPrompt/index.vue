@@ -1,12 +1,16 @@
 <template>
   <transition name="fade">
-    <div class="installPrompt" v-if="1">
+    <div class="installPrompt" v-if="showInstallMessage">
       <i class="icon-add"/>
-      <div class="text">
-        <span v-html="$t('installPrompt.beforeIcon')" />
-        <ShareIcon class="icon-share"/>
-        <span v-html="$t('installPrompt.afterIcon')" />
-      </div>
+        <i18n
+          path="installPrompt"
+          tag="div"
+          class="text"
+        >
+          <template v-slot:shareIcon>
+            <ShareIcon class="icon-share"/>
+          </template>
+        </i18n>
       <button class="dismiss" @click="onDismissButtonClick"/>
     </div>
   </transition>

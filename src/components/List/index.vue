@@ -63,8 +63,8 @@
         class="notice"
         v-if="words.length < 4"
       >
-        <template v-slot:addLink>
-          <LocalLink to="add" v-t="'list.addLink'" />
+        <template v-slot:addLinkText>
+          <LocalLink to="add" v-t="'list.addLinkText'" />
         </template>
         <template v-slot:moreThanThree>
           <b v-t="'list.moreThanThree'"/>

@@ -10,6 +10,7 @@ $bg-dark: rgb(60, 62, 60);
   z-index: z(ontop);
   bottom: $bottom-offset + $bottom-arrow-size;
   left: 50%;
+  transform: translate(-50%, 0);
   background: white;
   padding: 8px 8px 8px 10px;
   border-radius: 2px;
@@ -18,8 +19,7 @@ $bg-dark: rgb(60, 62, 60);
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
-  width: 30rem;
-  margin-left: -15rem;
+  max-width: 30rem;
 
   .app_has-3-words & {
     bottom: $nav-height + $bottom-offset;
@@ -96,8 +96,7 @@ $bg-dark: rgb(60, 62, 60);
 }
 
 .text {
-  justify-self: start;
-  flex-grow: 1;
+  flex: 0 0 auto;
   white-space: pre;
 }
 
@@ -108,7 +107,7 @@ $bg-dark: rgb(60, 62, 60);
   height: 17px;
   margin-left: 5px;
   justify-self: flex-end;
-  flex: 0 0 auto;
+  flex: 0 0 17px;
 }
 
 .icon-share {
@@ -125,11 +124,11 @@ $bg-dark: rgb(60, 62, 60);
 
 .fade-enter-active, .fade-leave-active {
   transition: all .5s;
-  transform: translateY(0);
+  transform: translate(-50%,  0);
 }
 
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-  transform: translateY(-10px);
+  transform: translate(-50%, -10px);
 }

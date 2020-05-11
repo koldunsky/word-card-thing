@@ -8,19 +8,15 @@ export const en = {
   Delete: 'Delete',
 
   // Components
-  installPrompt: {
-    beforeIcon: 'Install this app on your device:\ntap',
-    afterIcon: 'and then Add to Home Screen.'
-  },
+  installPrompt: 'Install this app on your device:\ntap {shareIcon} and then Add to Home Screen.',
   list: {
-    addMore: 'Go on! {addLink} more words to the list.\n' +
-      'Words may be deleted if there is\n' +
-      '{moreThanThree} in the list.',
-    addLink: 'Add',
+    addMore: 'Go on! {addLinkText} more words to the list.\n' +
+      'You can delete any word\nif list contains {moreThanThree}.',
+    addLinkText: 'Add',
     moreThanThree: 'more than 3 words'
   },
   add: {
     three: 'Add 3 words',
-    others: 'Add {0} more'
+    others: 'Add {n} more'
   }
 }
