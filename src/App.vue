@@ -72,3 +72,4 @@
   }
 </script>
 <style src="./assets/style/index.scss" lang="scss"></style>
+<style src="./assets/fonts/FiraSansCondensed/stylesheet.scss" lang="scss"></style>
