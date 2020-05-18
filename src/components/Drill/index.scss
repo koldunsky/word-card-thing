@@ -1,7 +1,7 @@
 @import '../../assets/style/utils';
 
-$wordMarginBottomSmall: 15px;
-$wordMarginBottom: 25px;
+$word-margin-bottom-small: 15px;
+$word-margin-bottom: 25px;
 
 .drill {
   @include page;
@@ -16,7 +16,7 @@ $wordMarginBottom: 25px;
 .word {
   font-size: 3em;
   line-height: 1.2;
-  margin-bottom: $wordMarginBottomSmall;
+  margin-bottom: $word-margin-bottom-small;
   min-height: 60px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ $wordMarginBottom: 25px;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 }
 
@@ -48,10 +48,10 @@ $wordMarginBottom: 25px;
   color: inherit;
 
   span:first-child {
-    color: $palette-accent-default;
+    color: $coral-default;
 
     @include inDarkMode {
-      color: $palette-accent-default-dark;
+      color: $coral-default-dark;
     }
   }
 }
@@ -61,13 +61,16 @@ $wordMarginBottom: 25px;
 
   span:first-child {
     color: inherit;
+    @include inDarkMode {
+      color: inherit;
+    }
   }
 
   span:last-child {
-    color: $palette-accent-default;
+    color: $coral-default;
 
     @include inDarkMode {
-      color: $palette-accent-default-dark;
+      color: $coral-default-dark;
     }
   }
 }
@@ -82,13 +85,13 @@ $wordMarginBottom: 25px;
 }
 
 .input {
-  margin-bottom: $wordMarginBottomSmall;
+  margin-bottom: $word-margin-bottom-small;
   box-shadow: 0 0 0 lighten(darkseagreen, 20%) !important;
   transition: .2s ease;
   transition-property: background-color, box-shadow;
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 
   &.right-answer {
@@ -121,16 +124,16 @@ $wordMarginBottom: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: $wordMarginBottomSmall;
+  margin-bottom: $word-margin-bottom-small;
   font-size: 1.7em;
-  color: $green-600;
+  color: $drill-answer-color;
 
   @include inDarkMode {
-    color: $green-300;
+    color: $drill-answer-color-dark;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 }
 

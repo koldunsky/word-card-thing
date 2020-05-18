@@ -1,3 +1,11 @@
+$win-tile-background: hsl(170, 50%, 45%);
+
+$font-family: 'Fira Sans Condensed', sans-serif;
+
+$border-radius: 2px;
+$nav-height: 60px;
+$input-height: 41px;
+
 $green-100: hsl(170, 25%, 95%);
 $green-150: hsl(170, 25%, 90%);
 $green-200: hsl(170, 25%, 85%);
@@ -17,23 +25,17 @@ $green-900: hsl(170, 25%, 15%);
 $green-950: hsl(170, 25%, 10%);
 $green-1000: hsl(170, 25%, 5%);
 
-$color-border: $green-250;
-$color-border-active: $green-550;
-$color-border-dark: $green-600;
-$color-border-dark-active: $green-450;
-
-$notice-text-color: rgba(black, .5);
-$notice-text-color-dark: rgba(white, .7);
-$app-background-dark: #355651;
-
-$win-tile-background: hsl(170, 50%, 45%);
-
-$font-family: 'Fira Sans Condensed', sans-serif;
-
-$border-radius: 2px;
-$nav-height: 60px;
-$input-height: 41px;
-
+$green-dark-100: rgba(#2a7e70, .1);
+$green-dark-150: rgba(#2a7e70, .15);
+$green-dark-200: rgba(#2a7e70, .2);
+$green-dark-300: rgba(#2a7e70, .3);
+$green-dark-400: rgba(#2a7e70, .4);
+$green-dark-500: rgba(#2a7e70, .5);
+$green-dark-600: rgba(#2a7e70, .6);
+$green-dark-700: rgba(#2a7e70, .7);
+$green-dark-800: rgba(#2a7e70, .8);
+$green-dark-900: rgba(#2a7e70, .9);
+$green-dark-1000: #2a7e70;
 
 // CORAL
 
@@ -54,24 +56,108 @@ rgb(255, 219, 212)
 rgb(255, 198, 187)
 ;
 
-$palette-accent-50: nth($palette-accent, 1);
-$palette-accent-100: nth($palette-accent, 2);
-$palette-accent-200: nth($palette-accent, 3);
-$palette-accent-300: nth($palette-accent, 4);
-$palette-accent-400: nth($palette-accent, 5);
-$palette-accent-500: nth($palette-accent, 6);
-$palette-accent-450: mix($palette-accent-400, $palette-accent-500);
-$palette-accent-600: nth($palette-accent, 7);
-$palette-accent-700: nth($palette-accent, 8);
-$palette-accent-800: nth($palette-accent, 9);
-$palette-accent-900: nth($palette-accent, 10);
-$palette-accent-A100: nth($palette-accent, 11);
-$palette-accent-A200: nth($palette-accent, 12);
-$palette-accent-A400: nth($palette-accent, 13);
-$palette-accent-A700: nth($palette-accent, 14);
+$coral-50: nth($palette-accent, 1);
+$coral-100: nth($palette-accent, 2);
+$coral-200: nth($palette-accent, 3);
+$coral-300: nth($palette-accent, 4);
+$coral-400: nth($palette-accent, 5);
+$coral-500: nth($palette-accent, 6);
+$coral-450: mix($coral-400, $coral-500);
+$coral-600: nth($palette-accent, 7);
+$coral-700: nth($palette-accent, 8);
+$coral-800: nth($palette-accent, 9);
+$coral-900: nth($palette-accent, 10);
+$coral-A100: nth($palette-accent, 11);
+$coral-A200: nth($palette-accent, 12);
+$coral-A400: nth($palette-accent, 13);
+$coral-A700: nth($palette-accent, 14);
 
-$palette-accent-default: $palette-accent-500;
-$palette-accent-default-active: $palette-accent-400;
+$coral: $coral-400;
+$coral-dark-100: mix($coral, black, 10%);
+$coral-dark-200: mix($coral, black, 20%);
+$coral-dark-300: mix($coral, black, 30%);
+$coral-dark-400: mix($coral, black, 40%);
+$coral-dark-500: mix($coral, black, 50%);
+$coral-dark-600: mix($coral, black, 60%);
+$coral-dark-700: mix($coral, black, 70%);
+$coral-dark-800: mix($coral, black, 80%);
+$coral-dark-900: mix($coral, black, 90%);
+$coral-dark-1000: mix($coral, black, 100%);
 
-$palette-accent-default-dark: $palette-accent-300;
-$palette-accent-default-dark-active: $palette-accent-600;
+$coral-default: $coral-500;
+$coral-default-active: $coral-400;
+
+$coral-default-dark: $coral-dark-800;
+$coral-default-dark-active: $coral-dark-900;
+
+// Global
+$color-border: $green-250;
+$color-border-active: $green-550;
+$color-border-dark: $green-dark-600;
+$color-border-dark-active: $green-dark-900;
+
+$notice-text-color: rgba(black, .5);
+$notice-text-color-dark: rgba(white, .7);
+
+
+// App
+$app-background: white;
+$app-text-color: $green-900;
+$app-border-top: $coral-default;
+
+$app-background-dark: #222222;
+$app-text-color-dark: white;
+$app-border-top-dark: $coral-default-dark;
+
+
+// Button
+$button-background: $green-100;
+$button-background-active: $green-150;
+$button-color: $green-800;
+
+$button-background-dark: $green-dark-300;
+$button-background-dark-active: $green-dark-400;
+$button-color-dark: inherit;
+
+// Button accent
+$button-accent-border: $coral-300;
+$button-accent-color: $coral-600;
+$button-accent-border-active: $coral-900;
+$button-accent-color-active: $coral-900;
+
+$button-accent-border-dark: $coral-default-dark;
+$button-accent-color-dark: $coral-default-dark;
+$button-accent-border-active-dark: $coral-default-dark-active;
+$button-accent-color-active-dark: $coral-default-dark-active;
+
+// Input
+$input-border: $color-border;
+$input-border-active: $color-border-active;
+
+$input-border-dark: $color-border-dark;
+$input-border-active-dark: $color-border-dark-active;
+
+// Nav
+$nav-background: $green-100;
+$nav-border-top: $green-150;
+$nav-item-color: $green-800;
+$nav-active-color: $coral-default;
+
+$nav-background-dark: $green-dark-100;
+$nav-border-top-dark: $green-dark-100;
+$nav-item-color-dark: $green-400;
+$nav-active-color-dark: $coral-default-dark;
+
+// List
+$list-heading: $green-500;
+$list-heading-sorted-bg: $green-100;
+$list-heading-active: $coral-800;
+
+$list-heading-dark: $green-400;
+$list-heading-sorted-bg-dark: $green-dark-200;
+$list-heading-active-dark: $coral-default-dark;
+
+// Drill
+$drill-answer-color: $green-600;
+
+$drill-answer-color-dark: $green-300;

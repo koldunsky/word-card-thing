@@ -8,6 +8,12 @@
   >
     <UpdateChecker/>
     <InstallPrompt/>
+    <button
+      class="theme-switcher"
+      @click="switchTheme"
+    >
+      change theme
+    </button>
     <div
       class="scene"
     >
@@ -37,6 +43,9 @@
   import Nav from './components/Nav/index.vue'
   import { TPageName } from './types'
 
+  const DARK_THEME_ID: string = 'dark-mode'
+  const LIGHT_THEME_ID: string = 'light-mode'
+
   const NavModule = namespace('NavModule')
 
   @Component({
@@ -51,6 +60,7 @@
   })
   export default class App extends Vue {
     @State('words') words: any
+    isDarkMode: boolean = null;
 
     @NavModule.State
     pages: Array<TPageName>
@@ -64,9 +74,33 @@
     @NavModule.Action
     navigateTo: any
 
+    switchTheme () {
+      this.setAndUpdateTheme(!this.isDarkMode)
+    }
+
+    setAndUpdateTheme (dark?: boolean) {
+      this.isDarkMode = dark
+      this.updateTheme(dark)
+    }
+
+    updateTheme (dark?: boolean) {
+      const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
+      const current = dark ? themes.pop() : themes.shift()
+      const html = document.querySelector('html')
+      html.classList.remove(current)
+      html.classList.add(themes[0])
+    }
+
     beforeMount () {
       if (this.words.length > 2) {
         this.navigateTo('drill')
+      }
+
+      const darkThemePreferred = window.matchMedia('')
+      if (darkThemePreferred) {
+        this.setAndUpdateTheme(true)
+      } else {
+        this.setAndUpdateTheme()
       }
     }
   }

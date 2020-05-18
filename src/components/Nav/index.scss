@@ -8,9 +8,10 @@
   overflow: hidden;
   max-height: 0;
   visibility: hidden;
-  background: $green-100;
-  border-top: 1px solid $green-150;
-  transition: .3s ease all;
+  background: $nav-background;
+  border-top: 1px solid $nav-border-top;
+  transition: .3s ease;
+  transition-property: max-height, visibility;
 
   &_visible {
     max-height: $nav-height;
@@ -18,8 +19,8 @@
   }
 
   @include inDarkMode {
-    background: $green-800;
-    border-color: $green-750;
+    background: $nav-background-dark;
+    border-color: $nav-border-top-dark;
   }
 }
 
@@ -45,19 +46,19 @@
   border: none;
   outline: none;
   cursor: pointer;
-  color: $green-800;
+  color: $nav-item-color;
   fill: currentColor;
 
   &_active {
     cursor: default;
-    color: $palette-accent-default;
+    color: $nav-active-color;
   }
 
   @include inDarkMode {
-    color: $green-400;
+    color: $nav-item-color-dark;
 
     &_active {
-      color: $palette-accent-400;
+      color: $nav-active-color-dark;
     }
   }
 }

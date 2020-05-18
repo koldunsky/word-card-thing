@@ -40,17 +40,17 @@
 }
 
 @mixin link {
-  color: $palette-accent-default;
+  color: $coral-default;
 
   &:active {
-    color: $palette-accent-default-active;
+    color: $coral-default-active;
   }
 
   @include inDarkMode {
-    color: $palette-accent-default-dark;
+    color: $coral-default-dark;
 
     &:active {
-      color: $palette-accent-default-dark-active;
+      color: $coral-default-dark-active;
     }
   }
 }
@@ -67,10 +67,10 @@
   }
 
   &:active {
-    color: $palette-accent-default;
+    color: $coral-default;
 
     @include inDarkMode {
-      color: $palette-accent-default-dark;
+      color: $coral-default-dark;
     }
   }
 
@@ -101,6 +101,11 @@
 
 @mixin inDarkMode {
   @media (prefers-color-scheme: dark) {
+    html:not(.light-mode) & {
+      @content;
+    }
+  }
+  html.dark-mode:not(.light-mode) & {
     @content;
   }
 }

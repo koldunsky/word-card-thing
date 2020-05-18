@@ -41,16 +41,16 @@ $inner-container: 400px;
 }
 
 .list-heading {
-  color: $green-500;
+  color: $list-heading;
   border-bottom: none;
 
   @include inDarkMode {
-    color: $green-400;
+    color: $list-heading-dark;
   }
 }
 
 .list-heading_sorted {
-  background: $green-100;
+  background: $list-heading-sorted-bg;
   position: relative;
   &::before {
     content: '';
@@ -59,14 +59,14 @@ $inner-container: 400px;
     bottom: 0;
     left: -.7rem;
     width: .7rem;
-    background: $green-100;
+    background: $list-heading-sorted-bg;
   }
 
   @include inDarkMode {
-    background: $green-700;
+    background: $list-heading-sorted-bg-dark;
     color: inherit;
     &::before {
-      background: $green-700;
+      background: $list-heading-sorted-bg-dark;
     }
   }
 }
@@ -87,10 +87,10 @@ $inner-container: 400px;
 }
 
 .list-heading__item_active {
-  color: $palette-accent-800;
+  color: $list-heading-active;
 
   @include inDarkMode {
-    color: $palette-accent-default-dark;
+    color: $list-heading-active-dark;
   }
 }
 
