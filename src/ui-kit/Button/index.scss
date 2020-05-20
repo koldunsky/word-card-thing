@@ -43,10 +43,12 @@
 
   @include inDarkMode {
     border-color: $button-accent-border-dark;
+    background: transparent;
     color: $button-accent-color-dark;
 
     &:active {
       border-color: $button-accent-border-active-dark;
+      background: transparent;
       color: $button-accent-color-active-dark;
     }
   }
