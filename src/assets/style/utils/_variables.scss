@@ -5,7 +5,7 @@ $font-family: 'Fira Sans Condensed', sans-serif;
 
 // It should be here to give base colors for palettes
 $app-background: white;
-$app-background-dark: #222222;
+$app-background-dark: #252727;
 
 // Measures
 $border-radius: 2px;
@@ -33,6 +33,7 @@ $green-900: hsl(170, 25%, 15%);
 $green-950: hsl(170, 25%, 10%);
 $green-1000: hsl(170, 25%, 5%);
 
+$green-dark-50: mix($base-green, $app-background-dark, 5%);
 $green-dark-100: mix($base-green, $app-background-dark, 10%);
 $green-dark-150: mix($base-green, $app-background-dark, 15%);
 $green-dark-200: mix($base-green, $app-background-dark, 20%);
@@ -43,7 +44,20 @@ $green-dark-600: mix($base-green, $app-background-dark, 60%);
 $green-dark-700: mix($base-green, $app-background-dark, 70%);
 $green-dark-800: mix($base-green, $app-background-dark, 80%);
 $green-dark-900: mix($base-green, $app-background-dark, 90%);
-$green-dark-1000: $base-green;
+$green-dark-950: mix($base-green, $app-background-dark, 95%);
+
+$green-light-50: mix($base-green, white, 5%);
+$green-light-100: mix($base-green, white, 10%);
+$green-light-150: mix($base-green, white, 15%);
+$green-light-200: mix($base-green, white, 20%);
+$green-light-300: mix($base-green, white, 30%);
+$green-light-400: mix($base-green, white, 40%);
+$green-light-500: mix($base-green, white, 50%);
+$green-light-600: mix($base-green, white, 60%);
+$green-light-700: mix($base-green, white, 70%);
+$green-light-800: mix($base-green, white, 80%);
+$green-light-900: mix($base-green, white, 90%);
+$green-light-950: mix($base-green, white, 95%);
 
 
 $coral-palette:
@@ -79,8 +93,9 @@ $coral-A200: nth($coral-palette, 12);
 $coral-A400: nth($coral-palette, 13);
 $coral-A700: nth($coral-palette, 14);
 
-$coral: $coral-400;
+$coral: coral;
 $coral-dark-100: mix($coral, $app-background-dark, 10%);
+$coral-dark-150: mix($coral, $app-background-dark, 15%);
 $coral-dark-200: mix($coral, $app-background-dark, 20%);
 $coral-dark-300: mix($coral, $app-background-dark, 30%);
 $coral-dark-400: mix($coral, $app-background-dark, 40%);
@@ -91,10 +106,22 @@ $coral-dark-800: mix($coral, $app-background-dark, 80%);
 $coral-dark-900: mix($coral, $app-background-dark, 90%);
 $coral-dark-1000: mix($coral, $app-background-dark, 100%);
 
+$coral-light-100: mix($coral, white, 10%);
+$coral-light-150: mix($coral, white, 15%);
+$coral-light-200: mix($coral, white, 20%);
+$coral-light-300: mix($coral, white, 30%);
+$coral-light-400: mix($coral, white, 40%);
+$coral-light-500: mix($coral, white, 50%);
+$coral-light-600: mix($coral, white, 60%);
+$coral-light-700: mix($coral, white, 70%);
+$coral-light-800: mix($coral, white, 80%);
+$coral-light-900: mix($coral, white, 90%);
+$coral-light-1000: mix($coral, white, 100%);
+
 $coral-default: $coral-500;
 $coral-default-active: $coral-400;
 
-$coral-default-dark: $coral-dark-800;
+$coral-default-dark: $coral-light-900;
 $coral-default-dark-active: $coral-dark-900;
 
 // Global
@@ -107,12 +134,11 @@ $color-border-dark-active: $green-dark-600;
 $notice-text-color: rgba(black, .5);
 $notice-text-color-dark: inherit;
 
-
 // App
 $app-text-color: $green-900;
 $app-border-top: $coral-default;
 
-$app-text-color-dark: mix(#d9d9d9, $base-green, 90%);
+$app-text-color-dark: mix(#eee, $base-green, 90%);
 $app-border-top-dark: $coral-default-dark;
 
 // Button
@@ -125,15 +151,13 @@ $button-background-dark-active: $green-dark-150;
 $button-color-dark: inherit;
 
 // Button accent
-$button-accent-border: $coral-300;
-$button-accent-color: $coral-600;
-$button-accent-border-active: $coral-900;
-$button-accent-color-active: $coral-900;
+$button-accent-color: $coral-dark-300;
+$button-accent-background: $coral-light-100;
+$button-accent-background-active: $coral-light-150;
 
-$button-accent-border-dark: $coral-default-dark;
 $button-accent-color-dark: $coral-default-dark;
-$button-accent-border-active-dark: $coral-default-dark-active;
-$button-accent-color-active-dark: $coral-default-dark-active;
+$button-accent-background-dark: $coral-dark-100;
+$button-accent-background-active-dark: $coral-dark-150;
 
 // Input
 $input-border: $color-border;
@@ -148,8 +172,8 @@ $nav-border-top: $green-150;
 $nav-item-color: $green-800;
 $nav-active-color: $coral-default;
 
-$nav-background-dark: $green-dark-100;
-$nav-border-top-dark: $green-dark-150;
+$nav-background-dark: $green-dark-50;
+$nav-border-top-dark: $green-dark-100;
 $nav-item-color-dark: inherit;
 $nav-active-color-dark: $coral-default-dark;
 

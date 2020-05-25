@@ -60,12 +60,26 @@ $inner-container: 400px;
     left: -.7rem;
     width: .7rem;
     background: $list-heading-sorted-bg;
+    border-top-left-radius: $border-radius;
+    border-bottom-left-radius: $border-radius;
+  }
+  &::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: -.3rem;
+    width: .3rem;
+    background: $list-heading-sorted-bg;
+    border-top-right-radius: $border-radius;
+    border-bottom-right-radius: $border-radius;
   }
 
   @include inDarkMode {
     background: $list-heading-sorted-bg-dark;
     color: inherit;
-    &::before {
+    &::before,
+    &::after {
       background: $list-heading-sorted-bg-dark;
     }
   }

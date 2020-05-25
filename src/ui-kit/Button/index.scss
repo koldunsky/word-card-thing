@@ -31,25 +31,19 @@
 }
 
 .button_accent {
-  border: 1px solid $button-accent-border;
-  background: transparent;
+  background: $button-accent-background;
   color: $button-accent-color;
 
   &:active {
-    border-color: $button-accent-border-active;
-    background: transparent;
-    color: $button-accent-color-active;
+    background: $button-accent-background-active;
   }
 
   @include inDarkMode {
-    border-color: $button-accent-border-dark;
-    background: transparent;
-    color: $button-accent-color-dark;
+    background: $coral-dark-100;
+    color: inherit;
 
     &:active {
-      border-color: $button-accent-border-active-dark;
-      background: transparent;
-      color: $button-accent-color-active-dark;
+      border-color: $button-accent-background-active-dark;
     }
   }
 }
