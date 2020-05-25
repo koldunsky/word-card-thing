@@ -32,7 +32,7 @@
 
     mounted () {
       // Checks if should display install popup notification:
-      if (isIos() && !isStandalone()) {
+      if (isIos && !isStandalone) {
         setTimeout(() => {
           this.showInstallMessage = true
         }, 1000)
