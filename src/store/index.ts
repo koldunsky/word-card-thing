@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+
 import remove from 'lodash/remove'
 import getGuid from '@/utils/getGuid'
 

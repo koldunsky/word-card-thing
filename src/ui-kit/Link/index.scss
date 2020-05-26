@@ -1,5 +1,14 @@
 @import '../../assets/style/utils';
 
 .link {
+  padding: 0 6px;
   cursor: pointer;
+  border-radius: $border-radius;
+  color: $green-800;
+  background-color: $green-100;
+
+  @include inDarkMode {
+    background: $green-650;
+    color: white;
+  }
 }

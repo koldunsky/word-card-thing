@@ -7,7 +7,7 @@
           }"
       @click="toggleTranslationFlow"
     >
-      <span>W</span> <i class="arrowIcon"></i> <span>T</span>
+      <span>{{$t('Word').slice(0, 1)}}</span> <i class="arrowIcon" /> <span>{{$t('Translation').slice(0, 1)}}</span>
     </button>
     <div class="drill__inner">
       <div
@@ -48,14 +48,14 @@
           class="button"
           @click="onSkipWordButtonClick"
         >
-          Skip
+          {{$t('Skip')}}
         </Button>
         <Button
           class="button"
           v-if="!isShowAnswer"
           @click="onShowAnswerButtonClick"
         >
-          Show answer
+          {{$t('ShowAnswer')}}
         </Button>
 
         <Button
@@ -63,7 +63,7 @@
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"
         >
-          Delete
+          {{$t('Delete')}}
         </Button>
       </div>
     </div>

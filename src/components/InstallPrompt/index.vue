@@ -2,12 +2,15 @@
   <transition name="fade">
     <div class="installPrompt" v-if="showInstallMessage">
       <i class="icon-add"/>
-      <div class="text">
-        Install this app on your device: <br>
-        tap
-        <ShareIcon class="icon-share"/>
-        and then Add to Home Screen.
-      </div>
+        <i18n
+          path="installPrompt"
+          tag="div"
+          class="text"
+        >
+          <template v-slot:shareIcon>
+            <ShareIcon class="icon-share"/>
+          </template>
+        </i18n>
       <button class="dismiss" @click="onDismissButtonClick"/>
     </div>
   </transition>
