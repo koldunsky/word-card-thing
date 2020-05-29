@@ -25,6 +25,10 @@ $bg-dark: rgb(60, 62, 60);
     bottom: $nav-height + $bottom-offset;
   }
 
+  .rounded-screen & {
+    bottom: $nav-height + $rounded-screen-nav-offset + $bottom-offset;
+  }
+
   &::after,
   &::before {
     content: '';
@@ -41,6 +45,7 @@ $bg-dark: rgb(60, 62, 60);
     border-top-color: $green-150;
   }
 }
+
 
 .installPrompt {
   @include inDarkMode {
@@ -120,7 +125,6 @@ $bg-dark: rgb(60, 62, 60);
   vertical-align: middle;
   top: -4px;
 }
-
 
 .fade-enter-active, .fade-leave-active {
   transition: all .5s;

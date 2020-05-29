@@ -17,7 +17,6 @@
 </template>
 
 <script lang="ts">
-  import get from 'lodash/get'
   import { Component, Vue } from 'vue-property-decorator'
   import ShareIcon from './assets/share-apple.svg'
   import { isIos } from '@/utils/isIos'

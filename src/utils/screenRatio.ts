@@ -1,6 +1,6 @@
 export function getScreenRatio (): number {
   try {
-    return window.innerWidth / window.innerWidth
+    return window.innerHeight / window.innerWidth
   } catch (e) {
     console.error(e)
   }

@@ -3,26 +3,22 @@ module.exports = {
   env: {
     node: true
   },
-  'extends': [
-    'plugin:vue/essential',
-    '@vue/standard',
-    '@vue/typescript'
-  ],
+  extends: ["plugin:vue/essential", "@vue/standard", "@vue/typescript"],
   overrides: [
     {
-      files: ['*.vue'],
+      files: ["*.vue"],
       rules: {
-        indent: 'off'
+        indent: "off"
       }
     }
   ],
   rules: {
     camelcase: 0,
-    'vue/script-indent': ['error', 2, { 'baseIndent': 1 }],
-    'no-console': process.env.NODE_ENV === 'production' ? 'error' : 'off',
-    'no-debugger': process.env.NODE_ENV === 'production' ? 'error' : 'off'
+    "vue/script-indent": ["error", 2, { baseIndent: 1 }],
+    "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
+    "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
   },
   parserOptions: {
-    parser: '@typescript-eslint/parser'
+    parser: "@typescript-eslint/parser"
   }
-}
+};
