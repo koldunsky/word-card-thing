@@ -36,7 +36,6 @@
   import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
   import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
-  import { getScreenRatio } from '@/utils/screenRatio'
   import { TPageName } from './types'
 
   const NavModule = namespace('NavModule')
