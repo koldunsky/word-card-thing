@@ -6,6 +6,6 @@ export const addWord = (cy) => {
 
 export const addThreeWords = (cy) => {
   for (let i = 0; i < 3; i++) {
-    addWord()
+    addWord(cy)
   }
 }
