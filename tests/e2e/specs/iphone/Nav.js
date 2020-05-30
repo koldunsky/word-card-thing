@@ -4,7 +4,7 @@ describe('Navigation', () => {
   it('has correct height on iphone 6', () => {
     cy.viewport('iphone-6')
     cy.visit('/')
-    addThreeWords()
+    addThreeWords(cy)
     cy.get('.nav').should($div => {
       expect($div.get(0).offsetHeight).to.eq(64)
     })
@@ -13,7 +13,7 @@ describe('Navigation', () => {
   it('has correct height on iphone X', () => {
     cy.viewport('iphone-x')
     cy.visit('/')
-    addThreeWords()
+    addThreeWords(cy)
     cy.get('.nav').should($div => {
       expect($div.get(0).offsetHeight).to.eq(94)
     })
