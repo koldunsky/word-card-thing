@@ -35,6 +35,7 @@
   import UpdateChecker from './components/UpdateChecker/index.vue'
   import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
+  import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
   import { TPageName } from './types'
 
   const NavModule = namespace('NavModule')
@@ -67,6 +68,10 @@
     beforeMount () {
       if (this.words.length > 2) {
         this.navigateTo('drill')
+      }
+
+      if (isIphoneRoundedScreen) {
+        document.querySelector('html').classList.add('rounded-screen')
       }
     }
   }
