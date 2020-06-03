@@ -9,10 +9,10 @@
           }"
         >
           <span
-            v-for="value in sortCategories"
-            :key="value"
-            @click="() => onSortingChange(value)"
-            :class="[value.toLowerCase(), 'list-heading__item', sortBy === value.toLowerCase() ? 'list-heading__item_active' : '']"
+            v-for="(value, key) in sortCategories"
+            :key="key"
+            @click="() => onSortingChange(key)"
+            :class="[key, 'list-heading__item', sortBy === key ? 'list-heading__item_active' : '']"
           >
             <span v-t="value" />
             <span
@@ -84,7 +84,7 @@
   } from 'vuex-class'
   import LocalLink from '../../ui-kit/Link/index.vue'
 
-  type TSortCategory = 'Word' | 'Translation'
+  type TSortCategory = 'word' | 'translation'
 
   @Component({
     components: {
@@ -97,7 +97,10 @@
     @Action('deleteWord') deleteWord: any
 
     sortBy: TSortCategory = null
-    sortCategories: Array<TSortCategory> = ['Word', 'Translation']
+    sortCategories: {[key in TSortCategory]: string} = {
+      word: 'Words',
+      translation: 'Translations'
+    }
     isASC: boolean = true;
 
     toggleOrder () {
