@@ -20,7 +20,7 @@
               :class="{
                 'order-icon_asc': isASC,
                 'order-icon_desc': !isASC,
-                'order-icon_hidden': sortBy !== value
+                'order-icon_hidden': sortBy !== key
               }"
               @click="toggleOrder"
             >
