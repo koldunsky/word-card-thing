@@ -9,12 +9,12 @@
           }"
         >
           <span
-            v-for="(value, key) in sortCategories"
-            :key="key"
-            @click="() => onSortingChange(key)"
-            :class="[key, 'list-heading__item', sortBy === key ? 'list-heading__item_active' : '']"
+            v-for="value in sortCategories"
+            :key="value"
+            @click="() => onSortingChange(value)"
+            :class="[value, 'list-heading__item', sortBy === value ? 'list-heading__item_active' : '']"
           >
-            <span v-t="value" />
+            <span v-t="capitalize(value)" />
             <span
               class="order-icon"
               :class="{
@@ -77,6 +77,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import sortBy from 'lodash/sortBy'
+  import capitalize from 'lodash/capitalize'
   import reverse from 'lodash/reverse'
   import {
     Action,
@@ -97,10 +98,7 @@
     @Action('deleteWord') deleteWord: any
 
     sortBy: TSortCategory = null
-    sortCategories: {[key in TSortCategory]: string} = {
-      word: 'Words',
-      translation: 'Translations'
-    }
+    sortCategories: Array<TSortCategory> = ['word', 'translation']
     isASC: boolean = true;
 
     toggleOrder () {
@@ -136,6 +134,8 @@
 
       return sorted
     }
+
+    capitalize = capitalize
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
