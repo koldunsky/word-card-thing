@@ -22,6 +22,7 @@
             v-if="pointingDots[name]"
           />
         </span>
+        <span class="nav__item-label">{{name | capitalize}}</span>
       </button>
     </div>
   </div>
@@ -39,6 +40,13 @@
   @Component({
     components: {
       PointingDot
+    },
+    filters: {
+      capitalize: function (value: string): string {
+        if (!value) return ''
+        value = value.toString()
+        return value.charAt(0).toUpperCase() + value.slice(1)
+      }
     }
   })
   export default class Nav extends Vue {

@@ -29,7 +29,7 @@
           />
         </label>
       </div>
-      <Button v-t="'Add'" />
+      <Button v-t="'Add'" id="button_add"/>
     </div>
   </form>
 </template>
