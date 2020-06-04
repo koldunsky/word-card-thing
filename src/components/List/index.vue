@@ -13,6 +13,7 @@
             :key="value"
             @click="() => onSortingChange(value)"
             :class="[value, 'list-heading__item', sortBy === value ? 'list-heading__item_active' : '']"
+            :data-qa="`list-sorting-${value}`"
           >
             <span v-t="capitalize(value)" />
             <span
@@ -20,7 +21,7 @@
               :class="{
                 'order-icon_asc': isASC,
                 'order-icon_desc': !isASC,
-                'order-icon_hidden': sortBy !== key
+                'order-icon_hidden': sortBy !== value
               }"
               @click="toggleOrder"
             >
@@ -41,6 +42,7 @@
           class="list-item"
           v-for="w in sortedWords"
           :key="w.id"
+          data-qa="list-item"
         >
           <span class="word">
             {{w.word}}
