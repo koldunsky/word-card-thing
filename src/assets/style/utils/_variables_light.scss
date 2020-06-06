@@ -1,0 +1,40 @@
+@import "variables_colors";
+
+// Global
+$color-border: $green-250;
+$color-border-active: $green-550;
+
+$notice-text-color: rgba(black, .5);
+
+// App
+$app-text-color: $green-900;
+$app-border-top: $coral-default;
+
+// Button
+$button-background: $green-100;
+$button-background-active: $green-150;
+$button-color: $green-800;
+
+// Button accent
+$button-accent-color: $coral-dark-800;
+$button-accent-background: $coral-light-100;
+$button-accent-background-active: $coral-light-150;
+
+// Input
+$input-border: $color-border;
+$input-border-active: $color-border-active;
+
+// Nav
+$nav-background: $green-100;
+$nav-border-top: $green-150;
+$nav-item-color: $green-800;
+$nav-active-color: $coral-default;
+
+// List
+$list-heading: $green-500;
+$list-heading-sorted-bg: $green-100;
+$list-heading-active: $coral-800;
+
+// Drill
+$drill-answer-color: $green-600;
+

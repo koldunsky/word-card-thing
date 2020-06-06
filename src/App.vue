@@ -86,7 +86,7 @@
 
     updateTheme (dark?: boolean) {
       const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
-      const current = dark ? themes.pop() : themes.shift()
+      const current = dark ? themes.shift() : themes.pop()
       const html = document.querySelector('html')
       html.classList.remove(current)
       html.classList.add(themes[0])
@@ -101,7 +101,8 @@
         document.querySelector('html').classList.add('rounded-screen')
       }
 
-      const darkThemePreferred = window.matchMedia('')
+      const darkThemePreferred = window.matchMedia('(prefers-color-scheme: dark)').matches
+      console.log(darkThemePreferred);
       if (darkThemePreferred) {
         this.setAndUpdateTheme(true)
       } else {

@@ -87,16 +87,16 @@ textarea {
   &:focus,
   &:active {
     outline: none;
-    border-color: $color-border-active;
+    border-color: $input-border-active;
   }
 
   @include inDarkMode {
-    border-color: $color-border-dark;
+    border-color: $input-border-dark;
 
     &:focus,
     &:active {
       outline: none;
-      border-color: $color-border-dark-active;
+      border-color: $input-border-active-dark;
     }
   }
 }

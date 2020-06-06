@@ -39,11 +39,11 @@
   }
 
   @include inDarkMode {
-    background: $coral-dark-100;
-    color: inherit;
+    background: $button-accent-background-dark;
+    color: $button-accent-color-dark;
 
     &:active {
-      border-color: $button-accent-background-active-dark;
+      background: $button-accent-background-active-dark;
     }
   }
 }
