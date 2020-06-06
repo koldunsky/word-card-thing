@@ -14,7 +14,7 @@ class NavModule extends VuexModule {
   public currentPage: TPageName = 'add'
   public pointingDots: TPointingDots = {
     'add': false,
-    'drill': true,
+    'drill': false,
     'list': false
   }
 

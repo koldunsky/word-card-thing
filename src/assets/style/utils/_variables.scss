@@ -9,9 +9,9 @@ $app-background-dark: #252727;
 
 // Measures
 $border-radius: 2px;
-$nav-height: 60px;
+$nav-height: 64px;
+$rounded-screen-nav-offset: 30px;
 $input-height: 41px;
-
 
 // Palettes
 $green-100: hsl(170, 25%, 95%);
@@ -58,7 +58,6 @@ $green-light-700: mix($base-green, white, 70%);
 $green-light-800: mix($base-green, white, 80%);
 $green-light-900: mix($base-green, white, 90%);
 $green-light-950: mix($base-green, white, 95%);
-
 
 $coral-palette:
 rgb(255, 240, 234)
