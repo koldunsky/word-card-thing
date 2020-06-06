@@ -8,7 +8,7 @@ $notice-text-color-dark: inherit;
 
 // App
 $app-text-color-dark: mix(#eee, $dark-base-green, 90%);
-$app-border-top-dark: $green-dark-500;
+$app-border-top-dark: transparent;
 
 // Button
 $button-background-dark: $monochrome-dark-100;
@@ -31,11 +31,16 @@ $nav-item-color-dark: inherit;
 $nav-active-color-dark: $coral-default-dark;
 
 // List
-$list-heading-dark: $green-600;
+$list-heading-dark: $green-light-700;
 $list-heading-sorted-bg-dark: $monochrome-dark-100;
 $list-heading-active-dark: $coral-default-dark;
+$list-item-border-dark: $color-border-dark;
 
 // Drill
 $drill-correct-answer-highlight: lighten(darkseagreen, 20%);
 $drill-answer-color-dark: $green-light-700;
-$drill-correct-answer-highlight-dark: mix(#1dbc52, $app-background-dark, 12%);
+$drill-correct-answer-highlight-dark: mix(#20bc6b, $app-background-dark, 33%);
+
+// Link
+$link-color-dark: $button-color-dark;
+$link-background-dark: $button-background-dark;

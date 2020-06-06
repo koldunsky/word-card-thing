@@ -28,7 +28,7 @@ $inner-container: 400px;
   padding-right: 30px;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid $color-border;
+  border-bottom: 1px solid $list-item-border;
   display: flex;
 
   & + & {
@@ -36,7 +36,7 @@ $inner-container: 400px;
   }
 
   @include inDarkMode {
-    border-color: $color-border-dark;
+    border-color: $list-item-border-dark;
   }
 }
 

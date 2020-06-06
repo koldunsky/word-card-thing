@@ -12,7 +12,7 @@
             v-for="value in sortCategories"
             :key="value"
             @click="() => onSortingChange(value)"
-            :class="[value.toLowerCase(), 'list-heading__item', sortBy === value.toLowerCase() ? 'list-heading__item_active' : '']"
+            :class="[value.toLowerCase(), 'list-heading__item', sortBy === value ? 'list-heading__item_active' : '']"
           >
             <span v-t="value" />
             <span
@@ -96,8 +96,8 @@
     @State('words') words: any
     @Action('deleteWord') deleteWord: any
 
-    sortBy: TSortCategory = null
     sortCategories: Array<TSortCategory> = ['Word', 'Translation']
+    sortBy: TSortCategory = this.sortCategories[0]
     isASC: boolean = true;
 
     toggleOrder () {
