@@ -5,7 +5,7 @@
   "scripts": {
     "start": "yarn serve",
     "serve": "vue-cli-service serve --port=8001",
-    "build": "yar install && test:e2e && vue-cli-service build",
+    "build": "yarn install && test:e2e && vue-cli-service build",
     "lint:fix": "vue-cli-service lint --fix",
     "test:e2e": "vue-cli-service test:e2e --headless && yarn run test:e2e:iphone",
     "test:e2e:iphone": "vue-cli-service test:e2e --env userAgent=iphone --headless",
