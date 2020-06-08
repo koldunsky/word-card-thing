@@ -5,6 +5,8 @@
 
 [[plugins]]
   package = "netlify-plugin-cypress"
+  [plugins.inputs]
+  start = "yarn test:e2e"
 
 [build.environment]
   # cache Cypress binary in local "node_modules" folder
