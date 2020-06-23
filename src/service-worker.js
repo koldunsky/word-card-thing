@@ -7,6 +7,13 @@ self.addEventListener("message", event => {
 });
 
 
+// Will print 'my-app-install-time-v1'
+console.log(workbox.core.cacheNames.precache);
+
+// Will print 'my-app-run-time-v1'
+console.log(workbox.core.cacheNames.runtime);
+
+
 self.addEventListener('fetch', function(event) {
   event.respondWith(
     caches.open('mysite-dynamic').then(function(cache) {
@@ -20,12 +27,6 @@ self.addEventListener('fetch', function(event) {
     })
   );
 });
-
-// Will print 'my-app-install-time-v1'
-console.log(workbox.core.cacheNames.precache);
-
-// Will print 'my-app-run-time-v1'
-console.log(workbox.core.cacheNames.runtime);
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
