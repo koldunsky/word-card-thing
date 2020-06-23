@@ -7,26 +7,26 @@ self.addEventListener("message", event => {
 });
 
 
+console.log('111111');
 // Will print 'my-app-install-time-v1'
 console.log(workbox.core.cacheNames.precache);
 
 // Will print 'my-app-run-time-v1'
 console.log(workbox.core.cacheNames.runtime);
-
-
-self.addEventListener('fetch', function(event) {
-  event.respondWith(
-    caches.open('mysite-dynamic').then(function(cache) {
-      return cache.match(event.request).then(function(response) {
-        var fetchPromise = fetch(event.request).then(function(networkResponse) {
-          cache.put(event.request, networkResponse.clone());
-          return networkResponse;
-        })
-        return response || fetchPromise;
-      })
-    })
-  );
-});
+//
+// self.addEventListener('fetch', function(event) {
+//   event.respondWith(
+//     caches.open('mysite-dynamic').then(function(cache) {
+//       return cache.match(event.request).then(function(response) {
+//         var fetchPromise = fetch(event.request).then(function(networkResponse) {
+//           cache.put(event.request, networkResponse.clone());
+//           return networkResponse;
+//         })
+//         return response || fetchPromise;
+//       })
+//     })
+//   );
+// });
 /**
  * The workboxSW.precacheAndRoute() method efficiently caches and responds to
  * requests for URLs in the manifest.
