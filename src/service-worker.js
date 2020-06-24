@@ -8,11 +8,7 @@ self.addEventListener("message", event => {
 
 
 console.log('111111');
-// Will print 'my-app-install-time-v1'
-console.log(workbox.core.cacheNames.precache);
-
-// Will print 'my-app-run-time-v1'
-console.log(workbox.core.cacheNames.runtime);
+console.log(workbox.core.cacheNames);
 //
 self.addEventListener('fetch', function(event) {
   console.log(event);
@@ -20,6 +16,12 @@ self.addEventListener('fetch', function(event) {
     console.log('cache:', cache)
     cache.match(event.request).then(function(response) {
       console.log('response:', response)
+    })
+  })
+  caches.open(workbox.core.cacheNames.runtime.then(function(cache) {
+    console.log('cache_кгтешьу:', cache)
+    cache.match(event.request).then(function(response) {
+      console.log('response_кгтешьу:', response)
     })
   })
   // event.respondWith(
