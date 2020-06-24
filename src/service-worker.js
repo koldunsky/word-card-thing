@@ -18,12 +18,14 @@ self.addEventListener('fetch', function(event) {
       console.log('response:', response)
     })
   })
-  caches.open(workbox.core.cacheNames.runtime.then(function(cache) {
+
+  caches.open(workbox.core.cacheNames.runtime).then(function(cache) {
     console.log('cache_кгтешьу:', cache)
     cache.match(event.request).then(function(response) {
       console.log('response_кгтешьу:', response)
     })
   })
+
   // event.respondWith(
   //   caches.open('mysite-dynamic').then(function(cache) {
   //     return cache.match(event.request).then(function(response) {
