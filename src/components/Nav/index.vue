@@ -15,6 +15,7 @@
           'nav__item_active': currentPage === name
         }"
         @click="navigateTo(name)"
+        :data-qa="`nav-item-${name}`"
       >
         <span class="nav__item-icon-container">
           <span :class="`nav__item-icon nav__item-icon_${name}`"/>
