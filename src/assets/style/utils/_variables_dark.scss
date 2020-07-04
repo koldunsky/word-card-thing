@@ -1,18 +1,18 @@
 @import "variables_colors";
 
 // Global
-$color-border-dark: $monochrome-dark-500;
+$color-border-dark: $green-dark-400;
 $color-border-dark-active: $green-dark-600;
 
 $notice-text-color-dark: inherit;
 
 // App
-$app-text-color-dark: mix(#eee, $dark-base-green, 90%);
-$app-border-top-dark: transparent;
+$app-text-color-dark: white;
+$app-border-top-dark: $coral-default-dark;
 
 // Button
-$button-background-dark: $monochrome-dark-100;
-$button-background-dark-active: $monochrome-dark-150;
+$button-background-dark: $green-dark-200;
+$button-background-dark-active: $green-dark-300;
 $button-color-dark: inherit;
 
 // Button accent
@@ -25,20 +25,20 @@ $input-border-dark: $color-border-dark;
 $input-border-active-dark: $color-border-dark-active;
 
 // Nav
-$nav-background-dark: $monochrome-dark-50;
-$nav-border-top-dark: $monochrome-dark-100;
-$nav-item-color-dark: inherit;
+$nav-background-dark: $green-dark-50;
+$nav-border-top-dark: $green-dark-100;
+$nav-item-color-dark: $green-400;
 $nav-active-color-dark: $coral-default-dark;
 
 // List
-$list-heading-dark: $green-light-700;
-$list-heading-sorted-bg-dark: $monochrome-dark-100;
+$list-heading-dark: $green-400;
+$list-heading-sorted-bg-dark: $green-dark-200;
 $list-heading-active-dark: $coral-default-dark;
 $list-item-border-dark: $color-border-dark;
 
 // Drill
 $drill-correct-answer-highlight: lighten(darkseagreen, 20%);
-$drill-answer-color-dark: $green-light-700;
+$drill-answer-color-dark: $green-500;
 $drill-correct-answer-highlight-dark: mix(#20bc6b, $app-background-dark, 33%);
 
 // Link
