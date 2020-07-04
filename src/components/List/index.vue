@@ -99,8 +99,8 @@
     @State('words') words: any
     @Action('deleteWord') deleteWord: any
 
-    sortBy: TSortCategory = null
     sortCategories: Array<TSortCategory> = ['word', 'translation']
+    sortBy: TSortCategory = this.sortCategories[0]
     isASC: boolean = true;
 
     toggleOrder () {
