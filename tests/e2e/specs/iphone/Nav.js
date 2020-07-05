@@ -1,10 +1,10 @@
-import { addThreeWords } from '../../utils/addWord'
+import { addWords } from '../../utils/addWord'
 
 describe('Navigation', () => {
   it('has correct height on iphone 6', () => {
     cy.viewport('iphone-6')
     cy.visit('/')
-    addThreeWords(cy)
+    addWords(cy)
     cy.get('.nav').should($div => {
       expect($div.get(0).offsetHeight).to.eq(64)
     })
@@ -13,7 +13,7 @@ describe('Navigation', () => {
   it('has correct height on iphone X', () => {
     cy.viewport('iphone-x')
     cy.visit('/')
-    addThreeWords(cy)
+    addWords(cy)
     cy.get('.nav').should($div => {
       expect($div.get(0).offsetHeight).to.eq(94)
     })

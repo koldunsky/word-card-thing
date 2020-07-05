@@ -31,6 +31,7 @@
             </span>
           </span>
           <button
+            data-qa="list-delete-button"
             v-if="sortBy"
             class="delete-button list-heading__reset-button"
             @click="resetSorting"
