@@ -1,0 +1,50 @@
+<template>
+  <div class="settings">
+      <div class="settings__inner">
+        <div>
+          <span v-t="'settings.currentTheme'" />: <b v-t="`settings.${currentThemeString}`" />
+        </div>
+
+        <button @click="onChangeClick">
+          Change
+        </button>
+      </div>
+  </div>
+</template>
+
+<script lang="ts">
+  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { namespace } from 'vuex-class'
+
+  const ThemeModule = namespace('ThemeModule')
+
+  @Component
+  export default class SomeComponent extends Vue {
+    themeVariants: Array<TTheme> = ['dark', 'light', null];
+
+    @ThemeModule.State
+    theme: TTheme
+
+    @ThemeModule.Getter
+    computedTheme: TTheme
+
+    @ThemeModule.Mutation
+    changeTheme
+
+    onChangeClick () {
+      const index = this.themeVariants.indexOf(this.theme)
+      let nextOne = this.themeVariants[index + 1]
+
+      if (typeof nextOne === 'undefined') {
+        nextOne = this.themeVariants[0]
+      }
+
+      this.changeTheme(nextOne)
+    }
+
+    get currentThemeString () {
+      return !this.theme ? 'system' : this.theme
+    }
+  }
+</script>
+<style src="./index.scss" lang="scss" scoped></style>

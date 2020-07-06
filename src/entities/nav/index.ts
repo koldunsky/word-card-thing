@@ -1,5 +1,4 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
-import { TPageName } from '../../types'
 
 export type TPointingDots = {
   [key in TPageName]: boolean
@@ -10,12 +9,13 @@ export type TPointingDots = {
 })
 
 class NavModule extends VuexModule {
-  public pages: Array<TPageName> = ['add', 'drill', 'list']
+  public pages: Array<TPageName> = ['add', 'drill', 'list', 'settings']
   public currentPage: TPageName = 'add'
   public pointingDots: TPointingDots = {
-    'add': false,
-    'drill': false,
-    'list': false
+    add: true,
+    drill: true,
+    list: true,
+    settings: false
   }
 
   @Mutation

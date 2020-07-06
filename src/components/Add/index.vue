@@ -38,7 +38,6 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Button from '@/ui-kit/Button/index.vue'
-  import { TPageName } from '@/types'
   import {
     Mutation,
     State,

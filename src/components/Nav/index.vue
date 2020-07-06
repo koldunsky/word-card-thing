@@ -19,9 +19,11 @@
       >
         <span class="nav__item-icon-container">
           <span :class="`nav__item-icon nav__item-icon_${name}`"/>
-          <PointingDot
-            v-if="pointingDots[name]"
-          />
+          <span class="pointing-dot">
+            <PointingDot
+              v-if="pointingDots[name]"
+            />
+          </span>
         </span>
         <span class="nav__item-label">{{name | capitalize}}</span>
       </button>
@@ -32,7 +34,6 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { State, namespace } from 'vuex-class'
-  import { TPageName } from '@/types'
   import { TPointingDots } from '@/entities/nav'
   import PointingDot from '../../ui-kit/PointingDot/index.vue'
 
@@ -64,6 +65,12 @@
 
     @NavModule.Action
     navigateTo: (page: TPageName) => void
+
+    beforeMount () {
+      if (this.words.length > 2) {
+        this.navigateTo('drill')
+      }
+    }
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

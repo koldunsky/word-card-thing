@@ -5,6 +5,7 @@ import remove from 'lodash/remove'
 import getGuid from '@/utils/getGuid'
 
 import NavModule from '../entities/nav'
+import ThemeModule from '../entities/theme'
 
 Vue.use(Vuex)
 
@@ -23,7 +24,8 @@ const STORAGE_STATE = 'kolenki_state'
 
 const store = new Vuex.Store({
   modules: {
-    NavModule
+    NavModule,
+    ThemeModule
   },
   state: {
     words: [] as Array<IWord>,
