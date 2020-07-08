@@ -2,10 +2,12 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 
 import remove from 'lodash/remove'
+import each from 'lodash/each'
+import defaultsDeep from 'lodash/defaultsDeep'
 import getGuid from '@/utils/getGuid'
 
 import NavModule from '../entities/nav'
-import ThemeModule from '../entities/theme'
+import UserRelatedSettings from '../entities/userRelated/settings'
 
 Vue.use(Vuex)
 
@@ -25,7 +27,7 @@ const STORAGE_STATE = 'kolenki_state'
 const store = new Vuex.Store({
   modules: {
     NavModule,
-    ThemeModule
+    UserRelatedSettings
   },
   state: {
     words: [] as Array<IWord>,
@@ -34,7 +36,6 @@ const store = new Vuex.Store({
     //   word: `www_${i}`,
     //   translation: 'ttt_' + String(Date.now() * Math.random())
     // })) as Array<IWord>,
-    isDrillTranslationInsteadWord: false,
     currentWord: {
       id: '',
       word: '',
@@ -71,9 +72,21 @@ const store = new Vuex.Store({
 
       if (localStorage.getItem(STORAGE_STATE)) {
         const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
+        const onlyUserRelatedLocalState = {}
+
+        each(localState, (value, name) => {
+          if (name.includes('UserRelated')) {
+            onlyUserRelatedLocalState[name] = value
+          }
+        })
+        console.info('NavModule', NavModule)
+        console.info('state', state)
+        console.info('localState', localState)
+        console.info('onlyUserRelatedLocalState', onlyUserRelatedLocalState)
+
         this.replaceState({
           ...(typeof state === 'object' ? state : {}),
-          ...(typeof localState === 'object' ? localState : {})
+          ...(typeof onlyUserRelatedLocalState === 'object' ? onlyUserRelatedLocalState : {})
         })
       }
     },
@@ -100,9 +113,6 @@ const store = new Vuex.Store({
       }
 
       state.currentWord = state.words[randomId]
-    },
-    toggleTranslationFlow (state) {
-      state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
     }
   }
 })

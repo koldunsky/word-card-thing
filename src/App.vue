@@ -50,7 +50,7 @@
   const LIGHT_THEME_ID: string = 'light-mode'
 
   const NavModule = namespace('NavModule')
-  const ThemeModule = namespace('ThemeModule')
+  const UserRelatedSettings = namespace('UserRelatedSettings')
 
   @Component({
     components: {
@@ -74,10 +74,10 @@
     @NavModule.Getter
     currentPageIndex: number
 
-    @ThemeModule.Getter
+    @UserRelatedSettings.Getter
     computedTheme: TTheme
 
-    @ThemeModule.Mutation
+    @UserRelatedSettings.Mutation
     changeTheme
 
     switchTheme () {
@@ -105,10 +105,8 @@
     }
 
     created () {
-      this.unsubscribe = this.$store.subscribe(({ type, payload }, state) => {
-        if (type === 'ThemeModule/changeTheme') {
-          console.info(state.ThemeModule.rawTheme)
-          console.info(this.computedTheme)
+      this.unsubscribe = this.$store.subscribe(({ type }, state) => {
+        if (type === 'UserRelatedSettings/changeTheme') {
           this.setTheme(this.computedTheme)
         }
       })

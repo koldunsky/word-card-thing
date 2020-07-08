@@ -4,9 +4,11 @@ import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
   namespaced: true
 })
 
-class ThemeModule extends VuexModule {
+class UserRelatedSettings extends VuexModule {
   public theme: TTheme = null
+  public isDrillTranslationInsteadWord: boolean = false
 
+  // Theme
   @Mutation
   changeTheme (theme: TTheme) {
     this.theme = theme
@@ -22,6 +24,11 @@ class ThemeModule extends VuexModule {
 
     return this.theme
   }
+
+  // Word -> Translation
+  toggleTranslationFlow (state) {
+    state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
+  }
 }
 
-export default ThemeModule
+export default UserRelatedSettings

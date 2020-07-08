@@ -16,19 +16,19 @@
   import { Component, Prop, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
 
-  const ThemeModule = namespace('ThemeModule')
+  const UserRelatedSettings = namespace('UserRelatedSettings')
 
   @Component
   export default class SomeComponent extends Vue {
     themeVariants: Array<TTheme> = ['dark', 'light', null];
 
-    @ThemeModule.State
+    @UserRelatedSettings.State
     theme: TTheme
 
-    @ThemeModule.Getter
+    @UserRelatedSettings.Getter
     computedTheme: TTheme
 
-    @ThemeModule.Mutation
+    @UserRelatedSettings.Mutation
     changeTheme
 
     onChangeClick () {
