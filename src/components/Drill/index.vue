@@ -1,15 +1,15 @@
 <template>
   <div class="drill">
-    <button
-      class="switcher"
-      :class="{
+    <div class="drill__inner">
+      <Button
+        class="switcher"
+        :class="{
             'switcher_reversed': isDrillTranslationInsteadWord
           }"
-      @click="toggleTranslationFlow"
-    >
-      <span>{{$t('Word').slice(0, 1)}}</span> <i class="arrowIcon" /> <span>{{$t('Translation').slice(0, 1)}}</span>
-    </button>
-    <div class="drill__inner">
+        @click="toggleTranslationFlow"
+      >
+        <span>{{$t('Word')}}</span> <i class="arrowIcon" /> <span>{{$t('Translation')}}</span>
+      </Button>
       <div
         class="word"
         :class="{
