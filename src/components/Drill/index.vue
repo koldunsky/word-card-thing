@@ -8,7 +8,42 @@
           }"
         @click="toggleTranslationFlow"
       >
-        <span>{{$t('Word')}}</span> <i class="arrowIcon" /> <span>{{$t('Translation')}}</span>
+        <div class="switcher__half">
+          <transition name="fade-upwards">
+            <span
+              key="1"
+              v-if="!isDrillTranslationInsteadWord"
+              class="switcher__text switcher__text_first"
+            >{{$t('Word')}}</span>
+            <span
+              key="2"
+              v-else
+              class="switcher__text switcher__text_first"
+            >{{$t('Translation')}}</span>
+          </transition>
+        </div>
+
+          <div class="revertIcon__container">
+            <transition name="rooooll">
+              <RevertIcon v-if="isDrillTranslationInsteadWord" key="1" class="revertIcon" />
+              <RevertIcon v-else key="2" class="revertIcon" />
+            </transition>
+          </div>
+
+        <div class="switcher__half">
+        <transition name="fade-downwards">
+            <span
+              key="1"
+              v-if="isDrillTranslationInsteadWord"
+              class="switcher__text switcher__text_last"
+            >{{$t('Word')}}</span>
+          <span
+            key="2"
+            v-else
+            class="switcher__text switcher__text_last"
+          >{{$t('Translation')}}</span>
+        </transition>
+        </div>
       </Button>
       <div
         class="word"
@@ -77,10 +112,12 @@
     Action,
     State
   } from 'vuex-class'
+  import RevertIcon from './assets/refresh.svg'
   import Button from '@/ui-kit/Button/index.vue'
 
   @Component({
     components: {
+      RevertIcon,
       Button
     }
   })
