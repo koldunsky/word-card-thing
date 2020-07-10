@@ -39,8 +39,8 @@ class NavModule extends VuexModule {
       this.context.commit('removePointingDot', id)
     }
 
-    if (!this.context.rootState.currentWord.id) {
-      this.context.commit('setRandomWordAsCurrent', null, { root: true })
+    if (!this.context.rootState.UserRelatedData.currentWord.id) {
+      this.context.commit('UserRelatedData/setRandomWordAsCurrent', null, { root: true })
     }
 
     this.context.commit('changeCurrentPage', id)

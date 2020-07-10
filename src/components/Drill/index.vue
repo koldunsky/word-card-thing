@@ -80,6 +80,7 @@
   import Button from '@/ui-kit/Button/index.vue'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
+  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -97,17 +98,24 @@
     $refs: {
       input: HTMLInputElement
     }
+
     @UserRelatedSettings.State
     isDrillTranslationInsteadWord
 
     @UserRelatedSettings.Mutation
     toggleTranslationFlow
 
-    @State('currentWord') currentWord: any
-    @State('words') words: any
+    @UserRelatedData.State
+    words
 
-    @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
-    @Action('deleteWord') deleteWord: any
+    @UserRelatedData.State
+    currentWord
+
+    @UserRelatedData.Mutation
+    setRandomWordAsCurrent
+
+    @UserRelatedData.Action
+    deleteWord
 
     onDeleteButtonClick () {
       this.deleteWord(this.currentWord.id).then(() => {

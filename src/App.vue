@@ -51,6 +51,7 @@
 
   const NavModule = namespace('NavModule')
   const UserRelatedSettings = namespace('UserRelatedSettings')
+  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -66,8 +67,6 @@
   export default class App extends Vue {
     unsubscribe: any
 
-    @State('words') words: any
-
     @NavModule.State
     pages: Array<TPageName>
 
@@ -79,6 +78,9 @@
 
     @UserRelatedSettings.Mutation
     changeTheme
+
+    @UserRelatedData.State
+    words
 
     switchTheme () {
       this.changeTheme(this.computedTheme === 'dark' ? 'light' : 'dark')

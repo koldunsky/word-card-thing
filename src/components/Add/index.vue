@@ -50,6 +50,7 @@
   }
 
   const NavModule = namespace('NavModule')
+  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -63,9 +64,12 @@
     $refs!: {
       inputWord: HTMLInputElement
     }
-    @State('words') words: any
 
-    @Mutation('addWord') addWordToStore: any
+    @UserRelatedData.State
+    words
+
+    @UserRelatedData.Mutation('addWord')
+    addWordToStore
 
     @NavModule.Mutation
     addPointingDot: (id: TPageName) => void
