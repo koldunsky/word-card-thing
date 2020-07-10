@@ -22,14 +22,7 @@
             >{{$t('Translation')}}</span>
           </transition>
         </div>
-
-          <div class="revertIcon__container">
-            <transition name="rooooll">
-              <RevertIcon v-if="isDrillTranslationInsteadWord" key="1" class="revertIcon" />
-              <RevertIcon v-else key="2" class="revertIcon" />
-            </transition>
-          </div>
-
+        <i class="arrowIcon"/>
         <div class="switcher__half">
         <transition name="fade-downwards">
             <span

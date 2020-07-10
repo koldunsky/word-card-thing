@@ -92,11 +92,11 @@ $switcherItemsShift: 4px;
 
 .switcher__text_first {
   right: 0;
-  //color: $palette-accent-default;
-  //
-  //@include inDarkMode {
-  //  color: $palette-accent-default-dark;
-  //}
+  color: $palette-accent-default;
+
+  @include inDarkMode {
+    color: $palette-accent-default-dark;
+  }
 }
 
 .switcher__text_last {
@@ -169,6 +169,32 @@ $switcherItemsShift: 4px;
   stroke-width: 1;
   stroke-linecap: round;
   stroke-linejoin: round;
+}
+.arrowIcon {
+  flex: 0 0 auto;
+  width: 13px;
+  height: 1px;
+  margin: 0 8px;
+  background: currentColor;
+  position: relative;
+  display: block;
+  border-radius: 1px;
+
+  &::after,
+  &::before {
+    border-radius: 1px;
+    content: '';
+    position: absolute;
+    left: calc(100% - 2px);
+    height: 1px;
+    width: 5px;
+    background: currentColor;
+    transform: rotateZ(35deg) translateX(-2px);
+  }
+
+  &::after {
+    transform: rotateZ(-35deg) translateX(-2px);
+  }
 }
 
 
