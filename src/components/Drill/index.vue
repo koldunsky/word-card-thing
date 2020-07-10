@@ -9,7 +9,7 @@
         @click="toggleTranslationFlow"
       >
         <div class="switcher__half">
-          <transition name="fade-upwards">
+          <transition name="fade-downwards">
             <span
               key="1"
               v-if="!isDrillTranslationInsteadWord"
@@ -22,7 +22,12 @@
             >{{$t('Translation')}}</span>
           </transition>
         </div>
-        <i class="arrowIcon"/>
+        <div class="arrowIconContainer">
+          <transition name="arrow-transition">
+            <i v-if="isDrillTranslationInsteadWord" key="1" class="arrowIcon" />
+            <i v-if="!isDrillTranslationInsteadWord" key="2" class="arrowIcon" />
+          </transition>
+        </div>
         <div class="switcher__half">
         <transition name="fade-downwards">
             <span
