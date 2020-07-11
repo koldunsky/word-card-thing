@@ -41,6 +41,10 @@ const store = new Vuex.Store({
         if (!isEmpty(oldStateWords)) {
           set(onlyUserRelatedLocalState, 'UserRelatedData.words', oldStateWords)
         }
+        const oldStateCurrentWord = get(localState, 'currentWord', null)
+        if (!oldStateCurrentWord) {
+          set(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', oldStateCurrentWord)
+        }
 
         this.replaceState({
           ...(typeof state === 'object' ? state : {}),
