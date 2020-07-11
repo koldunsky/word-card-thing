@@ -38,6 +38,7 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Button from '@/ui-kit/Button/index.vue'
+  import { TPageName } from '@/types'
   import {
     Mutation,
     State,
@@ -50,7 +51,6 @@
   }
 
   const NavModule = namespace('NavModule')
-  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -64,12 +64,9 @@
     $refs!: {
       inputWord: HTMLInputElement
     }
+    @State('words') words: any
 
-    @UserRelatedData.State
-    words
-
-    @UserRelatedData.Mutation('addWord')
-    addWordToStore
+    @Mutation('addWord') addWordToStore: any
 
     @NavModule.Mutation
     addPointingDot: (id: TPageName) => void

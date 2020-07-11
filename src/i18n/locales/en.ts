@@ -18,11 +18,5 @@ export const en = {
   add: {
     three: 'Add 3 words',
     others: 'Add {n} more'
-  },
-  settings: {
-    currentTheme: 'Current theme',
-    dark: 'dark',
-    light: 'light',
-    system: 'set by system settings'
   }
 }

@@ -128,7 +128,6 @@ $bg-dark: rgb(60, 62, 60);
 
 .fade-enter-active, .fade-leave-active {
   transition: all .5s;
-  transition-property: transform, opacity;
   transform: translate(-50%,  0);
 }
 

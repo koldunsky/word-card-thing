@@ -22,7 +22,7 @@ $pointing-dot-duration: 5s;
   right: 0;
   width: $pointing-dot-size;
   height: $pointing-dot-size;
-  background: $coral-default;
+  background: $palette-accent-default;
   border-radius: $pointing-dot-size;
 
   &::before,
@@ -34,7 +34,7 @@ $pointing-dot-duration: 5s;
     width: $pointing-dot-size;
     height: $pointing-dot-size;
     border-radius: $pointing-dot-size;
-    background: $coral-default;
+    background: $palette-accent-default;
     animation: pointFlash $pointing-dot-duration infinite ease-in;
   }
 

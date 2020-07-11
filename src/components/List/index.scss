@@ -27,7 +27,7 @@ $inner-container: 400px;
   padding-right: 30px;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid $list-item-border;
+  border-bottom: 1px solid $color-border;
   display: flex;
 
   & + & {
@@ -35,21 +35,21 @@ $inner-container: 400px;
   }
 
   @include inDarkMode {
-    border-color: $list-item-border-dark;
+    border-color: $color-border-dark;
   }
 }
 
 .list-heading {
-  color: $list-heading;
+  color: $green-500;
   border-bottom: none;
 
   @include inDarkMode {
-    color: $list-heading-dark;
+    color: $green-400;
   }
 }
 
 .list-heading_sorted {
-  background: $list-heading-sorted-bg;
+  background: $green-100;
   position: relative;
   &::before {
     content: '';
@@ -58,28 +58,14 @@ $inner-container: 400px;
     bottom: 0;
     left: -.7rem;
     width: .7rem;
-    background: $list-heading-sorted-bg;
-    border-top-left-radius: $border-radius;
-    border-bottom-left-radius: $border-radius;
-  }
-  &::after {
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: -.3rem;
-    width: .3rem;
-    background: $list-heading-sorted-bg;
-    border-top-right-radius: $border-radius;
-    border-bottom-right-radius: $border-radius;
+    background: $green-100;
   }
 
   @include inDarkMode {
-    background: $list-heading-sorted-bg-dark;
+    background: $green-700;
     color: inherit;
-    &::before,
-    &::after {
-      background: $list-heading-sorted-bg-dark;
+    &::before {
+      background: $green-700;
     }
   }
 }
@@ -100,10 +86,10 @@ $inner-container: 400px;
 }
 
 .list-heading__item_active {
-  color: $list-heading-active;
+  color: $palette-accent-800;
 
   @include inDarkMode {
-    color: $list-heading-active-dark;
+    color: $palette-accent-default-dark;
   }
 }
 

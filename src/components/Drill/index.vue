@@ -3,9 +3,9 @@
     <button
       class="switcher"
       :class="{
-        'switcher_reversed': isDrillTranslationInsteadWord
-      }"
-      @click="onChangeTranslationFlowClick"
+            'switcher_reversed': isDrillTranslationInsteadWord
+          }"
+      @click="toggleTranslationFlow"
     >
       <span>{{$t('Word').slice(0, 1)}}</span> <i class="arrowIcon" /> <span>{{$t('Translation').slice(0, 1)}}</span>
     </button>
@@ -75,12 +75,9 @@
   import {
     Mutation,
     Action,
-    State, namespace
+    State
   } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
-
-  const UserRelatedSettings = namespace('UserRelatedSettings')
-  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -99,23 +96,13 @@
       input: HTMLInputElement
     }
 
-    @UserRelatedSettings.State
-    isDrillTranslationInsteadWord
+    @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
+    @State('currentWord') currentWord: any
+    @State('words') words: any
 
-    @UserRelatedSettings.Mutation
-    toggleTranslationFlow
-
-    @UserRelatedData.State
-    words
-
-    @UserRelatedData.State
-    currentWord
-
-    @UserRelatedData.Mutation
-    setRandomWordAsCurrent
-
-    @UserRelatedData.Action
-    deleteWord
+    @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
+    @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
+    @Action('deleteWord') deleteWord: any
 
     onDeleteButtonClick () {
       this.deleteWord(this.currentWord.id).then(() => {
@@ -154,10 +141,6 @@
 
     onShowAnswerButtonClick () {
       this.isShowAnswer = true
-    }
-
-    onChangeTranslationFlowClick () {
-      this.toggleTranslationFlow()
     }
 
     handleFocusBehaviour () {

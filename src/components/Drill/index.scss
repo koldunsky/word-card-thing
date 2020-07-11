@@ -1,7 +1,7 @@
 @import '../../assets/style/utils';
 
-$word-margin-bottom-small: 15px;
-$word-margin-bottom: 25px;
+$wordMarginBottomSmall: 15px;
+$wordMarginBottom: 25px;
 
 .drill {
   @include page;
@@ -16,7 +16,7 @@ $word-margin-bottom: 25px;
 .word {
   font-size: 3em;
   line-height: 1.2;
-  margin-bottom: $word-margin-bottom-small;
+  margin-bottom: $wordMarginBottomSmall;
   min-height: 60px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ $word-margin-bottom: 25px;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $word-margin-bottom;
+    margin-bottom: $wordMarginBottom;
   }
 }
 
@@ -48,10 +48,10 @@ $word-margin-bottom: 25px;
   color: inherit;
 
   span:first-child {
-    color: $coral-default;
+    color: $palette-accent-default;
 
     @include inDarkMode {
-      color: $coral-default-dark;
+      color: $palette-accent-default-dark;
     }
   }
 }
@@ -61,16 +61,13 @@ $word-margin-bottom: 25px;
 
   span:first-child {
     color: inherit;
-    @include inDarkMode {
-      color: inherit;
-    }
   }
 
   span:last-child {
-    color: $coral-default;
+    color: $palette-accent-default;
 
     @include inDarkMode {
-      color: $coral-default-dark;
+      color: $palette-accent-default-dark;
     }
   }
 }
@@ -85,18 +82,18 @@ $word-margin-bottom: 25px;
 }
 
 .input {
-  margin-bottom: $word-margin-bottom-small;
-  box-shadow: 0 0 0 $drill-correct-answer-highlight !important;
+  margin-bottom: $wordMarginBottomSmall;
+  box-shadow: 0 0 0 lighten(darkseagreen, 20%) !important;
   transition: .2s ease;
   transition-property: background-color, box-shadow;
 
   @include mediaSmallHeight {
-    margin-bottom: $word-margin-bottom;
+    margin-bottom: $wordMarginBottom;
   }
 
   &.right-answer {
-    background-color: $drill-correct-answer-highlight;
-    box-shadow: 0 0 25px $drill-correct-answer-highlight !important;
+    background-color: lighten(darkseagreen, 20%);
+    box-shadow: 0 0 25px lighten(darkseagreen, 20%) !important;
   }
 
   &.hidden {
@@ -111,10 +108,10 @@ $word-margin-bottom: 25px;
 
 .input {
   @include inDarkMode {
-    box-shadow: 0 0 0 $drill-correct-answer-highlight-dark !important;
+    box-shadow: 0 0 0 rgba(darkseagreen, .35) !important;
     &.right-answer {
-      background-color: $drill-correct-answer-highlight-dark;
-      box-shadow: 0 0 25px $drill-correct-answer-highlight-dark !important;
+      background-color: rgba(darkseagreen, .35);
+      box-shadow: 0 0 25px rgba(darkseagreen, .35) !important;
     }
   }
 }
@@ -124,16 +121,16 @@ $word-margin-bottom: 25px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: $word-margin-bottom-small;
+  margin-bottom: $wordMarginBottomSmall;
   font-size: 1.7em;
-  color: $drill-answer-color;
+  color: $green-600;
 
   @include inDarkMode {
-    color: $drill-answer-color-dark;
+    color: $green-300;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $word-margin-bottom;
+    margin-bottom: $wordMarginBottom;
   }
 }
 
