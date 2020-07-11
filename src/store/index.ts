@@ -28,7 +28,7 @@ const store = new Vuex.Store({
         const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
 
         const onlyUserRelatedLocalState = {}
-        console.info("get(localState, 'words', [])", get(localState, 'words', []))
+        console.info(state)
 
         each(localState, (value, name) => {
           if (name.includes('UserRelated')) {
@@ -41,13 +41,13 @@ const store = new Vuex.Store({
         if (!isEmpty(oldStateWords)) {
           set(onlyUserRelatedLocalState, 'UserRelatedData.words', oldStateWords)
         }
-        const oldStateCurrentWord = get(localState, 'currentWord', {
-          id: '',
-          word: '',
-          translation: ''
-        })
-        if (!isEmpty(oldStateCurrentWord) && !get(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', true)) {
-          set(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', oldStateCurrentWord)
+
+        if (!get(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', false)) {
+          set(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', {
+            id: '',
+            word: '',
+            translation: ''
+          })
         }
 
         this.replaceState({
