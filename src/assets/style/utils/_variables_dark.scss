@@ -1,0 +1,46 @@
+@import "variables_colors";
+
+// Global
+$color-border-dark: $green-dark-600;
+$color-border-dark-active: $green-dark-900;
+
+$notice-text-color-dark: inherit;
+
+// App
+$app-text-color-dark: white;
+$app-border-top-dark: $coral-default-dark;
+
+// Button
+$button-background-dark: $green-dark-300;
+$button-background-dark-active: $green-dark-400;
+$button-color-dark: inherit;
+
+// Button accent
+$button-accent-color-dark: $coral-light-150;
+$button-accent-background-dark: $coral-dark-200;
+$button-accent-background-active-dark: $coral-dark-300;
+
+// Input
+$input-border-dark: $color-border-dark;
+$input-border-active-dark: $color-border-dark-active;
+
+// Nav
+$nav-background-dark: mix(white, $app-background-dark, 3%);
+$nav-border-top-dark: mix(white, $app-background-dark, 7%);
+$nav-item-color-dark: $green-500;
+$nav-active-color-dark: $coral-default-dark;
+
+// List
+$list-heading-dark: $green-500;
+$list-heading-sorted-bg-dark: $green-dark-200;
+$list-heading-active-dark: $coral-default-dark;
+$list-item-border-dark: $green-dark-300;
+
+// Drill
+$drill-correct-answer-highlight: lighten(darkseagreen, 20%);
+$drill-answer-color-dark: $green-500;
+$drill-correct-answer-highlight-dark: mix(#20bc6b, $app-background-dark, 33%);
+
+// Link
+$link-color-dark: $button-color-dark;
+$link-background-dark: $button-background-dark;
