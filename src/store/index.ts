@@ -41,8 +41,12 @@ const store = new Vuex.Store({
         if (!isEmpty(oldStateWords)) {
           set(onlyUserRelatedLocalState, 'UserRelatedData.words', oldStateWords)
         }
-        const oldStateCurrentWord = get(localState, 'currentWord', null)
-        if (oldStateCurrentWord !== null) {
+        const oldStateCurrentWord = get(localState, 'currentWord', {
+          id: '',
+          word: '',
+          translation: ''
+        })
+        if (!isEmpty(oldStateCurrentWord) && !get(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', true)) {
           set(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', oldStateCurrentWord)
         }
 
