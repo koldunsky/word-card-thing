@@ -31,6 +31,7 @@
             </span>
           </span>
           <button
+            data-qa="list-delete-button"
             v-if="sortBy"
             class="delete-button list-heading__reset-button"
             @click="resetSorting"
@@ -82,10 +83,12 @@
   import capitalize from 'lodash/capitalize'
   import reverse from 'lodash/reverse'
   import {
-    Action,
+    Action, namespace,
     State
   } from 'vuex-class'
   import LocalLink from '../../ui-kit/Link/index.vue'
+
+  const UserRelatedData = namespace('UserRelatedData')
 
   type TSortCategory = 'word' | 'translation'
 
@@ -96,11 +99,13 @@
   })
 
   export default class List extends Vue {
-    @State('words') words: any
     @Action('deleteWord') deleteWord: any
 
-    sortBy: TSortCategory = null
+    @UserRelatedData.State
+    words
+
     sortCategories: Array<TSortCategory> = ['word', 'translation']
+    sortBy: TSortCategory = this.sortCategories[0]
     isASC: boolean = true;
 
     toggleOrder () {

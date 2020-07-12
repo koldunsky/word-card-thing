@@ -6,8 +6,10 @@ export const addWord = (cy, word = 'www', translation = 'ttt') => {
   cy.get('#button_add').click()
 }
 
-export const addThreeWords = (cy, words) => {
-  for (let i = 0; i < 3; i++) {
+export const addWords = (cy, words) => {
+  const length = words ? words.length : 3
+
+  for (let i = 0; i < length; i++) {
     addWord(cy, get(words, [i, 0], undefined), get(words, [i, 1], undefined))
   }
 }
