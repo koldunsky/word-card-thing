@@ -8,13 +8,6 @@
   >
     <UpdateChecker/>
     <InstallPrompt/>
-    {{computedTheme}}
-<!--    <button-->
-<!--      class="theme-switcher"-->
-<!--      @click="switchTheme"-->
-<!--    >-->
-<!--      change theme-->
-<!--    </button>-->
     <div
       class="scene"
     >
@@ -25,9 +18,9 @@
         }"
       >
         <Add/>
-        <Settings/>
         <Drill/>
         <List/>
+        <Settings/>
       </div>
     </div>
     <Nav/>
@@ -36,7 +29,7 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import { State, namespace } from 'vuex-class'
+  import { namespace } from 'vuex-class'
   import Add from './components/Add/index.vue'
   import Drill from './components/Drill/index.vue'
   import List from './components/List/index.vue'
@@ -88,6 +81,12 @@
 
     setTheme (theme: TTheme) {
       const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
+
+      if (!theme) {
+        themes.forEach((themeId) => html.classList.remove(themeId))
+        return
+      }
+
       const current = theme === 'dark' ? themes.shift() : themes.pop()
       const html = document.querySelector('html')
       html.classList.remove(current)

@@ -26,9 +26,7 @@ const store = new Vuex.Store({
     initializeStore (state) {
       if (localStorage.getItem(STORAGE_STATE)) {
         const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
-
         const onlyUserRelatedLocalState = {}
-        console.info(state)
 
         each(localState, (value, name) => {
           if (name.includes('UserRelated')) {
