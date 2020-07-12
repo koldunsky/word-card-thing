@@ -63,6 +63,9 @@
     @NavModule.State
     pages: Array<TPageName>
 
+    @UserRelatedSettings.State
+    theme
+
     @NavModule.Getter
     currentPageIndex: number
 
@@ -75,20 +78,17 @@
     @UserRelatedData.State
     words
 
-    switchTheme () {
-      this.changeTheme(this.computedTheme === 'dark' ? 'light' : 'dark')
-    }
-
     setTheme (theme: TTheme) {
+      const html = document.querySelector('html')
       const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
 
+      console.log(theme)
       if (!theme) {
         themes.forEach((themeId) => html.classList.remove(themeId))
         return
       }
 
       const current = theme === 'dark' ? themes.shift() : themes.pop()
-      const html = document.querySelector('html')
       html.classList.remove(current)
       html.classList.add(themes[0])
     }
@@ -108,7 +108,7 @@
     created () {
       this.unsubscribe = this.$store.subscribe(({ type }, state) => {
         if (type === 'UserRelatedSettings/changeTheme') {
-          this.setTheme(this.computedTheme)
+          this.setTheme(this.theme)
         }
       })
     }
