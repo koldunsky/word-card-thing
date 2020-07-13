@@ -26,8 +26,9 @@ class UserRelatedSettings extends VuexModule {
   }
 
   // Word -> Translation
-  toggleTranslationFlow (state) {
-    state.isDrillTranslationInsteadWord = !state.isDrillTranslationInsteadWord
+  @Mutation
+  toggleTranslationFlow () {
+    this.isDrillTranslationInsteadWord = !this.isDrillTranslationInsteadWord
   }
 }
 
