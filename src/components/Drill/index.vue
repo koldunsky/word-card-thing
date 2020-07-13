@@ -1,12 +1,8 @@
 <template>
   <div class="drill">
     <div class="drill__inner">
-      <Button
+      <div
         class="switcher"
-        :class="{
-            'switcher_reversed': isDrillTranslationInsteadWord
-          }"
-        @click="toggleTranslationFlow"
       >
         <div class="switcher__half">
           <transition name="fade-downwards">
@@ -14,15 +10,20 @@
               key="1"
               v-if="!isDrillTranslationInsteadWord"
               class="switcher__text switcher__text_first"
+              @click="toggleTranslationFlow"
             >{{$t('Word')}}</span>
             <span
               key="2"
               v-else
               class="switcher__text switcher__text_first"
+              @click="toggleTranslationFlow"
             >{{$t('Translation')}}</span>
           </transition>
         </div>
-        <div class="arrowIconContainer">
+        <div
+          class="arrowIconContainer"
+          @click="toggleTranslationFlow"
+        >
           <transition name="arrow-transition">
             <i v-if="isDrillTranslationInsteadWord" key="1" class="arrowIcon" />
             <i v-if="!isDrillTranslationInsteadWord" key="2" class="arrowIcon" />
@@ -34,15 +35,17 @@
               key="1"
               v-if="isDrillTranslationInsteadWord"
               class="switcher__text switcher__text_last"
+              @click="toggleTranslationFlow"
             >{{$t('Word')}}</span>
           <span
             key="2"
             v-else
             class="switcher__text switcher__text_last"
+            @click="toggleTranslationFlow"
           >{{$t('Translation')}}</span>
         </transition>
         </div>
-      </Button>
+      </div>
       <div
         class="word"
         :class="{

@@ -67,6 +67,7 @@ $switcherItemsShift: 4px;
   flex-wrap: nowrap;
   color: inherit;
   margin-bottom: 20px;
+  user-select: none;
   &:active {
     background: none;
     border: none;
@@ -85,9 +86,12 @@ $switcherItemsShift: 4px;
   bottom: 0;
   display: flex;
   align-items: center;
+  padding: 0 8px;
+  cursor: pointer;
 }
 
 .switcher__text_first {
+  padding-left: 30px;
   right: 0;
   color: $palette-accent-default;
 
@@ -98,6 +102,7 @@ $switcherItemsShift: 4px;
 
 .switcher__text_last {
   left: 0;
+  padding-right: 30px;
 }
 
 .input {
@@ -169,20 +174,19 @@ $switcherItemsShift: 4px;
 }
 
 .arrowIconContainer {
+  cursor: pointer;
   flex: 0 0 auto;
   position: relative;
+  padding: 0 8px;
   width: 13px;
-  height: 1px;
-  margin: 0 8px;
+  height: 100%;
 }
 
 .arrowIcon {
-  position: absolute;
+  @include stretch();
   width: 100%;
-  height: 100%;
+  height: 1px;
   background: currentColor;
-  top: 0;
-  left: 0;
   display: block;
   border-radius: 1px;
 
