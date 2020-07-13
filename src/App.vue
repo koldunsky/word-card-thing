@@ -102,11 +102,11 @@
         document.querySelector('html').classList.add('rounded-screen')
       }
 
-      this.setTheme(this.computedTheme)
+      this.setTheme(this.theme)
     }
 
     created () {
-      this.unsubscribe = this.$store.subscribe(({ type }, state) => {
+      this.unsubscribe = this.$store.subscribe(({ type }) => {
         if (type === 'UserRelatedSettings/changeTheme') {
           this.setTheme(this.theme)
         }
