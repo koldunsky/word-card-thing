@@ -99,10 +99,11 @@
   })
 
   export default class List extends Vue {
-    @Action('deleteWord') deleteWord: any
-
     @UserRelatedData.State
     words
+
+    @UserRelatedData.Action
+    deleteWord
 
     sortCategories: Array<TSortCategory> = ['word', 'translation']
     sortBy: TSortCategory = this.sortCategories[0]
