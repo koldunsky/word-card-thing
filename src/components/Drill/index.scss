@@ -1,7 +1,7 @@
 @import '../../assets/style/utils';
 
-$wordMarginBottomSmall: 15px;
-$wordMarginBottom: 25px;
+$word-margin-bottom-small: 15px;
+$word-margin-bottom: 25px;
 $enterDuration: .5s;
 $leaveDuration: .3s;
 $switcherItemsShift: 4px;
@@ -26,7 +26,7 @@ $switcherItemsShift: 4px;
 .word {
   font-size: 3em;
   line-height: 1.2;
-  margin-bottom: $wordMarginBottomSmall;
+  margin-bottom: $word-margin-bottom-small;
   min-height: 60px;
   display: flex;
   flex-direction: column;
@@ -42,7 +42,7 @@ $switcherItemsShift: 4px;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 }
 
@@ -88,15 +88,18 @@ $switcherItemsShift: 4px;
   align-items: center;
   padding: 0 8px;
   cursor: pointer;
-}
+@include inDarkMode {
+      color: inherit;
+    }
+  }
 
 .switcher__text_first {
   padding-left: 30px;
   right: 0;
-  color: $palette-accent-default;
+  color: $coral-default;
 
   @include inDarkMode {
-    color: $palette-accent-default-dark;
+    color: $coral-default-dark;
   }
 }
 
@@ -106,18 +109,18 @@ $switcherItemsShift: 4px;
 }
 
 .input {
-  margin-bottom: $wordMarginBottomSmall;
-  box-shadow: 0 0 0 lighten(darkseagreen, 20%) !important;
+  margin-bottom: $word-margin-bottom-small;
+  box-shadow: 0 0 0 $drill-correct-answer-highlight !important;
   transition: .2s ease;
   transition-property: background-color, box-shadow;
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 
   &.right-answer {
-    background-color: lighten(darkseagreen, 20%);
-    box-shadow: 0 0 25px lighten(darkseagreen, 20%) !important;
+    background-color: $drill-correct-answer-highlight;
+    box-shadow: 0 0 25px $drill-correct-answer-highlight !important;
   }
 
   &.hidden {
@@ -132,10 +135,10 @@ $switcherItemsShift: 4px;
 
 .input {
   @include inDarkMode {
-    box-shadow: 0 0 0 rgba(darkseagreen, .35) !important;
+    box-shadow: 0 0 0 $drill-correct-answer-highlight-dark !important;
     &.right-answer {
-      background-color: rgba(darkseagreen, .35);
-      box-shadow: 0 0 25px rgba(darkseagreen, .35) !important;
+      background-color: $drill-correct-answer-highlight-dark;
+      box-shadow: 0 0 25px $drill-correct-answer-highlight-dark !important;
     }
   }
 }
@@ -145,16 +148,16 @@ $switcherItemsShift: 4px;
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: $wordMarginBottomSmall;
+  margin-bottom: $word-margin-bottom-small;
   font-size: 1.7em;
-  color: $green-600;
+  color: $drill-answer-color;
 
   @include inDarkMode {
-    color: $green-300;
+    color: $drill-answer-color-dark;
   }
 
   @include mediaSmallHeight {
-    margin-bottom: $wordMarginBottom;
+    margin-bottom: $word-margin-bottom;
   }
 }
 

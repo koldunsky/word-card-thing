@@ -10,19 +10,19 @@
               key="1"
               v-if="!isDrillTranslationInsteadWord"
               class="switcher__text switcher__text_first"
-              @click="toggleTranslationFlow"
+              @click="onChangeTranslationFlowClick"
             >{{$t('Word')}}</span>
             <span
               key="2"
               v-else
               class="switcher__text switcher__text_first"
-              @click="toggleTranslationFlow"
+              @click="onChangeTranslationFlowClick"
             >{{$t('Translation')}}</span>
           </transition>
         </div>
         <div
           class="arrowIconContainer"
-          @click="toggleTranslationFlow"
+          @click="onChangeTranslationFlowClick"
         >
           <transition name="arrow-transition">
             <i v-if="isDrillTranslationInsteadWord" key="1" class="arrowIcon" />
@@ -35,13 +35,13 @@
               key="1"
               v-if="isDrillTranslationInsteadWord"
               class="switcher__text switcher__text_last"
-              @click="toggleTranslationFlow"
+              @click="onChangeTranslationFlowClick"
             >{{$t('Word')}}</span>
           <span
             key="2"
             v-else
             class="switcher__text switcher__text_last"
-            @click="toggleTranslationFlow"
+            @click="onChangeTranslationFlowClick"
           >{{$t('Translation')}}</span>
         </transition>
         </div>
@@ -111,14 +111,15 @@
   import {
     Mutation,
     Action,
-    State
+    State, namespace
   } from 'vuex-class'
-  import RevertIcon from './assets/refresh.svg'
   import Button from '@/ui-kit/Button/index.vue'
+
+  const UserRelatedSettings = namespace('UserRelatedSettings')
+  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
-      RevertIcon,
       Button
     }
   })
@@ -134,13 +135,23 @@
       input: HTMLInputElement
     }
 
-    @State('isDrillTranslationInsteadWord') isDrillTranslationInsteadWord: boolean | undefined
-    @State('currentWord') currentWord: any
-    @State('words') words: any
+    @UserRelatedSettings.State
+    isDrillTranslationInsteadWord
 
-    @Mutation('setRandomWordAsCurrent') setRandomWordAsCurrent: any
-    @Mutation('toggleTranslationFlow') toggleTranslationFlow: any
-    @Action('deleteWord') deleteWord: any
+    @UserRelatedSettings.Mutation
+    toggleTranslationFlow
+
+    @UserRelatedData.State
+    words
+
+    @UserRelatedData.State
+    currentWord
+
+    @UserRelatedData.Mutation
+    setRandomWordAsCurrent
+
+    @UserRelatedData.Action
+    deleteWord
 
     onDeleteButtonClick () {
       this.deleteWord(this.currentWord.id).then(() => {
@@ -179,6 +190,10 @@
 
     onShowAnswerButtonClick () {
       this.isShowAnswer = true
+    }
+
+    onChangeTranslationFlowClick () {
+      this.toggleTranslationFlow()
     }
 
     handleFocusBehaviour () {

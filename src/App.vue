@@ -14,31 +14,37 @@
       <div
         class="scene__inner"
         :style="{
-          transform: `translateX(${currentPageIndex * -33.33333}%)`
+          transform: `translateX(${scenePosition}%)`
         }"
       >
         <Add/>
         <Drill/>
         <List/>
+        <Settings/>
       </div>
     </div>
-    <Nav :pages="pages"/>
+    <Nav/>
   </div>
 </template>
 
 <script lang="ts">
-  import { State, namespace } from 'vuex-class'
+  import { Component, Vue } from 'vue-property-decorator'
+  import { namespace } from 'vuex-class'
   import Add from './components/Add/index.vue'
   import Drill from './components/Drill/index.vue'
   import List from './components/List/index.vue'
-  import { Component, Vue } from 'vue-property-decorator'
+  import Settings from './components/Settings/index.vue'
   import UpdateChecker from './components/UpdateChecker/index.vue'
   import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
   import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
-  import { TPageName } from './types'
+
+  const DARK_THEME_ID: string = 'dark-mode'
+  const LIGHT_THEME_ID: string = 'light-mode'
 
   const NavModule = namespace('NavModule')
+  const UserRelatedSettings = namespace('UserRelatedSettings')
+  const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
@@ -47,32 +53,68 @@
       Add,
       Drill,
       List,
+      Settings,
       Nav
     }
   })
   export default class App extends Vue {
-    @State('words') words: any
+    unsubscribe: any
 
     @NavModule.State
     pages: Array<TPageName>
 
-    @NavModule.State
-    currentPage: TPageName
+    @UserRelatedSettings.State
+    theme
 
     @NavModule.Getter
     currentPageIndex: number
 
-    @NavModule.Action
-    navigateTo: any
+    @UserRelatedSettings.Getter
+    computedTheme: TTheme
 
-    beforeMount () {
-      if (this.words.length > 2) {
-        this.navigateTo('drill')
+    @UserRelatedSettings.Mutation
+    changeTheme
+
+    @UserRelatedData.State
+    words
+
+    setTheme (theme: TTheme) {
+      const html = document.querySelector('html')
+      const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
+
+      console.log(theme)
+      if (!theme) {
+        themes.forEach((themeId) => html.classList.remove(themeId))
+        return
       }
 
+      const current = theme === 'dark' ? themes.shift() : themes.pop()
+      html.classList.remove(current)
+      html.classList.add(themes[0])
+    }
+
+    get scenePosition () {
+      return this.currentPageIndex * (100 / (this.pages.length - 1)) * -1
+    }
+
+    beforeMount () {
       if (isIphoneRoundedScreen) {
         document.querySelector('html').classList.add('rounded-screen')
       }
+
+      this.setTheme(this.theme)
+    }
+
+    created () {
+      this.unsubscribe = this.$store.subscribe(({ type }) => {
+        if (type === 'UserRelatedSettings/changeTheme') {
+          this.setTheme(this.theme)
+        }
+      })
+    }
+
+    beforeDestroy () {
+      this.unsubscribe()
     }
   }
 </script>
