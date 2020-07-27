@@ -223,6 +223,7 @@ $switcherItemsShift: 4px;
 .fade-downwards-leave-active {
   transition: all $leaveDuration;
 }
+
 .fade-downwards-leave-to {
   opacity: 0;
   transform: translateY($switcherItemsShift);
