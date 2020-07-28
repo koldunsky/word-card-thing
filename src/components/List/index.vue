@@ -1,7 +1,7 @@
 <template>
   <div class="list">
     <div class="list__inner">
-      <ul class="list__items-wrapper">
+      <ul class="list__items-wrapper" data-qa="list-wrapper">
         <li
           class="list-item list-heading"
           :class="{
@@ -31,13 +31,11 @@
             </span>
           </span>
           <button
-            data-qa="list-delete-button"
+            data-qa="list-sorting-delete-button"
             v-if="sortBy"
             class="delete-button list-heading__reset-button"
             @click="resetSorting"
-          >
-            x
-          </button>
+          />
         </li>
         <li
           class="list-item"
@@ -55,9 +53,8 @@
             class="delete-button"
             v-if="words.length > 3"
             @click="() => deleteWord(w.id)"
-          >
-            x
-          </button>
+            data-qa="list-item-delete-button"
+          />
         </li>
       </ul>
       <i18n

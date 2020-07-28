@@ -55,8 +55,12 @@ describe('"List" screen', () => {
 
     translationsReversed.forEach(checkOrder)
 
-    cy.get('[data-qa="list-delete-button"]').click()
+    cy.get('[data-qa="list-sorting-delete-button"]').click()
 
     initialOrder.forEach(checkOrder)
+  })
+  it('deletion is works', () => {
+    cy.get('[data-qa="list-item-delete-button"]').eq(0).click()
+    cy.get('[data-qa="list-wrapper"]').find('[data-qa="list-item"]').should('have.length', 3)
   })
 })
