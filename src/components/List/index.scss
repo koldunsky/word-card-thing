@@ -42,6 +42,7 @@ $inner-container: 400px;
 .list-heading {
   color: $list-heading;
   border-bottom: none;
+  user-select: none;
 
   @include inDarkMode {
     color: $list-heading-dark;
@@ -125,6 +126,7 @@ $inner-container: 400px;
 .delete-button {
   @include cross-icon;
 
+  user-select: none;
   position: absolute;
   right: 0;
   top: 5px;
