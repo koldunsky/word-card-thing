@@ -1,0 +1,12 @@
+@import '../../assets/style/utils';
+
+.introScreen {
+  @include stretch(fixed);
+  display: flex;
+  background: $app-background;
+
+  @include inDarkMode {
+    background: $app-background-dark;
+    font-size: 100px;
+  }
+}

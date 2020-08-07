@@ -17,19 +17,21 @@
           transform: `translateX(${scenePosition}%)`
         }"
       >
-        <Add/>
-        <Drill/>
-        <List/>
-        <Settings/>
+        <Add />
+        <Drill />
+        <List />
+        <Settings />
       </div>
     </div>
     <Nav/>
+    <IntroScreen />
   </div>
 </template>
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
+  import IntroScreen from './components/IntroScreen/index.vue'
   import Add from './components/Add/index.vue'
   import Drill from './components/Drill/index.vue'
   import List from './components/List/index.vue'
@@ -50,6 +52,7 @@
     components: {
       UpdateChecker,
       InstallPrompt,
+      IntroScreen,
       Add,
       Drill,
       List,
@@ -82,7 +85,6 @@
       const html = document.querySelector('html')
       const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
 
-      console.log(theme)
       if (!theme) {
         themes.forEach((themeId) => html.classList.remove(themeId))
         return
