@@ -2,6 +2,15 @@
 
 $word-margin-bottom-small: 15px;
 $word-margin-bottom: 25px;
+$enterDuration: .5s;
+$leaveDuration: .3s;
+$switcherItemsShift: 4px;
+
+@keyframes roll {
+  50% {
+    opacity: .4;
+  }
+}
 
 .drill {
   @include page;
@@ -11,6 +20,7 @@ $word-margin-bottom: 25px;
 
 .drill__inner {
   @include page-inner;
+  padding-top: 10px;
 }
 
 .word {
@@ -36,45 +46,6 @@ $word-margin-bottom: 25px;
   }
 }
 
-.switcher {
-  @include button-reset;
-  position: absolute;
-  top: 20px;
-  right: 20px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-wrap: nowrap;
-  color: inherit;
-
-  span:first-child {
-    color: $coral-default;
-
-    @include inDarkMode {
-      color: $coral-default-dark;
-    }
-  }
-}
-
-.switcher_reversed {
-  flex-direction: row-reverse;
-
-  span:first-child {
-    color: inherit;
-    @include inDarkMode {
-      color: inherit;
-    }
-  }
-
-  span:last-child {
-    color: $coral-default;
-
-    @include inDarkMode {
-      color: $coral-default-dark;
-    }
-  }
-}
-
 .button {
   width: 140px;
   margin: 0 7px;
@@ -82,6 +53,59 @@ $word-margin-bottom: 25px;
 
 .button_delete {
   order: -1;
+}
+
+.switcher {
+  width: 100%;
+  background: none;
+  border: none;
+  height: 30px;
+  min-height: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+  color: inherit;
+  margin-bottom: 20px;
+  user-select: none;
+  &:active {
+    background: none;
+    border: none;
+  }
+}
+
+.switcher__half {
+  flex: 1 0 50%;
+  position: relative;
+  height: 30px;
+}
+
+.switcher__text {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  cursor: pointer;
+@include inDarkMode {
+      color: inherit;
+    }
+  }
+
+.switcher__text_first {
+  padding-left: 30px;
+  right: 0;
+  color: $coral-default;
+
+  @include inDarkMode {
+    color: $coral-default-dark;
+  }
+}
+
+.switcher__text_last {
+  left: 0;
+  padding-right: 30px;
 }
 
 .input {
@@ -101,8 +125,8 @@ $word-margin-bottom: 25px;
 
   &.hidden {
     opacity: .01;
-    width: 0px;
-    height: 0px;
+    width: 0;
+    height: 0;
     padding: 0;
     margin: 0;
     border: none;
@@ -141,12 +165,31 @@ $word-margin-bottom: 25px;
   display: flex;
 }
 
-.arrowIcon {
-  width: 13px;
-  height: 1px;
-  margin: 0 5px;
-  background: currentColor;
+.revertIcon {
+  margin: 0 10px;
+  display: block;
+  flex: 0 0 auto;
+  width: 24px;
+  stroke: currentColor;
+  stroke-width: 1;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.arrowIconContainer {
+  cursor: pointer;
+  flex: 0 0 auto;
   position: relative;
+  padding: 0 8px;
+  width: 13px;
+  height: 100%;
+}
+
+.arrowIcon {
+  @include stretch();
+  width: 100%;
+  height: 1px;
+  background: currentColor;
   display: block;
   border-radius: 1px;
 
@@ -165,4 +208,30 @@ $word-margin-bottom: 25px;
   &::after {
     transform: rotateZ(-35deg) translateX(-2px);
   }
+}
+
+.fade-downwards-enter-active {
+  transition: all $enterDuration;
+  transition-delay: .1s;
+}
+
+.fade-downwards-enter {
+  transform: translateY(-$switcherItemsShift);
+  opacity: 0;
+}
+
+.fade-downwards-leave-active {
+  transition: all $leaveDuration;
+}
+
+.fade-downwards-leave-to {
+  opacity: 0;
+  transform: translateY($switcherItemsShift);
+}
+
+.arrow-transition-enter-active {
+  animation: roll $leaveDuration ease-out;
+}
+.arrow-transition-leave-active {
+  display: none;
 }
