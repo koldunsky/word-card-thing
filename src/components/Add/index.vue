@@ -11,23 +11,17 @@
         </span>
       </div>
       <div class="fieldset">
-        <label>
-          <span class="field__label" v-t="'Word'" />
-          <input
-            ref="inputWord"
-            id="field_word"
-            v-model="word"
-            autocomplete="off"
-          />
-        </label>
-        <label>
-          <span class="field__label" v-t="'Translation'" />
-          <input
-            id="field_translation"
-            v-model="translation"
-            autocomplete="off"
-          />
-        </label>
+        <Input
+          translationKey="Word"
+          ref="inputWord11"
+          id="field_word"
+          v-model="word"
+        />
+        <Input
+          translationKey="Translation"
+          id="field_translation"
+          v-model="translation"
+        />
       </div>
       <Button v-t="'Add'" id="button_add"/>
     </div>
@@ -38,9 +32,8 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Button from '@/ui-kit/Button/index.vue'
+  import Input from '@/ui-kit/Input/index.vue'
   import {
-    Mutation,
-    State,
     namespace
   } from 'vuex-class'
 
@@ -54,7 +47,8 @@
 
   @Component({
     components: {
-      Button
+      Button,
+      Input
     }
   })
   export default class AddView extends Vue {
@@ -62,7 +56,7 @@
     translation: string = '';
 
     $refs!: {
-      inputWord: HTMLInputElement
+      inputWord: Input
     }
 
     @UserRelatedData.State
@@ -90,6 +84,7 @@
     }
 
     addWord () {
+      debugger;
       const {
         word,
         translation
@@ -132,7 +127,9 @@
     }
 
     focusFirstInput () {
-      this.$refs.inputWord.focus()
+      const input = this.$refs.inputWord.$refs.inputEl as HTMLInputElement
+
+      input.focus()
     }
 
     resetForm () {

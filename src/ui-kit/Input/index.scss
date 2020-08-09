@@ -1,0 +1,10 @@
+@import '../../assets/style/utils';
+
+.field__label {
+  display: block;
+  padding-bottom: 3px;
+}
+
+.field_error {
+  animation: field-has-error .2s ease-out 3;
+}

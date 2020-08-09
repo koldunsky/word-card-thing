@@ -5,7 +5,7 @@
           <span v-t="'settings.currentTheme'" />: <b v-t="`settings.${currentThemeString}`" />
         </div>
 
-        <button @click="onChangeClick">
+        <button @click="onChangeClick" style="position: fixed; bottom: 20px; opacity: .99; z-index: 3;">
           Change
         </button>
       </div>
@@ -19,7 +19,7 @@
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
   @Component
-  export default class SomeComponent extends Vue {
+  export default class Settings extends Vue {
     themeVariants: Array<TTheme> = ['dark', 'light', null];
 
     @UserRelatedSettings.State

@@ -61,6 +61,17 @@
       >
         {{answer}}
       </div>
+      <Input
+        ref="input"
+        @input="onInputChange"
+        @keydown="onInputKeydown"
+        v-model="value"
+        autocomplete="off"
+        :inputClassNames="{
+          'right-answer': isRightAnswer,
+          'hidden': isShowAnswer
+        }"
+      />
       <input
         ref="input"
         @input="onInputChange"
@@ -108,19 +119,17 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import {
-    Mutation,
-    Action,
-    State, namespace
-  } from 'vuex-class'
+  import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
+  import Input from '@/ui-kit/Input/index.vue'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
   const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
     components: {
-      Button
+      Button,
+      Input
     }
   })
   export default class Drill extends Vue {
@@ -132,7 +141,7 @@
     lastBlurTarget: EventTarget = null;
 
     $refs: {
-      input: HTMLInputElement
+      input: Input
     }
 
     @UserRelatedSettings.State
@@ -159,11 +168,7 @@
       })
     }
 
-    onInputChange (e: Event) {
-      const {
-        value
-      } = e.target as HTMLInputElement
-
+    onInputChange (value: string) {
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
@@ -181,7 +186,7 @@
 
     onSkipWordButtonClick () {
       if (this.isShowAnswer) {
-        this.$refs.input.focus()
+        this.focusInput()
       } else {
         this.handleFocusBehaviour()
       }
@@ -196,12 +201,18 @@
       this.toggleTranslationFlow()
     }
 
+    focusInput () {
+      const input = this.$refs.input.$refs.inputEl as HTMLInputElement
+
+      input.focus()
+    }
+
     handleFocusBehaviour () {
-      const itWasInput = this.lastBlurTarget === this.$refs.input
+      const itWasInput = this.lastBlurTarget === this.$refs.input.$refs.inputEl
       const andItWasReallyFast = performance.now() - this.lastBlurTimeStamp < 150
 
       if (itWasInput && andItWasReallyFast) {
-        this.$refs.input.focus()
+        this.focusInput()
       }
     }
 

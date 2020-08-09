@@ -22,7 +22,7 @@ html, body {
 
 body {
   font-size: 1.6rem;
-  line-height: 1.3;
+  line-height: $line-height;
   background: $app-background;
   color: $app-text-color;
   min-width: 320px;
@@ -90,6 +90,10 @@ textarea {
     border-color: $input-border-active;
   }
 
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
   @include inDarkMode {
     border-color: $input-border-dark;
 
@@ -97,6 +101,10 @@ textarea {
     &:active {
       outline: none;
       border-color: $input-border-active-dark;
+    }
+
+    &::placeholder {
+      color: $placeholder-color-dark;
     }
   }
 }

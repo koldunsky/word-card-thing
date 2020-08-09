@@ -99,6 +99,18 @@
   }
 }
 
+@mixin mediaTablet {
+  @media (min-width: 700px) {
+    @content;
+  }
+}
+
+@mixin mediaDesktop {
+  @media (min-width: 1100px) {
+    @content;
+  }
+}
+
 @mixin inDarkMode {
   @media (prefers-color-scheme: dark) {
     html:not(.light-mode) & {

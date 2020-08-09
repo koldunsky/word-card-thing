@@ -1,12 +1,89 @@
 @import '../../assets/style/utils';
 
+$intro-screen-font-size: 3rem;
+$intro-screen-font-size-desktop: 6rem;
+
 .introScreen {
+  @include page-inner;
   @include stretch(fixed);
-  display: flex;
+  display: block;
   background: $app-background;
+  text-align: left;
+  font-size: $intro-screen-font-size;
+  overflow: auto;
+
+  @include mediaDesktop {
+    font-size: $intro-screen-font-size-desktop;
+  }
 
   @include inDarkMode {
     background: $app-background-dark;
-    font-size: 100px;
+  }
+}
+
+.introScreen__inputContainer {
+  position: relative;
+  display: inline-block;
+  height: $line-height * $intro-screen-font-size;
+  max-width: 100%;
+  overflow: hidden;
+  vertical-align: bottom;
+
+  @include mediaDesktop {
+    height: $line-height * $intro-screen-font-size-desktop;
+  }
+}
+
+.introScreen__input {
+  font-size: inherit;
+  border-top-color: transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: .3rem;
+  border-top-width: .3rem;
+  display: inline;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  height: 100%;
+  color: $green-600;
+
+  &:active,
+  &:hover,
+  &:focus {
+    border-top-color: transparent;
+  }
+
+  @include inDarkMode {
+    color: $green-300;
+  }
+}
+
+.introScreen__valueDummy,
+.introScreen__placeholderDummy {
+  pointer-events: none;
+  opacity: 0;
+  display: block;
+  max-height: 0;
+  user-select: none;
+}
+
+.introScreen__valueDummy {
+  &::after {
+    content: '';
+    display: inline-block;
+    width: .1rem;
+  }
+}
+
+.highlight {
+  color: $coral-default;
+
+  @include inDarkMode {
+    color: $coral-default-dark;
   }
 }
