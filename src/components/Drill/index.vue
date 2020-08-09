@@ -1,5 +1,5 @@
 <template>
-  <div class="drill">
+  <div class="drill" :class="isShowAnswer && 'drill_showingAnswer'">
     <div class="drill__inner">
       <div
         class="switcher"
@@ -76,9 +76,6 @@
       />
       <div
         class="button-set"
-        :class="{
-          'button-set_showing-answer': isShowAnswer
-        }"
       >
         <Button
           class="button"

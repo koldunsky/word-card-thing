@@ -1,10 +1,17 @@
 @import '../../assets/style/utils';
 
 $word-margin-bottom-small: 15px;
-$word-margin-bottom: 25px;
+$word-margin-bottom: 20px;
 $enterDuration: .5s;
 $leaveDuration: .3s;
 $switcherItemsShift: 4px;
+$diffInMarginsWhenShowingAnswer: 7px;
+
+@mixin showingAnswer {
+  .drill_showingAnswer & {
+    @content
+  }
+}
 
 @keyframes roll {
   50% {
@@ -44,6 +51,14 @@ $switcherItemsShift: 4px;
   @include mediaSmallHeight {
     margin-bottom: $word-margin-bottom;
   }
+
+  @include showingAnswer {
+    margin-bottom: $word-margin-bottom-small - $diffInMarginsWhenShowingAnswer;
+
+    @include mediaSmallHeight {
+      margin-bottom: $word-margin-bottom - $diffInMarginsWhenShowingAnswer;
+    }
+  }
 }
 
 .button {
@@ -67,10 +82,16 @@ $switcherItemsShift: 4px;
   flex-wrap: nowrap;
   color: inherit;
   margin-bottom: 20px;
+  margin-top: 15px;
   user-select: none;
   &:active {
     background: none;
     border: none;
+  }
+
+  @include showingAnswer {
+    pointer-events: none;
+    opacity: .5;
   }
 }
 
@@ -158,6 +179,14 @@ $switcherItemsShift: 4px;
 
   @include mediaSmallHeight {
     margin-bottom: $word-margin-bottom;
+  }
+
+  @include showingAnswer {
+    margin-bottom: $word-margin-bottom-small + $diffInMarginsWhenShowingAnswer;
+
+    @include mediaSmallHeight {
+      margin-bottom: $word-margin-bottom + $diffInMarginsWhenShowingAnswer;
+    }
   }
 }
 
