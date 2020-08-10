@@ -5,7 +5,7 @@
           <span v-t="'settings.currentTheme'" />: <b v-t="`settings.${currentThemeString}`" />
         </div>
 
-        <button @click="onChangeClick" style="position: fixed; bottom: 20px; opacity: .99; z-index: 3;">
+        <button @click="onChangeClick">
           Change
         </button>
       </div>

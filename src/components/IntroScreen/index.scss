@@ -2,6 +2,7 @@
 
 $intro-screen-font-size: 3rem;
 $intro-screen-font-size-desktop: 6rem;
+$intro-screen-line-height: 1.6;
 
 .introScreen {
   @include page-inner;
@@ -11,6 +12,7 @@ $intro-screen-font-size-desktop: 6rem;
   text-align: left;
   font-size: $intro-screen-font-size;
   overflow: auto;
+  line-height: $intro-screen-line-height;
 
   @include mediaDesktop {
     font-size: $intro-screen-font-size-desktop;
@@ -21,17 +23,32 @@ $intro-screen-font-size-desktop: 6rem;
   }
 }
 
+.introScreen__inner {
+  position: relative;
+  padding-bottom: 80px;
+}
+
+.introScreen__button {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 20px;
+}
+
 .introScreen__inputContainer {
   position: relative;
   display: inline-block;
-  height: $line-height * $intro-screen-font-size;
+  height: $intro-screen-line-height * $intro-screen-font-size;
   max-width: 100%;
-  overflow: hidden;
   vertical-align: bottom;
 
   @include mediaDesktop {
-    height: $line-height * $intro-screen-font-size-desktop;
+    height: $intro-screen-line-height * $intro-screen-font-size-desktop;
   }
+}
+
+.introScreen__inputInner {
+  overflow: hidden;
 }
 
 .introScreen__input {
@@ -85,5 +102,29 @@ $intro-screen-font-size-desktop: 6rem;
 
   @include inDarkMode {
     color: $coral-default-dark;
+  }
+}
+
+.introScreen__inputLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: .05s ease;
+  transition-property: line-height, font-size, transform, color;
+  color: $placeholder-color;
+
+  @include inDarkMode {
+    color: $placeholder-color-dark;
+  }
+}
+
+.introScreen__inputLabel_active {
+  transform: translateY(-.8rem);
+  line-height: 1.4rem;
+  font-size: 1.4rem;
+  color: inherit;
+
+  @include inDarkMode {
+    color: inherit;
   }
 }

@@ -1,15 +1,18 @@
 <template>
   <span class="introScreen__inputContainer">
-    <span class="introScreen__valueDummy">{{value}}</span>
-    <span class="introScreen__placeholderDummy">{{$attrs.placeholder}}</span>
-    <input
-      class="introScreen__input"
-      type="text"
-      v-bind="$attrs"
-      v-bind:value="value"
-      v-on:input="onInput"
-      ref="inputEl"
-    />
+    <span class="introScreen__inputLabel" :class="value && 'introScreen__inputLabel_active'">{{placeholder}}</span>
+    <span class="introScreen__inputInner">
+      <span class="introScreen__valueDummy">{{value}}</span>
+      <span class="introScreen__placeholderDummy">{{placeholder}}</span>
+      <input
+        class="introScreen__input"
+        type="text"
+        v-bind="$attrs"
+        v-bind:value="value"
+        v-on:input="onInput"
+        ref="inputEl"
+      />
+    </span>
   </span>
 </template>
 
@@ -25,6 +28,7 @@
   })
   export default class IntroScreenInput extends Vue {
     @Prop() value: string
+    @Prop() placeholder: string
 
     inputValue: string = ''
 

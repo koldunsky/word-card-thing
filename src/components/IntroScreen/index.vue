@@ -1,6 +1,9 @@
 <template>
   <div class="introScreen" v-if="1">
-    <i class="highlight">kolenki</i> is an app that helps to remember words. Type in a <IntroScreenInput placeholder="word" v-model="word" /> and its <IntroScreenInput placeholder="translation" v-model="translation" />
+    <div class="introScreen__inner">
+      <i class="highlight">kolenki</i> is an app that helps to remember words. Type in a&nbsp;<IntroScreenInput ref="wordInput" placeholder="word" v-model="word" /> and its&nbsp;<IntroScreenInput ref="translationInput" placeholder="translation" v-model="translation" />
+      <Button class="introScreen__button" v-if="canShowButton">Continue</Button>
+    </div>
   </div>
 </template>
 
@@ -8,7 +11,7 @@
   import { Component, Prop, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
-  import IntroScreenInput from './itroScreenInput.vue'
+  import IntroScreenInput from './introScreenInput.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
 
@@ -21,6 +24,21 @@
 
     word: string = ''
     translation: string = ''
+    shouldShowButton: boolean = false
+
+    get canShowButton () {
+      const {
+        shouldShowButton,
+        word: w,
+        translation: t
+      } = this
+
+      return (Boolean(w) && Boolean(t) && w.length + t.length > 4) || shouldShowButton
+    }
+
+    mounted () {
+
+    }
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
