@@ -1,18 +1,16 @@
 <template>
   <span class="introScreen__inputContainer">
-    <span class="introScreen__inputLabel" :class="value && 'introScreen__inputLabel_active'">{{placeholder}}</span>
-    <span class="introScreen__inputInner">
-      <span class="introScreen__valueDummy">{{value}}</span>
-      <span class="introScreen__placeholderDummy">{{placeholder}}</span>
-      <input
-        class="introScreen__input"
-        type="text"
-        v-bind="$attrs"
-        v-bind:value="value"
-        v-on:input="onInput"
-        ref="inputEl"
-      />
-    </span>
+    <span class="introScreen__valueDummy">{{value}}</span>
+    <span class="introScreen__placeholderDummy">{{placeholder}}</span>
+    <input
+      :placeholder="placeholder"
+      class="introScreen__input"
+      type="text"
+      v-bind="$attrs"
+      v-bind:value="value"
+      v-on:input="onInput"
+      ref="inputEl"
+    />
   </span>
 </template>
 

@@ -1,8 +1,8 @@
 @import '../../assets/style/utils';
 
-$intro-screen-font-size: 3rem;
-$intro-screen-font-size-desktop: 6rem;
-$intro-screen-line-height: 1.6;
+$intro-screen-font-size: 4rem;
+$intro-screen-font-size-tablet: 5.5rem;
+$intro-screen-line-height: 1.4;
 
 .introScreen {
   @include page-inner;
@@ -14,8 +14,11 @@ $intro-screen-line-height: 1.6;
   overflow: auto;
   line-height: $intro-screen-line-height;
 
-  @include mediaDesktop {
-    font-size: $intro-screen-font-size-desktop;
+  @include mediaTablet {
+    font-size: $intro-screen-font-size-tablet;
+    padding-top: 8%;
+    padding-left: 6rem;
+    padding-right: 6rem;
   }
 
   @include inDarkMode {
@@ -25,14 +28,19 @@ $intro-screen-line-height: 1.6;
 
 .introScreen__inner {
   position: relative;
-  padding-bottom: 80px;
+  padding-bottom: 110px;
+  max-width: 850px;
+  margin: 0 auto;
 }
 
 .introScreen__button {
   position: absolute;
   left: 50%;
   transform: translateX(-50%);
-  bottom: 20px;
+  padding: .66em 1.33em;
+  border-radius: .2em;
+  bottom: 0;
+  font-size: 2.2rem;
 }
 
 .introScreen__inputContainer {
@@ -42,8 +50,8 @@ $intro-screen-line-height: 1.6;
   max-width: 100%;
   vertical-align: bottom;
 
-  @include mediaDesktop {
-    height: $intro-screen-line-height * $intro-screen-font-size-desktop;
+  @include mediaTablet {
+    height: $intro-screen-line-height * $intro-screen-font-size-tablet;
   }
 }
 
@@ -97,14 +105,6 @@ $intro-screen-line-height: 1.6;
   }
 }
 
-.highlight {
-  color: $coral-default;
-
-  @include inDarkMode {
-    color: $coral-default-dark;
-  }
-}
-
 .introScreen__inputLabel {
   position: absolute;
   top: 0;
@@ -126,5 +126,13 @@ $intro-screen-line-height: 1.6;
 
   @include inDarkMode {
     color: inherit;
+  }
+}
+
+.highlight {
+  color: $coral-default;
+
+  @include inDarkMode {
+    color: $coral-default-dark;
   }
 }

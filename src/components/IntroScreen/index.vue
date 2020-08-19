@@ -1,8 +1,46 @@
 <template>
-  <div class="introScreen" v-if="1">
-    <div class="introScreen__inner">
-      <i class="highlight">kolenki</i> is an app that helps to remember words. Type in a&nbsp;<IntroScreenInput ref="wordInput" placeholder="word" v-model="word" /> and its&nbsp;<IntroScreenInput ref="translationInput" placeholder="translation" v-model="translation" />
-      <Button class="introScreen__button" v-if="canShowButton">Continue</Button>
+  <div class="introScreen" v-if="activeScreen < 2">
+    <div
+      v-if="activeScreen === 0"
+      class="introScreen__inner introScreen_screen_first">
+      <i18n
+        path="introFirstScreen.text"
+        tag="div"
+      >
+        <template v-slot:appName>
+          <span class="highlight" v-t="'introFirstScreen.appName'" />
+        </template><template v-slot:word>
+          <IntroScreenInput ref="wordInput" :placeholder="$t('introFirstScreen.word')" v-model="word" />
+        </template>
+        <template v-slot:translation>
+          <IntroScreenInput ref="translationInput" :placeholder="$t('introFirstScreen.translation')" v-model="translation" />
+        </template>
+      </i18n>
+      <Button
+        class="introScreen__button"
+        v-t="'introFirstScreen.button'"
+        v-if="canShowButton"
+        @click="onButtonClick"
+      />
+   </div>
+    <div
+      v-else-if="activeScreen === 1"
+      class="introScreen__inner introScreen_screen_second"
+    >
+      <i18n
+        path="introSecondScreen.text"
+        tag="div"
+      >
+        <template v-slot:atLeastThreeWords>
+          <span class="highlight" v-t="'introSecondScreen.atLeastThreeWords'" />
+        </template>
+      </i18n>
+      <Button
+        class="introScreen__button"
+        v-t="'introSecondScreen.button'"
+        v-if="canShowButton"
+        @click="onButtonClick"
+      />
     </div>
   </div>
 </template>
@@ -25,6 +63,7 @@
     word: string = ''
     translation: string = ''
     shouldShowButton: boolean = false
+    activeScreen: number = 0
 
     get canShowButton () {
       const {
@@ -36,8 +75,8 @@
       return (Boolean(w) && Boolean(t) && w.length + t.length > 4) || shouldShowButton
     }
 
-    mounted () {
-
+    onButtonClick () {
+      this.activeScreen++
     }
   }
 </script>

@@ -24,5 +24,17 @@ export const en = {
     dark: 'dark',
     light: 'light',
     system: 'set by system settings'
+  },
+  introFirstScreen: {
+    text: '{appName} is an app that helps to remember words. Type in {word} and {translation}.',
+    appName: 'kolenki',
+    word: 'a word',
+    translation: 'its translation',
+    button: 'Done'
+  },
+  introSecondScreen: {
+    text: 'Good job! To start training you need to add {atLeastThreeWords}.',
+    atLeastThreeWords: 'at least three words',
+    button: 'Got it!'
   }
 }
