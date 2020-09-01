@@ -1,6 +1,6 @@
 import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
-import getGuid from '@/utils/getGuid'
-import remove from 'lodash/remove'
+import getGuid from "@/utils/getGuid";
+import remove from "lodash/remove";
 
 export interface IWord {
   id: string;
@@ -29,8 +29,6 @@ class UserRelatedData extends VuexModule {
     word: '',
     translation: ''
   }
-
-  public introScreenPassed = false
 
   @Mutation
   addWord (payload: IWordSetter) {
@@ -77,11 +75,6 @@ class UserRelatedData extends VuexModule {
       }
       throw Error(`Word removing cancelled (${foundWords.word}|${foundWords.translation})`)
     })
-  }
-
-  @Mutation
-  passIntroScreen () {
-    this.introScreenPassed = true
   }
 }
 

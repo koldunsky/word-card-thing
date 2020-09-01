@@ -1,21 +1,22 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import remove from 'lodash/remove'
+import each from 'lodash/each'
+import set from 'lodash/set'
+import isEmpty from 'lodash/isEmpty'
+import get from 'lodash/get'
 import getGuid from '@/utils/getGuid'
 
 import NavModule from '../entities/nav'
 import UserRelatedData from '../entities/userRelated/data'
 import UserRelatedSettings from '../entities/userRelated/settings'
-import { implementMigrations } from './implementMigrations'
 
 Vue.use(Vuex)
 
 const STORAGE_STATE = 'kolenki_state'
 
 const store = new Vuex.Store({
-  state: {
-    version: 1
-  },
   modules: {
     NavModule,
     UserRelatedSettings,
@@ -24,12 +25,33 @@ const store = new Vuex.Store({
   mutations: {
     initializeStore (state) {
       if (localStorage.getItem(STORAGE_STATE)) {
-        let localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
-        if (localState.version !== state.version) {
-          localState = implementMigrations(state, localState)
+        const localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
+        const onlyUserRelatedLocalState = {}
+
+        each(localState, (value, name) => {
+          if (name.includes('UserRelated')) {
+            onlyUserRelatedLocalState[name] = value
+          }
+        })
+
+        // Migrations
+        const oldStateWords = get(localState, 'words', [])
+        if (!isEmpty(oldStateWords)) {
+          set(onlyUserRelatedLocalState, 'UserRelatedData.words', oldStateWords)
         }
 
-        this.replaceState({ ...state, ...localState })
+        if (!get(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', false)) {
+          set(onlyUserRelatedLocalState, 'UserRelatedData.currentWord', {
+            id: '',
+            word: '',
+            translation: ''
+          })
+        }
+
+        this.replaceState({
+          ...(typeof state === 'object' ? state : {}),
+          ...(typeof onlyUserRelatedLocalState === 'object' ? onlyUserRelatedLocalState : {})
+        })
       }
     }
   }

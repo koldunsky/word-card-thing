@@ -4,32 +4,10 @@ $intro-screen-font-size: 4rem;
 $intro-screen-font-size-tablet: 5.5rem;
 $intro-screen-line-height: 1.4;
 
-@mixin switchable () {
-  transition: .8s ease;
-  transition-property: opacity, transform;
-  opacity: 0;
-  pointer-events: none;
-  transform: scale(.7) translate3d(0, 40%, 0);
-}
-
-@mixin inactive () {
-  transform: translate3d(0, -55%, 0);
-  transition-duration: .4s;
-}
-
-@mixin active () {
-  opacity: 1;
-  pointer-events: auto;
-  transform: scale(1) translate3d(0, 0, 0);
-  transition-delay: .1s;
-}
-
 .introScreen {
-  @include switchable;
-  @include active;
   @include page-inner;
+  @include stretch(fixed);
   display: block;
-  height: 100%;
   background: $app-background;
   text-align: left;
   font-size: $intro-screen-font-size;
@@ -48,50 +26,21 @@ $intro-screen-line-height: 1.4;
   }
 }
 
-.introScreen_inactive {
-  @include inactive
-}
-
-.introScreen__holder {
-  position: relative;
-  height: 100%;
-}
-
 .introScreen__inner {
-  @include switchable();
-  @include stretch();
-  bottom: auto;
-  padding-bottom: 100px;
+  position: relative;
+  padding-bottom: 110px;
   max-width: 850px;
   margin: 0 auto;
-}
-
-.introScreen__inner_inactive {
-  @include inactive();
-}
-
-.introScreen__inner_active {
-  @include active();
 }
 
 .introScreen__button {
   position: absolute;
   left: 50%;
-  transform: translate3d(-50%, 10px, 0);
+  transform: translateX(-50%);
   padding: .66em 1.33em;
   border-radius: .2em;
   bottom: 0;
   font-size: 2.2rem;
-  opacity: 0;
-  transition: .4s ease;
-  transition-property: opacity, transform;
-  pointer-events: none;
-}
-
-.introScreen__button_active {
-  opacity: 1;
-  pointer-events: auto;
-  transform: translate3d(-50%, 0, 0);
 }
 
 .introScreen__inputContainer {
@@ -156,9 +105,32 @@ $intro-screen-line-height: 1.4;
   }
 }
 
+.introScreen__inputLabel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: .05s ease;
+  transition-property: line-height, font-size, transform, color;
+  color: $placeholder-color;
+
+  @include inDarkMode {
+    color: $placeholder-color-dark;
+  }
+}
+
+.introScreen__inputLabel_active {
+  transform: translateY(-.8rem);
+  line-height: 1.4rem;
+  font-size: 1.4rem;
+  color: inherit;
+
+  @include inDarkMode {
+    color: inherit;
+  }
+}
+
 .highlight {
   color: $coral-default;
-  white-space: nowrap;
 
   @include inDarkMode {
     color: $coral-default-dark;

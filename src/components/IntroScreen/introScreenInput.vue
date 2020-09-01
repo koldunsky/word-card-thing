@@ -10,7 +10,6 @@
       v-bind:value="value"
       v-on:input="onInput"
       ref="inputEl"
-      @blur="(e) => $emit('blur', e)"
     />
   </span>
 </template>

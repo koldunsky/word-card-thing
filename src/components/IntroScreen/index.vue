@@ -1,72 +1,52 @@
 <template>
-  <div class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @keyup.enter="onSubmit">
-    <div class="introScreen__holder">
-      <div
-        class="introScreen__inner"
-        :class="{
-          'introScreen__inner_active': words.length === 0,
-          'introScreen__inner_inactive': words.length > 0
-        }"
+  <div class="introScreen" v-if="activeScreen < 2">
+    <div
+      v-if="activeScreen === 0"
+      class="introScreen__inner introScreen_screen_first">
+      <i18n
+        path="introFirstScreen.text"
+        tag="div"
       >
-        <i18n
-          path="introFirstScreen.text"
-          tag="div"
-        >
-          <template v-slot:appName>
-            <span class="highlight" v-t="'introFirstScreen.appName'"/>
-          </template>
-          <template v-slot:word>
-            <IntroScreenInput
-              ref="wordInput"
-              :placeholder="$t('introFirstScreen.word')"
-              v-model="word"
-              @blur="onBlur"
-            />
-          </template>
-          <template v-slot:translation>
-            <IntroScreenInput
-              ref="translationInput"
-              :placeholder="$t('introFirstScreen.translation')"
-              v-model="translation"
-              @blur="onBlur"
-            />
-         </template>
-        </i18n>
-        <Button
-          class="introScreen__button"
-          :class="canShowFirstButton && 'introScreen__button_active'"
-          @click="onSubmit"
-        >
-          {{$t('introFirstScreen.button')}}
-        </Button>
-      </div>
-      <div
-        class="introScreen__inner"
-        :class="{
-          'introScreen__inner_active': canShowSecondScreen
-        }"
+        <template v-slot:appName>
+          <span class="highlight" v-t="'introFirstScreen.appName'" />
+        </template><template v-slot:word>
+          <IntroScreenInput ref="wordInput" :placeholder="$t('introFirstScreen.word')" v-model="word" />
+        </template>
+        <template v-slot:translation>
+          <IntroScreenInput ref="translationInput" :placeholder="$t('introFirstScreen.translation')" v-model="translation" />
+        </template>
+      </i18n>
+      <Button
+        class="introScreen__button"
+        v-t="'introFirstScreen.button'"
+        v-if="canShowButton"
+        @click="onButtonClick"
+      />
+   </div>
+    <div
+      v-else-if="activeScreen === 1"
+      class="introScreen__inner introScreen_screen_second"
+    >
+      <i18n
+        path="introSecondScreen.text"
+        tag="div"
       >
-        <i18n
-          path="introSecondScreen.text"
-          tag="div"
-        >
-          <template v-slot:threeWords>
-            <span class="highlight" v-t="'introSecondScreen.threeWords'"/>
-          </template>
-        </i18n>
-        <Button
-          class="introScreen__button"
-          :class="canShowSecondButton && 'introScreen__button_active'"
-          v-t="'introSecondScreen.button'"
-          @click="onSubmit"
-        />
-      </div>
+        <template v-slot:atLeastThreeWords>
+          <span class="highlight" v-t="'introSecondScreen.atLeastThreeWords'" />
+        </template>
+      </i18n>
+      <Button
+        class="introScreen__button"
+        v-t="'introSecondScreen.button'"
+        v-if="canShowButton"
+        @click="onButtonClick"
+      />
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Prop, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
   import IntroScreenInput from './introScreenInput.vue'
@@ -80,88 +60,23 @@
     @UserRelatedData.State
     words
 
-    @UserRelatedData.State
-    introScreenPassed
-
-    @UserRelatedData.Mutation('addWord')
-    addWordToStore
-
     word: string = ''
     translation: string = ''
-    shouldShowFirstButton: boolean = false
-    canShowSecondButton: boolean = false
-    timerToShowSecondButton: number = null
+    shouldShowButton: boolean = false
+    activeScreen: number = 0
 
-    @UserRelatedData.Mutation
-    passIntroScreen
-
-    get inputsAreNotEmpty () {
-      return Boolean(this.word) && Boolean(this.translation)
-    }
-
-    get canShowFirstButton () {
+    get canShowButton () {
       const {
-        shouldShowFirstButton,
+        shouldShowButton,
         word: w,
         translation: t
       } = this
 
-      return (this.inputsAreNotEmpty && w.length + t.length > 4) || shouldShowFirstButton
+      return (Boolean(w) && Boolean(t) && w.length + t.length > 4) || shouldShowButton
     }
 
-    get canShowSecondScreen () {
-      return this.words.length > 0
-    }
-
-    addWord () {
-      if (!this.inputsAreNotEmpty) {
-        console.warn('word or translation is empty')
-        return false
-      }
-
-      const {
-        word,
-        translation
-      } = this
-
-      this.addWordToStore({
-        word,
-        translation
-      })
-    }
-
-    onLastButtonClick () {
-      this.passIntroScreen()
-    }
-
-    onBlur () {
-      if (this.inputsAreNotEmpty) {
-        this.shouldShowFirstButton = true
-      }
-    }
-
-    onSubmit () {
-      if (this.words.length < 1) {
-        this.addWord()
-      } else {
-        this.passIntroScreen()
-      }
-    }
-
-    checkWhetherCanShowSecondButton () {
-      if (this.timerToShowSecondButton === null && this.canShowSecondScreen) {
-        this.timerToShowSecondButton = setTimeout(() => {
-          this.canShowSecondButton = true
-        }, 2000)
-      }
-    }
-
-    updated () {
-      this.checkWhetherCanShowSecondButton()
-    }
-
-    mounted () {
-      this.checkWhetherCanShowSecondButton()
+    onButtonClick () {
+      this.activeScreen++
     }
   }
 </script>

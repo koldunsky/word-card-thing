@@ -36,7 +36,7 @@ body {
   width: 100%;
   height: 100%;
   min-width: 320px;
-  max-height: 100%;
+  overflow-y: scroll;
   -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -44,10 +44,8 @@ body {
   position: relative;
   border-top: 2px solid transparent;
   transition: .3s ease border;
-  overflow: hidden;
 
   &_has-3-words {
-    overflow-y: scroll;
     border-color: $app-border-top;
 
     @include inDarkMode {
@@ -60,13 +58,6 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
-   transition: .3s ease;
-   transition-property: opacity, transform;
-}
-
-.scene_deactivated {
-  opacity: 0;
-  transform: scale(.9);
 }
 
 .scene__inner {
