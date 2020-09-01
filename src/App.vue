@@ -8,8 +8,12 @@
   >
     <UpdateChecker/>
     <InstallPrompt/>
+    <IntroScreen />
     <div
       class="scene"
+      :class="{
+        scene_deactivated: !introScreenPassed
+      }"
     >
       <div
         class="scene__inner"
@@ -24,7 +28,6 @@
       </div>
     </div>
     <Nav/>
-    <IntroScreen />
   </div>
 </template>
 
@@ -68,6 +71,9 @@
 
     @UserRelatedSettings.State
     theme
+
+    @UserRelatedSettings.State
+    introScreenPassed
 
     @NavModule.Getter
     currentPageIndex: number
