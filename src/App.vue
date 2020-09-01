@@ -8,15 +8,14 @@
   >
     <UpdateChecker/>
     <InstallPrompt/>
-    <IntroScreen />
     <div
       class="scene"
-      :class="{
-        scene_deactivated: !introScreenPassed
-      }"
     >
       <div
         class="scene__inner"
+        :class="{
+          scene_deactivated: !introScreenPassed
+        }"
         :style="{
           transform: `translateX(${scenePosition}%)`
         }"
@@ -26,6 +25,7 @@
         <List />
         <Settings />
       </div>
+      <IntroScreen />
     </div>
     <Nav/>
   </div>
@@ -72,7 +72,7 @@
     @UserRelatedSettings.State
     theme
 
-    @UserRelatedSettings.State
+    @UserRelatedData.State
     introScreenPassed
 
     @NavModule.Getter

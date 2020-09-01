@@ -1,5 +1,5 @@
 <template>
-  <div class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @keyup.enter="onSubmit">
+  <div class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @keyup.enter="onSubmit" v-if="words.length < 2">
     <div class="introScreen__holder">
       <div
         class="introScreen__inner"
@@ -43,7 +43,8 @@
       <div
         class="introScreen__inner"
         :class="{
-          'introScreen__inner_active': canShowSecondScreen
+          'introScreen__inner_active': canShowSecondScreen,
+          'introScreen__inner_inactive': introScreenPassed
         }"
       >
         <i18n
@@ -110,7 +111,7 @@
     }
 
     get canShowSecondScreen () {
-      return this.words.length > 0
+      return this.words.length > 0 && !this.introScreenPassed
     }
 
     addWord () {
@@ -135,9 +136,7 @@
     }
 
     onBlur () {
-      if (this.inputsAreNotEmpty) {
-        this.shouldShowFirstButton = true
-      }
+      this.shouldShowFirstButton = this.inputsAreNotEmpty
     }
 
     onSubmit () {

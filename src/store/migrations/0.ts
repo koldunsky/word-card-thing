@@ -2,7 +2,6 @@ import get from 'lodash/get'
 import isEmpty from 'lodash/isEmpty'
 import set from 'lodash/set'
 import each from 'lodash/each'
-import assign from 'lodash/assign'
 
 export default (localState) => {
   const onlyUserRelatedLocalState = {}
