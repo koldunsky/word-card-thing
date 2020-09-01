@@ -4,7 +4,7 @@ import set from 'lodash/set'
 import each from 'lodash/each'
 import assign from 'lodash/assign'
 
-export default (baseState, localState) => {
+export default (localState) => {
   const onlyUserRelatedLocalState = {}
 
   each(localState, (value, name) => {
@@ -26,7 +26,7 @@ export default (baseState, localState) => {
     })
   }
 
-  const result = assign(baseState, onlyUserRelatedLocalState, { version: 0 })
-  console.info(result)
-  return result
+  onlyUserRelatedLocalState['version'] = 0
+  console.info(onlyUserRelatedLocalState)
+  return onlyUserRelatedLocalState
 }

@@ -20,12 +20,12 @@ export const implementMigrations = (baseState, userState) => {
   const migrations = importAllMigrations()
 
   if (typeof userState.version === 'undefined') {
-    userState = migrations[0](userState)
+    userState = migrations[0].default(userState)
   }
 
   while (baseState.version > userState.version) {
     const v = userState.version
-    userState = migrations[`${v}-${v + 1}`](userState)
+    userState = migrations[`${v}-${v + 1}`].default(userState)
   }
 
   return userState
