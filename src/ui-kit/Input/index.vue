@@ -32,7 +32,7 @@
       this.$emit('input', $event.target.value)
     }
 
-    mounted() {
+    mounted () {
       console.log(this)
     }
   }
