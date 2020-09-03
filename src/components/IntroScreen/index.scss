@@ -9,11 +9,12 @@ $intro-screen-line-height: 1.4;
   transition-property: opacity, transform;
   opacity: 0;
   pointer-events: none;
-  transform: scale(.9) translate3d(0, 50px, 0);
+  transform: scale(.9) translate3d(0, 50px, 0) rotateX(-7deg);
+  transform-origin: 50% 100%;
 }
 
 @mixin inactive () {
-  transform: translate3d(0, -150px, 0);
+  transform: translate3d(0, -70px, 0) rotateX(7deg);
   transition-duration: .4s;
   pointer-events: none;
 }
@@ -39,6 +40,7 @@ $intro-screen-line-height: 1.4;
   line-height: $intro-screen-line-height;
   transition-duration: .4s;
   transition-property: opacity;
+  perspective: 1500px;
 
   @include mediaTablet {
     font-size: $intro-screen-font-size-tablet;
