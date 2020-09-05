@@ -21,6 +21,7 @@
               :placeholder="$t('introFirstScreen.word')"
               v-model="word"
               @blur="onBlur"
+              @focus="onFocus"
             />
           </template>
           <template v-slot:translation>
@@ -29,6 +30,7 @@
               :placeholder="$t('introFirstScreen.translation')"
               v-model="translation"
               @blur="onBlur"
+              @focus="onFocus"
             />
          </template>
         </i18n>
@@ -137,6 +139,10 @@
 
     onBlur () {
       this.shouldShowFirstButton = this.inputsAreNotEmpty
+    }
+
+    onFocus () {
+      this.shouldShowFirstButton = false
     }
 
     onSubmit () {
