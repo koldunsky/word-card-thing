@@ -11,6 +11,7 @@
       v-on:input="onInput"
       ref="inputEl"
       @blur="(e) => $emit('blur', e)"
+      @focus="(e) => $emit('focus', e)"
     />
   </span>
 </template>
