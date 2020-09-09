@@ -23,7 +23,8 @@ module.exports = {
         {
           src: `./img/icons/icon-512x512.png?v=${Date.now()}`,
           sizes: '512x512',
-          type: 'image/png'
+          type: 'image/png',
+          purpose: 'maskable any'
         }
       ]
     },
