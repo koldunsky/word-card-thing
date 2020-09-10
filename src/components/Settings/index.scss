@@ -1,7 +1,7 @@
 @import '../../assets/style/utils';
 
-$button-size: 20px;
-$inner-container: 400px;
+$button-size: 2rem;
+$inner-container: 40rem;
 
 .settings {
   @include page;
@@ -16,5 +16,5 @@ $inner-container: 400px;
   max-width: $inner-container;
   justify-content: flex-start;
   margin: 0 auto;
-  padding-top: 45px;
+  padding-top: 4.5rem;
 }

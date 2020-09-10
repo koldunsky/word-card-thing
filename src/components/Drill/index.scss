@@ -1,10 +1,10 @@
 @import '../../assets/style/utils';
 
-$word-margin-bottom-small: 15px;
-$word-margin-bottom: 25px;
+$word-margin-bottom-small: 1.5rem;
+$word-margin-bottom: 2.5rem;
 $enterDuration: .5s;
 $leaveDuration: .3s;
-$switcherItemsShift: 4px;
+$switcherItemsShift: .4rem;
 
 @keyframes roll {
   50% {
@@ -20,14 +20,14 @@ $switcherItemsShift: 4px;
 
 .drill__inner {
   @include page-inner;
-  padding-top: 10px;
+  padding-top: 1rem;
 }
 
 .word {
   font-size: 3em;
   line-height: 1.2;
   margin-bottom: $word-margin-bottom-small;
-  min-height: 60px;
+  min-height: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,8 +47,8 @@ $switcherItemsShift: 4px;
 }
 
 .button {
-  width: 140px;
-  margin: 0 7px;
+  width: 14rem;
+  margin: 0 .7rem;
 }
 
 .button_delete {
@@ -59,14 +59,14 @@ $switcherItemsShift: 4px;
   width: 100%;
   background: none;
   border: none;
-  height: 30px;
-  min-height: 30px;
+  height: 3rem;
+  min-height: 3rem;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: nowrap;
   color: inherit;
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   user-select: none;
   &:active {
     background: none;
@@ -77,7 +77,7 @@ $switcherItemsShift: 4px;
 .switcher__half {
   flex: 1 0 50%;
   position: relative;
-  height: 30px;
+  height: 3rem;
 }
 
 .switcher__text {
@@ -86,7 +86,7 @@ $switcherItemsShift: 4px;
   bottom: 0;
   display: flex;
   align-items: center;
-  padding: 0 8px;
+  padding: 0 .8rem;
   cursor: pointer;
 @include inDarkMode {
       color: inherit;
@@ -94,7 +94,7 @@ $switcherItemsShift: 4px;
   }
 
 .switcher__text_first {
-  padding-left: 30px;
+  padding-left: 3rem;
   right: 0;
   color: $coral-default;
 
@@ -105,7 +105,7 @@ $switcherItemsShift: 4px;
 
 .switcher__text_last {
   left: 0;
-  padding-right: 30px;
+  padding-right: 3rem;
 }
 
 .input {
@@ -120,7 +120,7 @@ $switcherItemsShift: 4px;
 
   &.right-answer {
     background-color: $drill-correct-answer-highlight;
-    box-shadow: 0 0 25px $drill-correct-answer-highlight !important;
+    box-shadow: 0 0 2.5rem $drill-correct-answer-highlight !important;
   }
 
   &.hidden {
@@ -138,7 +138,7 @@ $switcherItemsShift: 4px;
     box-shadow: 0 0 0 $drill-correct-answer-highlight-dark !important;
     &.right-answer {
       background-color: $drill-correct-answer-highlight-dark;
-      box-shadow: 0 0 25px $drill-correct-answer-highlight-dark !important;
+      box-shadow: 0 0 2.5rem $drill-correct-answer-highlight-dark !important;
     }
   }
 }
@@ -166,10 +166,10 @@ $switcherItemsShift: 4px;
 }
 
 .revertIcon {
-  margin: 0 10px;
+  margin: 0 1rem;
   display: block;
   flex: 0 0 auto;
-  width: 24px;
+  width: 2.4rem;
   stroke: currentColor;
   stroke-width: 1;
   stroke-linecap: round;
@@ -180,33 +180,33 @@ $switcherItemsShift: 4px;
   cursor: pointer;
   flex: 0 0 auto;
   position: relative;
-  padding: 0 8px;
-  width: 13px;
+  padding: 0 .8rem;
+  width: 1.3rem;
   height: 100%;
 }
 
 .arrowIcon {
   @include stretch();
   width: 100%;
-  height: 1px;
+  height: .1rem;
   background: currentColor;
   display: block;
-  border-radius: 1px;
+  border-radius: .1rem;
 
   &::after,
   &::before {
-    border-radius: 1px;
+    border-radius: .1rem;
     content: '';
     position: absolute;
-    left: calc(100% - 2px);
-    height: 1px;
-    width: 5px;
+    left: calc(100% - .2rem);
+    height: .1rem;
+    width: .5rem;
     background: currentColor;
-    transform: rotateZ(35deg) translateX(-2px);
+    transform: rotateZ(35deg) translateX(-.2rem);
   }
 
   &::after {
-    transform: rotateZ(-35deg) translateX(-2px);
+    transform: rotateZ(-35deg) translateX(-.2rem);
   }
 }
 

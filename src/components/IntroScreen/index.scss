@@ -9,12 +9,12 @@ $intro-screen-line-height: 1.4;
   transition-property: opacity, transform;
   opacity: 0;
   pointer-events: none;
-  transform: scale(.9) translate3d(0, 50px, 0) rotateX(-7deg);
+  transform: scale(.9) translate3d(0, 5rem, 0) rotateX(-7deg);
   transform-origin: 50% 100%;
 }
 
 @mixin inactive () {
-  transform: translate3d(0, -70px, 0) rotateX(7deg);
+  transform: translate3d(0, -7rem, 0) rotateX(7deg);
   transition-duration: .4s;
   pointer-events: none;
 }
@@ -40,10 +40,9 @@ $intro-screen-line-height: 1.4;
   line-height: $intro-screen-line-height;
   transition-duration: .4s;
   transition-property: opacity;
-  perspective: 1500px;
+  perspective: 150rem;
 
   @include mediaTablet {
-    font-size: $intro-screen-font-size-tablet;
     padding-top: 8%;
     padding-left: 6rem;
     padding-right: 6rem;
@@ -68,8 +67,8 @@ $intro-screen-line-height: 1.4;
   @include switchable();
   @include stretch();
   bottom: auto;
-  padding-bottom: 100px;
-  max-width: 850px;
+  padding-bottom: 10rem;
+  max-width: 85rem;
   margin: 0 auto;
 }
 
@@ -84,10 +83,10 @@ $intro-screen-line-height: 1.4;
 .introScreen__button {
   position: absolute;
   left: 50%;
-  transform: translate3d(-50%, 10px, 0);
+  transform: translate3d(-50%, 1rem, 0);
   padding: .66em 1.33em;
   border-radius: .2em;
-  bottom: 10px;
+  bottom: 1rem;
   font-size: 2.2rem;
   opacity: 0;
   transition: .4s ease;
@@ -111,10 +110,6 @@ $intro-screen-line-height: 1.4;
   height: $intro-screen-line-height * $intro-screen-font-size;
   max-width: 100%;
   vertical-align: bottom;
-
-  @include mediaTablet {
-    height: $intro-screen-line-height * $intro-screen-font-size-tablet;
-  }
 }
 
 .introScreen__inputInner {

@@ -35,7 +35,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 45px 25px 10px;
+  padding: 4.5rem 2.5rem 1rem;
   min-height: 100%;
 }
 
@@ -55,7 +55,7 @@
   }
 }
 
-@mixin cross-icon($cross-width: 8px, $size: 2rem) {
+@mixin cross-icon($cross-width: .8rem, $size: 2rem) {
   @include button-reset;
   color: $green-800;
   width: $size;
@@ -81,7 +81,7 @@
     top: 50%;
     left: calc(50% - #{$cross-width / 2});
     width: $cross-width;
-    height: 1px;
+    height: .1rem;
     background: currentColor;
   }
 

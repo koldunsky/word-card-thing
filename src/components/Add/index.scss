@@ -18,15 +18,15 @@
 }
 
 .notification {
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 label {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   display: block;
 
   &:last-child {
-    margin-bottom: 10px;
+    margin-bottom: 1rem;
   }
 }
 
@@ -35,16 +35,16 @@ label {
  }
 
 .fieldset {
-  margin-bottom: 8px;
+  margin-bottom: .8rem;
 
   @include mediaSmallHeight {
-    margin-bottom: 20px;
+    margin-bottom: 2rem;
   }
 }
 
 .field__label {
   display: block;
-  padding-bottom: 3px;
+  padding-bottom: .3rem;
 }
 
 .field_error {
