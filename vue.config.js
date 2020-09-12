@@ -8,9 +8,9 @@ module.exports = {
     msTileColor: '#39ac99',
     appleMobileWebAppCapable: 'yes',
     appleMobileWebAppStatusBarStyle: 'black',
-    orientation: 'portrait',
     assetsVersion: Date.now(),
     manifestOptions: {
+      orientation: 'portrait',
       background_color: '#ffffff',
       display: 'standalone',
       start_url: 'https://kolenki.app',
@@ -23,7 +23,8 @@ module.exports = {
         {
           src: `./img/icons/icon-512x512.png?v=${Date.now()}`,
           sizes: '512x512',
-          type: 'image/png'
+          type: 'image/png',
+          purpose: 'maskable any'
         }
       ]
     },

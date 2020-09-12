@@ -129,8 +129,12 @@
     }
 
     get sortedWords () {
+      if (!this.sortBy) {
+        return this.words
+      }
+
       const sorted = sortBy(this.words, (item) => {
-        return item[this.sortBy]
+        return item[this.sortBy].toLowerCase()
       })
 
       if (!this.isASC) {
