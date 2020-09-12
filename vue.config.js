@@ -16,15 +16,20 @@ module.exports = {
       start_url: 'https://kolenki.app',
       icons: [
         {
-          src: `./img/icons/apple-touch-icon.png?v=${Date.now()}`,
+          src: `./img/icons/apple-touch-icon.png`,
           sizes: '180x180',
           type: 'image/png'
         },
         {
-          src: `./img/icons/icon-512x512.png?v=${Date.now()}`,
+          src: `./img/icons/icon-512x512.png`,
           sizes: '512x512',
           type: 'image/png',
-          purpose: 'maskable any'
+        },
+        {
+          src: `./img/icons/icon-512x512-maskable.png`,
+          sizes: '512x512',
+          type: 'image/png',
+          purpose: 'maskable'
         }
       ]
     },
