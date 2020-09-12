@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="words.length > 0"
     id="nav"
     class="nav"
     :class="{

@@ -8,10 +8,6 @@
 
 html {
   font-size: 62.5%;
-
-  @include mediaTablet {
-    font-size: 86%;
-  }
 }
 
 html, body {

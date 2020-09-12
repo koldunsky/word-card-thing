@@ -14,6 +14,7 @@
         <label>
           <span class="field__label" v-t="'Word'" />
           <input
+            :tabindex="words.length < 0 ? '0' : '-1'"
             ref="inputWord"
             id="field_word"
             v-model="word"
@@ -23,13 +24,17 @@
         <label>
           <span class="field__label" v-t="'Translation'" />
           <input
+            :tabindex="words.length < 0 ? '0' : '-1'"
             id="field_translation"
             v-model="translation"
             autocomplete="off"
           />
         </label>
       </div>
-      <Button v-t="'Add'" id="button_add"/>
+      <Button
+        :tabindex="words.length < 0 ? '0' : '-1'"
+        v-t="'Add'" id="button_add"
+      />
     </div>
   </form>
 </template>

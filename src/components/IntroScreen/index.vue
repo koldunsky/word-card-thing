@@ -35,6 +35,7 @@
          </template>
         </i18n>
         <Button
+          :tabindex="words.length > 0 ? '0' : '-1'"
           class="introScreen__button"
           :class="canShowFirstButton && 'introScreen__button_active'"
           @click="onSubmit"
@@ -58,6 +59,7 @@
           </template>
         </i18n>
         <Button
+          :tabindex="canShowSecondButton ? '0' : '-1'"
           class="introScreen__button"
           :class="canShowSecondButton && 'introScreen__button_active'"
           v-t="'introSecondScreen.button'"

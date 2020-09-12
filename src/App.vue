@@ -21,9 +21,9 @@
         }"
       >
         <Add />
-        <Drill />
-        <List />
-        <Settings />
+        <Drill v-if="words.length > 3" />
+        <List  v-if="words.length > 3" />
+        <Settings v-if="words.length > 3" />
       </div>
       <IntroScreen />
     </div>
