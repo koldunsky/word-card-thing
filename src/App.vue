@@ -12,18 +12,17 @@
       class="scene"
     >
       <div
+        v-if="words.length > 0"
         class="scene__inner"
-        :class="{
-          scene_deactivated: !introScreenPassed
-        }"
         :style="{
+          width: `${sceneInnerWidth}%`,
           transform: `translateX(${scenePosition}%)`
         }"
       >
         <Add />
-        <Drill v-if="words.length > 3" />
-        <List  v-if="words.length > 3" />
-        <Settings v-if="words.length > 3" />
+        <Drill v-if="words.length > 2" />
+        <List  v-if="words.length > 2" />
+        <Settings v-if="words.length > 2" />
       </div>
       <IntroScreen />
     </div>
@@ -101,8 +100,16 @@
       html.classList.add(themes[0])
     }
 
+    get pagesLength () {
+      return this.words.length < 3 ? 1 : this.pages.length
+    }
+
+    get sceneInnerWidth () {
+      return 100 * this.pagesLength
+    }
+
     get scenePosition () {
-      return this.currentPageIndex * (100 / (this.pages.length - 1)) * -1
+      return this.currentPageIndex * (100 / (this.pagesLength)) * -1
     }
 
     beforeMount () {

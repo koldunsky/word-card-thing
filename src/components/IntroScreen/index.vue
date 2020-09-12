@@ -18,6 +18,7 @@
           <template v-slot:word>
             <IntroScreenInput
               ref="wordInput"
+              id="intro_field_word"
               :placeholder="$t('introFirstScreen.word')"
               v-model="word"
               @blur="onBlur"
@@ -26,6 +27,7 @@
           </template>
           <template v-slot:translation>
             <IntroScreenInput
+              id="intro_field_translation"
               ref="translationInput"
               :placeholder="$t('introFirstScreen.translation')"
               v-model="translation"
@@ -35,6 +37,7 @@
          </template>
         </i18n>
         <Button
+          id="intro_button_add"
           :tabindex="words.length > 0 ? '0' : '-1'"
           class="introScreen__button"
           :class="canShowFirstButton && 'introScreen__button_active'"
@@ -59,6 +62,7 @@
           </template>
         </i18n>
         <Button
+          id="intro_button_pass"
           :tabindex="canShowSecondButton ? '0' : '-1'"
           class="introScreen__button"
           :class="canShowSecondButton && 'introScreen__button_active'"

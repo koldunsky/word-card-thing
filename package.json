@@ -7,8 +7,10 @@
     "serve": "vue-cli-service serve --port=8001",
     "build": "yarn install && yarn run test:e2e && vue-cli-service build",
     "lint:fix": "vue-cli-service lint --fix",
-    "test:e2e": "vue-cli-service test:e2e --headless && yarn run test:e2e:iphone",
-    "test:e2e:iphone": "vue-cli-service test:e2e --env userAgent=iphone --headless",
+    "test:e2e": "vue-cli-service test:e2e && yarn run test:e2e:iphone",
+    "test:e2e:headless": "vue-cli-service test:e2e --headless && yarn run test:e2e:iphone:headless",
+    "test:e2e:iphone": "vue-cli-service test:e2e --env userAgent=iphone",
+    "test:e2e:iphone:headless": "vue-cli-service test:e2e --env userAgent=iphone --headless",
     "test:unit": "vue-cli-service test:unit"
   },
   "dependencies": {

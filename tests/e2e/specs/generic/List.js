@@ -1,4 +1,4 @@
-import { addWords } from '../../utils/addWord'
+import { addFirstWords } from '../../utils/addWord'
 
 const initialOrder = [
   ['bed', 'кровать'],
@@ -43,7 +43,7 @@ const checkOrder = (pair, i) => {
 describe('"List" screen', () => {
   beforeEach(() => {
     cy.visit('/')
-    addWords(cy, initialOrder)
+    addFirstWords(cy, initialOrder)
     cy.get('.nav [data-qa="nav-item-list"]').click()
   })
   it('sorting: word normal order', () => {
