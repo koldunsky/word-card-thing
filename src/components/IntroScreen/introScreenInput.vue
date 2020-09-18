@@ -8,8 +8,7 @@
       type="text"
       v-bind="$attrs"
       v-bind:value="value"
-      v-on:input="onInput"
-      ref="inputEl"
+      @input="onInput"
       @blur="(e) => $emit('blur', e)"
       @focus="(e) => $emit('focus', e)"
     />
@@ -19,22 +18,14 @@
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
-  import Button from '@/ui-kit/Button/index.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
 
-  @Component({
-    components: { Button }
-  })
   export default class IntroScreenInput extends Vue {
     @Prop() value: string
     @Prop() placeholder: string
 
     inputValue: string = ''
-
-    ref!: {
-      inputEl: HTMLInputElement
-    }
 
     onInput ($event) {
       const { value } = $event.target

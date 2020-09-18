@@ -1,5 +1,5 @@
 <template>
-  <div class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @keyup.enter="onSubmit" v-if="words.length < 2">
+  <form class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @submit="onSubmit" v-if="words.length < 2">
     <div class="introScreen__holder">
       <div
         class="introScreen__inner"
@@ -15,36 +15,27 @@
           <template v-slot:appName>
             <span class="highlight" v-t="'introFirstScreen.appName'"/>
           </template>
-          <template v-slot:word>
+          <template
+            v-for="type in ['word', 'translation']"
+            v-slot:[type]>
             <IntroScreenInput
-              ref="wordInput"
-              id="intro_field_word"
-              :placeholder="$t('introFirstScreen.word')"
-              v-model="word"
+              :key="type"
+              :id="`intro_field_${type}`"
+              :placeholder="$t(`introFirstScreen.${type}`)"
+              v-model="$data[type]"
               @blur="onBlur"
               @focus="onFocus"
             />
           </template>
-          <template v-slot:translation>
-            <IntroScreenInput
-              id="intro_field_translation"
-              ref="translationInput"
-              :placeholder="$t('introFirstScreen.translation')"
-              v-model="translation"
-              @blur="onBlur"
-              @focus="onFocus"
-            />
-         </template>
         </i18n>
         <Button
           id="intro_button_add"
-          :tabindex="words.length > 0 ? '0' : '-1'"
+          :tabindex="canShowFirstButton ? '0' : '-1'"
           class="introScreen__button"
           :class="canShowFirstButton && 'introScreen__button_active'"
           @click="onSubmit"
-        >
-          {{$t('introFirstScreen.button')}}
-        </Button>
+          v-t="'introFirstScreen.button'"
+        />
       </div>
       <div
         class="introScreen__inner"
@@ -71,7 +62,7 @@
         />
       </div>
     </div>
-  </div>
+  </form>
 </template>
 
 <script lang="ts">
@@ -111,11 +102,11 @@
     get canShowFirstButton () {
       const {
         shouldShowFirstButton,
-        word: w,
-        translation: t
+        word,
+        translation
       } = this
 
-      return (this.inputsAreNotEmpty && w.length + t.length > 4) || shouldShowFirstButton
+      return (this.inputsAreNotEmpty && word.length + translation.length > 4) || shouldShowFirstButton
     }
 
     get canShowSecondScreen () {
@@ -124,7 +115,9 @@
 
     addWord () {
       if (!this.inputsAreNotEmpty) {
-        console.warn('word or translation is empty')
+        const fld = this.word.length ? 'translation' : 'word'
+        console.warn(`${fld} is empty`)
+
         return false
       }
 
@@ -151,7 +144,9 @@
       this.shouldShowFirstButton = false
     }
 
-    onSubmit () {
+    onSubmit (e) {
+      e.preventDefault()
+
       if (this.words.length < 1) {
         this.addWord()
       } else {
