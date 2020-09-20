@@ -25,8 +25,6 @@
   export default class IntroScreenInput extends Vue {
     @Prop() value: string
     @Prop() placeholder: string
-
-    inputValue: string = ''
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
