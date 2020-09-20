@@ -20,9 +20,9 @@
         }"
       >
         <Add />
-        <Drill v-if="words.length > 2" />
-        <List  v-if="words.length > 2" />
-        <Settings v-if="words.length > 2" />
+        <Drill v-if="canUnlockAllScreens" />
+        <List  v-if="canUnlockAllScreens" />
+        <Settings v-if="canUnlockAllScreens" />
       </div>
       <IntroScreen />
     </div>
@@ -101,7 +101,7 @@
     }
 
     get pagesLength () {
-      return this.words.length < 3 ? 1 : this.pages.length
+      return this.canUnlockAllScreens ? this.pages.length : 1
     }
 
     get sceneInnerWidth () {
@@ -110,6 +110,10 @@
 
     get scenePosition () {
       return this.currentPageIndex * (100 / (this.pagesLength)) * -1
+    }
+
+    get canUnlockAllScreens () {
+      return this.words.length > 2
     }
 
     beforeMount () {
