@@ -14,7 +14,7 @@
         <label>
           <span class="field__label" v-t="'Word'" />
           <input
-            :tabindex="words.length < 0 ? '0' : '-1'"
+            :tabindex="tabindex"
             ref="inputWord"
             id="field_word"
             v-model="word"
@@ -24,7 +24,7 @@
         <label>
           <span class="field__label" v-t="'Translation'" />
           <input
-            :tabindex="words.length < 0 ? '0' : '-1'"
+            :tabindex="tabindex"
             id="field_translation"
             v-model="translation"
             autocomplete="off"
@@ -32,7 +32,7 @@
         </label>
       </div>
       <Button
-        :tabindex="words.length < 0 ? '0' : '-1'"
+        :tabindex="tabindex"
         v-t="'Add'" id="button_add"
       />
     </div>
@@ -43,12 +43,7 @@
   import { Component, Vue } from 'vue-property-decorator'
   import reduce from 'lodash/reduce'
   import Button from '@/ui-kit/Button/index.vue'
-  import IntroScreen from '../IntroScreen/index.vue'
-  import {
-    Mutation,
-    State,
-    namespace
-  } from 'vuex-class'
+  import { namespace } from 'vuex-class'
 
   interface IFields {
     word: string;
@@ -60,8 +55,7 @@
 
   @Component({
     components: {
-      Button,
-      IntroScreen
+      Button
     }
   })
   export default class AddView extends Vue {
@@ -145,6 +139,10 @@
     resetForm () {
       this.word = ''
       this.translation = ''
+    }
+
+    get tabindex () {
+      return this.words.length < 0 ? '0' : '-1'
     }
   }
 </script>
