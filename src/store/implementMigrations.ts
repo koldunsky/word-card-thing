@@ -16,17 +16,17 @@ const importAllMigrations = () => {
   return migrations
 }
 
-export const implementMigrations = (baseState, userState) => {
+export const implementMigrations = (baseState, localState) => {
   const migrations = importAllMigrations()
 
-  if (typeof userState.version === 'undefined') {
-    userState = migrations[0].default(userState)
+  if (typeof localState.version === 'undefined') {
+    localState = migrations[0].default(localState)
   }
 
-  while (baseState.version > userState.version) {
-    const v = userState.version
-    userState = migrations[`${v}-${v + 1}`].default(userState)
+  while (baseState.version > localState.version) {
+    const v = localState.version
+    localState = migrations[`${v}-${v + 1}`].default(localState)
   }
 
-  return userState
+  return localState
 }

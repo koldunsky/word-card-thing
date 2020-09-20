@@ -8,7 +8,7 @@
       type="text"
       v-bind="$attrs"
       v-bind:value="value"
-      v-on:input="onInput"
+      @input="(e) => $emit('input', e.target.value)"
       @blur="(e) => $emit('blur', e)"
       @focus="(e) => $emit('focus', e)"
     />
@@ -27,11 +27,6 @@
     @Prop() placeholder: string
 
     inputValue: string = ''
-
-    onInput ($event) {
-      const { value } = $event.target
-      this.$emit('input', value)
-    }
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

@@ -1,5 +1,10 @@
 <template>
-  <form class="introScreen" :class="introScreenPassed && 'introScreen_inactive'" @submit="onSubmit" v-if="words.length < 2">
+  <form
+    class="introScreen"
+    :class="introScreenPassed && 'introScreen_inactive'"
+    @submit="onSubmit"
+    v-if="words.length < 2"
+  >
     <div class="introScreen__holder">
       <div
         class="introScreen__inner"
@@ -74,7 +79,10 @@
   const UserRelatedData = namespace('UserRelatedData')
 
   @Component({
-    components: { Button, IntroScreenInput }
+    components: {
+      Button,
+      IntroScreenInput
+    }
   })
   export default class IntroScreen extends Vue {
     @UserRelatedData.State
@@ -130,10 +138,6 @@
         word,
         translation
       })
-    }
-
-    onLastButtonClick () {
-      this.passIntroScreen()
     }
 
     onBlur () {

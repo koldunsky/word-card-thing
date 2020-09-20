@@ -26,6 +26,6 @@ export default (localState) => {
   }
 
   onlyUserRelatedLocalState['version'] = 0
-  console.info(onlyUserRelatedLocalState)
+
   return onlyUserRelatedLocalState
 }

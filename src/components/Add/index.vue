@@ -33,7 +33,8 @@
       </div>
       <Button
         :tabindex="tabindex"
-        v-t="'Add'" id="button_add"
+        v-t="'Add'"
+        id="button_add"
       />
     </div>
   </form>
