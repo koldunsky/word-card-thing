@@ -3,9 +3,9 @@ import Vuex from 'vuex'
 
 import getGuid from '@/utils/getGuid'
 
-import NavModule from '../entities/nav'
-import UserRelatedData from '../entities/userRelated/data'
-import UserRelatedSettings from '../entities/userRelated/settings'
+import NavModule from './entities/nav'
+import UserRelatedData from './entities/userRelated/data'
+import UserRelatedSettings from './entities/userRelated/settings'
 import { implementMigrations } from './implementMigrations'
 
 Vue.use(Vuex)

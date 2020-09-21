@@ -70,6 +70,9 @@
     @UserRelatedData.State
     words
 
+    @NavModule.State
+    currentPage
+
     @UserRelatedData.Mutation('addWord')
     addWordToStore
 
@@ -143,7 +146,11 @@
     }
 
     get tabindex () {
-      return this.words.length < 0 ? '0' : '-1'
+      if (this.words.length < 1 || this.currentPage !== 'add') {
+        return '-1'
+      }
+
+      return '0'
     }
   }
 </script>

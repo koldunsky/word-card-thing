@@ -92,6 +92,12 @@ textarea {
     border-color: $input-border-active;
   }
 
+  @include ifSupportsHover {
+    &:hover {
+      border-color: $input-border-active;
+    }
+  }
+
   &::placeholder {
     color: $placeholder-color;
   }
@@ -103,6 +109,12 @@ textarea {
     &:active {
       outline: none;
       border-color: $input-border-active-dark;
+    }
+
+    @include ifSupportsHover {
+      &:hover {
+        border-color: $input-border-active-dark;
+      }
     }
 
     &::placeholder {

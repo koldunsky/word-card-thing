@@ -64,6 +64,7 @@
         {{answer}}
       </div>
       <input
+        :tabindex="tabindex"
         ref="input"
         @input="onInputChange"
         @keydown="onInputKeydown"
@@ -83,12 +84,14 @@
         }"
       >
         <Button
+          :tabindex="tabindex"
           class="button"
           @click="onSkipWordButtonClick"
         >
           {{$t('Skip')}}
         </Button>
         <Button
+          :tabindex="tabindex"
           class="button"
           v-if="!isShowAnswer"
           @click="onShowAnswerButtonClick"
@@ -97,6 +100,7 @@
         </Button>
 
         <Button
+          :tabindex="tabindex"
           class="button button_accent button_delete"
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"
@@ -113,6 +117,7 @@
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
 
+  const NavModule = namespace('NavModule')
   const UserRelatedSettings = namespace('UserRelatedSettings')
   const UserRelatedData = namespace('UserRelatedData')
 
@@ -135,6 +140,9 @@
 
     @UserRelatedSettings.State
     isDrillTranslationInsteadWord
+
+    @NavModule.State
+    currentPage
 
     @UserRelatedSettings.Mutation
     toggleTranslationFlow
@@ -238,6 +246,10 @@
         translation
       } = this.currentWord
       return this.isDrillTranslationInsteadWord ? word : translation
+    }
+
+    get tabindex () {
+      return this.currentPage !== 'drill' ? '-1' : '0'
     }
 
     onFocusOut (e) {

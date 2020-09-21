@@ -14,16 +14,30 @@
   user-select: none;
   outline: none !important;
 
-  &:active {
+  &:active,
+  &:focus {
     background: $button-background-active;
+  }
+
+  @include ifSupportsHover {
+    &:hover {
+      background: $button-background-active;
+    }
   }
 
   @include inDarkMode {
     color: $button-color-dark;
     background: $button-background-dark;
 
-    &:active {
+    &:active,
+    &:focus {
       background: $button-background-dark-active;
+    }
+
+    @include ifSupportsHover {
+      &:hover {
+        background: $button-background-dark-active;
+      }
     }
   }
 }
@@ -32,16 +46,30 @@
   background: $button-accent-background;
   color: $button-accent-color;
 
-  &:active {
+  &:active,
+  &:focus {
     background: $button-accent-background-active;
+  }
+
+  @include ifSupportsHover {
+    &:hover {
+      background: $button-accent-background-active;
+    }
   }
 
   @include inDarkMode {
     background: $button-accent-background-dark;
     color: $button-accent-color-dark;
 
-    &:active {
+    &:active,
+    &:focus {
       background: $button-accent-background-active-dark;
+    }
+
+    @include ifSupportsHover {
+      &:hover {
+        background: $button-accent-background-active-dark;
+      }
     }
   }
 }

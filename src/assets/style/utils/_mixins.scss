@@ -74,6 +74,17 @@
     }
   }
 
+
+  @include ifSupportsHover {
+    &:hover {
+      color: $coral-default;
+
+      @include inDarkMode {
+        color: $coral-default-dark;
+      }
+    }
+  }
+
   &::before,
   &::after {
     content: '';
@@ -119,5 +130,11 @@
   }
   html.dark-mode:not(.light-mode) & {
     @content;
+  }
+}
+
+@mixin ifSupportsHover {
+  @media (hover: hover) {
+    @content
   }
 }
