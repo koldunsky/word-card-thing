@@ -1,5 +1,11 @@
 import get from 'lodash/get'
 
+export const addFirstWordWithoutPassingScreen = (cy, word = 'www', translation = 'ttt') => {
+  cy.get('#intro_field_word').type(word)
+  cy.get('#intro_field_translation').type(translation)
+  cy.get('#intro_button_add').click()
+}
+
 export const addFirstWord = (cy, word = 'www', translation = 'ttt') => {
   cy.get('#intro_field_word').type(word)
   cy.get('#intro_field_translation').type(translation)

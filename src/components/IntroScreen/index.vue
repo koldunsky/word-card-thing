@@ -24,6 +24,7 @@
             v-for="type in ['word', 'translation']"
             v-slot:[type]>
             <IntroScreenInput
+              :tabindex="firstScreenTabindex"
               :key="type"
               :id="`intro_field_${type}`"
               :placeholder="$t(`introFirstScreen.${type}`)"
@@ -35,7 +36,7 @@
         </i18n>
         <Button
           id="intro_button_add"
-          :tabindex="canShowFirstButton ? '0' : '-1'"
+          :tabindex="canShowFirstButton ? firstScreenTabindex : '-1'"
           class="introScreen__button"
           :class="canShowFirstButton && 'introScreen__button_active'"
           @click="onSubmit"
@@ -119,6 +120,10 @@
 
     get canShowSecondScreen () {
       return this.words.length > 0 && !this.introScreenPassed
+    }
+
+    get firstScreenTabindex () {
+      return this.words.length === 0 ? '0' : '-1'
     }
 
     addWord () {

@@ -4,6 +4,7 @@
     <span class="introScreen__placeholderDummy">{{placeholder}}</span>
     <input
       :placeholder="placeholder"
+      :tabindex="tabindex"
       class="introScreen__input"
       type="text"
       v-bind="$attrs"
@@ -25,6 +26,7 @@
   export default class IntroScreenInput extends Vue {
     @Prop() value: string
     @Prop() placeholder: string
+    @Prop() tabindex: string
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

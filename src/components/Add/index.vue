@@ -41,10 +41,13 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
-  import reduce from 'lodash/reduce'
-  import Button from '@/ui-kit/Button/index.vue'
+  import { Component, Vue, Mixins } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
+
+  import reduce from 'lodash/reduce'
+  import Tabindex from '../../mixins/Tabindex.vue'
+
+  import Button from '@/ui-kit/Button/index.vue'
 
   interface IFields {
     word: string;
@@ -59,7 +62,7 @@
       Button
     }
   })
-  export default class AddView extends Vue {
+  export default class AddView extends Mixins(Tabindex) {
     word: string = '';
     translation: string = '';
 
@@ -69,6 +72,9 @@
 
     @UserRelatedData.State
     words
+
+    @UserRelatedData.State
+    introScreenPassed
 
     @NavModule.State
     currentPage
@@ -146,7 +152,7 @@
     }
 
     get tabindex () {
-      if (this.words.length < 1 || this.currentPage !== 'add') {
+      if (!this.introScreenPassed || this.currentPage !== 'add') {
         return '-1'
       }
 
