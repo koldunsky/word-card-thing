@@ -7,6 +7,7 @@
       :tabindex="tabindex"
       class="introScreen__input"
       type="text"
+      autocomplete="off"
       v-bind="$attrs"
       v-bind:value="value"
       @input="(e) => $emit('input', e.target.value)"
