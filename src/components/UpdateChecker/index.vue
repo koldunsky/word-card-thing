@@ -3,13 +3,13 @@
     v-if="updateExists"
     class="updateChecker"
   >
-    New version available! Do you want to
+    New version available!
     <button
       class="button"
       @click="refreshApp">
-      update
+      Click here
     </button>
-    ?
+    to update.
   </div>
 </template>
 
