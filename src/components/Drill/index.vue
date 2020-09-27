@@ -64,6 +64,7 @@
         {{answer}}
       </div>
       <input
+        data-qa="drill-input"
         :tabindex="tabindex"
         ref="input"
         @input="onInputChange"
@@ -85,6 +86,7 @@
       >
         <Button
           :tabindex="tabindex"
+          data-qa="drill-skip-button"
           class="button"
           @click="onSkipWordButtonClick"
         >
@@ -92,6 +94,7 @@
         </Button>
         <Button
           :tabindex="tabindex"
+          data-qa="drill-answer-button"
           class="button"
           v-if="!isShowAnswer"
           @click="onShowAnswerButtonClick"
@@ -101,6 +104,7 @@
 
         <Button
           :tabindex="tabindex"
+          data-qa="drill-delete-button"
           class="button button_accent button_delete"
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"

@@ -11,13 +11,17 @@
 
   @Component
   export default class Tabindex extends Vue {
-    pageName = ''
+    pageName: TPageName = null
 
     @NavModule.State
     currentPage
 
-    get tabindex () {
+    getTabindex () {
       return this.currentPage !== this.pageName ? '-1' : '0'
+    }
+
+    get tabindex () {
+      return this.getTabindex()
     }
   }
 </script>

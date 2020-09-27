@@ -86,7 +86,11 @@ $inner-container: 40rem;
 }
 
 .list-heading__item {
+  @include button-reset;
+
+  color: inherit;
   display: flex;
+  align-items: center;
   user-select: none;
   cursor: pointer;
   position: relative;

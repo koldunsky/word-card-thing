@@ -8,9 +8,10 @@
             'list-heading_sorted': sortBy
           }"
         >
-          <span
+          <button
             v-for="value in sortCategories"
             :key="value"
+            :tabindex="tabindex"
             @click="() => onSortingChange(value)"
             :class="[value, 'list-heading__item', sortBy === value ? 'list-heading__item_active' : '']"
             :data-qa="`list-sorting-${value}`"
@@ -29,8 +30,9 @@
               <span class="order-icon__bar" />
               <span class="order-icon__bar order-icon__bar_last" />
             </span>
-          </span>
+          </button>
           <button
+            :tabindex="tabindex"
             data-qa="list-sorting-delete-button"
             v-if="sortBy"
             class="delete-button list-heading__reset-button"
@@ -75,15 +77,13 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Mixins } from 'vue-property-decorator'
   import sortBy from 'lodash/sortBy'
   import capitalize from 'lodash/capitalize'
   import reverse from 'lodash/reverse'
-  import {
-    Action, namespace,
-    State
-  } from 'vuex-class'
+  import { namespace } from 'vuex-class'
   import LocalLink from '../../ui-kit/Link/index.vue'
+  import Tabindex from '@/mixins/Tabindex.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
 
@@ -95,7 +95,9 @@
     }
   })
 
-  export default class List extends Vue {
+  export default class List extends Mixins(Tabindex) {
+    pageName: TPageName = 'list'
+
     @UserRelatedData.State
     words
 
