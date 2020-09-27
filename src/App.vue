@@ -12,16 +12,19 @@
       class="scene"
     >
       <div
+        v-if="words.length > 0"
         class="scene__inner"
         :style="{
+          width: `${sceneInnerWidth}%`,
           transform: `translateX(${scenePosition}%)`
         }"
       >
-        <Add/>
-        <Drill/>
-        <List/>
-        <Settings/>
+        <Add />
+        <Drill v-if="canUnlockAllScreens" />
+        <List  v-if="canUnlockAllScreens" />
+        <Settings v-if="canUnlockAllScreens" />
       </div>
+      <IntroScreen />
     </div>
     <Nav/>
   </div>
@@ -30,6 +33,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
+  import IntroScreen from './components/IntroScreen/index.vue'
   import Add from './components/Add/index.vue'
   import Drill from './components/Drill/index.vue'
   import List from './components/List/index.vue'
@@ -50,6 +54,7 @@
     components: {
       UpdateChecker,
       InstallPrompt,
+      IntroScreen,
       Add,
       Drill,
       List,
@@ -65,6 +70,9 @@
 
     @UserRelatedSettings.State
     theme
+
+    @UserRelatedData.State
+    introScreenPassed
 
     @NavModule.Getter
     currentPageIndex: number
@@ -82,7 +90,6 @@
       const html = document.querySelector('html')
       const themes: Array<string> = [LIGHT_THEME_ID, DARK_THEME_ID]
 
-      console.log(theme)
       if (!theme) {
         themes.forEach((themeId) => html.classList.remove(themeId))
         return
@@ -93,8 +100,20 @@
       html.classList.add(themes[0])
     }
 
+    get pagesLength () {
+      return this.canUnlockAllScreens ? this.pages.length : 1
+    }
+
+    get sceneInnerWidth () {
+      return 100 * this.pagesLength
+    }
+
     get scenePosition () {
-      return this.currentPageIndex * (100 / (this.pages.length - 1)) * -1
+      return this.currentPageIndex * (100 / (this.pagesLength)) * -1
+    }
+
+    get canUnlockAllScreens () {
+      return this.words.length > 2
     }
 
     beforeMount () {

@@ -1,7 +1,7 @@
 @import '../../assets/style/utils';
 
-$button-size: 20px;
-$inner-container: 400px;
+$button-size: 2rem;
+$inner-container: 40rem;
 
 .list {
   @include page;
@@ -23,15 +23,15 @@ $inner-container: 400px;
 }
 
 .list-item {
-  padding: 5px 0;
-  padding-right: 30px;
+  padding: .5rem 0;
+  padding-right: 3rem;
   text-align: left;
   position: relative;
-  border-bottom: 1px solid $list-item-border;
+  border-bottom: .1rem solid $list-item-border;
   display: flex;
 
   & + & {
-    margin-top: 10px;
+    margin-top: 1rem;
   }
 
   @include inDarkMode {
@@ -86,7 +86,11 @@ $inner-container: 400px;
 }
 
 .list-heading__item {
+  @include button-reset;
+
+  color: inherit;
   display: flex;
+  align-items: center;
   user-select: none;
   cursor: pointer;
   position: relative;
@@ -94,8 +98,8 @@ $inner-container: 400px;
   &::after {
     content: '';
     position: absolute;
-    top: -10px;
-    bottom: -10px;
+    top: -1rem;
+    bottom: -1rem;
     width: 90%;
   }
 }
@@ -129,8 +133,8 @@ $inner-container: 400px;
   user-select: none;
   position: absolute;
   right: 0;
-  top: 5px;
-  bottom: 5px;
+  top: .5rem;
+  bottom: .5rem;
   padding: 0;
   min-height: $button-size;
   width: $button-size;
@@ -174,11 +178,11 @@ $bar-long: $bar-medium + .2rem;
 
 .order-icon__bar {
   display: block;
-  height: 1px;
+  height: .1rem;
   width: $bar-medium;
   background: currentColor;
   transition: .2s ease-in-out width;
-  margin-top: 2px;
+  margin-top: .2rem;
 }
 
 .order-icon__bar_first {

@@ -1,0 +1,172 @@
+@import '../../assets/style/utils';
+
+$intro-screen-font-size: 4rem;
+$intro-screen-font-size-tablet: 5.5rem;
+$intro-screen-line-height: 1.4;
+
+@mixin switchable () {
+  transition: .8s ease;
+  transition-property: opacity, transform;
+  opacity: 0;
+  pointer-events: none;
+  transform: scale(.9) translate3d(0, 5rem, 0) rotateX(-7deg);
+  transform-origin: 50% 100%;
+}
+
+@mixin inactive () {
+  transform: translate3d(0, -7rem, 0) rotateX(7deg);
+  transition-duration: .4s;
+  pointer-events: none;
+}
+
+@mixin active () {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1) translate3d(0, 0, 0);
+  transition-delay: .2s;
+}
+
+.introScreen {
+  @include switchable;
+  @include active;
+  @include page-inner;
+  @include stretch;
+  display: block;
+  height: 100%;
+  background: $app-background;
+  text-align: left;
+  font-size: $intro-screen-font-size;
+  overflow: auto;
+  line-height: $intro-screen-line-height;
+  transition-duration: .4s;
+  transition-property: opacity;
+  perspective: 150rem;
+
+  @include mediaTablet {
+    padding-top: 8%;
+    padding-left: 6rem;
+    padding-right: 6rem;
+  }
+
+  @include inDarkMode {
+    background: $app-background-dark;
+  }
+}
+
+.introScreen_inactive {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.introScreen__holder {
+  position: relative;
+  height: 100%;
+}
+
+.introScreen__inner {
+  @include switchable();
+  @include stretch();
+  bottom: auto;
+  padding-bottom: 10rem;
+  max-width: 85rem;
+  margin: 0 auto;
+}
+
+.introScreen__inner_inactive {
+  @include inactive();
+}
+
+.introScreen__inner_active {
+  @include active();
+}
+
+.introScreen__button {
+  position: absolute;
+  left: 50%;
+  transform: translate3d(-50%, 1rem, 0);
+  padding: .66em 1.33em;
+  border-radius: .2em;
+  bottom: 1rem;
+  font-size: 2.2rem;
+  opacity: 0;
+  transition: .4s ease;
+  transition-property: opacity, transform;
+  pointer-events: none;
+}
+
+.introScreen__button_active {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translate3d(-50%, 0, 0);
+
+  .introScreen__inner_inactive & {
+    pointer-events: none;
+  }
+}
+
+.introScreen__inputContainer {
+  position: relative;
+  display: inline-block;
+  height: $intro-screen-line-height * $intro-screen-font-size;
+  max-width: 100%;
+  vertical-align: bottom;
+}
+
+.introScreen__inputInner {
+  overflow: hidden;
+}
+
+.introScreen__input {
+  font-size: inherit;
+  border-top-color: transparent;
+  border-left: none;
+  border-right: none;
+  border-bottom-width: .3rem;
+  border-top-width: .3rem;
+  display: inline;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  margin: auto;
+  max-width: 100%;
+  height: 100%;
+  color: $green-600;
+
+  &:active,
+  &:hover,
+  &:focus {
+    border-top-color: transparent;
+  }
+
+  @include inDarkMode {
+    color: $green-300;
+  }
+}
+
+.introScreen__valueDummy,
+.introScreen__placeholderDummy {
+  pointer-events: none;
+  opacity: 0;
+  display: block;
+  max-height: 0;
+  user-select: none;
+}
+
+.introScreen__valueDummy {
+  &::after {
+    content: '';
+    display: inline-block;
+    width: .1rem;
+  }
+}
+
+.highlight {
+  color: $coral-default;
+  white-space: nowrap;
+
+  @include inDarkMode {
+    color: $coral-default-dark;
+  }
+}

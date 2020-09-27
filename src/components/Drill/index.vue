@@ -31,18 +31,20 @@
         </div>
         <div class="switcher__half">
         <transition name="fade-downwards">
-            <span
-              key="1"
-              v-if="isDrillTranslationInsteadWord"
-              class="switcher__text switcher__text_last"
-              @click="onChangeTranslationFlowClick"
-            >{{$t('Word')}}</span>
           <span
+            v-t="'Word'"
+            key="1"
+            v-if="isDrillTranslationInsteadWord"
+            class="switcher__text switcher__text_last"
+            @click="onChangeTranslationFlowClick"
+          />
+          <span
+            v-t="'Translation'"
             key="2"
             v-else
             class="switcher__text switcher__text_last"
             @click="onChangeTranslationFlowClick"
-          >{{$t('Translation')}}</span>
+          />
         </transition>
         </div>
       </div>
@@ -62,6 +64,8 @@
         {{answer}}
       </div>
       <input
+        data-qa="drill-input"
+        :tabindex="tabindex"
         ref="input"
         @input="onInputChange"
         @keydown="onInputKeydown"
@@ -81,12 +85,16 @@
         }"
       >
         <Button
+          :tabindex="tabindex"
+          data-qa="drill-skip-button"
           class="button"
           @click="onSkipWordButtonClick"
         >
           {{$t('Skip')}}
         </Button>
         <Button
+          :tabindex="tabindex"
+          data-qa="drill-answer-button"
           class="button"
           v-if="!isShowAnswer"
           @click="onShowAnswerButtonClick"
@@ -95,6 +103,8 @@
         </Button>
 
         <Button
+          :tabindex="tabindex"
+          data-qa="drill-delete-button"
           class="button button_accent button_delete"
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"
@@ -108,13 +118,10 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import {
-    Mutation,
-    Action,
-    State, namespace
-  } from 'vuex-class'
+  import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
 
+  const NavModule = namespace('NavModule')
   const UserRelatedSettings = namespace('UserRelatedSettings')
   const UserRelatedData = namespace('UserRelatedData')
 
@@ -138,6 +145,9 @@
     @UserRelatedSettings.State
     isDrillTranslationInsteadWord
 
+    @NavModule.State
+    currentPage
+
     @UserRelatedSettings.Mutation
     toggleTranslationFlow
 
@@ -158,7 +168,6 @@
         this.resetView()
       })
     }
-
     onInputChange (e: Event) {
       const {
         value
@@ -181,7 +190,7 @@
 
     onSkipWordButtonClick () {
       if (this.isShowAnswer) {
-        this.$refs.input.focus()
+        this.focusInput()
       } else {
         this.handleFocusBehaviour()
       }
@@ -196,12 +205,18 @@
       this.toggleTranslationFlow()
     }
 
+    focusInput () {
+      const input = this.$refs.input
+
+      input.focus()
+    }
+
     handleFocusBehaviour () {
       const itWasInput = this.lastBlurTarget === this.$refs.input
       const andItWasReallyFast = performance.now() - this.lastBlurTimeStamp < 150
 
       if (itWasInput && andItWasReallyFast) {
-        this.$refs.input.focus()
+        this.focusInput()
       }
     }
 
@@ -235,6 +250,10 @@
         translation
       } = this.currentWord
       return this.isDrillTranslationInsteadWord ? word : translation
+    }
+
+    get tabindex () {
+      return this.currentPage !== 'drill' ? '-1' : '0'
     }
 
     onFocusOut (e) {

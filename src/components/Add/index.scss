@@ -18,34 +18,33 @@
 }
 
 .notification {
-  font-style: italic;
-  margin-bottom: 40px;
+  margin-bottom: 4rem;
 }
 
 label {
-  margin-bottom: 20px;
+  margin-bottom: 2rem;
   display: block;
 
   &:last-child {
-    margin-bottom: 10px;
-  }
-}
-
-.fieldset {
-  margin-bottom: 8px;
-
-  @include mediaSmallHeight {
-    margin-bottom: 20px;
+    margin-bottom: 1rem;
   }
 }
 
 .field {
-  display: block;
+   display: block;
+ }
+
+.fieldset {
+  margin-bottom: .8rem;
+
+  @include mediaSmallHeight {
+    margin-bottom: 2rem;
+  }
 }
 
 .field__label {
   display: block;
-  padding-bottom: 3px;
+  padding-bottom: .3rem;
 }
 
 .field_error {

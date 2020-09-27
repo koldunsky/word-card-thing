@@ -1,8 +1,8 @@
 @import '../../assets/style/utils';
 
-$bottom-offset: 7.5px;
-$bottom-arrow-size: 15px;
-$icon-add-size: 24px;
+$bottom-offset: .75rem;
+$bottom-arrow-size: 1.5rem;
+$icon-add-size: 2.4rem;
 $bg-dark: rgb(60, 62, 60);
 
 .installPrompt {
@@ -12,10 +12,10 @@ $bg-dark: rgb(60, 62, 60);
   left: 50%;
   transform: translate(-50%, 0);
   background: white;
-  padding: 8px 8px 8px 10px;
-  border-radius: 2px;
+  padding: .8rem .8rem .8rem 1rem;
+  border-radius: .2rem;
   text-align: left;
-  box-shadow: 0 1px 5px $green-150;
+  box-shadow: 0 .1rem .5rem $green-150;
   display: flex;
   justify-content: space-between;
   font-size: 1.2rem;
@@ -33,10 +33,10 @@ $bg-dark: rgb(60, 62, 60);
   &::before {
     content: '';
     position: absolute;
-    top: calc(100% - 1px);
+    top: calc(100% - .1rem);
     left: 50%;
-    margin-left: -16px;
-    border: 16px solid transparent;
+    margin-left: -1.6rem;
+    border: 1.6rem solid transparent;
     border-top-color: white;
   }
 
@@ -65,24 +65,24 @@ $bg-dark: rgb(60, 62, 60);
 .icon-add {
   position: relative;
   background: none;
-  border-radius: 6px;
-  margin-top: 1px;
+  border-radius: .6rem;
+  margin-top: .1rem;
   background: $green-400;
   width: $icon-add-size;
   height: $icon-add-size;
   flex: 0 0 $icon-add-size;
-  margin-right: 10px;
+  margin-right: 1rem;
   overflow: hidden;
 
   &::before,
   &::after {
     content: '';
     @include stretch();
-    width: 14px;
-    height: 2px;
+    width: 1.4rem;
+    height: .2rem;
     background: #fff;
     z-index: 1;
-    border-radius: 2px;
+    border-radius: .2rem;
   }
 
   &::after {
@@ -106,24 +106,24 @@ $bg-dark: rgb(60, 62, 60);
 }
 
 .dismiss {
-  @include cross-icon(10px);
+  @include cross-icon(1rem);
   vertical-align: middle;
-  width: 17px;
-  height: 17px;
-  margin-left: 5px;
+  width: 1.7rem;
+  height: 1.7rem;
+  margin-left: .5rem;
   justify-self: flex-end;
-  flex: 0 0 17px;
+  flex: 0 0 1.7rem;
 }
 
 .icon-share {
-  margin: 3px 2px 0;
+  margin: .3rem .2rem 0;
   fill: #4393fe;
-  width: 22px;
-  height: 22px;
+  width: 2.2rem;
+  height: 2.2rem;
   position: relative;
   display: inline-block;
   vertical-align: middle;
-  top: -4px;
+  top: -.4rem;
 }
 
 .fade-enter-active, .fade-leave-active {
@@ -135,5 +135,5 @@ $bg-dark: rgb(60, 62, 60);
 .fade-enter,
 .fade-leave-to {
   opacity: 0;
-  transform: translate(-50%, -10px);
+  transform: translate(-50%, -1rem);
 }

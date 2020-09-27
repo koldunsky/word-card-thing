@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="words.length > 0"
     id="nav"
     class="nav"
     :class="{
@@ -34,7 +35,7 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
   import { State, namespace } from 'vuex-class'
-  import { TPointingDots } from '@/entities/nav'
+  import { TPointingDots } from '@/store/entities/nav'
   import PointingDot from '../../ui-kit/PointingDot/index.vue'
 
   const NavModule = namespace('NavModule')

@@ -5,7 +5,11 @@
           <span v-t="'settings.currentTheme'" />: <b v-t="`settings.${currentThemeString}`" />
         </div>
 
-        <button @click="onChangeClick">
+        <button
+          data-qa="settings-theme-button"
+          :tabindex="tabindex"
+          @click="onChangeClick"
+        >
           Change
         </button>
       </div>
@@ -13,14 +17,16 @@
 </template>
 
 <script lang="ts">
-  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { Component, Mixins, Prop } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
+  import Tabindex from '@/mixins/Tabindex.vue'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
   @Component
-  export default class SomeComponent extends Vue {
-    themeVariants: Array<TTheme> = ['dark', 'light', null];
+  export default class Settings extends Mixins(Tabindex) {
+    pageName: TPageName = 'settings'
+    themeVariants: Array<TTheme> = ['dark', 'light', null]
 
     @UserRelatedSettings.State
     theme: TTheme

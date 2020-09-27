@@ -14,6 +14,7 @@
         <label>
           <span class="field__label" v-t="'Word'" />
           <input
+            :tabindex="tabindex"
             ref="inputWord"
             id="field_word"
             v-model="word"
@@ -23,26 +24,30 @@
         <label>
           <span class="field__label" v-t="'Translation'" />
           <input
+            :tabindex="tabindex"
             id="field_translation"
             v-model="translation"
             autocomplete="off"
           />
         </label>
       </div>
-      <Button v-t="'Add'" id="button_add"/>
+      <Button
+        :tabindex="tabindex"
+        v-t="'Add'"
+        id="button_add"
+      />
     </div>
   </form>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Vue, Mixins } from 'vue-property-decorator'
+  import { namespace } from 'vuex-class'
+
   import reduce from 'lodash/reduce'
+  import Tabindex from '../../mixins/Tabindex.vue'
+
   import Button from '@/ui-kit/Button/index.vue'
-  import {
-    Mutation,
-    State,
-    namespace
-  } from 'vuex-class'
 
   interface IFields {
     word: string;
@@ -57,7 +62,8 @@
       Button
     }
   })
-  export default class AddView extends Vue {
+  export default class AddView extends Mixins(Tabindex) {
+    pageName: TPageName = 'add'
     word: string = '';
     translation: string = '';
 
@@ -67,6 +73,12 @@
 
     @UserRelatedData.State
     words
+
+    @UserRelatedData.State
+    introScreenPassed
+
+    @NavModule.State
+    currentPage
 
     @UserRelatedData.Mutation('addWord')
     addWordToStore
@@ -138,6 +150,14 @@
     resetForm () {
       this.word = ''
       this.translation = ''
+    }
+
+    get tabindex () {
+      if (!this.introScreenPassed) {
+        return '-1'
+      }
+
+      return this.getTabindex()
     }
   }
 </script>

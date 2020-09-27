@@ -22,10 +22,10 @@ html, body {
 
 body {
   font-size: 1.6rem;
-  line-height: 1.3;
+  line-height: $line-height;
   background: $app-background;
   color: $app-text-color;
-  min-width: 320px;
+  min-width: 32rem;
   @include inDarkMode {
     color: $app-text-color-dark;
     background: $app-background-dark;
@@ -36,16 +36,18 @@ body {
   width: 100%;
   height: 100%;
   min-width: 320px;
-  overflow-y: scroll;
+  max-height: 100%;
   -webkit-overflow-scrolling: touch; /* enables “momentum” (smooth) scrolling */
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   position: relative;
-  border-top: 2px solid transparent;
+  border-top: .2rem solid transparent;
   transition: .3s ease border;
+  overflow: hidden;
 
   &_has-3-words {
+    overflow-y: scroll;
     border-color: $app-border-top;
 
     @include inDarkMode {
@@ -58,10 +60,10 @@ body {
   width: 100%;
   height: 100%;
   overflow: hidden;
+  position: relative;
 }
 
 .scene__inner {
-  width: 300%;
   height: 100%;
   display: flex;
 }
@@ -74,9 +76,9 @@ a {
 
 input,
 textarea {
-  font-size: 16px;
-  padding: 10px;
-  border: 1px solid $input-border;
+  font-size: 1.6rem;
+  padding: 1rem;
+  border: .1rem solid $input-border;
   box-shadow: none !important;
   font-family: inherit;
   border-radius: 0 !important;
@@ -90,6 +92,16 @@ textarea {
     border-color: $input-border-active;
   }
 
+  @include ifSupportsHover {
+    &:hover {
+      border-color: $input-border-active;
+    }
+  }
+
+  &::placeholder {
+    color: $placeholder-color;
+  }
+
   @include inDarkMode {
     border-color: $input-border-dark;
 
@@ -98,8 +110,18 @@ textarea {
       outline: none;
       border-color: $input-border-active-dark;
     }
+
+    @include ifSupportsHover {
+      &:hover {
+        border-color: $input-border-active-dark;
+      }
+    }
+
+    &::placeholder {
+      color: $placeholder-color-dark;
+    }
   }
 }
 input {
-  height: 41px;
+  height: 4.1rem;
 }
