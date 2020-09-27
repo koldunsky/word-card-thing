@@ -60,7 +60,7 @@
         </i18n>
         <Button
           id="intro_button_pass"
-          :tabindex="canShowSecondButton ? '0' : '-1'"
+          :tabindex="canShowSecondButton ? secondScreenTabindex : '-1'"
           class="introScreen__button"
           :class="canShowSecondButton && 'introScreen__button_active'"
           v-t="'introSecondScreen.button'"
@@ -124,6 +124,10 @@
 
     get firstScreenTabindex () {
       return this.words.length === 0 ? '0' : '-1'
+    }
+
+    get secondScreenTabindex () {
+      return this.introScreenPassed ? '-1' : '0'
     }
 
     addWord () {
