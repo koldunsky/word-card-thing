@@ -25,7 +25,7 @@
 
   @Component
   export default class Settings extends Mixins(Tabindex) {
-    pageName = 'settings'
+    pageName: TPageName = 'settings'
     themeVariants: Array<TTheme> = ['dark', 'light', null]
 
     @UserRelatedSettings.State

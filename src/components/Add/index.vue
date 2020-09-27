@@ -63,6 +63,7 @@
     }
   })
   export default class AddView extends Mixins(Tabindex) {
+    pageName: TPageName = 'add'
     word: string = '';
     translation: string = '';
 
@@ -152,11 +153,11 @@
     }
 
     get tabindex () {
-      if (!this.introScreenPassed || this.currentPage !== 'add') {
+      if (!this.introScreenPassed) {
         return '-1'
       }
 
-      return '0'
+      return this.getTabindex()
     }
   }
 </script>

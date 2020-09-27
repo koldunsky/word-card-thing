@@ -16,11 +16,11 @@
     @NavModule.State
     currentPage
 
-    getTabindex () {
+    getTabindex (): '-1' | '0' {
       return this.currentPage !== this.pageName ? '-1' : '0'
     }
 
-    get tabindex () {
+    get tabindex (): '-1' | '0' {
       return this.getTabindex()
     }
   }
