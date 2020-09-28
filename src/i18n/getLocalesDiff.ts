@@ -1,6 +1,7 @@
 import each from 'lodash/each'
-import set from 'lodash/set'
+import compact from 'lodash/compact'
 import get from 'lodash/get'
+import set from 'lodash/set'
 import { en } from './locales/en'
 import { ru } from './locales/ru'
 
@@ -11,18 +12,21 @@ const localesMap = {
   ru
 }
 
-const trerere = (mainLocaleTree, localeId, mismatches: string[], path?: string) => {
+const trerere = (mainLocaleTree, localeId, mismatches, path?: string) => {
   const mainTarget = get(mainLocaleTree, path, mainLocaleTree)
   each(mainTarget, (translationString, translationKey) => {
-    const oLocaleEntity = get(localesMap, [localeId, path, translationKey].filter(Boolean))
+    const oLocaleEntity = get(localesMap, compact([localeId, path, translationKey]))
 
-    if (oLocaleEntity) {
-      if (typeof oLocaleEntity !== 'string') {
-        const pathNew = [path, translationKey].filter(Boolean).join('.')
-        trerere(mainLocaleTree, localeId, mismatches, pathNew)
-      }
+    if (typeof translationString === 'object') {
+      const pathNew = compact([path, translationKey]).join('.')
+      trerere(mainLocaleTree, localeId, mismatches, pathNew)
     } else {
-      mismatches.push(path + '.' + translationKey)
+      if (oLocaleEntity) {
+        if (typeof oLocaleEntity !== 'string') {
+        }
+      } else {
+        set(mismatches, compact([path, translationKey]).join('.'), '')
+      }
     }
   })
 }
@@ -32,7 +36,7 @@ const getLocalesDiff = (mainLocale: TLocaleId, otherLocales: [TLocaleId]) => {
 
   each(otherLocales, (localeId) => {
     if (!mismatches[localeId]) {
-      mismatches[localeId] = []
+      mismatches[localeId] = {}
     }
 
     trerere(localesMap[mainLocale], localeId, mismatches[localeId])
