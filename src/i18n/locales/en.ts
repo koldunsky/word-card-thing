@@ -36,5 +36,11 @@ export const en = {
     text: 'Good job! To start training you need to add at least {threeWords}',
     threeWords: 'three words',
     button: 'Got it!'
+  },
+  nav: {
+    add: 'Add',
+    drill: 'Drill',
+    list: 'List',
+    settings: 'Settings',
   }
 }
