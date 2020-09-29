@@ -225,6 +225,7 @@
         this.isReadOnly = false
         this.setRandomWordAsCurrent()
         this.isShowAnswer = false
+        this.$refs.input.value = ''
       }
 
       if (delayed) {
