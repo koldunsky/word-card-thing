@@ -18,7 +18,7 @@ export const ru = {
     others: 'Добавьте ещё {n} слово | Добавьте ещё {n} слова'
   },
   settings: {
-    currentTheme: 'Текущая тема',
+    colorTheme: 'Тема оформления',
     dark: 'темная',
     light: 'светлая',
     system: 'зависит от темы устройства'

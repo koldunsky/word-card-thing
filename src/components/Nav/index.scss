@@ -102,6 +102,23 @@
   }
 }
 
+.nav__item-icon_drill {
+  &::before {
+    @include stretch;
+
+    content: '';
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 1.2rem;
+    height:1.2rem;
+    border: .2rem solid;
+    border-color: currentcolor;
+    border-radius: .2rem;
+    transform: rotateZ(45deg);
+  }
+}
+
 .nav__item-icon_list {
   &::before,
   &::after {
@@ -124,37 +141,31 @@
   }
 }
 
-.nav__item-icon_drill {
-  &::before {
-    @include stretch;
-
-    content: '';
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 1.2rem;
-    height:1.2rem;
-    border: .2rem solid;
-    border-color: currentcolor;
-    border-radius: .2rem;
-    transform: rotateZ(45deg);
-  }
-}
-
 .nav__item-icon_settings {
+  transform: rotateZ(90deg);
+  &::after,
   &::before {
-    @include stretch;
-
     content: '';
-    left: 0;
-    right: 0;
+    position: absolute;
+    top: 0;
+    left: .3rem;
     margin: auto;
-    width: 1.2rem;
-    height:1.2rem;
-    border: .2rem solid;
-    border-color: currentcolor;
+    width: .2rem;
+    height: 100%;
+    box-shadow: 1rem 0 0 currentColor;
+    background: currentcolor;
     border-radius: 2rem;
-    transform: rotateZ(45deg);
+  }
+
+  &::after {
+    content: '';
+    position: absolute;
+    top: .5rem;
+    left: .1rem;
+    margin: auto;
+    width: .6rem;
+    height: .2rem;
+    box-shadow: 1rem .5rem 0 currentColor;
   }
 }
 

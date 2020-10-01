@@ -17,4 +17,34 @@ $inner-container: 40rem;
   justify-content: flex-start;
   margin: 0 auto;
   padding-top: 4.5rem;
+  text-align: left;
+  align-items: flex-start;
+}
+
+.setting__option-wrapper {
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.setting__option-headline {
+  margin-bottom: 1rem;
+}
+
+.settings__button-option {
+  @include button-base-styles;
+
+  padding: .3rem 1rem;
+
+  & + & {
+    margin-left: 1rem;
+  }
+}
+
+.settings__button-option_active {
+  @include button-accent-base-styles;
+
+  background: $button-accent-background !important;
+  @include inDarkMode {
+    background: $button-accent-background-dark !important;
+  }
 }

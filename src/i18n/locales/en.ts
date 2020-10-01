@@ -20,7 +20,7 @@ export const en = {
     others: 'Add {n} more'
   },
   settings: {
-    currentTheme: 'Current theme',
+    colorTheme: 'Color theme',
     dark: 'dark',
     light: 'light',
     system: 'set by system settings'
