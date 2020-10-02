@@ -4,7 +4,8 @@
     id="nav"
     class="nav"
     :class="{
-        'nav_visible': words.length >= 3
+        'nav_visible': words.length >= 3,
+        [`version_${version}`]: true
       }"
   >
     <div class="nav__container">
@@ -26,15 +27,15 @@
             />
           </span>
         </span>
-        <span class="nav__item-label">{{name | capitalize}}</span>
+        <span class="nav__item-label">{{name | capitalize}} {{version}}</span>
       </button>
     </div>
   </div>
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
-  import { State, namespace } from 'vuex-class'
+  import { Component, Prop, Vue } from 'vue-property-decorator'
+  import { namespace } from 'vuex-class'
   import { TPointingDots } from '@/store/entities/nav'
   import PointingDot from '../../ui-kit/PointingDot/index.vue'
 
@@ -54,6 +55,9 @@
     }
   })
   export default class Nav extends Vue {
+    @Prop()
+    version
+
     @UserRelatedData.State
     words
 

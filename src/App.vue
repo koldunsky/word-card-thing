@@ -26,7 +26,15 @@
       </div>
       <IntroScreen />
     </div>
-    <Nav/>
+    <div class="nav-container">
+      <Nav/>
+      <Nav version="1"/>
+      <Nav version="2"/>
+      <Nav version="3"/>
+      <Nav version="4"/>
+      <Nav version="5"/>
+      <Nav version="6"/>
+    </div>
   </div>
 </template>
 
@@ -42,7 +50,7 @@
   import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
   import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
-  import {isIos} from "@/utils/isIos";
+  import { isIos } from '@/utils/isIos'
 
   const DARK_THEME_ID: string = 'dark-mode'
   const LIGHT_THEME_ID: string = 'light-mode'
