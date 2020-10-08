@@ -5,14 +5,13 @@
           <button
             v-for="t in themeVariants"
             :key="t"
+            v-t="`settings.${getThemeTranslationId(t)}`"
             class="settings__button-option"
             :class="t === theme && 'settings__button-option_active'"
             data-qa="settings-theme-button"
             :tabindex="t === theme ? '-1' : tabindex"
             @click="() => onChangeClick(t)"
-            v-t="`settings.${getThemeTranslationId(t)}`"
-          >
-          </button>
+          />
         </SettingsOption>
       </div>
   </div>

@@ -54,7 +54,6 @@
     }
   })
   export default class Nav extends Vue {
-
     @UserRelatedData.State
     words
 
