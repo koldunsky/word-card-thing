@@ -8,7 +8,7 @@
             class="settings__button-option"
             :class="t === theme && 'settings__button-option_active'"
             data-qa="settings-theme-button"
-            :tabindex="tabindex"
+            :tabindex="t === theme ? '-1' : tabindex"
             @click="() => onChangeClick(t)"
             v-t="`settings.${getThemeTranslationId(t)}`"
           >
