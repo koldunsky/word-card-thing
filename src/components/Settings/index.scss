@@ -23,20 +23,21 @@ $inner-container: 40rem;
 
 .setting__option-wrapper {
   width: 100%;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .setting__option-headline {
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 }
 
 .settings__button-option {
   @include button-base-styles;
 
-  padding: .3rem 1rem;
+  padding: .4rem 1rem;
+  margin-bottom: 1rem;
 
-  & + & {
-    margin-left: 1rem;
+  &:not(:last-child) {
+    margin-right: 1rem;
   }
 }
 

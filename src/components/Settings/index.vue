@@ -1,10 +1,7 @@
 <template>
   <div class="settings">
       <div class="settings__inner">
-        <div class="setting__option-wrapper">
-          <div class="setting__option-headline">
-            {{$t('settings.colorTheme')}}
-          </div>
+        <SettingsOption :title="$t('settings.colorTheme')">
           <button
             v-for="t in themeVariants"
             :key="t"
@@ -16,7 +13,7 @@
             v-t="`settings.${getThemeTranslationId(t)}`"
           >
           </button>
-        </div>
+        </SettingsOption>
       </div>
   </div>
 </template>
@@ -25,10 +22,15 @@
   import { Component, Mixins, Prop } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Tabindex from '@/mixins/Tabindex.vue'
+  import SettingsOption from './settingsOption.vue'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
-  @Component
+  @Component({
+    components: {
+      SettingsOption
+    }
+  })
   export default class Settings extends Mixins(Tabindex) {
     pageName: TPageName = 'settings'
     themeVariants: Array<TTheme> = [null, 'dark', 'light']

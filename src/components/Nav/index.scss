@@ -1,7 +1,9 @@
 @import '../../assets/style/utils';
 
 .nav {
-  scroll-snap-align: start;
+  position: fixed;
+  bottom: 0;
+  left: 0;
   width: 100%;
   overflow: hidden;
   max-height: 0;
@@ -20,30 +22,6 @@
     background: $nav-background-dark;
     border-color: $nav-border-top-dark;
   }
-}
-
-.version_1 {
-  bottom: $nav-height;
-}
-
-.version_2 {
-  bottom: $nav-height * 2;
-}
-
-.version_3 {
-  bottom: $nav-height * 3;
-}
-
-.version_4 {
-  bottom: $nav-height * 4;
-}
-
-.version_5 {
-  bottom: $nav-height * 5;
-}
-
-.version_6 {
-  bottom: $nav-height * 6;
 }
 
 .rounded-screen .nav {
@@ -153,7 +131,7 @@
     height: .2rem;
     background: currentcolor;
     border-radius: .2rem;
-    box-shadow: 0 .6rem 0 currentColor, 0 -.6rem 0 currentColor;
+    box-shadow: 0 .7rem 0 currentColor, 0 -.7rem 0 currentColor;
   }
 
   &::after {
@@ -163,36 +141,7 @@
   }
 }
 
-.version_undefined .nav__item-icon_settings {
-  transform: rotateZ(90deg);
-  &::after,
-  &::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: .3rem;
-    margin: auto;
-    width: .2rem;
-    height: 100%;
-    box-shadow: 1rem 0 0 currentColor;
-    background: currentcolor;
-    border-radius: 2rem;
-  }
-
-  &::after {
-    content: '';
-    position: absolute;
-    top: .5rem;
-    left: .1rem;
-    margin: auto;
-    width: .6rem;
-    height: .2rem;
-    box-shadow: 1rem .5rem 0 currentColor;
-  }
-}
-
-.version_1 .nav__item-icon_settings {
-
+.nav__item-icon_settings {
   &::after,
   &::before {
     content: "";
@@ -211,156 +160,11 @@
     content: "";
     position: absolute;
     top: 5px;
-    left: 1px;
-    margin: auto;
-    width: 6px;
-    height: 2px;
-    box-shadow: 0px 1px 0 #292929, 10px 5px 0 currentColor, 10px 6px 0 #292929;
-  }
-}
-
-.version_2 .nav__item-icon_settings {
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 3px;
-    margin: auto;
-    width: 2px;
-    height: 100%;
-    box-shadow: .6rem 0 0 currentColor, 1.2rem 0 0 currentColor;
-    background: currentcolor;
-    border-radius: 20px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 1px;
-    margin: auto;
-    width: 6px;
-    height: 3px;
-    background: #292929;
-    box-shadow:
-      .6rem .6rem 0 #292929,
-      1.2rem .4rem 0 #292929;
-  }
-}
-
-.version_3 .nav__item-icon_settings {
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 3px;
-    margin: auto;
-    width: 2px;
-    height: calc(100% - .2rem);
-    box-shadow: .7rem 0 0 currentColor, 1.4rem 0 0 currentColor;
-    background: currentcolor;
-    border-radius: 20px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 1px;
-    margin: auto;
-    width: 6px;
-    height: 3px;
-    background: #292929;
-    box-shadow:
-            .7rem .6rem 0 #292929,
-            1.4rem .4rem 0 #292929;
-  }
-}
-
-.version_4 .nav__item-icon_settings {
-  transform: rotateZ(90deg);
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 3px;
-    margin: auto;
-    width: 2px;
-    height: calc(100% - .2rem);
-    box-shadow: .7rem 0 0 currentColor, 1.4rem 0 0 currentColor;
-    background: currentcolor;
-    border-radius: 20px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 4px;
-    left: 1px;
-    margin: auto;
-    width: 6px;
-    height: 3px;
-    background: #292929;
-    box-shadow:
-            .7rem .6rem 0 #292929,
-            1.4rem .4rem 0 #292929;
-  }
-}
-
-.version_5 .nav__item-icon_settings {
-  transform: rotateZ(90deg);
-
-  &::after,
-  &::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 3px;
-    margin: auto;
-    width: 2px;
-    height: calc(100% - .2rem);
-    box-shadow: 1rem 0 0 currentColor;
-    background: currentcolor;
-    border-radius: 20px;
-  }
-
-  &::after {
-    content: "";
-    position: absolute;
-    top: 0;
     left: 0;
     margin: auto;
     width: 8px;
-    height: 8px;
-    box-shadow: 1rem .9rem 0 currentColor;
-  }
-}
-
-.version_6 .nav__item-icon_settings {
-  &::before {
-    @include stretch;
-
-    content: '';
-    left: 0;
-    right: 0;
-    margin: auto;
-    width: 1.2rem;
-    height: 1.2rem;
-    border: .2rem solid;
-    border-color: currentcolor;
-    border-radius: 2rem;
-    transform: rotateZ(45deg);
-  }
-
-  &::after {
-    content: "";
-    display: none;
+    height: 2px;
+    box-shadow: 10px 6px 0 currentColor;
   }
 }
 
