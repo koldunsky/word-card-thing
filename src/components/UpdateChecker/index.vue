@@ -3,13 +3,18 @@
     v-if="updateExists"
     class="updateChecker"
   >
-    New version available!
-    <button
-      class="button"
-      @click="refreshApp">
-      Click here
-    </button>
-    to update.
+    <i18n
+      path="updateChecker.text"
+      tag="div"
+    >
+      <template v-slot:cta>
+        <button
+          class="button"
+          v-t="'updateChecker.cta'"
+          @click="refreshApp"
+        />
+      </template>
+    </i18n>
   </div>
 </template>
 
@@ -20,7 +25,7 @@
   export default class UpdateChecker extends Vue {
     refreshing: boolean = false
     registration: any = null
-    updateExists: boolean = false
+    updateExists: boolean = true
 
     created () {
       document.addEventListener(
@@ -37,6 +42,10 @@
           window.location.replace('/')
         }
       )
+
+      // setInterval(() => {
+      //   this.updateExists = !this.updateExists
+      // }, 1000)
     }
 
     showRefreshUI (e: CustomEvent) {

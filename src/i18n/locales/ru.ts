@@ -7,11 +7,11 @@ export const ru = {
   Delete: 'Удалить',
   installPrompt: 'Установите это приложение:\nнажмите {shareIcon}\nи выберите «На экран «Домой»',
   list: {
-    addMore: 'Отличное начало! {addLinkText} больше слов.\n' +
+    notice: 'Отличное начало! Добавьте больше слов.\n' +
       'Слова могут быть удалены из списка,\n' +
-      'если в нём {moreThanThree}.',
-    addLinkText: 'Добавьте',
-    moreThanThree: 'больше трех слов'
+      'если в нём больше трех слов.',
+    addLinkText: '',
+    addMoreWords: 'Добавить слово'
   },
   add: {
     three: 'Добавьте 3 слова',
