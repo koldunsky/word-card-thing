@@ -25,7 +25,7 @@
   export default class UpdateChecker extends Vue {
     refreshing: boolean = false
     registration: any = null
-    updateExists: boolean = true
+    updateExists: boolean = false
 
     created () {
       document.addEventListener(
