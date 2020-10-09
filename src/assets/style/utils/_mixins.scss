@@ -18,6 +18,76 @@
   margin: 0;
   padding: 0;
   outline: none;
+  color: inherit;
+}
+
+@mixin button-base-styles {
+  @include button-reset;
+
+  border-radius: $border-radius;
+  color: $button-color;
+  background: $button-background;
+  user-select: none;
+  outline: none !important;
+
+  &:active,
+  &:focus {
+    background: $button-background-active;
+  }
+
+  @include ifSupportsHover {
+    &:hover {
+      background: $button-background-active;
+    }
+  }
+
+  @include inDarkMode {
+    color: $button-color-dark;
+    background: $button-background-dark;
+
+    &:active,
+    &:focus {
+      background: $button-background-dark-active;
+    }
+
+    @include ifSupportsHover {
+      &:hover {
+        background: $button-background-dark-active;
+      }
+    }
+  }
+}
+
+@mixin button-accent-base-styles {
+  background: $button-accent-background;
+  color: $button-accent-color;
+
+  &:active,
+  &:focus {
+    background: $button-accent-background-active;
+  }
+
+  @include ifSupportsHover {
+    &:hover {
+      background: $button-accent-background-active;
+    }
+  }
+
+  @include inDarkMode {
+    background: $button-accent-background-dark;
+    color: $button-accent-color-dark;
+
+    &:active,
+    &:focus {
+      background: $button-accent-background-active-dark;
+    }
+
+    @include ifSupportsHover {
+      &:hover {
+        background: $button-accent-background-active-dark;
+      }
+    }
+  }
 }
 
 @mixin page {

@@ -33,7 +33,7 @@ body {
   }
 }
 
-.ios-device body {
+.ios-device.standalone body {
   border-top-left-radius: 2rem;
   border-top-right-radius: 2rem;
 }
@@ -77,7 +77,7 @@ textarea {
   border: .1rem solid $input-border;
   box-shadow: none !important;
   font-family: inherit;
-  border-radius: 0 !important;
+  border-radius: $border-radius !important;
   -webkit-appearance: none;
   background: transparent;
   color: inherit;

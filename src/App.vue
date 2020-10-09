@@ -42,7 +42,8 @@
   import InstallPrompt from './components/InstallPrompt/index.vue'
   import Nav from './components/Nav/index.vue'
   import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
-  import {isIos} from "@/utils/isIos";
+  import { isIos } from '@/utils/isIos'
+  import {isStandalone} from "@/utils/isStandalone";
 
   const DARK_THEME_ID: string = 'dark-mode'
   const LIGHT_THEME_ID: string = 'light-mode'
@@ -124,6 +125,10 @@
 
       if (isIos) {
         document.querySelector('html').classList.add('ios-device')
+      }
+
+      if (isStandalone) {
+        document.querySelector('html').classList.add('standalone')
       }
 
       this.setTheme(this.theme)

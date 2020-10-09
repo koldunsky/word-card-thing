@@ -1,17 +1,18 @@
 <template>
   <div class="settings">
       <div class="settings__inner">
-        <div>
-          <span v-t="'settings.currentTheme'" />: <b v-t="`settings.${currentThemeString}`" />
-        </div>
-
-        <button
-          data-qa="settings-theme-button"
-          :tabindex="tabindex"
-          @click="onChangeClick"
-        >
-          Change
-        </button>
+        <SettingsOption :title="$t('settings.colorTheme')">
+          <button
+            v-for="t in themeVariants"
+            :key="t"
+            v-t="`settings.${getThemeTranslationId(t)}`"
+            class="settings__button-option"
+            :class="t === theme && 'settings__button-option_active'"
+            data-qa="settings-theme-button"
+            :tabindex="t === theme ? '-1' : tabindex"
+            @click="() => onChangeClick(t)"
+          />
+        </SettingsOption>
       </div>
   </div>
 </template>
@@ -20,13 +21,18 @@
   import { Component, Mixins, Prop } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Tabindex from '@/mixins/Tabindex.vue'
+  import SettingsOption from './settingsOption.vue'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
-  @Component
+  @Component({
+    components: {
+      SettingsOption
+    }
+  })
   export default class Settings extends Mixins(Tabindex) {
     pageName: TPageName = 'settings'
-    themeVariants: Array<TTheme> = ['dark', 'light', null]
+    themeVariants: Array<TTheme> = [null, 'dark', 'light']
 
     @UserRelatedSettings.State
     theme: TTheme
@@ -37,19 +43,16 @@
     @UserRelatedSettings.Mutation
     changeTheme
 
-    onChangeClick () {
-      const index = this.themeVariants.indexOf(this.theme)
-      let nextOne = this.themeVariants[index + 1]
+    onChangeClick (theme: TTheme) {
+      this.changeTheme(theme)
+    }
 
-      if (typeof nextOne === 'undefined') {
-        nextOne = this.themeVariants[0]
-      }
-
-      this.changeTheme(nextOne)
+    getThemeTranslationId (id) {
+      return !id ? 'system' : id
     }
 
     get currentThemeString () {
-      return !this.theme ? 'system' : this.theme
+      return this.getThemeTranslationId(this.theme)
     }
   }
 </script>
