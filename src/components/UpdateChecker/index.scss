@@ -1,14 +1,49 @@
 @import '../../assets/style/utils';
 
 @keyframes rotate {
-  0% {
+  25% {
     -webkit-mask-position: -75px;
     mask-position: -75px;
   }
 
-  100% {
+  75% {
     -webkit-mask-position: 75px;
     mask-position: 75px;
+  }
+}
+
+@keyframes green {
+  50% {
+    transform: scale(.9) translateX(-10px);
+  }
+
+  100% {
+    transform: scale(1.2) translateX(10px);
+  }
+}
+@keyframes green {
+  0% {
+    opacity: .5;
+  }
+  50% {
+    opacity: .2;
+  }
+
+  100% {
+    opacity: .5;
+  }
+}
+@keyframes orange {
+
+  0% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .4;
+  }
+
+  100% {
+    opacity: 1;
   }
 }
 
@@ -79,10 +114,6 @@
 
 .icon {
   width: 100%;
-  mask-image: linear-gradient(to right, #000 30%, transparent, #000 70%);;
-  animation: rotate 1s infinite;
-
-  -webkit-mask-position: -300px;
 }
 
 .st0{fill: transparent;}
@@ -92,6 +123,29 @@
   stroke-width:6;
   stroke-linecap:round;
   stroke-linejoin:round;
+  stroke-miterlimit:10
+}
+.st1 {
+  fill:none;
+  stroke:#2a7e70;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  opacity: .5;
+  animation: green 1s ease infinite;
+  transform-origin: center;
+}
+.st2 {
+  fill:none;
+  stroke:#FF8349;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
   stroke-miterlimit:10;
   transform: translateX(1px);
+
+  animation: orange 1s ease infinite;
+  animation-delay: .5s;
+  transform-origin: center;
 }
