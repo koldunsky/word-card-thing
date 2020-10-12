@@ -1,5 +1,17 @@
 @import '../../assets/style/utils';
 
+@keyframes rotate {
+  0% {
+    -webkit-mask-position: -75px;
+    mask-position: -75px;
+  }
+
+  100% {
+    -webkit-mask-position: 75px;
+    mask-position: 75px;
+  }
+}
+
 @keyframes appears {
   0% {
     height: 0;
@@ -33,4 +45,53 @@
 .button {
   @include button-reset;
   @include link;
+}
+
+.overlay {
+  @include stretch(fixed);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($app-background, .5);
+
+  @include inDarkMode {
+    background: rgba($app-background-dark, .5);
+  }
+}
+
+.iconContainer {
+  width: 15rem;
+  height: 15rem;
+  position: relative;
+}
+
+.moviet {
+  @include stretch;
+  //background-image: linear-gradient(to right, #000 30%, transparent, #000 70%);
+
+  //background-color: $coral-default-dark;
+  //width: 50%;
+  //height: 100%;
+  position: absolute;
+  mask-size: auto 100%;
+  mask-position: center;
+}
+
+.icon {
+  width: 100%;
+  mask-image: linear-gradient(to right, #000 30%, transparent, #000 70%);;
+  animation: rotate 1s infinite;
+
+  -webkit-mask-position: -300px;
+}
+
+.st0{fill: transparent;}
+.st1{
+  fill:none;
+  stroke: $coral-default-dark;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  transform: translateX(1px);
 }
