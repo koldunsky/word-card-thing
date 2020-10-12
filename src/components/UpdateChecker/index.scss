@@ -1,14 +1,13 @@
 @import '../../assets/style/utils';
 
 @keyframes rotate {
-  25% {
-    -webkit-mask-position: -75px;
-    mask-position: -75px;
+  0% {
+    transform: rotateZ(0deg);
   }
 
-  75% {
-    -webkit-mask-position: 75px;
-    mask-position: 75px;
+
+  100% {
+    transform: rotateZ(360deg);
   }
 }
 
@@ -34,16 +33,15 @@
   }
 }
 @keyframes orange {
-
   0% {
-    opacity: 1;
+    stroke-dashoffset: 1;
   }
   50% {
-    opacity: .4;
+    stroke-dashoffset: 0;
   }
 
   100% {
-    opacity: 1;
+    stroke-dashoffset: 2;
   }
 }
 
@@ -102,18 +100,19 @@
 
 .moviet {
   @include stretch;
-  //background-image: linear-gradient(to right, #000 30%, transparent, #000 70%);
 
-  //background-color: $coral-default-dark;
-  //width: 50%;
-  //height: 100%;
-  position: absolute;
+  animation: rotate .5s ease-out infinite;
+  border-radius: 100%;
+  border: 4px solid $coral-400;
+  border-color: $green-100 $green-100 $green-100 $coral-400;
+
   mask-size: auto 100%;
   mask-position: center;
 }
 
 .icon {
   width: 100%;
+  display: none;
 }
 
 .st0{fill: transparent;}
