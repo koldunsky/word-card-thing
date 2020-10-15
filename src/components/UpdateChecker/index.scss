@@ -1,5 +1,19 @@
 @import '../../assets/style/utils';
 
+@keyframes glow {
+  0% {
+    transform: translateX(30px);
+    stroke: $coral-400;
+  }
+
+  100% {
+    transform: translateX(-30px);
+    stroke: $coral-400;
+    stroke:#2a7e70;
+    opacity: .5;
+  }
+}
+
 @keyframes rotate {
   0% {
     transform: rotateZ(0deg);
@@ -12,36 +26,14 @@
 }
 
 @keyframes green {
-  50% {
-    transform: scale(.9) translateX(-10px);
-  }
-
   100% {
-    transform: scale(1.2) translateX(10px);
+    transform: translateX(-30px);
   }
 }
-@keyframes green {
-  0% {
-    opacity: .5;
-  }
-  50% {
-    opacity: .2;
-  }
 
-  100% {
-    opacity: .5;
-  }
-}
 @keyframes orange {
-  0% {
-    stroke-dashoffset: 1;
-  }
-  50% {
-    stroke-dashoffset: 0;
-  }
-
   100% {
-    stroke-dashoffset: 2;
+    transform: translateX(30px);
   }
 }
 
@@ -93,12 +85,13 @@
 }
 
 .iconContainer {
-  width: 15rem;
+  width: 32rem;
   height: 15rem;
   position: relative;
 }
 
 .moviet {
+  display: none;
   @include stretch;
 
   animation: rotate .5s ease-out infinite;
@@ -112,7 +105,6 @@
 
 .icon {
   width: 100%;
-  display: none;
 }
 
 .st0{fill: transparent;}
@@ -132,8 +124,9 @@
   stroke-linejoin:round;
   stroke-miterlimit:10;
   opacity: .5;
-  animation: green 1s ease infinite;
+  animation: green 1s ease;
   transform-origin: center;
+  animation-fill-mode: forwards;
 }
 .st2 {
   fill:none;
@@ -143,8 +136,21 @@
   stroke-linejoin:round;
   stroke-miterlimit:10;
   transform: translateX(1px);
+  animation-fill-mode: forwards;
 
-  animation: orange 1s ease infinite;
+  animation: orange 1s ease;
   animation-delay: .5s;
+  animation-fill-mode: forwards;
   transform-origin: center;
+}
+
+.st {
+  fill: rgba(white, .1);
+  stroke: #FF8349;
+  animation: glow 2s ease infinite;
+}
+@for $i from 0 through 10 {
+  .st_#{$i} {
+    animation-delay: .15s * $i;
+  }
 }
