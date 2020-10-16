@@ -2,15 +2,15 @@
 
 @keyframes glow {
   0% {
-    transform: translateX(30px);
+    transform: translateX(88px);
     stroke: $coral-400;
+    opacity: .6;
   }
 
   100% {
-    transform: translateX(-30px);
-    stroke: $coral-400;
-    stroke:#2a7e70;
-    opacity: .5;
+    transform: translateX(-70px);
+    stroke: #2a7e70;
+    opacity: .3;
   }
 }
 
@@ -27,13 +27,13 @@
 
 @keyframes green {
   100% {
-    transform: translateX(-30px);
+    transform: translateX(-70px);
   }
 }
 
 @keyframes orange {
   100% {
-    transform: translateX(30px);
+    transform: translateX(70px);
   }
 }
 
@@ -147,10 +147,11 @@
 .st {
   fill: rgba(white, .1);
   stroke: #FF8349;
+  stroke-width: 2;
   animation: glow 2s ease infinite;
 }
 @for $i from 0 through 10 {
   .st_#{$i} {
-    animation-delay: .15s * $i;
+    animation-delay: .2s * $i;
   }
 }
