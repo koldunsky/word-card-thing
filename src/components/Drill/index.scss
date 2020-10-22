@@ -2,8 +2,8 @@
 
 $word-margin-bottom-small: 1.5rem;
 $word-margin-bottom: 2.5rem;
-$enterDuration: .5s;
-$leaveDuration: .3s;
+$enterDuration: 5s;
+$leaveDuration: 3s;
 $switcherItemsShift: .4rem;
 
 @keyframes roll {
@@ -88,7 +88,7 @@ $switcherItemsShift: .4rem;
   align-items: center;
   padding: 0 .8rem;
   cursor: pointer;
-@include inDarkMode {
+    @include inDarkMode {
       color: inherit;
     }
   }

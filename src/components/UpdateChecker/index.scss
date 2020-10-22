@@ -1,54 +1,15 @@
 @import '../../assets/style/utils';
 
-@keyframes glow {
+@keyframes lineRace {
   0% {
-    transform: translateX(88px);
-    stroke: $coral-400;
-    opacity: .6;
+    stroke-dashoffset: 0;
   }
-
   100% {
-    transform: translateX(-70px);
-    stroke: #2a7e70;
-    opacity: .3;
-  }
-}
-
-@keyframes rotate {
-  0% {
-    transform: rotateZ(0deg);
-  }
-
-
-  100% {
-    transform: rotateZ(360deg);
-  }
-}
-
-@keyframes green {
-  100% {
-    transform: translateX(-70px);
-  }
-}
-
-@keyframes orange {
-  100% {
-    transform: translateX(70px);
-  }
-}
-
-@keyframes appears {
-  0% {
-    height: 0;
-  }
-
-  100% {
-    height: 6rem;
+    stroke-dashoffset: 620;
   }
 }
 
 .updateChecker {
-  animation: appears 1 .2s ease-out forwards;
   color: $notice-text-color;
   border-radius: $border-radius;
   z-index: z(ontop);
@@ -74,6 +35,7 @@
 
 .overlay {
   @include stretch(fixed);
+  opacity: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -81,6 +43,15 @@
 
   @include inDarkMode {
     background: rgba($app-background-dark, .5);
+  }
+}
+
+.overlay_prepare-to-reload {
+  transition: all .5s;
+  background: $app-background;
+
+  @include inDarkMode {
+    background: $app-background-dark;
   }
 }
 
@@ -105,30 +76,49 @@
 
 .icon {
   width: 100%;
+  transition: ease-out .3s;
+  transition-property: transform, opacity;
+  transform: scale(1);
+
 }
 
-.st0{fill: transparent;}
-.st1{
-  fill:none;
+.overlay_prepare-to-reload .icon {
+  transform: scale(.7);
+  opacity: 0;
+}
+
+.overlay-transition-enter-active .icon {
+  opacity: 0;
+  transform: scale(.7);
+}
+
+.greenShape{
+  fill: none;
   stroke: $coral-default-dark;
   stroke-width:6;
   stroke-linecap:round;
   stroke-linejoin:round;
   stroke-miterlimit:10
 }
-.st1 {
-  fill:none;
+.greenShape,
+.greenShape_1 {
+  fill: none;
   stroke:#2a7e70;
   stroke-width:6;
   stroke-linecap:round;
   stroke-linejoin:round;
   stroke-miterlimit:10;
   opacity: .5;
-  animation: green 1s ease;
   transform-origin: center;
   animation-fill-mode: forwards;
+
+  @include inDarkMode {
+    stroke: $green-dark-600;
+    opacity: 1;
+  }
 }
-.st2 {
+.orangeShape,
+.orangeShape_2 {
   fill:none;
   stroke:#FF8349;
   stroke-width:6;
@@ -136,22 +126,39 @@
   stroke-linejoin:round;
   stroke-miterlimit:10;
   transform: translateX(1px);
-  animation-fill-mode: forwards;
-
-  animation: orange 1s ease;
-  animation-delay: .5s;
-  animation-fill-mode: forwards;
   transform-origin: center;
+
+  @include inDarkMode {
+    stroke: $coral-600;
+  }
+}
+
+.greenShape,
+.orangeShape {
+  animation: lineRace 2s linear infinite;
+  stroke-dasharray: 310;
+  animation-direction: reverse;
+}
+
+.orangeShape {
+  animation-delay: 1s;
+}
+
+.greenShape_1,
+.orangeShape_2 {
+  opacity: .3;
+  @include inDarkMode {
+    opacity: .3;
+  }
 }
 
 .st {
-  fill: rgba(white, .1);
-  stroke: #FF8349;
-  stroke-width: 2;
-  animation: glow 2s ease infinite;
+  display: none;
 }
-@for $i from 0 through 10 {
-  .st_#{$i} {
-    animation-delay: .2s * $i;
-  }
+
+.overlay-transition-enter-active {
+  transition: all .3s;
+}
+.overlay-transition-enter {
+  opacity: 0;
 }
