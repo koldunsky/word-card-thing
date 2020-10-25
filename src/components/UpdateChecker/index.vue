@@ -62,10 +62,6 @@
       )
 
       TIMEOUT_SHIFT = (Math.round(Math.random() * 100) / 100) * 1000
-
-      setTimeout(() => {
-        this.refreshing = true
-      }, 2000)
     }
 
     showRefreshUI (e: CustomEvent) {
