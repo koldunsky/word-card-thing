@@ -49,7 +49,7 @@
   export default class UpdateChecker extends Vue {
     refreshing: boolean = false
     registration: any = null
-    updateExists: boolean = true
+    updateExists: boolean = false
     prepareToReload: boolean = false
 
     created () {
@@ -85,7 +85,7 @@
     }
 
     get shortTimeout () {
-      return this.timeout - 500
+      return this.timeout - TIMEOUT_OVERLAY
     }
 
     onControllerChange () {
