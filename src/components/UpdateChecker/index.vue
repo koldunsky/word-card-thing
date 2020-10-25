@@ -6,6 +6,7 @@
     <i18n
       path="updateChecker.text"
       tag="div"
+      class="updateExists__innerText"
     >
       <template v-slot:cta>
         <button
@@ -70,8 +71,6 @@
     }
 
     refreshApp () {
-      this.updateExists = false
-
       if (!this.registration || !this.registration.waiting) {
         return
       }

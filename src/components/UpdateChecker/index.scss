@@ -1,5 +1,25 @@
 @import '../../assets/style/utils';
 
+@keyframes appears {
+  0% {
+    height: 0;
+  }
+
+  100% {
+    height: 6rem;
+  }
+}
+
+@keyframes textAppears {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
 @keyframes lineRace {
   0% {
     stroke-dashoffset: 0;
@@ -21,11 +41,16 @@
   flex-direction: column;
   flex-shrink: 0;
   height: 0;
+  animation: appears .3s ease-in 1 forwards;
 
   @include inDarkMode {
     color: $notice-text-color-dark;
     background: $nav-background-dark;
   }
+}
+
+.updateExists__innerText {
+  animation: textAppears .3s ease-in 1 forwards;
 }
 
 .button {
