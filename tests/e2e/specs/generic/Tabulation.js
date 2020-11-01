@@ -85,6 +85,6 @@ describe('Tabulation', () => {
     tabThroughNavigation(cy)
     cy.focused().tab()
     cy.focused().should('have.attr', 'data-qa', 'settings-theme-button').tab()
-    cy.focused().should('have.attr', 'data-qa', 'settings-theme-button').tab()
+    cy.focused().should('have.attr', 'data-qa', 'settings-theme-button')
   })
 })

@@ -52,6 +52,7 @@
             {{w.translation}}
           </span>
           <button
+            :tabindex="tabindex"
             class="delete-button"
             v-if="words.length > 3"
             @click="() => deleteWord(w.id)"
@@ -64,7 +65,11 @@
         class="notice"
         v-if="words.length < 4"
       />
-      <Button v-t="'list.addMoreWords'" @click="onAddButtonClick" />
+      <Button
+        :tabindex="tabindex"
+        v-t="'list.addMoreWords'"
+        @click="onAddButtonClick"
+      />
     </div>
   </div>
 </template>
