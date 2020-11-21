@@ -2,6 +2,7 @@
   <div
     v-if="updateExists"
     class="updateChecker"
+    data-qa="updateChecker"
   >
     <i18n
       path="updateChecker.text"
@@ -42,8 +43,8 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
 
-  let TIMEOUT_SHIFT = 0
-  const TIMEOUT_OVERLAY = 500
+  let TIMEOUT_SHIFT = 500
+  const TIMEOUT_OVERLAY = 5500
 
   @Component
   export default class UpdateChecker extends Vue {
@@ -58,6 +59,7 @@
         this.showRefreshUI as EventListener,
         { once: true }
       )
+
       navigator.serviceWorker.addEventListener(
         'controllerchange', this.onControllerChange
       )
