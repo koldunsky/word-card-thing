@@ -66,6 +66,7 @@
         v-if="words.length < 4"
       />
       <Button
+        data-qa="list-add-more-cta"
         :tabindex="tabindex"
         v-t="'list.addMoreWords'"
         @click="onAddButtonClick"

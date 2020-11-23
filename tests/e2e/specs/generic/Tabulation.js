@@ -70,6 +70,7 @@ describe('Tabulation', () => {
     cy.focused().should('have.attr', 'data-qa', 'list-sorting-word').tab()
     cy.focused().should('have.attr', 'data-qa', 'list-sorting-translation').tab()
     cy.focused().should('have.attr', 'data-qa', 'list-sorting-delete-button').tab()
+    cy.focused().should('have.attr', 'data-qa', 'list-add-more-cta').tab()
     tabThroughNavigation(cy)
     cy.focused().tab()
     cy.focused().should('have.attr', 'data-qa', 'list-sorting-word').tab()
