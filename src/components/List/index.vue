@@ -52,6 +52,7 @@
             {{w.translation}}
           </span>
           <button
+            :tabindex="tabindex"
             class="delete-button"
             v-if="words.length > 3"
             @click="() => deleteWord(w.id)"
@@ -59,19 +60,17 @@
           />
         </li>
       </ul>
-      <i18n
-        path="list.addMore"
-        tag="div"
+      <div
+        v-t="'list.notice'"
         class="notice"
         v-if="words.length < 4"
-      >
-        <template v-slot:addLinkText>
-          <LocalLink to="add" v-t="'list.addLinkText'" />
-        </template>
-        <template v-slot:moreThanThree>
-          <b v-t="'list.moreThanThree'"/>
-        </template>
-      </i18n>
+      />
+      <Button
+        data-qa="list-add-more-cta"
+        :tabindex="tabindex"
+        v-t="'list.addMoreWords'"
+        @click="onAddButtonClick"
+      />
     </div>
   </div>
 </template>
@@ -82,16 +81,17 @@
   import capitalize from 'lodash/capitalize'
   import reverse from 'lodash/reverse'
   import { namespace } from 'vuex-class'
-  import LocalLink from '../../ui-kit/Link/index.vue'
+  import Button from '../../ui-kit/Button/index.vue'
   import Tabindex from '@/mixins/Tabindex.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
+  const NavModule = namespace('NavModule')
 
   type TSortCategory = 'word' | 'translation'
 
   @Component({
     components: {
-      LocalLink
+      Button
     }
   })
 
@@ -103,6 +103,9 @@
 
     @UserRelatedData.Action
     deleteWord
+
+    @NavModule.Action
+    navigateTo: (id: string) => void
 
     sortCategories: Array<TSortCategory> = ['word', 'translation']
     sortBy: TSortCategory = this.sortCategories[0]
@@ -128,6 +131,11 @@
         this.sortBy = type
         this.resetOrder()
       }
+    }
+
+    onAddButtonClick (e) {
+      e.preventDefault()
+      this.navigateTo('add')
     }
 
     get sortedWords () {

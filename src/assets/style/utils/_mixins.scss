@@ -29,6 +29,7 @@
   background: $button-background;
   user-select: none;
   outline: none !important;
+  cursor: pointer;
 
   &:active,
   &:focus {
@@ -96,7 +97,7 @@
   height: 100%;
 
   .app_has-3-words & {
-    height: calc(100% - #{$nav-height});
+    height: 100%;
   }
 }
 
@@ -105,7 +106,7 @@
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  padding: 4.5rem 2.5rem 1rem;
+  padding: 4.5rem 2.5rem 2.5rem;
   min-height: 100%;
 }
 
