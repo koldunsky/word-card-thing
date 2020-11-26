@@ -79,8 +79,18 @@ describe('"List" screen', () => {
 
     initialOrder.forEach(checkOrder)
   })
+
   it('deletion works', () => {
     cy.get('[data-qa="list-item-delete-button"]').eq(0).click()
     cy.get('[data-qa="list-wrapper"]').find('[data-qa="list-item"]').should('have.length', 4)
+  })
+
+  it('CTA is visible when less than 4 words', () => {
+    cy.get('[data-qa="list-item-delete-button"]').eq(0).click()
+    cy.get('[data-qa="list-item-delete-button"]').eq(0).click()
+    cy.get('[data-qa="list-add-more-cta"]').should('be.visible')
+  })
+  it('CTA is visible when less than 4 words', () => {
+    cy.get('[data-qa="list-add-more-cta"]').should('not.be.visible')
   })
 })
