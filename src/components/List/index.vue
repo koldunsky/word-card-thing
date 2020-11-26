@@ -60,17 +60,18 @@
           />
         </li>
       </ul>
-      <div
-        v-t="'list.notice'"
-        class="notice"
-        v-if="words.length < 4"
-      />
-      <Button
-        data-qa="list-add-more-cta"
-        :tabindex="tabindex"
-        v-t="'list.addMoreWords'"
-        @click="onAddButtonClick"
-      />
+      <div v-if="words.length < 4">
+        <div
+          v-t="'list.notice'"
+          class="notice"
+        />
+        <Button
+          data-qa="list-add-more-cta"
+          :tabindex="tabindex"
+          v-t="'list.addMoreWords'"
+          @click="onAddButtonClick"
+        />
+      </div>
     </div>
   </div>
 </template>

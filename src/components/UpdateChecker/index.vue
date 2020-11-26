@@ -22,7 +22,6 @@
         class="overlay"
         :class="this.prepareToReload && 'overlay_prepare-to-reload'"
         v-if="this.refreshing"
-        @click="() => onOverlayClick()"
       >
       <div class="iconContainer">
         <svg
@@ -43,8 +42,8 @@
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
 
-  let TIMEOUT_SHIFT = 500
-  const TIMEOUT_OVERLAY = 5500
+  const TIMEOUT = 2000
+  const TIMEOUT_OVERLAY = 500
 
   @Component
   export default class UpdateChecker extends Vue {
@@ -52,6 +51,7 @@
     registration: any = null
     updateExists: boolean = false
     prepareToReload: boolean = false
+    timeoutShift: number = 500 // Used to randomize timeout. See `created` hook.
 
     created () {
       document.addEventListener(
@@ -64,7 +64,7 @@
         'controllerchange', this.onControllerChange
       )
 
-      TIMEOUT_SHIFT = (Math.round(Math.random() * 100) / 100) * 1000
+      this.timeoutShift = (Math.round(Math.random() * 100) / 100) * 2000
     }
 
     showRefreshUI (e: CustomEvent) {
@@ -83,7 +83,7 @@
     }
 
     get timeout () {
-      return 2000 + TIMEOUT_SHIFT
+      return TIMEOUT + this.timeoutShift
     }
 
     get shortTimeout () {
