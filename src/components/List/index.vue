@@ -114,7 +114,6 @@
 
     toggleOrder () {
       this.isASC = !this.isASC
-      console.info('toggleOrder')
     }
 
     resetOrder () {
