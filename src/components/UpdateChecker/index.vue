@@ -17,7 +17,7 @@
         />
       </template>
     </i18n>
-    <transition name="overlay-transition">
+    <transition name="overlay-transition" duration="150">
       <div
         class="overlay"
         :class="this.prepareToReload && 'overlay_prepare-to-reload'"
@@ -65,6 +65,10 @@
       )
 
       this.timeoutShift = (Math.round(Math.random() * 100) / 100) * 2000
+      this.updateExists = true
+      setInterval(() => {
+        this.refreshing = !this.refreshing
+      }, 3000)
     }
 
     showRefreshUI (e: CustomEvent) {
