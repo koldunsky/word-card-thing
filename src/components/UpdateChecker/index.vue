@@ -17,7 +17,7 @@
         />
       </template>
     </i18n>
-    <transition name="overlay-transition">
+    <transition name="overlay-transition" duration="150">
       <div
         class="overlay"
         :class="this.prepareToReload && 'overlay_prepare-to-reload'"
