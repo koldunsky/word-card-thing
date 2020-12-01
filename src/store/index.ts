@@ -12,7 +12,7 @@ Vue.use(Vuex)
 
 const STORAGE_STATE = 'kolenki_state'
 
-const store = new Vuex.Store({
+export const store = new Vuex.Store({
   state: {
     version: 1
   },
@@ -38,5 +38,3 @@ const store = new Vuex.Store({
 store.subscribe((mutation, state) => {
   localStorage.setItem(STORAGE_STATE, JSON.stringify(state))
 })
-
-export default store

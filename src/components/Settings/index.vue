@@ -1,6 +1,19 @@
 <template>
   <div class="settings">
       <div class="settings__inner">
+        <SettingsOption :title="$t('settings.language')">
+          <button
+            v-for="l in languages"
+            :key="l"
+            class="settings__button-option"
+            :class="l === $i18n.locale && 'settings__button-option_active'"
+            data-qa="settings-language-button"
+            :tabindex="l === $i18n.locale ? '-1' : tabindex"
+            @click="() => $i18n.locale = l"
+          >
+            {{languagesNameMap[l]}}
+          </button>
+        </SettingsOption>
         <SettingsOption :title="$t('settings.colorTheme')">
           <button
             v-for="t in themeVariants"
@@ -10,7 +23,7 @@
             :class="t === theme && 'settings__button-option_active'"
             data-qa="settings-theme-button"
             :tabindex="t === theme ? '-1' : tabindex"
-            @click="() => onChangeClick(t)"
+            @click="() => onThemeChangeClick(t)"
           />
         </SettingsOption>
       </div>
@@ -25,6 +38,8 @@
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
+  type TLanguage = 'ru' | 'en'
+
   @Component({
     components: {
       SettingsOption
@@ -33,6 +48,11 @@
   export default class Settings extends Mixins(Tabindex) {
     pageName: TPageName = 'settings'
     themeVariants: Array<TTheme> = [null, 'dark', 'light']
+    languages: Array<TLanguage> = ['en', 'ru']
+    languagesNameMap: { [key in TLanguage]: string } = {
+      en: 'English',
+      ru: 'Русский'
+    }
 
     @UserRelatedSettings.State
     theme: TTheme
@@ -43,7 +63,7 @@
     @UserRelatedSettings.Mutation
     changeTheme
 
-    onChangeClick (theme: TTheme) {
+    onThemeChangeClick (theme: TTheme) {
       this.changeTheme(theme)
     }
 
@@ -53,6 +73,10 @@
 
     get currentThemeString () {
       return this.getThemeTranslationId(this.theme)
+    }
+
+    created () {
+      console.info(this.$i18n.locale)
     }
   }
 </script>
