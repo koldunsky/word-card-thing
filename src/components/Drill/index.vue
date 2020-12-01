@@ -32,19 +32,17 @@
         <div class="switcher__half">
         <transition name="fade-downwards">
           <span
-            v-t="'Word'"
-            key="1"
+            key="3"
             v-if="isDrillTranslationInsteadWord"
             class="switcher__text switcher__text_last"
             @click="onChangeTranslationFlowClick"
-          />
+          >{{$t('Word')}}</span>
           <span
-            v-t="'Translation'"
-            key="2"
+            key="4"
             v-else
             class="switcher__text switcher__text_last"
             @click="onChangeTranslationFlowClick"
-          />
+          >{{$t('Translation')}}</span>
         </transition>
         </div>
       </div>
@@ -227,6 +225,7 @@
         this.isReadOnly = false
         this.setRandomWordAsCurrent()
         this.isShowAnswer = false
+        this.$refs.input.value = ''
       }
 
       if (delayed) {

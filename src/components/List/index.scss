@@ -149,14 +149,8 @@ $inner-container: 40rem;
 .notice {
   color: $notice-text-color;
   width: 80%;
-  margin: 3.5rem auto 0;
+  margin: 3.5rem auto 1.5rem;
   white-space: pre;
-
-  b {
-    font-style: italic;
-    white-space: nowrap;
-  }
-
 
   @include inDarkMode {
     color: $notice-text-color-dark;

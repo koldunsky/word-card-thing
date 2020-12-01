@@ -10,17 +10,20 @@ export const en = {
   // Components
   installPrompt: 'Install this app on your device:\ntap {shareIcon} and then Add to Home Screen.',
   list: {
-    addMore: 'Go on! {addLinkText} more words to the list.\n' +
-      'You can delete any word\nif list contains {moreThanThree}.',
-    addLinkText: 'Add',
-    moreThanThree: 'more than 3 words'
+    notice: 'Go on! Add more words to the list.\n' +
+      'You can delete any word\nif list contains more than 3 words.',
+    addMoreWords: 'Add word'
   },
   add: {
     three: 'Add 3 words',
     others: 'Add {n} more'
   },
+  updateChecker: {
+    text: 'New version available! {cta} to update.',
+    cta: 'Click here'
+  },
   settings: {
-    currentTheme: 'Current theme',
+    colorTheme: 'Color theme',
     dark: 'dark',
     light: 'light',
     system: 'set by system settings'

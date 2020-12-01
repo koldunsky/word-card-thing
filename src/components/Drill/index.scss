@@ -20,7 +20,7 @@ $switcherItemsShift: .4rem;
 
 .drill__inner {
   @include page-inner;
-  padding-top: 1rem;
+  padding-top: 3rem;
 }
 
 .word {
@@ -88,9 +88,9 @@ $switcherItemsShift: .4rem;
   align-items: center;
   padding: 0 .8rem;
   cursor: pointer;
-@include inDarkMode {
-      color: inherit;
-    }
+  @include inDarkMode {
+    color: inherit;
+  }
   }
 
 .switcher__text_first {

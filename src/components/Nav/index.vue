@@ -34,7 +34,7 @@
 
 <script lang="ts">
   import { Component, Vue } from 'vue-property-decorator'
-  import { State, namespace } from 'vuex-class'
+  import { namespace } from 'vuex-class'
   import { TPointingDots } from '@/store/entities/nav'
   import PointingDot from '../../ui-kit/PointingDot/index.vue'
 

@@ -6,27 +6,168 @@
   }
 
   100% {
-    height: 2rem;
+    height: 6rem;
+  }
+}
+
+@keyframes textAppears {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes lineRace {
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: 620;
   }
 }
 
 .updateChecker {
-  animation: appears 1 .2s ease-out forwards;
-  padding: 2rem 0 0;
-  font-size: .9em;
   color: $notice-text-color;
   border-radius: $border-radius;
   z-index: z(ontop);
-  height: 0;
   overflow: hidden;
-  box-sizing: content-box;
+  background: $nav-background;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  flex-direction: column;
+  flex-shrink: 0;
+  height: 0;
+  animation: appears .3s ease-in 1 forwards;
 
   @include inDarkMode {
     color: $notice-text-color-dark;
+    background: $nav-background-dark;
   }
+}
+
+.updateExists__innerText {
+  animation: textAppears .3s ease-in 1 forwards;
 }
 
 .button {
   @include button-reset;
   @include link;
+}
+
+.overlay {
+  @include stretch(fixed);
+  opacity: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba($app-background, .85);
+
+  @include inDarkMode {
+    background: rgba($app-background-dark, .85);
+  }
+}
+
+.overlay_prepare-to-reload {
+  transition: all .5s;
+  background: $app-background;
+
+  @include inDarkMode {
+    background: $app-background-dark;
+  }
+}
+
+.iconContainer {
+  width: 32rem;
+  height: 15rem;
+  position: relative;
+}
+
+.icon {
+  width: 100%;
+  transition: cubic-bezier(0.34, 1.6, 0.64, 1) .25s;
+  transition-property: transform, opacity;
+  transform: scale(1);
+
+}
+
+.overlay_prepare-to-reload .icon {
+  transform: scale(.7);
+  opacity: 0;
+}
+
+.overlay-transition-enter-active .icon {
+  opacity: 0;
+  transform: scale(.7);
+}
+
+.greenShape{
+  fill: none;
+  stroke: $coral-default-dark;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10
+}
+.greenShape,
+.greenShape_1 {
+  fill: none;
+  stroke:#2a7e70;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  opacity: .5;
+  transform-origin: center;
+  animation-fill-mode: forwards;
+
+  @include inDarkMode {
+    stroke: $green-dark-600;
+    opacity: 1;
+  }
+}
+
+.orangeShape,
+.orangeShape_2 {
+  fill:none;
+  stroke:#FF8349;
+  stroke-width:6;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+  stroke-miterlimit:10;
+  transform: translateX(1px);
+  transform-origin: center;
+
+  @include inDarkMode {
+    stroke: $coral-600;
+  }
+}
+
+.greenShape,
+.orangeShape {
+  animation: lineRace 2s linear infinite;
+  stroke-dasharray: 310;
+  animation-direction: reverse;
+}
+
+.orangeShape {
+  animation-delay: 1s;
+}
+
+.greenShape_1,
+.orangeShape_2 {
+  opacity: .3;
+  @include inDarkMode {
+    opacity: .3;
+  }
+}
+
+.overlay-transition-enter-active {
+  transition: all .25s;
+}
+.overlay-transition-enter {
+  opacity: 0;
 }
