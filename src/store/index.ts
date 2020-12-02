@@ -10,7 +10,7 @@ import { implementMigrations } from './implementMigrations'
 
 Vue.use(Vuex)
 
-const STORAGE_STATE = 'kolenki_state'
+export const STORAGE_STATE_NAME = 'kolenki_state'
 
 export const store = new Vuex.Store({
   state: {
@@ -23,8 +23,8 @@ export const store = new Vuex.Store({
   },
   mutations: {
     initializeStore (state) {
-      if (localStorage.getItem(STORAGE_STATE)) {
-        let localState = JSON.parse(localStorage.getItem(STORAGE_STATE) as string)
+      if (localStorage.getItem(STORAGE_STATE_NAME)) {
+        let localState = JSON.parse(localStorage.getItem(STORAGE_STATE_NAME) as string)
         if (localState.version !== state.version) {
           localState = implementMigrations(state, localState)
         }
@@ -36,5 +36,5 @@ export const store = new Vuex.Store({
 })
 
 store.subscribe((mutation, state) => {
-  localStorage.setItem(STORAGE_STATE, JSON.stringify(state))
+  localStorage.setItem(STORAGE_STATE_NAME, JSON.stringify(state))
 })

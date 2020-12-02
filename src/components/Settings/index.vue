@@ -6,12 +6,21 @@
             v-for="l in languages"
             :key="l"
             class="settings__button-option"
-            :class="l === $i18n.locale && 'settings__button-option_active'"
+            :class="l === localeShort && 'settings__button-option_active'"
             data-qa="settings-language-button"
-            :tabindex="l === $i18n.locale ? '-1' : tabindex"
-            @click="() => $i18n.locale = l"
+            :tabindex="l === localeShort ? '-1' : tabindex"
+            @click="() => onChangeLocaleClick(l)"
           >
-            {{languagesNameMap[l]}}
+            <i18n
+              path="settings.automaticLanguage"
+              tag="span"
+              v-if="l === null"
+            >
+              <template v-slot:lang>{{automaticLocale}}</template>
+            </i18n>
+            <span v-if="l !== null">
+              {{languagesNameMap[l]}}
+            </span>
           </button>
         </SettingsOption>
         <SettingsOption :title="$t('settings.colorTheme')">
@@ -31,14 +40,13 @@
 </template>
 
 <script lang="ts">
-  import { Component, Mixins, Prop } from 'vue-property-decorator'
+  import { Component, Mixins } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Tabindex from '@/mixins/Tabindex.vue'
   import SettingsOption from './settingsOption.vue'
+  import { getUserLocale } from 'get-user-locale'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
-
-  type TLanguage = 'ru' | 'en'
 
   @Component({
     components: {
@@ -48,8 +56,8 @@
   export default class Settings extends Mixins(Tabindex) {
     pageName: TPageName = 'settings'
     themeVariants: Array<TTheme> = [null, 'dark', 'light']
-    languages: Array<TLanguage> = ['en', 'ru']
-    languagesNameMap: { [key in TLanguage]: string } = {
+    languages: Array<TLocale> = [null, 'en', 'ru']
+    languagesNameMap: { [key in TLocale]: string } = {
       en: 'English',
       ru: 'Русский'
     }
@@ -57,26 +65,42 @@
     @UserRelatedSettings.State
     theme: TTheme
 
+    @UserRelatedSettings.State
+    locale: TLocale
+
     @UserRelatedSettings.Getter
     computedTheme: TTheme
 
     @UserRelatedSettings.Mutation
     changeTheme
 
+    @UserRelatedSettings.Mutation
+    changeLocale
+
     onThemeChangeClick (theme: TTheme) {
       this.changeTheme(theme)
+    }
+
+    onChangeLocaleClick (locale) {
+      this.changeLocale(locale)
+
+      this.$i18n.locale = locale || 'en'
     }
 
     getThemeTranslationId (id) {
       return !id ? 'system' : id
     }
 
+    get automaticLocale () {
+      return getUserLocale().slice(0, 2).toUpperCase()
+    }
+
     get currentThemeString () {
       return this.getThemeTranslationId(this.theme)
     }
 
-    created () {
-      console.info(this.$i18n.locale)
+    get localeShort () {
+      return this.locale && this.locale.slice(0, 2)
     }
   }
 </script>
