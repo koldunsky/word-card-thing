@@ -1,4 +1,5 @@
-import { VuexModule, Module, Mutation, Action } from 'vuex-module-decorators'
+import { VuexModule, Module, Mutation } from 'vuex-module-decorators'
+import { i18n } from '../../../i18n'
 
 @Module({
   namespaced: true
@@ -36,6 +37,7 @@ class UserRelatedSettings extends VuexModule {
   @Mutation
   changeLocale (locale: TLocale) {
     this.locale = locale
+    i18n.locale = locale
   }
 }
 

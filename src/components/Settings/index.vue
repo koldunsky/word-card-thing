@@ -56,7 +56,7 @@
   export default class Settings extends Mixins(Tabindex) {
     pageName: TPageName = 'settings'
     themeVariants: Array<TTheme> = [null, 'dark', 'light']
-    languages: Array<TLocale> = [null, 'en', 'ru']
+    languages: Array<TLocale> = ['en', 'ru']
     languagesNameMap: { [key in TLocale]: string } = {
       en: 'English',
       ru: 'Русский'
@@ -81,10 +81,8 @@
       this.changeTheme(theme)
     }
 
-    onChangeLocaleClick (locale) {
+    onChangeLocaleClick (locale: TLocale) {
       this.changeLocale(locale)
-
-      this.$i18n.locale = locale || 'en'
     }
 
     getThemeTranslationId (id) {
@@ -99,8 +97,22 @@
       return this.getThemeTranslationId(this.theme)
     }
 
+    getShortLocaleCode (locale: string): TLocale {
+      if (locale) {
+        return locale.slice(0, 2) as TLocale
+      }
+
+      console.warn('couldn\'t get short locale')
+    }
+
     get localeShort () {
-      return this.locale && this.locale.slice(0, 2)
+      return this.locale && this.getShortLocaleCode(this.locale)
+    }
+
+    created () {
+      if (!this.locale) {
+        this.changeLocale(this.getShortLocaleCode(this.$i18n.locale))
+      }
     }
   }
 </script>

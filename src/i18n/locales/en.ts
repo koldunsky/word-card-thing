@@ -26,9 +26,8 @@ export const en = {
     colorTheme: 'Color theme',
     dark: 'dark',
     light: 'light',
-    system: 'set by system settings',
-    language: 'Language',
-    automaticLanguage: 'Auto [{lang}]'
+    system: 'auto',
+    language: 'Language'
   },
   introFirstScreen: {
     text: '{appName} is an app that helps to remember words. Type in {word} and {translation}',
