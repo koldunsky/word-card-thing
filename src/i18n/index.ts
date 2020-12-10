@@ -26,5 +26,3 @@ export const i18n = new VueI18n({
     ru
   }
 })
-
-doLocaleCheck()
