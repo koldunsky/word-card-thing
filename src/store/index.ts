@@ -7,10 +7,11 @@ import NavModule from './entities/nav'
 import UserRelatedData from './entities/userRelated/data'
 import UserRelatedSettings from './entities/userRelated/settings'
 import { implementMigrations } from './implementMigrations'
+import { STORAGE_STATE_NAME } from './constants'
 
 Vue.use(Vuex)
 
-export const STORAGE_STATE_NAME = 'kolenki_state'
+console.info('STORAGE_STATE_NAME', STORAGE_STATE_NAME)
 
 export const store = new Vuex.Store({
   state: {

@@ -43,8 +43,8 @@ export const en = {
   },
   nav: {
     add: 'Add',
-    drill: 'Drill',
+    drill: 'Train',
     list: 'List',
-    settings: 'Settings',
+    settings: 'Settings'
   }
 }

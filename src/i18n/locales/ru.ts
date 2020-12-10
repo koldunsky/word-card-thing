@@ -28,9 +28,21 @@ export const ru = {
     system: 'автоматически',
     language: 'Язык интерфейса'
   },
+  introFirstScreen: {
+    text: 'Это {appName} – приложение для повторения слов. Чтобы начать нужно добавить {word} и {translation}',
+    appName: 'коленки',
+    word: 'слово',
+    translation: 'перевод',
+    button: 'Готово'
+  },
+  introSecondScreen: {
+    text: 'Отлично! Чтобы начать тренироваться, нужно добавить хотя бы {threeWords}',
+    threeWords: 'три слова',
+    button: 'Понятно'
+  },
   nav: {
     add: 'Добавить',
-    drill: 'Зубрить',
+    drill: 'Учить',
     list: 'Список',
     settings: 'Настройки'
   }

@@ -11,16 +11,7 @@
             :tabindex="l === localeShort ? '-1' : tabindex"
             @click="() => onChangeLocaleClick(l)"
           >
-            <i18n
-              path="settings.automaticLanguage"
-              tag="span"
-              v-if="l === null"
-            >
-              <template v-slot:lang>{{automaticLocale}}</template>
-            </i18n>
-            <span v-if="l !== null">
-              {{languagesNameMap[l]}}
-            </span>
+            {{languagesNameMap[l]}}
           </button>
         </SettingsOption>
         <SettingsOption :title="$t('settings.colorTheme')">
