@@ -11,8 +11,6 @@ import { STORAGE_STATE_NAME } from './constants'
 
 Vue.use(Vuex)
 
-console.info('STORAGE_STATE_NAME', STORAGE_STATE_NAME)
-
 export const store = new Vuex.Store({
   state: {
     version: 1

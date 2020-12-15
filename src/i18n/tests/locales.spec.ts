@@ -1,7 +1,7 @@
 import { doLocaleCheck } from '@/i18n/getLocalesDiff'
 
 describe('Locales', () => {
-  it('has no not-translated strings', () => {
+  it('all strings are translated', () => {
     expect(doLocaleCheck()).toStrictEqual({})
   })
 })

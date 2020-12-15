@@ -35,7 +35,6 @@
   import { namespace } from 'vuex-class'
   import Tabindex from '@/mixins/Tabindex.vue'
   import SettingsOption from './settingsOption.vue'
-  import { getUserLocale } from 'get-user-locale'
 
   const UserRelatedSettings = namespace('UserRelatedSettings')
 
@@ -78,10 +77,6 @@
 
     getThemeTranslationId (id) {
       return !id ? 'system' : id
-    }
-
-    get automaticLocale () {
-      return getUserLocale().slice(0, 2).toUpperCase()
     }
 
     get currentThemeString () {
