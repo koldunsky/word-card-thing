@@ -63,7 +63,7 @@ class UserRelatedData extends VuexModule {
   }
 
   @Action
-  deleteWord (id) {
+  deleteWord (id: string) {
     return new Promise((resolve) => {
       const foundWords: IWord = this.words.find((word: IWord) => word.id === id)
       const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)

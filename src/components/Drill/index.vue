@@ -110,6 +110,7 @@
           {{$t('Delete')}}
         </Button>
       </div>
+      <WordsLog :tabindex="tabindex" />
     </div>
   </div>
 </template>
@@ -118,14 +119,17 @@
   import { Component, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
+  import WordsLog from '../WordsLog/index.vue'
 
   const NavModule = namespace('NavModule')
   const UserRelatedSettings = namespace('UserRelatedSettings')
   const UserRelatedData = namespace('UserRelatedData')
+  const WordsLogModule = namespace('WordsLog')
 
   @Component({
     components: {
-      Button
+      Button,
+      WordsLog
     }
   })
   export default class Drill extends Vue {
@@ -157,6 +161,9 @@
 
     @UserRelatedData.Mutation
     setRandomWordAsCurrent
+
+    @WordsLogModule.Mutation
+    addWordToLog
 
     @UserRelatedData.Action
     deleteWord
@@ -220,6 +227,11 @@
 
     resetView (delayed?: boolean) {
       const reset = () => {
+        this.addWordToLog({
+          id: this.currentWord.id,
+          correct: this.isRightAnswer
+        })
+
         this.value = ''
         this.isRightAnswer = false
         this.isReadOnly = false

@@ -6,6 +6,7 @@ import getGuid from '@/utils/getGuid'
 import NavModule from './entities/nav'
 import UserRelatedData from './entities/userRelated/data'
 import UserRelatedSettings from './entities/userRelated/settings'
+import WordsLog from './entities/wordsLog/index'
 import { implementMigrations } from './implementMigrations'
 
 Vue.use(Vuex)
@@ -19,7 +20,8 @@ const store = new Vuex.Store({
   modules: {
     NavModule,
     UserRelatedSettings,
-    UserRelatedData
+    UserRelatedData,
+    WordsLog
   },
   mutations: {
     initializeStore (state) {

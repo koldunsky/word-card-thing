@@ -1,0 +1,30 @@
+@import '../../assets/style/utils';
+
+.wordsLog {
+  list-style-type: none;
+  width: 100%;
+  max-width: $inner-container;
+  padding: 8rem 0 0;
+}
+
+.list-item {
+  margin: 1rem 0;
+  font-size: 1.4em;
+  padding: .5rem;
+  height: $input-height;
+  display: flex;
+  align-items: center;
+}
+
+.correct {
+
+  @include inDarkMode {
+    color: $green-400;
+  }
+}
+
+.incorrect {
+  @include inDarkMode {
+    color: $coral-light-500;
+  }
+}

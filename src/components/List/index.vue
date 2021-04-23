@@ -39,26 +39,14 @@
             @click="resetSorting"
           />
         </li>
-        <li
-          class="list-item"
+
+        <ListItem
           v-for="w in sortedWords"
           :key="w.id"
-          data-qa="list-item"
-        >
-          <span class="word">
-            {{w.word}}
-          </span>
-          <span class="translation">
-            {{w.translation}}
-          </span>
-          <button
-            :tabindex="tabindex"
-            class="delete-button"
-            v-if="words.length > 3"
-            @click="() => deleteWord(w.id)"
-            data-qa="list-item-delete-button"
-          />
-        </li>
+          :deletable="words.length > 3"
+          :tabindex="tabindex"
+          v-bind="w"
+        />
       </ul>
       <div v-if="words.length < 4">
         <div
@@ -82,7 +70,8 @@
   import capitalize from 'lodash/capitalize'
   import reverse from 'lodash/reverse'
   import { namespace } from 'vuex-class'
-  import Button from '../../ui-kit/Button/index.vue'
+  import Button from '@/ui-kit/Button/index.vue'
+  import ListItem from '@/ui-kit/ListItem/index.vue'
   import Tabindex from '@/mixins/Tabindex.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
@@ -92,7 +81,8 @@
 
   @Component({
     components: {
-      Button
+      Button,
+      ListItem
     }
   })
 
@@ -101,9 +91,6 @@
 
     @UserRelatedData.State
     words
-
-    @UserRelatedData.Action
-    deleteWord
 
     @NavModule.Action
     navigateTo: (id: string) => void
@@ -159,3 +146,4 @@
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
+<style src="@/ui-kit/ListItem/index.scss" lang="scss" scoped></style>
