@@ -1,30 +1,88 @@
 @import '../../assets/style/utils';
 
+$gggreen_dark: $green-400;
+$ooorange_dark: $coral-light-700;
+
 .wordsLog {
-  list-style-type: none;
-  width: 100%;
   max-width: $inner-container;
   padding: 8rem 0 0;
+  width: 100%;
+}
+
+.listWrapper {
+  list-style-type: none;
+  
+  &::after {
+    content: '';
+    position: sticky;
+    bottom: 0;
+    height: 10rem;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(transparent, ease, $app-background);
+
+    @include inDarkMode {
+      background-image: linear-gradient(transparent, ease, $app-background-dark);
+    }
+  }
 }
 
 .list-item {
-  margin: 1rem 0;
-  font-size: 1.4em;
-  padding: .5rem;
+  margin: 1.5rem 0;
+  padding: 0 1rem;
   height: $input-height;
   display: flex;
   align-items: center;
+  border-left: 1px solid;
+  justify-content: space-between;
+}
+
+.word {
+  font-size: 1.4em;
 }
 
 .correct {
-
   @include inDarkMode {
-    color: $green-400;
+    border-color: $gggreen_dark;
+    background: rgba($gggreen_dark, .05);
   }
 }
 
 .incorrect {
   @include inDarkMode {
-    color: $coral-light-500;
+    border-color: $ooorange_dark;
+    background: rgba($ooorange_dark, .05);
   }
+}
+
+
+.score {
+  .correct & {
+    @include inDarkMode {
+      color: $gggreen_dark;
+    }
+  }
+
+  .incorrect & {
+    @include inDarkMode {
+      color: $ooorange_dark;
+    }
+  }
+}
+
+.score_correct {
+  @include inDarkMode {
+    color: $gggreen_dark;
+  }
+}
+
+.score_wrong {
+  @include inDarkMode {
+    color: $ooorange_dark;
+  }
+}
+
+.heading {
+  display: flex;
+  justify-content: space-between;
 }

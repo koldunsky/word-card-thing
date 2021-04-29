@@ -1,14 +1,43 @@
 <template>
-  <ul class="wordsLog">
-    <li
-      v-for="(w, i) in completeLog"
-      :key="w.id + i"
-      class="list-item"
-      :class="w.correct ? 'correct' : 'incorrect'"
-    >
-      {{isDrillTranslationInsteadWord ? w.translation : w.word}}
-    </li>
-  </ul>
+ <div class="wordsLog">
+   <div class="heading" v-if="log.length">
+     <span>
+       Score: {{score}}
+     </span>
+     <span>
+       <span>
+         {{correctAnswers + wrongAnswers}}
+       </span>
+       (
+       <span class="score_correct">
+         {{correctAnswers}}
+       </span>
+       /
+       <span class="score_wrong">
+         {{wrongAnswers}}
+       </span>
+       )
+     </span>
+     <span @click="clearLog">
+       clear
+     </span>
+   </div>
+   <ul class="listWrapper">
+     <li
+       v-for="(w, i) in completeLog"
+       :key="w.id + i"
+       class="list-item"
+       :class="{
+          'correct': w.correct,
+          'incorrect': !w.correct
+        }"
+       @click="() => words.length > 3 && deleteWord(w.id)"
+     >
+       <span class="word">{{isDrillTranslationInsteadWord ? w.translation : w.word}}</span>
+       <span class="score">{{w.correct ? '+5' : '-10'}}</span>
+     </li>
+   </ul>
+ </div>
 </template>
 
 <script lang="ts">
@@ -31,11 +60,26 @@
     @WordsLogModule.State
     log
 
+    @WordsLogModule.State
+    correctAnswers
+
+    @WordsLogModule.State
+    wrongAnswers
+
+    @WordsLogModule.State
+    score
+
     @UserRelatedData.State
     words
 
     @UserRelatedSettings.State
     isDrillTranslationInsteadWord
+
+    @UserRelatedData.Action
+    deleteWord
+
+    @WordsLogModule.Mutation
+    clear
 
     get completeLog () {
       const cmplLog = this.log.map(({ id: logWordId, correct }) => {
@@ -50,6 +94,12 @@
       })
 
       return cmplLog.filter(({ id }) => Boolean(id))
+    }
+
+    clearLog () {
+      const reallyClear = confirm(`Do you want to clear the table? It won't affect the list of words.`)
+
+      this.clear()
     }
   }
 </script>
