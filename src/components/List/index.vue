@@ -71,8 +71,8 @@
   import reverse from 'lodash/reverse'
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
-  import ListItem from '@/ui-kit/ListItem/index.vue'
   import Tabindex from '@/mixins/Tabindex.vue'
+  import ListItem from './ListItem/index.vue'
 
   const UserRelatedData = namespace('UserRelatedData')
   const NavModule = namespace('NavModule')
@@ -146,4 +146,3 @@
   }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>
-<style src="@/ui-kit/ListItem/index.scss" lang="scss" scoped></style>

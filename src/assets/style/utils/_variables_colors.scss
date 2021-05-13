@@ -72,6 +72,7 @@ $coral-A400: nth($coral-palette, 13);
 $coral-A700: nth($coral-palette, 14);
 
 $coral: coral;
+$coral-dark-50: mix($coral, $app-background-dark, 5%);
 $coral-dark-100: mix($coral, $app-background-dark, 10%);
 $coral-dark-150: mix($coral, $app-background-dark, 15%);
 $coral-dark-175: mix($coral, $app-background-dark, 17.5%);

@@ -102,8 +102,9 @@
 
         <Button
           :tabindex="tabindex"
+          accent
           data-qa="drill-delete-button"
-          class="button button_accent button_delete"
+          class="button button_delete"
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"
         >
@@ -169,10 +170,18 @@
     deleteWord
 
     onDeleteButtonClick () {
-      this.deleteWord(this.currentWord.id).then(() => {
+      this.deleteWord({id: this.currentWord.id}).then(() => {
         this.resetView()
       })
     }
+
+    aaaddWordToLog () {
+      this.addWordToLog({
+        id: this.currentWord.id,
+        correct: this.isRightAnswer
+      })
+    }
+
     onInputChange (e: Event) {
       const {
         value
@@ -181,6 +190,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
+        this.aaaddWordToLog()
         this.resetView(true)
       }
     }
@@ -199,6 +209,7 @@
       } else {
         this.handleFocusBehaviour()
       }
+      this.aaaddWordToLog()
       this.resetView()
     }
 
@@ -227,11 +238,6 @@
 
     resetView (delayed?: boolean) {
       const reset = () => {
-        this.addWordToLog({
-          id: this.currentWord.id,
-          correct: this.isRightAnswer
-        })
-
         this.value = ''
         this.isRightAnswer = false
         this.isReadOnly = false

@@ -1,6 +1,9 @@
 <template>
   <button
     class="button"
+    :class="{
+      button_accent: accent
+    }"
     @click="(e) => $emit('click', e)"
   >
     <slot />
@@ -8,9 +11,14 @@
 </template>
 
 <script lang="ts">
-  import { Component, Vue } from 'vue-property-decorator'
+  import { Component, Prop, Vue } from 'vue-property-decorator'
 
-  @Component
-  export default class Button extends Vue {}
+  @Component({
+    props: {
+      accent: [Boolean]
+    }
+  })
+  export default class Button extends Vue {
+  }
 </script>
 <style src="./index.scss" lang="scss" scoped></style>

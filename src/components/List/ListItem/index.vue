@@ -13,7 +13,7 @@
       :tabindex="tabindex"
       class="delete-button"
       v-if="deletable"
-      @click="() => deleteWord(id)"
+      @click="() => deleteWord({id})"
       data-qa="list-item-delete-button"
     />
   </li>
@@ -37,4 +37,4 @@
   deleteWord
   }
 </script>
-<style src="./index.scss" lang="scss" scoped></style>
+<style src="../index.scss" lang="scss" scoped></style>

@@ -1,49 +1,35 @@
 <template>
  <div class="wordsLog">
-   <div class="heading" v-if="log.length">
-     <span>
-       Score: {{score}}
-     </span>
-     <span>
-       <span>
-         {{correctAnswers + wrongAnswers}}
-       </span>
-       (
-       <span class="score_correct">
-         {{correctAnswers}}
-       </span>
-       /
-       <span class="score_wrong">
-         {{wrongAnswers}}
-       </span>
-       )
-     </span>
-     <span @click="clearLog">
-       clear
-     </span>
-   </div>
-   <ul class="listWrapper">
+   {{prevLogList}}
+     <transition-group name="list" tag="ul" class="listWrapper">
      <li
-       v-for="(w, i) in completeLog"
-       :key="w.id + i"
+       v-for="(w) in completeLog"
+       :key="w.id"
        class="list-item"
        :class="{
           'correct': w.correct,
           'incorrect': !w.correct
         }"
-       @click="() => words.length > 3 && deleteWord(w.id)"
+       @click="() => {
+          words.length > 3 && deleteWord({id: w.id})
+       }"
      >
        <span class="word">{{isDrillTranslationInsteadWord ? w.translation : w.word}}</span>
-       <span class="score">{{w.correct ? '+5' : '-10'}}</span>
      </li>
-   </ul>
+     </transition-group>
+   <transition name="footer-button">
+     <Button @click="clearLog" accent class="footer-button" v-if="log.length >= 3">
+       Clear
+     </Button>
+   </transition>
  </div>
 </template>
 
 <script lang="ts">
   import { Component, Prop, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
-  import ListItem from '@/ui-kit/ListItem/index.vue'
+
+  import Button from '@/ui-kit/Button/index.vue'
 
   const WordsLogModule = namespace('WordsLog')
   const UserRelatedData = namespace('UserRelatedData')
@@ -51,7 +37,7 @@
 
   @Component({
     components: {
-      ListItem
+      Button
     }
   })
   export default class WordsLog extends Vue {
@@ -66,9 +52,6 @@
     @WordsLogModule.State
     wrongAnswers
 
-    @WordsLogModule.State
-    score
-
     @UserRelatedData.State
     words
 
@@ -80,6 +63,16 @@
 
     @WordsLogModule.Mutation
     clear
+
+    prevLog = [];
+
+    get prevLogList () {
+      return this.prevLog.map((list) => {
+        return list.map(({ word }) => {
+          return word
+        })
+      })
+    }
 
     get completeLog () {
       const cmplLog = this.log.map(({ id: logWordId, correct }) => {
@@ -93,6 +86,7 @@
         }
       })
 
+      this.prevLog.push(cmplLog.filter(({ id }) => Boolean(id)))
       return cmplLog.filter(({ id }) => Boolean(id))
     }
 

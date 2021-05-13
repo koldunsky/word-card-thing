@@ -1,17 +1,10 @@
 @import '../../assets/style/utils';
 
-$gggreen_dark: $green-400;
-$ooorange_dark: $coral-light-700;
-
 .wordsLog {
   max-width: $inner-container;
   padding: 8rem 0 0;
   width: 100%;
-}
 
-.listWrapper {
-  list-style-type: none;
-  
   &::after {
     content: '';
     position: sticky;
@@ -27,6 +20,10 @@ $ooorange_dark: $coral-light-700;
   }
 }
 
+.listWrapper {
+  list-style-type: none;
+}
+
 .list-item {
   margin: 1.5rem 0;
   padding: 0 1rem;
@@ -35,6 +32,7 @@ $ooorange_dark: $coral-light-700;
   align-items: center;
   border-left: 1px solid;
   justify-content: space-between;
+  overflow: hidden;
 }
 
 .word {
@@ -42,47 +40,50 @@ $ooorange_dark: $coral-light-700;
 }
 
 .correct {
+  border-color: $input-border;
+  background-color: $green-100;
   @include inDarkMode {
-    border-color: $gggreen_dark;
-    background: rgba($gggreen_dark, .05);
+    border-color: $input-border-dark;
+    background-color: $green-dark-50;
   }
 }
 
 .incorrect {
+  border-color: $coral-default;
+  background-color: $coral-50;
   @include inDarkMode {
-    border-color: $ooorange_dark;
-    background: rgba($ooorange_dark, .05);
+    border-color: $coral-default-dark;
+    background-color: $coral-dark-50;
   }
 }
 
-
-.score {
-  .correct & {
-    @include inDarkMode {
-      color: $gggreen_dark;
-    }
-  }
-
-  .incorrect & {
-    @include inDarkMode {
-      color: $ooorange_dark;
-    }
-  }
+.footer-button {
+  margin-top: 2rem;
+  overflow: hidden;
 }
 
-.score_correct {
-  @include inDarkMode {
-    color: $gggreen_dark;
-  }
+.footer-button-enter-active, .footer-button-leave-active {
+  transition-property: opacity, transform, margin;
+  transition-duration: .5s;
 }
 
-.score_wrong {
-  @include inDarkMode {
-    color: $ooorange_dark;
-  }
+.footer-button-enter, .footer-button-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-1rem);
+  margin: 0;
 }
 
-.heading {
-  display: flex;
-  justify-content: space-between;
+.list-enter-active, .list-leave-active {
+  transition-property: opacity, height, margin;
+  transition-duration: .5s;
+}
+
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.list-move {
+  transition: all .7s;
 }
