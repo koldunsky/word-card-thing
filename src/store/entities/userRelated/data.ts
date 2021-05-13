@@ -63,10 +63,17 @@ class UserRelatedData extends VuexModule {
   }
 
   @Action
-  deleteWord (id) {
+  deleteWord ({
+    id,
+    showDisclaimer = true,
+  }: {
+    id: string,
+    showDisclaimer: boolean
+  }) {
+    const disclaimer = '\n*The word will be deleted from the app entirely*'
     return new Promise((resolve) => {
       const foundWords: IWord = this.words.find((word: IWord) => word.id === id)
-      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?`)
+      const reallyDelete = confirm(`Delete ${foundWords.word} (${foundWords.translation})?${showDisclaimer ? disclaimer : ''}`)
 
       if (reallyDelete) {
         this.context.commit('deleteWordWithoutConfirmation', id)

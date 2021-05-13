@@ -1,7 +1,6 @@
 @import '../../assets/style/utils';
 
 $button-size: 2rem;
-$inner-container: 40rem;
 
 .list {
   @include page;
@@ -22,6 +21,7 @@ $inner-container: 40rem;
   width: 100%;
 }
 
+
 .list-item {
   padding: .5rem 0;
   padding-right: 3rem;
@@ -37,6 +37,36 @@ $inner-container: 40rem;
   @include inDarkMode {
     border-color: $list-item-border-dark;
   }
+}
+
+
+.word {
+  width: 50%;
+  word-break: break-word;
+  padding-right: 1em;
+}
+
+.translation {
+  width: 50%;
+}
+
+.delete-button {
+  @include cross-icon;
+
+  user-select: none;
+  position: absolute;
+  right: 0;
+  top: .5rem;
+  bottom: .5rem;
+  padding: 0;
+  min-height: $button-size;
+  width: $button-size;
+  background: none;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  font-size: 0;
+  line-height: 1;
 }
 
 .list-heading {
@@ -115,35 +145,6 @@ $inner-container: 40rem;
 .list-heading__reset-button.list-heading__reset-button {
   top: .4rem;
   color: currentColor;
-}
-
-.word {
-  width: 50%;
-  word-break: break-word;
-  padding-right: 1em;
-}
-
-.translation {
-  width: 50%;
-}
-
-.delete-button {
-  @include cross-icon;
-
-  user-select: none;
-  position: absolute;
-  right: 0;
-  top: .5rem;
-  bottom: .5rem;
-  padding: 0;
-  min-height: $button-size;
-  width: $button-size;
-  background: none;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  font-size: 0;
-  line-height: 1;
 }
 
 .notice {

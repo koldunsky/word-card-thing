@@ -102,14 +102,16 @@
 
         <Button
           :tabindex="tabindex"
+          accent
           data-qa="drill-delete-button"
-          class="button button_accent button_delete"
+          class="button button_delete"
           v-if="isShowAnswer && words.length > 3"
           @click="onDeleteButtonClick"
         >
           {{$t('Delete')}}
         </Button>
       </div>
+      <WordsLog :tabindex="tabindex" />
     </div>
   </div>
 </template>
@@ -118,14 +120,17 @@
   import { Component, Vue } from 'vue-property-decorator'
   import { namespace } from 'vuex-class'
   import Button from '@/ui-kit/Button/index.vue'
+  import WordsLog from '../WordsLog/index.vue'
 
   const NavModule = namespace('NavModule')
   const UserRelatedSettings = namespace('UserRelatedSettings')
   const UserRelatedData = namespace('UserRelatedData')
+  const WordsLogModule = namespace('WordsLog')
 
   @Component({
     components: {
-      Button
+      Button,
+      WordsLog
     }
   })
   export default class Drill extends Vue {
@@ -158,14 +163,25 @@
     @UserRelatedData.Mutation
     setRandomWordAsCurrent
 
+    @WordsLogModule.Mutation
+    addWordToLog
+
     @UserRelatedData.Action
     deleteWord
 
     onDeleteButtonClick () {
-      this.deleteWord(this.currentWord.id).then(() => {
+      this.deleteWord({id: this.currentWord.id}).then(() => {
         this.resetView()
       })
     }
+
+    aaaddWordToLog () {
+      this.addWordToLog({
+        id: this.currentWord.id,
+        correct: this.isRightAnswer
+      })
+    }
+
     onInputChange (e: Event) {
       const {
         value
@@ -174,6 +190,7 @@
       if (value.toLowerCase() === this.answer.toLowerCase()) {
         this.isReadOnly = true
         this.isRightAnswer = true
+        this.aaaddWordToLog()
         this.resetView(true)
       }
     }
@@ -192,6 +209,7 @@
       } else {
         this.handleFocusBehaviour()
       }
+      this.aaaddWordToLog()
       this.resetView()
     }
 

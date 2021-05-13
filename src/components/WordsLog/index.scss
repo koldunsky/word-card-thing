@@ -1,0 +1,89 @@
+@import '../../assets/style/utils';
+
+.wordsLog {
+  max-width: $inner-container;
+  padding: 8rem 0 0;
+  width: 100%;
+
+  &::after {
+    content: '';
+    position: sticky;
+    bottom: 0;
+    height: 10rem;
+    width: 100%;
+    display: block;
+    background-image: linear-gradient(transparent, ease, $app-background);
+
+    @include inDarkMode {
+      background-image: linear-gradient(transparent, ease, $app-background-dark);
+    }
+  }
+}
+
+.listWrapper {
+  list-style-type: none;
+}
+
+.list-item {
+  margin: 1.5rem 0;
+  padding: 0 1rem;
+  height: $input-height;
+  display: flex;
+  align-items: center;
+  border-left: 1px solid;
+  justify-content: space-between;
+  overflow: hidden;
+}
+
+.word {
+  font-size: 1.4em;
+}
+
+.correct {
+  border-color: $input-border;
+  background-color: $green-100;
+  @include inDarkMode {
+    border-color: $input-border-dark;
+    background-color: $green-dark-50;
+  }
+}
+
+.incorrect {
+  border-color: $coral-default;
+  background-color: $coral-50;
+  @include inDarkMode {
+    border-color: $coral-default-dark;
+    background-color: $coral-dark-50;
+  }
+}
+
+.footer-button {
+  margin-top: 2rem;
+  overflow: hidden;
+}
+
+.footer-button-enter-active, .footer-button-leave-active {
+  transition-property: opacity, transform, margin;
+  transition-duration: .5s;
+}
+
+.footer-button-enter, .footer-button-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  transform: translateY(-1rem);
+  margin: 0;
+}
+
+.list-enter-active, .list-leave-active {
+  transition-property: opacity, height, margin;
+  transition-duration: .5s;
+}
+
+.list-enter, .list-leave-to /* .list-leave-active below version 2.1.8 */ {
+  opacity: 0;
+  height: 0;
+  margin: 0;
+}
+
+.list-move {
+  transition: all .7s;
+}
