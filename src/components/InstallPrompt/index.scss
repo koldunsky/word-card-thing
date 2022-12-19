@@ -20,6 +20,7 @@ $bg-dark: rgb(60, 62, 60);
   justify-content: space-between;
   font-size: 1.2rem;
   max-width: 30rem;
+  min-width: 27.5rem;
 
   .app_has-3-words & {
     bottom: $nav-height + $bottom-offset;
