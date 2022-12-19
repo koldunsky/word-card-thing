@@ -43,6 +43,7 @@
   import Nav from './components/Nav/index.vue'
   import { isIos } from '@/utils/isIos'
   import { isStandalone } from '@/utils/isStandalone'
+  import { isIphoneRoundedScreen } from '@/utils/isIphoneRoundedScreen'
 
   const DARK_THEME_ID: string = 'dark-mode'
   const LIGHT_THEME_ID: string = 'light-mode'
@@ -120,6 +121,10 @@
     beforeMount () {
       if (isIos) {
         document.querySelector('html').classList.add('ios-device')
+      }
+
+      if (isIphoneRoundedScreen) {
+        document.querySelector('html').classList.add('rounded-screen')
       }
 
       if (isStandalone) {
